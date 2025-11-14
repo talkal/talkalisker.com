@@ -6,6 +6,10 @@
     <title>La Mejor Tortilla - Descubre la mejor tortilla de patata</title>
     <meta name="description" content="Descubre, comparte y celebra la mejor tortilla de patata de tu región. Únete a nuestra comunidad de amantes de la auténtica gastronomía española.">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="app-icon.png">
+    <link rel="apple-touch-icon" href="app-icon.png">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,18 +67,11 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: calc(var(--spacing) * 2);
         }
 
-        .logo-icon {
-            font-size: 2rem;
-        }
-
-        .logo-text {
-            font-family: 'Chewy', cursive;
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: var(--text-primary);
+        .logo img {
+            height: 48px;
+            width: auto;
         }
 
         /* Hero Section */
@@ -251,8 +248,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .logo-text {
-                font-size: 1.25rem;
+            .logo img {
+                height: 40px;
             }
         }
     </style>
@@ -262,8 +259,7 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                <span class="logo-icon">🥔</span>
-                <span class="logo-text">La Mejor Tortilla</span>
+                <img src="app-icon.png" alt="La Mejor Tortilla">
             </div>
         </div>
     </header>
@@ -307,7 +303,7 @@
     <section class="community">
         <div class="community-content">
             <h2>Únete a la comunidad</h2>
-            <p>Más de 10,000 amantes de la tortilla ya están compartiendo sus lugares favoritos. ¿A qué esperas para descubrir la mejor tortilla de patata cerca de ti?</p>
+            <p>Amantes de la tortilla ya están compartiendo sus lugares favoritos. ¿A qué esperas para descubrir la mejor tortilla de patata cerca de ti?</p>
             <a href="#download" class="cta-button">Comenzar ahora</a>
         </div>
     </section>
