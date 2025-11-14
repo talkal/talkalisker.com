@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talkal - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .link-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.2s, background 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .link-card h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .link-card p {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .links {
+                flex-direction: column;
+            }
+
+            .link-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Talkal</h1>
+        <p>Developer & Creator</p>
+
+        <div class="links">
+            <a href="/lamejortortilla/" class="link-card">
+                <h2>La Mejor Tortilla</h2>
+                <p>Discover the best tortilla de patata</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

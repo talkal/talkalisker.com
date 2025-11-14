@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.talkal.lamejortortilla",
+      "sha256_cert_fingerprints": [
+        "45:28:8F:20:2F:AC:9D:BF:31:A7:CA:CA:84:81:1D:E0:D3:B6:1A:E9:C2:D3:0F:70:2B:3F:8F:09:EA:4B:A3:F5"
+      ]
+    }
+  }
+]

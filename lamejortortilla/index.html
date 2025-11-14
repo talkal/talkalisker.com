@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Mejor Tortilla - Descubre la mejor tortilla de patata</title>
+    <meta name="description" content="Descubre, comparte y celebra la mejor tortilla de patata de tu región. Únete a nuestra comunidad de amantes de la auténtica gastronomía española.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #FFC107;
+            --primary-dark: #FFB300;
+            --primary-light: #FFECB3;
+            --text-primary: #212121;
+            --text-secondary: #757575;
+            --background: #FAFAFA;
+            --white: #FFFFFF;
+            --spacing: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-primary);
+            background-color: var(--background);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Chewy font for all headings */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Chewy', cursive;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            padding: calc(var(--spacing) * 3) calc(var(--spacing) * 4);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--spacing) * 2);
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        .logo-text {
+            font-family: 'Chewy', cursive;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: calc(var(--spacing) * 12) calc(var(--spacing) * 4);
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: calc(var(--spacing) * 3);
+            line-height: 1.2;
+            letter-spacing: 0;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: calc(var(--spacing) * 5);
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--text-primary);
+            color: var(--white);
+            padding: calc(var(--spacing) * 2) calc(var(--spacing) * 5);
+            border-radius: calc(var(--spacing));
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: calc(var(--spacing) * 12) calc(var(--spacing) * 4);
+            background: var(--white);
+        }
+
+        .features-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: calc(var(--spacing) * 8);
+            color: var(--text-primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: calc(var(--spacing) * 4);
+        }
+
+        .feature-card {
+            padding: calc(var(--spacing) * 4);
+            border-radius: calc(var(--spacing));
+            background: var(--background);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: calc(var(--spacing) * 2);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: calc(var(--spacing) * 2);
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Community Section */
+        .community {
+            padding: calc(var(--spacing) * 12) calc(var(--spacing) * 4);
+            background: var(--primary-light);
+        }
+
+        .community-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .community h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: calc(var(--spacing) * 3);
+            color: var(--text-primary);
+        }
+
+        .community p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: calc(var(--spacing) * 5);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: var(--white);
+            padding: calc(var(--spacing) * 6) calc(var(--spacing) * 4);
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: calc(var(--spacing) * 2);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: calc(var(--spacing) * 3);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.25rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-text {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🥔</span>
+                <span class="logo-text">La Mejor Tortilla</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>¿Dónde está la mejor tortilla de patata?</h1>
+            <p>Descubre, comparte y celebra la auténtica tortilla española en tu región</p>
+            <a href="#download" class="cta-button">Descargar la App</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-content">
+            <h2 class="section-title">¿Por qué La Mejor Tortilla?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3>Descubre lugares auténticos</h3>
+                    <p>Encuentra los bares y restaurantes con las mejores tortillas de tu zona. Locales recomendados por la comunidad que realmente saben hacer tortilla.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Comparte tu experiencia</h3>
+                    <p>¿Conoces un sitio increíble? Compártelo con la comunidad. Valora, comenta y ayuda a otros a descubrir joyas escondidas.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Celebra la tradición</h3>
+                    <p>Forma parte de una comunidad que aprecia la gastronomía española auténtica. Descubre recetas, trucos y la historia detrás de cada tortilla.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community">
+        <div class="community-content">
+            <h2>Únete a la comunidad</h2>
+            <p>Más de 10,000 amantes de la tortilla ya están compartiendo sus lugares favoritos. ¿A qué esperas para descubrir la mejor tortilla de patata cerca de ti?</p>
+            <a href="#download" class="cta-button">Comenzar ahora</a>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="features" id="download">
+        <div class="features-content" style="text-align: center;">
+            <h2 class="section-title">Descarga la app</h2>
+            <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: calc(var(--spacing) * 4);">
+                Disponible próximamente en iOS y Android
+            </p>
+            <div style="display: flex; gap: calc(var(--spacing) * 3); justify-content: center; flex-wrap: wrap;">
+                <a href="#" class="cta-button" style="background: var(--text-primary);">
+                    📱 App Store
+                </a>
+                <a href="#" class="cta-button" style="background: var(--text-primary);">
+                    🤖 Google Play
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 La Mejor Tortilla. Hecho con ❤️ para los amantes de la auténtica tortilla española.</p>
+        <div class="footer-links">
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Términos de Uso</a>
+            <a href="#">Contacto</a>
+        </div>
+    </footer>
+</body>
+</html>
