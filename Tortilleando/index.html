@@ -359,25 +359,39 @@
             <h2 class="section-title">Descarga la app</h2>
             <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: calc(var(--spacing) * 4);">
                 Disponible para Android. Próximamente en iOS.
-            <footer>
-                <p>&copy; 2025 Tortilleando. Hecho con ❤️ para los amantes de la auténtica tortilla española.</p>
-                <div class="footer-links">
-                    <a href="#">Política de Privacidad</a>
-                    <a href="#">Términos de Uso</a>
-                    <a href="#">Contacto</a>
-                </div>
-            </footer>
+            </p>
+            <div style="display: flex; gap: calc(var(--spacing) * 3); justify-content: center; flex-wrap: wrap;">
+                <a href="#" class="cta-button" style="background: var(--text-primary);">
+                    📱 App Store
+                </a>
+                <a href="https://expo.dev/accounts/talkal221/projects/Tortilleando/builds/1bd43d05-53fd-4df1-90ac-5401f5611072"
+                    class="cta-button" style="background: var(--text-primary);">
+                    🤖 Google Play
+                </a>
+            </div>
+        </div>
+    </section>
 
-            <script>
-                window.addEventListener('scroll', function () {
-                    const header = document.querySelector('header');
-                    if (window.scrollY > 50) {
-                        header.classList.add('scrolled');
-                    } else {
-                        header.classList.remove('scrolled');
-                    }
-                });
-            </script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Tortilleando. Hecho con ❤️ para los amantes de la auténtica tortilla española.</p>
+        <div class="footer-links">
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Términos de Uso</a>
+            <a href="#">Contacto</a>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 
 </html>
