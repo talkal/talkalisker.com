@@ -3,102 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talkal - Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-
-        .container {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        p {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-
-        .links {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .link-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            border-radius: 12px;
-            text-decoration: none;
-            color: white;
-            transition: transform 0.2s, background 0.2s;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .link-card:hover {
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .link-card h2 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .link-card p {
-            font-size: 0.875rem;
-            opacity: 0.8;
-            margin: 0;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .links {
-                flex-direction: column;
-            }
-
-            .link-card {
-                width: 100%;
-            }
-        }
-    </style>
+    <title>Talkalisker | Developer, Writer, Copywriter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <meta name="description" content="Portfolio of Talkalisker - Frontend Developer, Novelist, and Gaming Copywriter.">
 </head>
 <body>
-    <div class="container">
-        <h1>Talkal</h1>
-        <p>Developer & Creator</p>
 
-        <div class="links">
-            <a href="/lamejortortilla/" class="link-card">
-                <h2>La Mejor Tortilla</h2>
-                <p>Discover the best tortilla de patata</p>
-            </a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="logo">TALKALISKER</a>
+            <div class="nav-links">
+                <a href="#developer" class="nav-link">Developer</a>
+                <a href="#writer" class="nav-link">Writer</a>
+                <a href="#copywriter" class="nav-link">Copywriter</a>
+            </div>
         </div>
-    </div>
+    </nav>
+
+    <!-- Developer Section -->
+    <section id="developer" class="section-dev">
+        <div class="container">
+            <h4>01. /DEV/ROOT</h4>
+            <h1>Building Digital<br>Realities.</h1>
+            <p style="max-width: 600px; margin-bottom: 2rem; color: var(--text-secondary);">
+                Specialized in high-performance web applications and immersive digital experiences.
+            </p>
+            
+            <div style="margin-top: 4rem;">
+                <h3 style="margin-bottom: 2rem; color: var(--accent-developer); font-family: var(--font-mono);">Featured Project: Tortilleando</h3>
+                <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                    <p style="margin-bottom: 1.5rem;">A comprehensive platform finding the best Tortilla de Patata.</p>
+                    <a href="Tortilleando/index.html" class="btn">View Project</a> 
+                    <!-- Note: Adjusted link to point to existing folder -->
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div>
+                    <h3 style="font-family: var(--font-mono); font-size: 1.25rem;">&lt;Services /&gt;</h3>
+                    <ul style="list-style: none; margin-top: 1rem; color: var(--text-secondary);">
+                        <li style="margin-bottom: 0.5rem;">+ Custom Website Development</li>
+                        <li style="margin-bottom: 0.5rem;">+ Web Application Architecture</li>
+                        <li style="margin-bottom: 0.5rem;">+ UI/UX Implementation</li>
+                    </ul>
+                </div>
+                <div>
+                    <p style="color: var(--text-muted);">Available for freelance projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Writer Section -->
+    <section id="writer" class="section-writer">
+        <div class="container" style="text-align: center;">
+            <h4 style="font-family: var(--font-serif); font-style: italic; color: var(--accent-writer); margin-bottom: 1rem;">The Novelist</h4>
+            <h1 style="font-family: var(--font-serif); font-size: 4rem; margin-bottom: 2rem;">The Dance of<br>Life and Death</h1>
+            <p style="max-width: 700px; margin: 0 auto 3rem auto; font-family: var(--font-serif); font-size: 1.2rem; line-height: 1.8;">
+                A philosophical fantasy novel exploring the eternal struggle between existence and oblivion. 
+                Currently in the editing process, weaving a tapestry of fate, choice, and consequences.
+            </p>
+            <div class="btn" style="border-color: var(--accent-writer); color: var(--accent-writer);">Read Excerpt (Coming Soon)</div>
+        </div>
+    </section>
+
+    <!-- Copywriter Section -->
+    <section id="copywriter" class="section-copy">
+        <div class="container">
+            <h4 style="color: var(--accent-copywriter); text-transform: uppercase; letter-spacing: 0.2em;">Level 99 Copywriting</h4>
+            <h1 style="text-transform: uppercase; font-weight: 900;">Gaming &<br>Narrative Design</h1>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 4rem;">
+                <!-- Playtika Card -->
+                <div style="background: var(--bg-surface); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-subtle);">
+                    <h3 style="color: #fff;">Playtika</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Gaming Copywriter</p>
+                    <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Crafted compelling in-game narratives, UA campaigns, and retention strategies for millions of daily players.</p>
+                    <!-- Placeholder for slide/images -->
+                    <div style="height: 150px; background: #222; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #555;">
+                        Awaiting Assets
+                    </div>
+                </div>
+
+                <!-- Buff Card -->
+                <div style="background: var(--bg-surface); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-subtle);">
+                    <h3 style="color: #fff;">Buff</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Head Copywriter</p>
+                    <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Led the creative voice for the loyalty platform for gamers. Managed all copy across user journey.</p>
+                    <!-- Placeholder for slide/images -->
+                    <div style="height: 150px; background: #222; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #555;">
+                        Awaiting Assets
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid #222; color: #444;">
+        <p>&copy; 2026 Talkalisker. Built with precision.</p>
+    </footer>
+
 </body>
 </html>
