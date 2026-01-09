@@ -244,11 +244,14 @@ section {
 .gallery-container {
   position: relative;
   width: 100%;
+  aspect-ratio: 16/9;
+  /* Enforce consistent container sizing */
   border-radius: 8px;
   overflow: hidden;
   margin-top: 1.5rem;
   border: 1px solid var(--border-subtle);
-  background: #000;
+  background: #050505;
+  /* Deep black background for letterboxing */
 }
 
 .gallery-scroll {
@@ -258,6 +261,8 @@ section {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   /* Firefox */
+  height: 100%;
+  /* Ensure scroll container fills parent */
 }
 
 .gallery-scroll::-webkit-scrollbar {
@@ -267,13 +272,28 @@ section {
 
 .gallery-item {
   min-width: 100%;
+  height: 100%;
   scroll-snap-align: center;
+  display: flex;
+  /* Center the image */
+  align-items: center;
+  /* Vertically center */
+  justify-content: center;
+  /* Horizontally center */
 }
 
 .gallery-item img {
-  width: 100%;
+  max-width: 85%;
+  /* Scale down image to be smaller within the container */
+  max-height: 85%;
+  /* Scale down image to be smaller within the container */
+  width: auto;
   height: auto;
+  object-fit: contain;
+  /* Ensure image scales without cropping/stretching */
   display: block;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  /* Add subtle depth */
 }
 
 /* Project Data Grid */
