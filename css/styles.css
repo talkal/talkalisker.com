@@ -117,8 +117,10 @@ a {
 }
 
 section {
-  padding: var(--space-xl) 0;
-  min-height: 100vh;
+  padding: var(--space-lg) 0;
+  /* Reduced from XL (8rem) to LG (4rem) for tighter feel */
+  min-height: auto;
+  /* Remove forced full height to reduce scrolling */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -131,12 +133,36 @@ section {
   top: 0;
   left: 0;
   width: 100%;
-  padding: var(--space-sm) 0;
+  padding: var(--space-xs) 0;
+  /* Reduced padding */
   z-index: 1000;
-  background: rgba(5, 5, 5, 0.8);
+  background: rgba(5, 5, 5, 0.85);
   backdrop-filter: blur(10px);
   border-bottom: var(--border-subtle);
 }
+
+/* ... existing code ... */
+
+/* Project Card Compact Styles */
+.project-card {
+  background: var(--bg-surface);
+  padding: 1.5rem;
+  /* Reduced from 2rem */
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  transition: transform var(--transition-fast);
+}
+
+.project-card h3 {
+  font-size: 1.25rem;
+  /* Reduced from default */
+  margin-bottom: 0.5rem;
+}
+
+.project-card p {
+  font-size: 0.9rem;
+}
+
 
 .nav-inner {
   display: flex;
