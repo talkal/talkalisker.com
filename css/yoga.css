@@ -1,0 +1,167 @@
+/* Yoga Page Design System
+   Theme: Precision, Flow, Stillness (Vijnana)
+   Palette: Earthy, Light, Breathable */
+
+:root {
+    --yoga-bg: #F9F7F2;
+    /* Cream/Bone */
+    --yoga-text: #2C2C2C;
+    /* Soft Charcoal */
+    --yoga-accent: #7A8B7D;
+    /* Sage Green */
+    --yoga-accent-warm: #C27D63;
+    /* Terracotta */
+    --yoga-border: #E0DED8;
+
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+}
+
+body.yoga-body {
+    background-color: var(--yoga-bg);
+    color: var(--yoga-text);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+.serif {
+    font-family: var(--font-serif);
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--yoga-text);
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--yoga-accent);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    color: #4a4a4a;
+    /* Slightly softer for body text */
+    max-width: 700px;
+}
+
+/* Layout */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 6rem 0;
+    border-bottom: 1px solid var(--yoga-border);
+}
+
+section:last-of-type {
+    border-bottom: none;
+}
+
+/* Navigation (Specific for Yoga Page) */
+.yoga-nav {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--yoga-border);
+}
+
+.yoga-logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--yoga-text);
+    font-size: 1.25rem;
+    letter-spacing: 0.05em;
+}
+
+.yoga-nav a {
+    text-decoration: none;
+    color: var(--yoga-accent);
+    margin-left: 2rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: color 0.3s ease;
+}
+
+.yoga-nav a:hover {
+    color: var(--yoga-accent-warm);
+}
+
+/* Hero */
+.hero-section {
+    text-align: center;
+    padding: 8rem 0;
+}
+
+.hero-sub {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--yoga-accent-warm);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* Curriculum Grid */
+.cv-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.cv-item {
+    margin-bottom: 2rem;
+}
+
+.cv-label {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--yoga-accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+.yoga-footer {
+    background: #EFECE6;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .cv-grid {
+        grid-template-columns: 1fr;
+    }
+}
