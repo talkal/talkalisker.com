@@ -425,3 +425,22 @@ section {
   font-size: 0.9rem;
   color: var(--text-primary);
 }
+
+/* Light Mode Overrides */
+[data-theme="light"] {
+  --bg-core: #f8f9fa;
+  --bg-surface: #ffffff;
+  --bg-portal: #ffffff;
+  --bg-surface-frosted: rgba(255, 255, 255, 0.85);
+
+  --text-primary: #1a1a1a;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+
+  --border-subtle: 1px solid rgba(0, 0, 0, 0.08);
+
+  /* Adjust gradients for light mode to be visible but subtle */
+  --gradient-dev: linear-gradient(135deg, rgba(0, 242, 234, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
+  --gradient-writer: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
+  --gradient-copy: linear-gradient(135deg, rgba(255, 0, 85, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
+}
