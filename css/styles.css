@@ -226,6 +226,8 @@ section {
 .nav-links {
   display: flex;
   gap: var(--space-md);
+  align-items: center;
+  /* Fix vertical alignment */
 }
 
 .nav-link {
@@ -237,6 +239,26 @@ section {
 
 .nav-link:hover {
   opacity: 1;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  font-size: 1.2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.theme-toggle:hover {
+  opacity: 1;
+  color: var(--text-primary);
 }
 
 /* Developer Section Specifics */
