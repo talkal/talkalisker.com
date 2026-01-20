@@ -21,6 +21,8 @@
         <div class="container nav-inner">
             <a href="index.html" class="logo">TALKALISKER</a>
             <div class="nav-links">
+                <button id="theme-toggle" class="nav-link"
+                    style="background: none; border: none; cursor: pointer; color: inherit; font-size: 1.2rem;">☀︎</button>
                 <a href="developer.html" class="nav-link">Developer</a>
                 <a href="novelist.html" class="nav-link active">Writer</a>
                 <a href="copywriter.html" class="nav-link">Copywriter</a>
@@ -65,5 +67,31 @@
     </footer>
 
 </body>
+
+<script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+
+    // Initial Load
+    if (savedTheme) {
+        root.setAttribute('data-theme', savedTheme);
+        updateIcon(savedTheme);
+    }
+
+    // Toggle Logic
+    toggleBtn.addEventListener('click', () => {
+        const currentTheme = root.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        root.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateIcon(newTheme);
+    });
+
+    function updateIcon(theme) {
+        toggleBtn.textContent = theme === 'light' ? '☾' : '☀︎';
+    }
+</script>
 
 </html>
