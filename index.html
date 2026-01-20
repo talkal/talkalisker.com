@@ -23,7 +23,7 @@
         }
 
         .portal-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--bg-portal);
             border: 1px solid var(--border-subtle);
             border-radius: 12px;
             padding: 3rem 2rem;
@@ -133,6 +133,8 @@
             <a href="#" class="logo">TALKALISKER</a>
             <div class="nav-links">
                 <!-- Direct Links optionally here, but the page itself is the menu -->
+                <button id="theme-toggle" class="nav-link"
+                    style="background: none; border: none; cursor: pointer; color: inherit; font-size: 1.2rem;">☀︎</button>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
         </div>
@@ -157,8 +159,8 @@
             <!-- Developer Portal -->
             <a href="developer.html" class="portal-card dev">
                 <div>
-                    <div class="card-label">Level 2</div>
-                    <h2>Web Developer</h2>
+                    <div class="card-label">Vibing</div>
+                    <h2>Developer</h2>
                     <p class="card-desc">React, Node, and building digital realities. High-performance web applications.
                     </p>
                 </div>
@@ -168,7 +170,7 @@
             <!-- Novelist Portal -->
             <a href="novelist.html" class="portal-card writer">
                 <div>
-                    <div class="card-label">Level 5</div>
+                    <div class="card-label">Creator</div>
                     <h2>The Novelist</h2>
                     <p class="card-desc">"The Dance of Life and Death". A philosophical fantasy novel exploring
                         existence.</p>
@@ -189,7 +191,7 @@
             <!-- Yoga Portal -->
             <a href="yoga.html" class="portal-card yoga">
                 <div>
-                    <div class="card-label">Certified Instructor</div>
+                    <div class="card-label">Instructor</div>
                     <h2>Vijnana Yoga</h2>
                     <p class="card-desc">Precision, Flow, and Stillness. Classes taught in English.</p>
                 </div>
@@ -214,5 +216,31 @@
     </section>
 
 </body>
+
+<script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+
+    // Initial Load
+    if (savedTheme) {
+        root.setAttribute('data-theme', savedTheme);
+        updateIcon(savedTheme);
+    }
+
+    // Toggle Logic
+    toggleBtn.addEventListener('click', () => {
+        const currentTheme = root.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        root.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateIcon(newTheme);
+    });
+
+    function updateIcon(theme) {
+        toggleBtn.textContent = theme === 'light' ? '☾' : '☀︎';
+    }
+</script>
 
 </html>

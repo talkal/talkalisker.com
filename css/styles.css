@@ -7,6 +7,8 @@
   /* Core Palette */
   --bg-core: #050505;
   --bg-surface: #121212;
+  --bg-portal: rgba(255, 255, 255, 0.03);
+  /* Added for portal cards */
   --bg-surface-frosted: rgba(18, 18, 18, 0.8);
 
   --text-primary: #f0f0f0;
@@ -136,7 +138,7 @@ section {
   padding: var(--space-xs) 0;
   /* Reduced padding */
   z-index: 1000;
-  background: rgba(5, 5, 5, 0.85);
+  background: var(--bg-surface-frosted);
   backdrop-filter: blur(10px);
   border-bottom: var(--border-subtle);
 }
