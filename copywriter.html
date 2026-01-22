@@ -22,8 +22,7 @@
         <div class="container nav-inner">
             <a href="index.html" class="logo">TALKALISKER</a>
             <div class="nav-links">
-                <button id="theme-toggle" class="nav-link"
-                    style="background: none; border: none; cursor: pointer; color: inherit; font-size: 1.2rem;">☀︎</button>
+                <button id="theme-toggle" class="theme-toggle">☀︎</button>
                 <a href="developer.html" class="nav-link">Developer</a>
                 <a href="novelist.html" class="nav-link">Writer</a>
                 <a href="copywriter.html" class="nav-link active">Copywriter</a>
@@ -34,47 +33,71 @@
     </nav>
 
     <!-- Copywriter Section Content -->
-    <section class="section-copy" style="padding-top: 8rem;">
+    <section class="section-copy">
         <div class="container">
-            <h4 style="color: var(--accent-copywriter); text-transform: uppercase; letter-spacing: 0.2em;">Level 99
-                Copywriting</h4>
-            <h1 style="text-transform: uppercase; font-weight: 900;">Gaming<br>Copywriter</h1>
+            <div class="hero-title-wrapper">
+                <h4 class="section-label">Level 99 Copywriting</h4>
+                <h1 class="hero-title glitch" data-text="Gaming Copywriter">Gaming<br>Copywriter</h1>
+            </div>
 
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 4rem;">
+            <!-- PLAYER STATS SECTION -->
+            <div class="stat-sheet">
+                <div class="stat-grid">
+                    <div class="stat-item">
+                        <label>Lore Building <span class="val">99</span></label>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar-fill" style="width: 99%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <label>UX Writing <span class="val">85</span></label>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <label>Campaigns <span class="val">92</span></label>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar-fill" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <label>Meme Magic <span class="val">MAX</span></label>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-grid">
 
                 <!-- Buff Project: "Easter Eggnigma" -->
-                <div class="project-card" style="grid-column: span 2;">
-                    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                <div class="project-card grid-colspan-2">
+                    <div class="card-header">
                         <div>
                             <h3 style="color: var(--text-primary); display: inline-block;">Easter Eggnigma</h3>
-                            <span
-                                style="color: var(--accent-copywriter); font-size: 0.75rem; margin-left: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Hero
-                                Campaign</span>
+                            <span class="card-type">Hero Campaign</span>
                         </div>
-                        <span style="color: var(--text-muted); font-size: 0.8rem;">2022</span>
+                        <span class="card-year">2022</span>
                     </div>
 
-                    <div
-                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; margin-bottom: 1.5rem;">
+                    <div class="card-body two-col-grid mb-3">
                         <div>
-                            <h5 style="color: var(--accent-copywriter); font-size: 0.7rem; text-transform: uppercase;">
-                                Context & Objective</h5>
-                            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.75rem;">
+                            <h5 class="section-label">Context & Objective</h5>
+                            <p class="text-secondary mb-1">
                                 As Head Copywriter for Buff, the goal was to create a compelling reason for players to
                                 spend accumulated Buff Points during Easter.
                             </p>
-                            <h5 style="color: var(--accent-copywriter); font-size: 0.7rem; text-transform: uppercase;">
-                                The Creative</h5>
-                            <p style="color: var(--text-primary); font-size: 0.9rem;">
+                            <h5 class="section-label">The Creative</h5>
+                            <p style="color: var(--text-primary);">
                                 "Surprise Eggs" in the store—mystery purchases driving curiosity and gamification.
                             </p>
                         </div>
                         <div>
-                            <h5 style="color: var(--accent-copywriter); font-size: 0.7rem; text-transform: uppercase;">
-                                The Result</h5>
-                            <p style="font-weight: bold; color: var(--text-primary); font-size: 1rem;">All eggs sold out
-                                in 2 hours.
+                            <h5 class="section-label">The Result</h5>
+                            <p class="text-accent font-bold" style="font-size: 1.1rem;">
+                                All eggs sold out in 2 hours.
                             </p>
                         </div>
                     </div>
@@ -93,24 +116,22 @@
                 </div>
 
                 <!-- Buff Project: "Buff Effect" -->
-                <div class="project-card" style="grid-column: span 2; margin-bottom: 2rem;">
-                    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                <div class="project-card grid-colspan-2">
+                    <div class="card-header">
                         <div>
                             <h3 style="color: var(--text-primary); display: inline-block;">Buff Effect</h3>
-                            <span
-                                style="color: var(--accent-copywriter); font-size: 0.75rem; margin-left: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Community
-                                Event</span>
+                            <span class="card-type">Community Event</span>
                         </div>
-                        <span style="color: var(--text-muted); font-size: 0.8rem;">2022</span>
+                        <span class="card-year">2022</span>
                     </div>
 
-                    <div style="margin-top: 1rem;">
-                        <p
-                            style="color: var(--text-secondary); max-width: 800px; margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.5;">
-                            "We searched for a way to show Buff as legit as well as giving players a reason to spend
-                            Buff Points, so we came up with <strong>Buff Effect</strong>, an event in which players
-                            spend Buff Points to save the world."
-                        </p>
+                    <div class="card-body">
+                        <div class="rpg-dialogue" style="margin-bottom: 2rem;">
+                            <p>"We searched for a way to show Buff as legit as well as giving players a reason to spend
+                                Buff Points, so we came up with <strong>Buff Effect</strong>, an event in which players
+                                spend Buff Points to save the world."</p>
+                        </div>
+
                         <div
                             style="width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-subtle); aspect-ratio: 16/9; background: #050505;">
                             <img src="assets/Buff%20Effect%20Promo%201.png" alt="Buff Effect Promo Visual"
@@ -120,66 +141,61 @@
                 </div>
 
                 <!-- Buff Project: "Buff Rebranding" -->
-                <div class="project-card" style="grid-column: span 2;">
-                    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                <div class="project-card grid-colspan-2">
+                    <div class="card-header">
                         <div>
                             <h3 style="color: var(--text-primary); display: inline-block;">Buff Rebranding</h3>
-                            <span
-                                style="color: var(--accent-copywriter); font-size: 0.75rem; margin-left: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Brand
-                                Voice</span>
+                            <span class="card-type">Brand Voice</span>
                         </div>
-                        <span style="color: var(--text-muted); font-size: 0.8rem;">2022</span>
+                        <span class="card-year">2022</span>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+                    <div class="card-body two-col-grid">
                         <div>
-                            <p style="color: var(--text-secondary); margin-bottom: 0.75rem; font-size: 0.9rem;">
+                            <p class="text-secondary mb-1">
                                 <strong>The Mission:</strong> Transform a utility app into a lifestyle brand for gamers.
                             </p>
-                            <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.9rem;">
+                            <p class="text-secondary mb-3">
                                 <strong>The Approach:</strong> Speak "Gamer" fluently. Authentic, meme-aware, and
                                 community-driven.
                             </p>
 
-                            <h5
-                                style="color: var(--accent-copywriter); text-transform: uppercase; font-size: 0.7rem; margin-bottom: 0.5rem;">
-                                Key Messaging</h5>
-                            <blockquote
-                                style="border-left: 2px solid var(--accent-copywriter); padding-left: 1rem; margin-bottom: 0.75rem; color: var(--text-primary); font-style: italic; font-size: 0.9rem;">
-                                "Welcome home, gamer."
-                            </blockquote>
-                            <blockquote
-                                style="border-left: 2px solid var(--accent-copywriter); padding-left: 1rem; color: var(--text-primary); font-style: italic; font-size: 0.9rem;">
-                                "Meet Buff, the ideal gamer’s reward program..."
-                            </blockquote>
+                            <h5 class="section-label mb-1">Key Messaging</h5>
+
+                            <!-- RPG Styled Quotes -->
+                            <div class="rpg-dialogue">
+                                <p>"Welcome home, gamer."</p>
+                            </div>
+                            <div class="rpg-dialogue">
+                                <p>"Meet Buff, the ideal gamer’s reward program..."</p>
+                            </div>
                         </div>
 
                         <div
                             style="background: #080808; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; padding: 1.5rem; text-align: center;">
                             <h2
                                 style="color: #fff; font-family: var(--font-mono); margin-bottom: 0; font-size: 1.5rem;">
-                                BUFF</h2>
-                            <p
-                                style="color: var(--accent-copywriter); letter-spacing: 0.2em; font-size: 0.7rem; text-transform: uppercase;">
-                                Level Up Everywhere</p>
+                                BUFF
+                            </h2>
+                            <p class="text-accent text-uc" style="letter-spacing: 0.2em; font-size: 0.7rem;">
+                                Level Up Everywhere
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Playtika Project -->
-                <div class="project-card" style="grid-column: span 2;">
-                    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                <div class="project-card grid-colspan-2">
+                    <div class="card-header">
                         <div>
                             <h3 style="color: var(--text-primary); display: inline-block;">Playtika - "Words Magic"</h3>
-                            <span
-                                style="color: var(--accent-copywriter); font-size: 0.75rem; margin-left: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">In-Game
-                                Event</span>
+                            <span class="card-type">In-Game Event</span>
                         </div>
-                        <span style="color: var(--text-muted); font-size: 0.8rem;">2020</span>
+                        <span class="card-year">2020</span>
                     </div>
 
-                    <div style="margin-top: 1rem; display: grid; gap: 1.5rem;">
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                    <div class="card-body">
+                        <p class="text-secondary">
                             <strong>Context:</strong> A Scrabble-like game where players want better tiles for more
                             points.<br>
                             <strong>Objective:</strong> Create an event where players submit words to get better tiles.
@@ -210,36 +226,28 @@
                 </div>
 
                 <!-- Playtika Project: Splendorland -->
-                <div class="project-card" style="grid-column: span 2;">
-                    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                <div class="project-card grid-colspan-2">
+                    <div class="card-header">
                         <div>
                             <h3 style="color: #fff; display: inline-block;">Playtika - "Splendorland Resource Rush"</h3>
-                            <span
-                                style="color: var(--accent-copywriter); font-size: 0.75rem; margin-left: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">4-Day
-                                Event</span>
+                            <span class="card-type">4-Day Event</span>
                         </div>
-                        <span style="color: var(--text-muted); font-size: 0.8rem;">2020</span>
+                        <span class="card-year">2020</span>
                     </div>
 
-                    <div style="margin-top: 1rem; display: grid; gap: 1.5rem;">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div class="card-body">
+                        <div class="two-col-grid">
                             <div>
-                                <h5
-                                    style="color: var(--accent-copywriter); font-size: 0.7rem; text-transform: uppercase;">
-                                    Brief & Objective</h5>
-                                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.75rem;">
+                                <h5 class="section-label">Brief & Objective</h5>
+                                <p class="text-secondary">
                                     Create a 4-day event where players gather resources and compete in teams, giving
                                     them a compelling reason to play day after day.
                                 </p>
                             </div>
                             <div>
-                                <h5
-                                    style="color: var(--accent-copywriter); font-size: 0.7rem; text-transform: uppercase;">
-                                    The Creative</h5>
-                                <ul
-                                    style="list-style: none; color: var(--text-primary); font-size: 0.9rem; padding: 0;">
-                                    <li style="margin-bottom: 0.25rem;">• Surprising in-game pop-ups triggered during
-                                        gameplay.</li>
+                                <h5 class="section-label">The Creative</h5>
+                                <ul style="list-style: none; color: var(--text-primary); padding: 0;">
+                                    <li class="mb-1">• Surprising in-game pop-ups triggered during gameplay.</li>
                                     <li>• VIP Facebook post featuring a mini-story about the "Island of Splendorland".
                                     </li>
                                 </ul>
