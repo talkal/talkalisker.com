@@ -21,6 +21,36 @@
     --space-lg: 4rem;
 }
 
+[data-theme="dark"] {
+    --yoga-bg: #1a1a1a;
+    --yoga-text: #e0e0e0;
+    --yoga-accent: #9CAD9F;
+    /* Slightly lighter sage */
+    --yoga-accent-warm: #D48F75;
+    /* Lighter terracotta */
+    --yoga-border: #333;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: inherit;
+    font-size: 1.2rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+    margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+    opacity: 0.8;
+}
+
 body.yoga-body {
     background-color: var(--yoga-bg);
     color: var(--yoga-text);

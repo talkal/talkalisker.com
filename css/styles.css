@@ -213,14 +213,16 @@ section {
 /* Nav Inner for Gallery fixed */
 .nav-inner {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  /* Removed justify-content: space-between to allow grouping */
 }
 
 .logo {
   font-weight: 800;
   font-size: 1.5rem;
   letter-spacing: -0.05em;
+  margin-right: auto;
+  /* Pushes everything else to the right */
 }
 
 .nav-links {
@@ -254,6 +256,8 @@ section {
   align-items: center;
   justify-content: center;
   transition: opacity 0.2s ease;
+  margin-left: var(--space-md);
+  /* Add spacing from links */
 }
 
 .theme-toggle:hover {
