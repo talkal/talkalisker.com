@@ -442,7 +442,14 @@ select.form-input:focus {
     background: var(--bg-core);
 }
 
-/* About Intro Grid */
+/* About Section Grids */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
 .about-intro-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -463,5 +470,10 @@ select.form-input:focus {
 
     .about-intro-grid .about-intro-content {
         order: 1;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
     }
 }
