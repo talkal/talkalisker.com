@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talkalisker | Premium Website Building & Landing Pages</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon-dev.svg">
     <meta name="description"
         content="Boost your business with premium, high-performance websites and landing pages. Custom designs, SEO optimized, and built for conversion.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,7 +70,10 @@
             <div class="services-grid">
                 <!-- Landing Page Service -->
                 <div class="service-card">
-                    <div class="service-icon">⚡</div>
+                    <div class="service-icon"><svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor"
+                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                        </svg></div>
                     <h3>Conversion Landing Pages</h3>
                     <p>Single-page powerhouses designed to sell a product, capture leads, or launch an idea. Fast,
                         focused, and effective.</p>
@@ -82,7 +86,14 @@
                 </div>
                 <!-- Full Website Service -->
                 <div class="service-card">
-                    <div class="service-icon">🌐</div>
+                    <div class="service-icon"><svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor"
+                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                            </path>
+                        </svg></div>
                     <h3>Full Scale Websites</h3>
                     <p>Complete digital presence for businesses. Multi-page architectures with robust SEO strategies and
                         dynamic content.</p>
@@ -95,7 +106,11 @@
                 </div>
                 <!-- Custom App Service -->
                 <div class="service-card">
-                    <div class="service-icon">🛠️</div>
+                    <div class="service-icon"><svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor"
+                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg></div>
                     <h3>Custom Web Apps</h3>
                     <p>Need more than a website? We build tailored web applications to solve complex business problems.
                     </p>
@@ -111,8 +126,7 @@
     </section>
 
     <!-- About Me Section -->
-    <section id="about"
-        style="padding: 4rem 0; background: linear-gradient(180deg, var(--bg-core) 0%, rgba(20, 20, 20, 1) 100%);">
+    <section id="about" class="section-about">
         <div class="container">
             <div class="about-grid"
                 style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
@@ -338,6 +352,10 @@
                     <input type="text" id="nameInput" class="form-input" required placeholder="John Doe">
                 </div>
                 <div class="form-group">
+                    <label class="form-label">Your Email</label>
+                    <input type="email" id="emailInput" class="form-input" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
                     <label class="form-label">Project Details</label>
                     <textarea id="messageInput" class="form-textarea" required
                         placeholder="Describe your vision..."></textarea>
@@ -406,11 +424,12 @@
 
             const plan = document.getElementById('planInput').value;
             const name = document.getElementById('nameInput').value;
+            const email = document.getElementById('emailInput').value;
             const message = document.getElementById('messageInput').value;
 
             const subject = encodeURIComponent(`Project Inquiry: ${plan}`);
             const body = encodeURIComponent(
-                `Hi Talkalisker,\n\nI'm interested in the ${plan}.\n\nName: ${name}\n\nProject Details:\n${message}\n\nBest regards,\n${name}`
+                `Hi Talkalisker,\n\nI'm interested in the ${plan}.\n\nName: ${name}\nEmail: ${email}\n\nProject Details:\n${message}\n\nBest regards,\n${name}`
             );
 
             window.location.href = `mailto:talkalisker@gmail.com?subject=${subject}&body=${body}`;
