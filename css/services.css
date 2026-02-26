@@ -441,3 +441,19 @@ select.form-input:focus {
 [data-theme="light"] .section-about {
     background: var(--bg-core);
 }
+
+/* About Intro Grid */
+.about-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 6rem;
+}
+
+@media (min-width: 900px) {
+    .about-intro-grid {
+        grid-template-columns: 1fr 1.5fr;
+        gap: 5rem;
+    }
+}
