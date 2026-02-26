@@ -337,7 +337,8 @@
             <h3 class="modal-title">Start Project</h3>
             <p class="modal-subtitle">Tell us about your project. We'll reply within 24 hours.</p>
 
-            <form id="contactForm" onsubmit="handleFormSubmit(event)">
+            <form id="contactForm" action="https://formspree.io/f/talkalisker@gmail.com" method="POST"
+                onsubmit="handleFormSubmit(event)">
                 <div class="form-group">
                     <label class="form-label">Selected Plan</label>
                     <select id="planInput" class="form-input">
@@ -349,18 +350,21 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Your Name</label>
-                    <input type="text" id="nameInput" class="form-input" required placeholder="John Doe">
+                    <input type="text" id="nameInput" name="name" class="form-input" required placeholder="John Doe">
                 </div>
                 <div class="form-group">
                     <label class="form-label">Your Email</label>
-                    <input type="email" id="emailInput" class="form-input" required placeholder="john@example.com">
+                    <input type="email" id="emailInput" name="email" class="form-input" required
+                        placeholder="john@example.com">
                 </div>
                 <div class="form-group">
                     <label class="form-label">Project Details</label>
-                    <textarea id="messageInput" class="form-textarea" required
+                    <textarea id="messageInput" name="message" class="form-textarea" required
                         placeholder="Describe your vision..."></textarea>
                 </div>
-                <button type="submit" class="btn"
+                <input type="hidden" name="_subject" id="formSubject" value="New Project Inquiry">
+                <input type="text" name="_gotcha" style="display:none">
+                <button type="submit" id="submitBtn" class="btn"
                     style="width: 100%; text-align: center; background: var(--accent-developer); color: #000; border-color: var(--accent-developer);">Send
                     Message</button>
             </form>
@@ -419,23 +423,58 @@
             }
         });
 
-        function handleFormSubmit(e) {
+        async function handleFormSubmit(e) {
             e.preventDefault();
 
+            const form = e.target;
+            const submitBtn = document.getElementById('submitBtn');
+            const originalBtnText = submitBtn.innerText;
+
+            // Update Subject line based on selected plan
             const plan = document.getElementById('planInput').value;
-            const name = document.getElementById('nameInput').value;
-            const email = document.getElementById('emailInput').value;
-            const message = document.getElementById('messageInput').value;
+            document.getElementById('formSubject').value = `Project Inquiry: ${plan}`;
 
-            const subject = encodeURIComponent(`Project Inquiry: ${plan}`);
-            const body = encodeURIComponent(
-                `Hi Talkalisker,\n\nI'm interested in the ${plan}.\n\nName: ${name}\nEmail: ${email}\n\nProject Details:\n${message}\n\nBest regards,\n${name}`
-            );
+            submitBtn.innerText = 'Sending...';
+            submitBtn.disabled = true;
 
-            window.location.href = `mailto:talkalisker@gmail.com?subject=${subject}&body=${body}`;
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
 
-            // Optional: Close modal after short delay
-            setTimeout(closeModal, 1000);
+                if (response.ok) {
+                    submitBtn.innerText = 'Message Sent!';
+                    submitBtn.style.background = '#4BB543'; // Success green
+                    submitBtn.style.color = '#fff';
+                    submitBtn.style.borderColor = '#4BB543';
+                    form.reset();
+
+                    setTimeout(() => {
+                        closeModal();
+                        // Reset button
+                        submitBtn.innerText = originalBtnText;
+                        submitBtn.style.background = 'var(--accent-developer)';
+                        submitBtn.style.color = '#000';
+                        submitBtn.style.borderColor = 'var(--accent-developer)';
+                        submitBtn.disabled = false;
+                    }, 2000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                submitBtn.innerText = 'Error! Try Again.';
+                submitBtn.style.background = '#ff3333';
+                setTimeout(() => {
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.style.background = 'var(--accent-developer)';
+                    submitBtn.disabled = false;
+                }, 3000);
+            }
         }
     </script>
 </body>
