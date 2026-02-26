@@ -31,6 +31,50 @@
     letter-spacing: 0.05em;
 }
 
+/* Tech Marquee */
+.tech-marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background: rgba(0, 242, 234, 0.03);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 1rem 0;
+    display: flex;
+    white-space: nowrap;
+}
+
+.tech-marquee {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.tech-marquee span.dot {
+    color: var(--accent-developer);
+    margin: 0 2rem;
+    opacity: 0.5;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+
+    /* Scrolls exactly half to loop */
+}
+
+[data-theme="light"] .tech-marquee-wrapper {
+    background: rgba(0, 242, 234, 0.05);
+}
+
 /* Service Cards */
 .services-grid {
     display: grid;
