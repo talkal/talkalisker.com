@@ -453,7 +453,15 @@ select.form-input:focus {
 
 @media (min-width: 900px) {
     .about-intro-grid {
-        grid-template-columns: 1fr 1.5fr;
+        grid-template-columns: 1.5fr 1fr;
         gap: 5rem;
+    }
+
+    .about-intro-grid .about-image-wrap {
+        order: 2;
+    }
+
+    .about-intro-grid .about-intro-content {
+        order: 1;
     }
 }
