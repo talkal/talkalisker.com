@@ -1,0 +1,192 @@
+/* 
+   Talkalisker.com Design System 
+   Story Template CSS - Distraction-Free Reading
+*/
+
+/* Reading Progress Bar */
+.reading-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--bg-surface);
+    z-index: 9999;
+}
+
+.reading-progress-bar {
+    height: 100%;
+    background-color: var(--accent-writer);
+    width: 0%;
+    transition: width 0.1s ease-out;
+}
+
+/* Minimalist Navigation */
+.story-nav {
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--bg-surface-frosted);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.story-nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    /* Slightly wider than the text column */
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color var(--transition-fast);
+}
+
+.back-link:hover {
+    color: var(--accent-writer);
+}
+
+/* Typography & Layout for Reading */
+.story-container {
+    max-width: 65ch;
+    /* Optimal line length for reading */
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-md);
+}
+
+.story-header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+.story-genre {
+    color: var(--accent-writer);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-sm);
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 4px;
+}
+
+.story-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: var(--space-xs);
+    color: var(--text-primary);
+}
+
+.story-meta {
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    margin-top: var(--space-sm);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+}
+
+.story-meta span.divider {
+    opacity: 0.5;
+}
+
+.story-content {
+    font-family: var(--font-serif);
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+.story-content p {
+    margin-bottom: 2rem;
+    text-indent: 2rem;
+    /* Classic book styling */
+}
+
+/* Dropcap for the very first letter (optional but classy) */
+.story-content>p:first-of-type::first-letter {
+    font-size: 3.5rem;
+    float: left;
+    line-height: 1;
+    padding-right: 0.5rem;
+    color: var(--accent-writer);
+    font-family: var(--font-serif);
+    font-weight: bold;
+    margin-top: 0.2rem;
+}
+
+/* Remove indent from first paragraph */
+.story-content>p:first-of-type {
+    text-indent: 0;
+}
+
+/* Scene Breaks / Asterisks */
+.scene-break {
+    text-align: center;
+    margin: var(--space-md) 0;
+    color: var(--accent-writer);
+    font-size: 1.5rem;
+    letter-spacing: 1rem;
+}
+
+/* Footer / End of Story */
+.story-footer {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+    font-family: var(--font-sans);
+}
+
+.end-mark {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-writer);
+    transform: rotate(45deg);
+    margin-bottom: var(--space-md);
+}
+
+.author-bio {
+    background: var(--bg-surface);
+    padding: var(--space-md);
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    text-align: left;
+}
+
+.author-bio strong {
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Light / Dark Mode Handling is mostly inherited, but ensuring contrast here */
+[data-theme="light"] .story-nav {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .author-bio {
+    background: #f8f9fa;
+    /* slightly off white */
+}

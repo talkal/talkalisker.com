@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Title | Talkalisker</title>
+    <meta name="description" content="A short story by Tal Kalisker.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/story.css">
+</head>
+
+<body>
+
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress-container">
+        <div class="reading-progress-bar" id="reading-progress"></div>
+    </div>
+
+    <!-- Minimal Nav -->
+    <nav class="story-nav">
+        <div class="story-nav-inner">
+            <a href="novelist.html" class="back-link">
+                <span style="font-size: 1.2rem; margin-top: -2px;">&larr;</span> Back to Library
+            </a>
+            <button id="theme-toggle"
+                style="background: none; border: none; cursor: pointer; color: inherit; font-size: 1.2rem;">☀︎</button>
+        </div>
+    </nav>
+
+    <!-- Story Content -->
+    <article class="story-container">
+
+        <header class="story-header">
+            <span class="story-genre">Sci-Fi / Philosophy</span>
+            <h1 class="story-title">The Story Title Goes Here</h1>
+
+            <div class="story-meta">
+                <span>Tal Kalisker</span>
+                <span class="divider">•</span>
+                <span>5 min read</span>
+                <span class="divider">•</span>
+                <span>October 2026</span>
+            </div>
+        </header>
+
+        <div class="story-content">
+
+            <p>This is where the story begins. The first letter is automatically styled as a drop cap by the CSS, giving
+                it that classic, printed book feel. The container width is strictly controlled so that on larger
+                screens, your eyes don't have to sweep uncomfortably far from left to right. The font size is fluid,
+                scaling perfectly depending on the reader's device.</p>
+
+            <p>Here is a second paragraph. Notice how the indentation is handled cleanly. When writing dialogue or
+                introducing new paragraphs, the flow remains elegant and undisturbed by excessive spacing, mirroring
+                traditional book typesetting.</p>
+
+            <div class="scene-break">* * *</div>
+
+            <p>To insert a scene break, simply use a div with the class "scene-break" containing three asterisks. It
+                will automatically space itself perfectly and use the accent color to break up the text beautifully.</p>
+
+            <p>Replace all this placeholder text with your actual story. When you're finished, you can add a small
+                author bio block at the bottom using the provided styling in the footer below.</p>
+
+        </div>
+
+        <footer class="story-footer">
+            <span class="end-mark"></span>
+
+            <div class="author-bio">
+                <strong>Tal Kalisker</strong>
+                [A brief author bio will go here]. <a href="novelist.html"
+                    style="color: var(--accent-writer); text-decoration: underline;">Read more
+                    stories</a>.
+            </div>
+        </footer>
+
+    </article>
+
+    <!-- Scripts -->
+    <script>
+        // Reading Progress Logic
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('reading-progress').style.width = scrolled + '%';
+        });
+
+        // Theme Toggle Logic (Inherited from main site)
+        const toggleBtn = document.getElementById('theme-toggle');
+        const root = document.documentElement;
+        const savedTheme = localStorage.getItem('theme');
+
+        // Initial Load
+        if (savedTheme) {
+            root.setAttribute('data-theme', savedTheme);
+            updateIcon(savedTheme);
+        }
+
+        // Toggle Logic
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = root.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            root.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            toggleBtn.textContent = theme === 'light' ? '☾' : '☀︎';
+        }
+    </script>
+</body>
+
+</html>
