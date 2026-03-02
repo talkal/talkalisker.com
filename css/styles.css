@@ -11,6 +11,14 @@
   /* Added for portal cards */
   --bg-surface-frosted: rgba(18, 18, 18, 0.8);
 
+  /* Developer Custom Cards */
+  --dev-card-bg: rgba(255, 255, 255, 0.02);
+  --dev-card-hover-bg: rgba(255, 255, 255, 0.04);
+  --dev-card-border: rgba(0, 242, 234, 0.1);
+  --dev-card-border-hover: var(--accent-developer);
+  --dev-tag-bg: rgba(0, 0, 0, 0.3);
+  --dev-tag-border: rgba(255, 255, 255, 0.1);
+
   --text-primary: #f0f0f0;
   --text-secondary: #a0a0a0;
   --text-muted: #525252;
@@ -275,6 +283,51 @@ section {
   background: var(--gradient-dev);
 }
 
+/* Developer Service Classes */
+.dev-service-card {
+  text-decoration: none;
+  background: var(--dev-card-bg);
+  border: 1px solid var(--dev-card-border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  flex-direction: column;
+}
+
+.dev-service-card:hover {
+  border-color: var(--dev-card-border-hover);
+  transform: translateY(-6px);
+  background: var(--dev-card-hover-bg);
+}
+
+.dev-service-card:hover .arrow {
+  transform: translateX(5px);
+}
+
+.dev-service-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--dev-card-border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  color: var(--accent-developer);
+  border: 1px solid var(--dev-card-border);
+}
+
+.dev-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  border: 1px solid var(--dev-tag-border);
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  background: var(--dev-tag-bg);
+}
+
 /* Writer Section Specifics */
 .section-writer h2 {
   font-family: var(--font-serif);
@@ -458,6 +511,15 @@ section {
   --bg-surface: #ffffff;
   --bg-portal: #ffffff;
   --bg-surface-frosted: rgba(255, 255, 255, 0.85);
+
+  /* Developer Custom Cards (Light Mode) */
+  --dev-card-bg: #ffffff;
+  --dev-card-hover-bg: #f8f9fa;
+  --dev-card-border: rgba(0, 122, 117, 0.15);
+  --dev-card-border-hover: var(--accent-developer);
+  --dev-tag-bg: rgba(0, 0, 0, 0.05);
+  --dev-tag-border: rgba(0, 0, 0, 0.1);
+  --accent-developer: #007a75;
 
   --text-primary: #1a1a1a;
   --text-secondary: #555555;

@@ -29,14 +29,14 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-inner">
-            <a href="index.html" class="logo">TALKALISKER</a>
+            <a href="index" class="logo">TALKALISKER</a>
             <div class="nav-links">
                 <button id="theme-toggle" class="nav-link"
                     style="background: none; border: none; cursor: pointer; color: inherit; font-size: 1.2rem;">☀︎</button>
-                <a href="developer.html" class="nav-link active">Developer</a>
-                <a href="novelist.html" class="nav-link">Writer</a>
-                <a href="copywriter.html" class="nav-link">Copywriter</a>
-                <a href="yoga.html" class="nav-link"
+                <a href="developer" class="nav-link active">Developer</a>
+                <a href="novelist" class="nav-link">Writer</a>
+                <a href="copywriter" class="nav-link">Copywriter</a>
+                <a href="yoga" class="nav-link"
                     style="color: #F9F7F2; border: 1px solid rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 4px; margin-left: 1rem;">Yoga</a>
             </div>
         </div>
@@ -45,53 +45,209 @@
     <!-- Developer Section Content -->
     <section class="section-dev" style="padding-top: 8rem;">
         <div class="container">
-            <h4>01. /DEV/ROOT</h4>
-            <h1>Building Digital<br>Realities.</h1>
-            <p style="max-width: 600px; margin-bottom: 2rem; color: var(--text-secondary);">
-                Specialized in high-performance web applications and immersive digital experiences.
-            </p>
+            <!-- Hero Section -->
+            <div style="margin-bottom: 6rem; position: relative;">
+                <!-- Decorative element -->
+                <div
+                    style="position: absolute; top: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(0,242,234,0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 0;">
+                </div>
 
-            <div style="margin-top: 4rem;">
-                <h3 style="margin-bottom: 2rem; color: var(--accent-developer); font-family: var(--font-mono);">Featured
-                    Project</h3>
-                <div style="background: rgba(255,255,255,0.03); padding: 2.5rem; border-radius: 12px; border: 1px solid rgba(0,242,234,0.1); display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-start; transition: all 0.3s ease;"
-                    onmouseover="this.style.borderColor='var(--accent-developer)'; this.style.transform='translateY(-2px)';"
-                    onmouseout="this.style.borderColor='rgba(0,242,234,0.1)'; this.style.transform='translateY(0)';">
-                    <div>
-                        <h2 style="margin-bottom: 0.5rem; font-size: 2rem;">Tortilleando</h2>
-                        <p style="color: var(--text-secondary); font-size: 1.1rem;">A comprehensive platform finding the
-                            best Tortilla de Patata.</p>
+                <div style="position: relative; z-index: 1;">
+                    <h4
+                        style="font-family: var(--font-mono); color: var(--accent-developer); margin-bottom: 1rem; letter-spacing: 0.1em;">
+                        01. /DEV/ROOT</h4>
+                    <h1 style="font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem; line-height: 1.1;">Building
+                        Digital<br>Realities.</h1>
+                    <p
+                        style="max-width: 600px; margin-bottom: 2.5rem; color: var(--text-secondary); font-size: 1.125rem; line-height: 1.7;">
+                        Specialized in high-performance web applications and immersive digital experiences. Turning
+                        complex problems into elegant, scalable solutions.
+                    </p>
+
+                    <div style="display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center;">
+                        <a href="developer-services" class="btn"
+                            style="background: var(--accent-developer); color: #000; border: none; font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 20px rgba(0, 242, 234, 0.25); padding: 1.1rem 2.25rem; border-radius: 6px;">
+                            Explore Services
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </a>
+                        <a href="#work" class="btn"
+                            style="background: transparent; border: 1px solid var(--border-subtle); color: var(--text-primary); display: inline-flex; align-items: center; gap: 0.5rem; padding: 1.1rem 2.25rem; border-radius: 6px;"
+                            onmouseover="this.style.borderColor='var(--text-primary)'; this.style.backgroundColor='rgba(255,255,255,0.05)';"
+                            onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.backgroundColor='transparent';">
+                            View Work
+                        </a>
                     </div>
-
-                    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
-                        <span
-                            style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-developer); background: rgba(0,242,234,0.1); padding: 0.25rem 0.75rem; border-radius: 4px;">Node.js</span>
-                        <span
-                            style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-developer); background: rgba(0,242,234,0.1); padding: 0.25rem 0.75rem; border-radius: 4px;">Express</span>
-                        <span
-                            style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-developer); background: rgba(0,242,234,0.1); padding: 0.25rem 0.75rem; border-radius: 4px;">UI/UX</span>
-                    </div>
-
-                    <a href="Tortilleando/index.html" class="btn"
-                        style="background: var(--bg-surface); color: var(--text-primary); border-color: var(--accent-developer);">View
-                        Live Project →</a>
                 </div>
             </div>
 
-            <div style="margin-top: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                <div>
-                    <h3 style="font-family: var(--font-mono); font-size: 1.25rem;">&lt;Services /&gt;</h3>
-                    <ul style="list-style: none; margin-top: 1rem; color: var(--text-secondary);">
-                        <li style="margin-bottom: 0.5rem;">+ Custom Website Development</li>
-                        <li style="margin-bottom: 0.5rem;">+ Web Application Architecture</li>
-                        <li style="margin-bottom: 0.5rem;">+ UI/UX Implementation</li>
-                    </ul>
-                    <a href="developer-services.html" class="btn"
-                        style="margin-top: 1.5rem; font-size: 0.75rem; padding: 0.5rem 1rem;">View Services &
-                        Pricing</a>
+            <!-- Services Overview (Top Priority) -->
+            <div style="margin-bottom: 8rem; position: relative;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem;">
+                    <div>
+                        <h2 style="font-size: 2.5rem; margin-bottom: 0.75rem;">Engineering Solutions</h2>
+                        <p
+                            style="color: var(--text-secondary); max-width: 550px; font-size: 1.05rem; line-height: 1.6;">
+                            Premium software development tailored to your specific business needs. From architecture to
+                            deployment.</p>
+                    </div>
                 </div>
-                <div>
-                    <p style="color: var(--text-muted);">Available for freelance projects.</p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <!-- Service 1 -->
+                    <a href="developer-services#web-dev"
+                        style="text-decoration: none; background: rgba(255,255,255,0.02); border: 1px solid rgba(0,242,234,0.1); border-radius: 16px; padding: 2.5rem; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: flex; flex-direction: column;"
+                        onmouseover="this.style.borderColor='var(--accent-developer)'; this.style.transform='translateY(-6px)'; this.style.background='rgba(255,255,255,0.04)'; this.querySelector('.arrow').style.transform='translateX(5px)';"
+                        onmouseout="this.style.borderColor='rgba(0,242,234,0.1)'; this.style.transform='translateY(0)'; this.style.background='rgba(255,255,255,0.02)'; this.querySelector('.arrow').style.transform='translateX(0)';">
+                        <div
+                            style="width: 56px; height: 56px; background: rgba(0,242,234,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; color: var(--accent-developer); border: 1px solid rgba(0,242,234,0.1);">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                <path d="M2 17l10 5 10-5" />
+                                <path d="M2 12l10 5 10-5" />
+                            </svg>
+                        </div>
+                        <h3
+                            style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.5rem; line-height: 1.3;">
+                            Custom Web<br>Architecture</h3>
+                        <p
+                            style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2.5rem; flex-grow: 1;">
+                            End-to-end development of scalable, high-performance web applications using modern, robust
+                            tech stacks.
+                        </p>
+                        <span
+                            style="color: var(--accent-developer); font-family: var(--font-mono); font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">
+                            Details
+                            <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="transition: transform 0.3s ease;">
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <!-- Service 2 -->
+                    <a href="developer-services#ui-ux"
+                        style="text-decoration: none; background: rgba(255,255,255,0.02); border: 1px solid rgba(0,242,234,0.1); border-radius: 16px; padding: 2.5rem; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: flex; flex-direction: column;"
+                        onmouseover="this.style.borderColor='var(--accent-developer)'; this.style.transform='translateY(-6px)'; this.style.background='rgba(255,255,255,0.04)'; this.querySelector('.arrow').style.transform='translateX(5px)';"
+                        onmouseout="this.style.borderColor='rgba(0,242,234,0.1)'; this.style.transform='translateY(0)'; this.style.background='rgba(255,255,255,0.02)'; this.querySelector('.arrow').style.transform='translateX(0)';">
+                        <div
+                            style="width: 56px; height: 56px; background: rgba(0,242,234,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; color: var(--accent-developer); border: 1px solid rgba(0,242,234,0.1);">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                            </svg>
+                        </div>
+                        <h3
+                            style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.5rem; line-height: 1.3;">
+                            Front-End<br>Excellence</h3>
+                        <p
+                            style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2.5rem; flex-grow: 1;">
+                            Immersive, accessible, and responsive interfaces that prioritize user experience and fluid
+                            interactions.
+                        </p>
+                        <span
+                            style="color: var(--accent-developer); font-family: var(--font-mono); font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">
+                            Details
+                            <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="transition: transform 0.3s ease;">
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <!-- Service 3 -->
+                    <a href="developer-services#consulting"
+                        style="text-decoration: none; background: rgba(255,255,255,0.02); border: 1px solid rgba(0,242,234,0.1); border-radius: 16px; padding: 2.5rem; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: flex; flex-direction: column;"
+                        onmouseover="this.style.borderColor='var(--accent-developer)'; this.style.transform='translateY(-6px)'; this.style.background='rgba(255,255,255,0.04)'; this.querySelector('.arrow').style.transform='translateX(5px)';"
+                        onmouseout="this.style.borderColor='rgba(0,242,234,0.1)'; this.style.transform='translateY(0)'; this.style.background='rgba(255,255,255,0.02)'; this.querySelector('.arrow').style.transform='translateX(0)';">
+                        <div
+                            style="width: 56px; height: 56px; background: rgba(0,242,234,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; color: var(--accent-developer); border: 1px solid rgba(0,242,234,0.1);">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                                <line x1="12" y1="22.08" x2="12" y2="12" />
+                            </svg>
+                        </div>
+                        <h3
+                            style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.5rem; line-height: 1.3;">
+                            Technical<br>Consulting</h3>
+                        <p
+                            style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2.5rem; flex-grow: 1;">
+                            Codebase audits, architectural planning, and performance optimization for existing digital
+                            products.
+                        </p>
+                        <span
+                            style="color: var(--accent-developer); font-family: var(--font-mono); font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">
+                            Details
+                            <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="transition: transform 0.3s ease;">
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Featured Work (Proof of capability) -->
+            <div id="work" style="margin-bottom: 4rem; scroll-margin-top: 100px;">
+                <h3
+                    style="margin-bottom: 2rem; color: var(--accent-developer); font-family: var(--font-mono); font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase;">
+                    &lt;Proof_Of_Work /&gt;</h3>
+                <div style="background: rgba(255,255,255,0.02); padding: 3rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-start; transition: all 0.4s ease; position: relative; overflow: hidden;"
+                    onmouseover="this.style.borderColor='rgba(0,242,234,0.3)'; this.style.background='rgba(255,255,255,0.03)';"
+                    onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.background='rgba(255,255,255,0.02)';">
+
+                    <!-- Decorative background element -->
+                    <div
+                        style="position: absolute; right: -50px; bottom: -50px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(0,242,234,0.05) 0%, transparent 60%); border-radius: 50%; pointer-events: none;">
+                    </div>
+
+                    <div style="position: relative; z-index: 1;">
+                        <h2 style="margin-bottom: 0.75rem; font-size: 2.5rem; letter-spacing: -0.02em;">Tortilleando
+                        </h2>
+                        <p
+                            style="color: var(--text-secondary); font-size: 1.125rem; max-width: 600px; line-height: 1.6;">
+                            A comprehensive, high-performance platform for finding, rating, and reviewing the best
+                            Tortilla de Patatas across Spain. Built with a focus on speed, responsive design, and
+                            intuitive UX.</p>
+                    </div>
+
+                    <div
+                        style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 0.5rem 0 0.5rem 0; position: relative; z-index: 1;">
+                        <span
+                            style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary); border: 1px solid rgba(255,255,255,0.1); padding: 0.35rem 0.85rem; border-radius: 20px; background: rgba(0,0,0,0.3);">Node.js</span>
+                        <span
+                            style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary); border: 1px solid rgba(255,255,255,0.1); padding: 0.35rem 0.85rem; border-radius: 20px; background: rgba(0,0,0,0.3);">Express</span>
+                        <span
+                            style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary); border: 1px solid rgba(255,255,255,0.1); padding: 0.35rem 0.85rem; border-radius: 20px; background: rgba(0,0,0,0.3);">UI/UX</span>
+                    </div>
+
+                    <a href="Tortilleando/" class="btn"
+                        style="background: transparent; color: var(--accent-developer); border: 1px solid var(--accent-developer); display: inline-flex; align-items: center; gap: 0.5rem; border-radius: 6px; position: relative; z-index: 1; margin-top: 1rem;"
+                        onmouseover="this.style.background='var(--accent-developer)'; this.style.color='#000';"
+                        onmouseout="this.style.background='transparent'; this.style.color='var(--accent-developer)';">
+                        View Live Project
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
