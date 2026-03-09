@@ -31,10 +31,19 @@
         <div class="container nav-inner">
             <a href="index" class="logo">TALKALISKER</a>
             <div class="nav-links">
+                <button id="lang-toggle" class="nav-link"
+                    style="background: none; border: none; cursor: pointer; color: inherit; font-size: 0.9rem; font-weight: 600; text-transform: uppercase;">
+                    <span class="lang-en">ES</span>
+                    <span class="lang-es">EN</span>
+                </button>
                 <button id="theme-toggle" class="nav-link"
                     style="background: none; border: none; cursor: pointer; color: inherit; font-size: 1.2rem;">☀︎</button>
-                <a href="developer" class="nav-link active">Developer</a>
-                <a href="novelist" class="nav-link">Writer</a>
+                <a href="developer" class="nav-link active">
+                    <span class="lang-en">Developer</span><span class="lang-es">Desarrollador</span>
+                </a>
+                <a href="novelist" class="nav-link">
+                    <span class="lang-en">Writer</span><span class="lang-es">Escritor</span>
+                </a>
                 <a href="copywriter" class="nav-link">Copywriter</a>
                 <a href="yoga" class="nav-link"
                     style="color: #F9F7F2; border: 1px solid rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 4px; margin-left: 1rem;">Yoga</a>
@@ -49,25 +58,31 @@
             <div style="margin-bottom: 6rem; position: relative;">
                 <!-- Decorative element -->
                 <div
-                    style="position: absolute; top: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(0,242,234,0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 0;">
+                    style="position: absolute; top: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, var(--dev-card-border) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 0;">
                 </div>
 
                 <div style="position: relative; z-index: 1;">
                     <h4
                         style="font-family: var(--font-mono); color: var(--accent-developer); margin-bottom: 1rem; letter-spacing: 0.1em;">
                         01. /DEV/ROOT</h4>
-                    <h1 style="font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem; line-height: 1.1;">Building
-                        Digital<br>Realities.</h1>
+                    <h1 style="font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem; line-height: 1.1;">
+                        <span class="lang-en">Building Digital<br>Realities.</span>
+                        <span class="lang-es">Construyendo<br>Realidades Digitales.</span>
+                    </h1>
                     <p
                         style="max-width: 600px; margin-bottom: 2.5rem; color: var(--text-secondary); font-size: 1.125rem; line-height: 1.7;">
-                        Specialized in high-performance web applications and immersive digital experiences. Turning
-                        complex problems into elegant, scalable solutions.
+                        <span class="lang-en">Specialized in high-performance web applications and immersive digital
+                            experiences. Turning
+                            complex problems into elegant, scalable solutions.</span>
+                        <span class="lang-es">Especializado en aplicaciones web de alto rendimiento y experiencias
+                            digitales inmersivas. Convirtiendo problemas complejos en soluciones elegantes y
+                            escalables.</span>
                     </p>
 
                     <div style="display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center;">
                         <a href="developer-services" class="btn"
-                            style="background: var(--accent-developer); color: #000; border: none; font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 20px rgba(0, 242, 234, 0.25); padding: 1.1rem 2.25rem; border-radius: 6px;">
-                            Explore Services
+                            style="background: var(--accent-developer); color: #000; border: none; font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 20px color-mix(in srgb, var(--accent-developer) 25%, transparent); padding: 1.1rem 2.25rem; border-radius: 6px;">
+                            <span class="lang-en">Explore Services</span><span class="lang-es">Explorar Servicios</span>
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M5 12h14" />
@@ -76,9 +91,9 @@
                         </a>
                         <a href="#work" class="btn"
                             style="background: transparent; border: 1px solid var(--border-subtle); color: var(--text-primary); display: inline-flex; align-items: center; gap: 0.5rem; padding: 1.1rem 2.25rem; border-radius: 6px;"
-                            onmouseover="this.style.borderColor='var(--text-primary)'; this.style.backgroundColor='rgba(255,255,255,0.05)';"
+                            onmouseover="this.style.borderColor='var(--text-primary)'; this.style.backgroundColor='var(--dev-card-bg)';"
                             onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.backgroundColor='transparent';">
-                            View Work
+                            <span class="lang-en">View Work</span><span class="lang-es">Ver Trabajos</span>
                         </a>
                     </div>
                 </div>
@@ -89,22 +104,25 @@
                 <div
                     style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem;">
                     <div>
-                        <h2 style="font-size: 2.5rem; margin-bottom: 0.75rem;">Engineering Solutions</h2>
+                        <h2 style="font-size: 2.5rem; margin-bottom: 0.75rem;">
+                            <span class="lang-en">Engineering Solutions</span><span class="lang-es">Soluciones de
+                                Ingeniería</span>
+                        </h2>
                         <p
                             style="color: var(--text-secondary); max-width: 550px; font-size: 1.05rem; line-height: 1.6;">
-                            Premium software development tailored to your specific business needs. From architecture to
-                            deployment.</p>
+                            <span class="lang-en">Premium software development tailored to your specific business needs.
+                                From architecture to
+                                deployment.</span>
+                            <span class="lang-es">Desarrollo de software premium adaptado a las necesidades específicas
+                                de tu negocio. Desde la arquitectura hasta el despliegue.</span>
+                        </p>
                     </div>
                 </div>
 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
                     <!-- Service 1 -->
-                    <a href="developer-services#web-dev"
-                        style="text-decoration: none; background: rgba(255,255,255,0.02); border: 1px solid rgba(0,242,234,0.1); border-radius: 16px; padding: 2.5rem; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: flex; flex-direction: column;"
-                        onmouseover="this.style.borderColor='var(--accent-developer)'; this.style.transform='translateY(-6px)'; this.style.background='rgba(255,255,255,0.04)'; this.querySelector('.arrow').style.transform='translateX(5px)';"
-                        onmouseout="this.style.borderColor='rgba(0,242,234,0.1)'; this.style.transform='translateY(0)'; this.style.background='rgba(255,255,255,0.02)'; this.querySelector('.arrow').style.transform='translateX(0)';">
-                        <div
-                            style="width: 56px; height: 56px; background: rgba(0,242,234,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; color: var(--accent-developer); border: 1px solid rgba(0,242,234,0.1);">
+                    <a href="developer-services#web-dev" class="dev-service-card">
+                        <div class="dev-service-icon">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 2L2 7l10 5 10-5-10-5z" />
@@ -114,15 +132,20 @@
                         </div>
                         <h3
                             style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.5rem; line-height: 1.3;">
-                            Custom Web<br>Architecture</h3>
+                            <span class="lang-en">Custom Web<br>Architecture</span>
+                            <span class="lang-es">Arquitectura<br>Web a Medida</span>
+                        </h3>
                         <p
                             style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2.5rem; flex-grow: 1;">
-                            End-to-end development of scalable, high-performance web applications using modern, robust
-                            tech stacks.
+                            <span class="lang-en">End-to-end development of scalable, high-performance web applications
+                                using modern, robust
+                                tech stacks.</span>
+                            <span class="lang-es">Desarrollo integral de aplicaciones web escalables y de alto
+                                rendimiento utilizando stacks tecnológicos modernos y robustos.</span>
                         </p>
                         <span
                             style="color: var(--accent-developer); font-family: var(--font-mono); font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Details
+                            <span class="lang-en">Details</span><span class="lang-es">Detalles</span>
                             <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 style="transition: transform 0.3s ease;">
@@ -133,12 +156,8 @@
                     </a>
 
                     <!-- Service 2 -->
-                    <a href="developer-services#ui-ux"
-                        style="text-decoration: none; background: rgba(255,255,255,0.02); border: 1px solid rgba(0,242,234,0.1); border-radius: 16px; padding: 2.5rem; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: flex; flex-direction: column;"
-                        onmouseover="this.style.borderColor='var(--accent-developer)'; this.style.transform='translateY(-6px)'; this.style.background='rgba(255,255,255,0.04)'; this.querySelector('.arrow').style.transform='translateX(5px)';"
-                        onmouseout="this.style.borderColor='rgba(0,242,234,0.1)'; this.style.transform='translateY(0)'; this.style.background='rgba(255,255,255,0.02)'; this.querySelector('.arrow').style.transform='translateX(0)';">
-                        <div
-                            style="width: 56px; height: 56px; background: rgba(0,242,234,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; color: var(--accent-developer); border: 1px solid rgba(0,242,234,0.1);">
+                    <a href="developer-services#ui-ux" class="dev-service-card">
+                        <div class="dev-service-icon">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10" />
@@ -148,15 +167,20 @@
                         </div>
                         <h3
                             style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.5rem; line-height: 1.3;">
-                            Front-End<br>Excellence</h3>
+                            <span class="lang-en">Front-End<br>Excellence</span>
+                            <span class="lang-es">Excelencia<br>Front-End</span>
+                        </h3>
                         <p
                             style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2.5rem; flex-grow: 1;">
-                            Immersive, accessible, and responsive interfaces that prioritize user experience and fluid
-                            interactions.
+                            <span class="lang-en">Immersive, accessible, and responsive interfaces that prioritize user
+                                experience and fluid
+                                interactions.</span>
+                            <span class="lang-es">Interfaces inmersivas, accesibles y responsivas que priorizan la
+                                experiencia del usuario y las interacciones fluidas.</span>
                         </p>
                         <span
                             style="color: var(--accent-developer); font-family: var(--font-mono); font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Details
+                            <span class="lang-en">Details</span><span class="lang-es">Detalles</span>
                             <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 style="transition: transform 0.3s ease;">
@@ -167,12 +191,8 @@
                     </a>
 
                     <!-- Service 3 -->
-                    <a href="developer-services#consulting"
-                        style="text-decoration: none; background: rgba(255,255,255,0.02); border: 1px solid rgba(0,242,234,0.1); border-radius: 16px; padding: 2.5rem; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: flex; flex-direction: column;"
-                        onmouseover="this.style.borderColor='var(--accent-developer)'; this.style.transform='translateY(-6px)'; this.style.background='rgba(255,255,255,0.04)'; this.querySelector('.arrow').style.transform='translateX(5px)';"
-                        onmouseout="this.style.borderColor='rgba(0,242,234,0.1)'; this.style.transform='translateY(0)'; this.style.background='rgba(255,255,255,0.02)'; this.querySelector('.arrow').style.transform='translateX(0)';">
-                        <div
-                            style="width: 56px; height: 56px; background: rgba(0,242,234,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; color: var(--accent-developer); border: 1px solid rgba(0,242,234,0.1);">
+                    <a href="developer-services#consulting" class="dev-service-card">
+                        <div class="dev-service-icon">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path
@@ -183,15 +203,20 @@
                         </div>
                         <h3
                             style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.5rem; line-height: 1.3;">
-                            Technical<br>Consulting</h3>
+                            <span class="lang-en">Technical<br>Consulting</span>
+                            <span class="lang-es">Consultoría<br>Técnica</span>
+                        </h3>
                         <p
                             style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2.5rem; flex-grow: 1;">
-                            Codebase audits, architectural planning, and performance optimization for existing digital
-                            products.
+                            <span class="lang-en">Codebase audits, architectural planning, and performance optimization
+                                for existing digital
+                                products.</span>
+                            <span class="lang-es">Auditorías de código fuente, planificación arquitectónica y
+                                optimización de rendimiento para productos digitales existentes.</span>
                         </p>
                         <span
                             style="color: var(--accent-developer); font-family: var(--font-mono); font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Details
+                            <span class="lang-en">Details</span><span class="lang-es">Detalles</span>
                             <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 style="transition: transform 0.3s ease;">
@@ -207,14 +232,16 @@
             <div id="work" style="margin-bottom: 4rem; scroll-margin-top: 100px;">
                 <h3
                     style="margin-bottom: 2rem; color: var(--accent-developer); font-family: var(--font-mono); font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase;">
-                    &lt;Proof_Of_Work /&gt;</h3>
-                <div style="background: rgba(255,255,255,0.02); padding: 3rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-start; transition: all 0.4s ease; position: relative; overflow: hidden;"
-                    onmouseover="this.style.borderColor='rgba(0,242,234,0.3)'; this.style.background='rgba(255,255,255,0.03)';"
-                    onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.background='rgba(255,255,255,0.02)';">
+                    <span class="lang-en">&lt;Proof_Of_Work /&gt;</span>
+                    <span class="lang-es">&lt;Prueba_De_Trabajo /&gt;</span>
+                </h3>
+                <div style="background: var(--dev-card-bg); padding: 3rem; border-radius: 16px; border: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-start; transition: all 0.4s ease; position: relative; overflow: hidden;"
+                    onmouseover="this.style.borderColor='var(--dev-card-border-hover)'; this.style.background='var(--dev-card-hover-bg)';"
+                    onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.background='var(--dev-card-bg)';">
 
                     <!-- Decorative background element -->
                     <div
-                        style="position: absolute; right: -50px; bottom: -50px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(0,242,234,0.05) 0%, transparent 60%); border-radius: 50%; pointer-events: none;">
+                        style="position: absolute; right: -50px; bottom: -50px; width: 250px; height: 250px; background: radial-gradient(circle, var(--dev-card-border) 0%, transparent 60%); border-radius: 50%; pointer-events: none;">
                     </div>
 
                     <div style="position: relative; z-index: 1;">
@@ -222,26 +249,28 @@
                         </h2>
                         <p
                             style="color: var(--text-secondary); font-size: 1.125rem; max-width: 600px; line-height: 1.6;">
-                            A comprehensive, high-performance platform for finding, rating, and reviewing the best
-                            Tortilla de Patatas across Spain. Built with a focus on speed, responsive design, and
-                            intuitive UX.</p>
+                            <span class="lang-en">A comprehensive, high-performance platform for finding, rating, and
+                                reviewing the best
+                                Tortilla de Patatas across Spain. Built with a focus on speed, responsive design, and
+                                intuitive UX.</span>
+                            <span class="lang-es">Una plataforma integral y de alto rendimiento para encontrar, valorar
+                                y reseñar las mejores Tortillas de Patatas en toda España. Construida con enfoque en la
+                                velocidad, diseño responsivo y UX intuitiva.</span>
+                        </p>
                     </div>
 
                     <div
                         style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 0.5rem 0 0.5rem 0; position: relative; z-index: 1;">
-                        <span
-                            style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary); border: 1px solid rgba(255,255,255,0.1); padding: 0.35rem 0.85rem; border-radius: 20px; background: rgba(0,0,0,0.3);">Node.js</span>
-                        <span
-                            style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary); border: 1px solid rgba(255,255,255,0.1); padding: 0.35rem 0.85rem; border-radius: 20px; background: rgba(0,0,0,0.3);">Express</span>
-                        <span
-                            style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary); border: 1px solid rgba(255,255,255,0.1); padding: 0.35rem 0.85rem; border-radius: 20px; background: rgba(0,0,0,0.3);">UI/UX</span>
+                        <span class="dev-tag">Node.js</span>
+                        <span class="dev-tag">Express</span>
+                        <span class="dev-tag">UI/UX</span>
                     </div>
 
                     <a href="Tortilleando/" class="btn"
                         style="background: transparent; color: var(--accent-developer); border: 1px solid var(--accent-developer); display: inline-flex; align-items: center; gap: 0.5rem; border-radius: 6px; position: relative; z-index: 1; margin-top: 1rem;"
                         onmouseover="this.style.background='var(--accent-developer)'; this.style.color='#000';"
                         onmouseout="this.style.background='transparent'; this.style.color='var(--accent-developer)';">
-                        View Live Project
+                        <span class="lang-en">View Live Project</span><span class="lang-es">Ver Proyecto en Vivo</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M5 12h14" />
@@ -257,10 +286,13 @@
     <section
         style="padding: 4rem 0; border-top: 1px solid var(--border-subtle); background: linear-gradient(to top, #050505, #0a0a0a);">
         <div class="container" style="text-align: center;">
-            <h4 style="color: var(--accent-developer); font-family: var(--font-mono); margin-bottom: 1rem;">/CONNECT
+            <h4 style="color: var(--accent-developer); font-family: var(--font-mono); margin-bottom: 1rem;">
+                <span class="lang-en">/CONNECT</span><span class="lang-es">/CONECTAR</span>
             </h4>
             <div class="contact-links">
-                <a href="mailto:talkalisker@gmail.com" class="contact-link email"><span>Email</span></a>
+                <a href="mailto:talkalisker@gmail.com" class="contact-link email">
+                    <span class="lang-en">Email</span><span class="lang-es">Correo</span>
+                </a>
                 <a href="https://www.linkedin.com/in/tal-kalisker-9b60a9142/" target="_blank"
                     class="contact-link linkedin"><span>LinkedIn</span></a>
                 <a href="https://github.com/talkalisker" target="_blank" class="contact-link"><span>GitHub</span></a>
@@ -269,15 +301,20 @@
     </section>
 
     <footer style="padding: 2rem 0; text-align: center; border-top: 1px solid #111; color: #444; font-size: 0.8rem;">
-        <p>&copy; 2026 Talkalisker. Built with precision.</p>
+        <p>
+            <span class="lang-en">&copy; 2026 Talkalisker. Built with precision.</span>
+            <span class="lang-es">&copy; 2026 Talkalisker. Construido con precisión.</span>
+        </p>
     </footer>
 
 </body>
 
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
+    const langToggleBtn = document.getElementById('lang-toggle');
     const root = document.documentElement;
     const savedTheme = localStorage.getItem('theme');
+    const savedLang = localStorage.getItem('language') || 'en';
 
     // Initial Load
     if (savedTheme) {
@@ -285,18 +322,47 @@
         updateIcon(savedTheme);
     }
 
-    // Toggle Logic
-    toggleBtn.addEventListener('click', () => {
-        const currentTheme = root.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    // Initial Load - Language
+    root.setAttribute('lang', savedLang);
+    updateDocumentMetaDev(savedLang);
 
-        root.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateIcon(newTheme);
-    });
+    // Toggle Theme Logic
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = root.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            root.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+    }
+
+    // Toggle Language Logic
+    if (langToggleBtn) {
+        langToggleBtn.addEventListener('click', () => {
+            const currentLang = root.getAttribute('lang');
+            const newLang = currentLang === 'en' ? 'es' : 'en';
+            root.setAttribute('lang', newLang);
+            localStorage.setItem('language', newLang);
+            updateDocumentMetaDev(newLang);
+        });
+    }
 
     function updateIcon(theme) {
-        toggleBtn.textContent = theme === 'light' ? '☾' : '☀︎';
+        if (toggleBtn) toggleBtn.textContent = theme === 'light' ? '☾' : '☀︎';
+    }
+
+    function updateDocumentMetaDev(lang) {
+        if (lang === 'es') {
+            document.title = 'Talkalisker | Desarrollador Full Stack';
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.content = "Talkalisker - Portafolio de Desarrollador Full Stack Nivel 2. Construyendo realidades digitales.";
+        } else {
+            document.title = 'Talkalisker | Full Stack Developer';
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.content = "Talkalisker - Level 2 Full Stack Developer Portfolio. Building digital realities.";
+        }
     }
 </script>
 

@@ -880,3 +880,12 @@ section {
     padding: 1rem;
   }
 }
+
+/* --- BILINGUAL EN/ES TOGGLE --- */
+html[lang="en"] .lang-es {
+  display: none !important;
+}
+
+html[lang="es"] .lang-en {
+  display: none !important;
+}
