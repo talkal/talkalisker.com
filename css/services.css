@@ -410,8 +410,6 @@ select.form-input:focus {
     }
 
     .about-visual {
-        order: -1;
-        /* Show visual first on mobile */
         transform: scale(0.9);
     }
 }
