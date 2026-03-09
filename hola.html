@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Hola! Hablemos de tu web</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon-dev.svg">
+    <meta name="description"
+        content="Diseño web premium para los negocios de mi barrio. Atrae más clientes con una web rápida, moderna y profesional.">
+    <!-- Open Graph for Social Sharing (WhatsApp, LinkedIn, etc.) -->
+    <meta property="og:title" content="¡Hola! Hablemos de tu web">
+    <meta property="og:description"
+        content="Diseño web premium para los negocios de mi barrio. Atrae más clientes con una web rápida, moderna y profesional.">
+    <meta property="og:image" content="https://talkalisker.com/assets/favicon-dev.png">
+    <meta property="og:url" content="https://talkalisker.com/hola">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/services.css">
+    <style>
+        .discount-badge {
+            background: rgba(0, 242, 234, 0.15);
+            color: var(--accent-developer);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1rem;
+            border: 1px dashed var(--accent-developer);
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+            font-weight: 400;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            /* WhatsApp Brand Color */
+            color: #fff !important;
+            border-color: #25D366 !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            padding: 1.2rem 2.5rem;
+            margin: 0 auto;
+            max-width: 400px;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1eb955;
+            /* Slightly darker */
+            border-color: #1eb955 !important;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            color: #fff !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index" class="logo">TALKALISKER</a>
+            <div class="nav-links">
+                <a href="developer.html" class="nav-link">← Volver</a>
+            </div>
+            <button id="theme-toggle" class="nav-link theme-toggle">☀︎</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-services" style="min-height: 70vh;">
+        <div class="hero-bg-accent"></div>
+        <div class="container">
+            <div class="hero-subtitle">
+                <span>// OFERTA EXCLUSIVA</span>
+                <span>// PARA VECINOS</span>
+            </div>
+            <div class="hero-title-wrapper fade-in-up" style="animation-delay: 0.2s;">
+                <h1 class="hero-title" style="margin-top: 1rem; font-size: 3rem;">
+                    ¡Hola!<br>
+                    Si estás leyendo esto,<br>
+                    <span style="color: var(--accent-developer);">nos acabamos de conocer.</span>
+                </h1>
+            </div>
+            <p style="max-width: 600px; margin: 2rem 0; color: var(--text-secondary); font-size: 1.2rem; line-height: 1.6;"
+                class="fade-in-up" style="animation-delay: 0.4s;">
+                Llevo el <strong>diseño web premium</strong> a los negocios de mi barrio. Atrae nuevos clientes con una
+                web estéticamente impecable, rápida y diseñada para convertir visitas en ventas.
+            </p>
+            <div class="fade-in-up" style="animation-delay: 0.6s;">
+                <a href="#contacto" class="btn"
+                    style="background: var(--accent-developer); color: #000; border-color: var(--accent-developer); padding: 1rem 2.5rem; font-size: 1rem;">
+                    Hablemos de tu proyecto
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section with Local Discount -->
+    <section id="pricing">
+        <div class="container">
+            <h4 class="section-label">
+                / TARIFAS Especiales
+            </h4>
+            <h2>
+                Precios transparentes.<br>
+                Descuento de vecino garantizado.
+            </h2>
+            <div class="pricing-grid">
+                <!-- Starter Tier -->
+                <div class="pricing-card">
+                    <div class="discount-badge">-20% DESCUENTO DE VECINO</div>
+                    <h3>Landing Page</h3>
+                    <p style="color: var(--text-secondary);">
+                        Perfecto para campañas específicas y nuevos productos.
+                    </p>
+                    <div class="price">
+                        <span class="original-price">200€</span>160€<span>/proyecto</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            Página de Desplazamiento Largo</li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            Diseño Responsivo Móvil</li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <strong>Hosting GitHub Gratis</strong></li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            Formulario de Contacto</li>
+                    </ul>
+                </div>
+
+                <!-- Pro Tier (Featured) -->
+                <div class="pricing-card featured">
+                    <div class="discount-badge" style="background: var(--accent-developer); color: #000; border: none;">
+                        -20% DESCUENTO DE VECINO</div>
+                    <h3>Sitio Web Estándar</h3>
+                    <p style="color: var(--text-secondary);">
+                        Presencia completa para marcas locales en crecimiento.
+                    </p>
+                    <div class="price">
+                        <span class="original-price">500€</span>400€<span>/proyecto</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            Hasta 5 Páginas</li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <strong>Hosting GitHub Pages</strong></li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            Integración Google Maps</li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            Optimización Local SEO</li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            1 Mes de Soporte Directo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Direct Contact CTA -->
+    <section id="contacto" style="margin-bottom: 4rem;">
+        <div class="container">
+            <div class="cta-box" style="padding: 4rem 2rem;">
+                <h2>
+                    ¿Seguimos hablando en WhatsApp?
+                </h2>
+                <p style="margin-bottom: 2.5rem; color: var(--text-secondary); font-size: 1.1rem;">
+                    Escríbeme sin compromiso para hablar de lo que tu negocio necesita. Estaré encantado de ayudarte.
+                </p>
+                <a href="https://wa.me/34695735277?text=¡Hola Tal! Acabamos de conocernos y me interesa saber más sobre el descuento de vecino para diseño web."
+                    target="_blank" class="btn whatsapp-btn">
+                    <!-- WhatsApp SVG Icon -->
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                        </path>
+                    </svg>
+                    Escribir al 695 735 277
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="padding: 2rem 0; text-align: center; border-top: 1px solid #111; color: #444; font-size: 0.8rem;">
+        <div class="container">
+            <p>&copy; 2026 Talkalisker. Desarrollador Web Local.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        const toggleBtn = document.getElementById('theme-toggle');
+        const root = document.documentElement;
+        const savedTheme = localStorage.getItem('theme');
+
+        if (savedTheme) {
+            root.setAttribute('data-theme', savedTheme);
+            updateIcon(savedTheme);
+        }
+
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                const currentTheme = root.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                root.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateIcon(newTheme);
+            });
+        }
+
+        function updateIcon(theme) {
+            if (toggleBtn) toggleBtn.textContent = theme === 'light' ? '☾' : '☀︎';
+        }
+    </script>
+</body>
+
+</html>
