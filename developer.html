@@ -42,12 +42,12 @@
                     style="color: #F9F7F2; border: 1px solid rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 4px; margin-left: 1rem;">Yoga</a>
             </div>
             <div style="display: flex; align-items: center;">
-                <button id="lang-toggle" class="nav-link"
+                <button id="lang-toggle" class="nav-link" aria-label="Toggle language"
                     style="background: none; border: none; cursor: pointer; color: inherit; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; padding: 0; margin-left: 1rem;">
                     <span class="lang-en">ES</span>
                     <span class="lang-es">EN</span>
                 </button>
-                <button id="theme-toggle" class="nav-link"
+                <button id="theme-toggle" class="nav-link" aria-label="Toggle dark mode"
                     style="background: none; border: none; cursor: pointer; color: inherit; font-size: 1.2rem; margin-left: 1rem;">☀︎</button>
             </div>
         </div>
@@ -311,51 +311,10 @@
 
 </body>
 
+<script src="js/theme.js"></script>
+<script src="js/lang.js"></script>
 <script>
-    const toggleBtn = document.getElementById('theme-toggle');
-    const langToggleBtn = document.getElementById('lang-toggle');
-    const root = document.documentElement;
-    const savedTheme = localStorage.getItem('theme');
-    const savedLang = localStorage.getItem('language') || 'en';
-
-    // Initial Load
-    if (savedTheme) {
-        root.setAttribute('data-theme', savedTheme);
-        updateIcon(savedTheme);
-    }
-
-    // Initial Load - Language
-    root.setAttribute('lang', savedLang);
-    updateDocumentMetaDev(savedLang);
-
-    // Toggle Theme Logic
-    if (toggleBtn) {
-        toggleBtn.addEventListener('click', () => {
-            const currentTheme = root.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-            root.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateIcon(newTheme);
-        });
-    }
-
-    // Toggle Language Logic
-    if (langToggleBtn) {
-        langToggleBtn.addEventListener('click', () => {
-            const currentLang = root.getAttribute('lang');
-            const newLang = currentLang === 'en' ? 'es' : 'en';
-            root.setAttribute('lang', newLang);
-            localStorage.setItem('language', newLang);
-            updateDocumentMetaDev(newLang);
-        });
-    }
-
-    function updateIcon(theme) {
-        if (toggleBtn) toggleBtn.textContent = theme === 'light' ? '☾' : '☀︎';
-    }
-
-    function updateDocumentMetaDev(lang) {
+    window.updateDocumentMetaDev = function(lang) {
         if (lang === 'es') {
             document.title = 'Talkalisker | Desarrollador Full Stack';
             const metaDesc = document.querySelector('meta[name="description"]');
@@ -365,7 +324,7 @@
             const metaDesc = document.querySelector('meta[name="description"]');
             if (metaDesc) metaDesc.content = "Talkalisker - Level 2 Full Stack Developer Portfolio. Building digital realities.";
         }
-    }
+    };
 </script>
 
 </html>

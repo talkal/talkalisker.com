@@ -142,7 +142,7 @@
                 <!-- Direct Links optionally here, but the page itself is the menu -->
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
-            <button id="theme-toggle" class="nav-link theme-toggle">☀︎</button>
+            <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle dark mode">☀︎</button>
         </div>
     </nav>
 
@@ -223,30 +223,6 @@
 
 </body>
 
-<script>
-    const toggleBtn = document.getElementById('theme-toggle');
-    const root = document.documentElement;
-    const savedTheme = localStorage.getItem('theme');
-
-    // Initial Load
-    if (savedTheme) {
-        root.setAttribute('data-theme', savedTheme);
-        updateIcon(savedTheme);
-    }
-
-    // Toggle Logic
-    toggleBtn.addEventListener('click', () => {
-        const currentTheme = root.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-        root.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateIcon(newTheme);
-    });
-
-    function updateIcon(theme) {
-        toggleBtn.textContent = theme === 'light' ? '☾' : '☀︎';
-    }
-</script>
+<script src="js/theme.js"></script>
 
 </html>

@@ -32,7 +32,7 @@
             <a href="novelist" class="back-link">
                 <span style="font-size: 1.2rem; margin-top: -2px;">&larr;</span> Back to Library
             </a>
-            <button id="theme-toggle"
+            <button id="theme-toggle" aria-label="Toggle dark mode"
                 style="background: none; border: none; cursor: pointer; color: inherit; font-size: 1.2rem;">☀︎</button>
         </div>
     </nav>
@@ -96,32 +96,8 @@
             const scrolled = (winScroll / height) * 100;
             document.getElementById('reading-progress').style.width = scrolled + '%';
         });
-
-        // Theme Toggle Logic (Inherited from main site)
-        const toggleBtn = document.getElementById('theme-toggle');
-        const root = document.documentElement;
-        const savedTheme = localStorage.getItem('theme');
-
-        // Initial Load
-        if (savedTheme) {
-            root.setAttribute('data-theme', savedTheme);
-            updateIcon(savedTheme);
-        }
-
-        // Toggle Logic
-        toggleBtn.addEventListener('click', () => {
-            const currentTheme = root.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-            root.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateIcon(newTheme);
-        });
-
-        function updateIcon(theme) {
-            toggleBtn.textContent = theme === 'light' ? '☾' : '☀︎';
-        }
     </script>
+    <script src="js/theme.js"></script>
 </body>
 
 </html>

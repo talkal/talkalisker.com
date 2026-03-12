@@ -141,7 +141,7 @@
                 <div class="nav-links">
                     <a href="developer.html" class="nav-link">חזרה ←</a>
                 </div>
-                <button id="theme-toggle" class="nav-link theme-toggle" style="direction: ltr;">☀︎</button>
+                <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle dark mode" style="direction: ltr;">☀︎</button>
             </div>
         </div>
     </nav>
@@ -506,31 +506,7 @@
         </div>
     </footer>
 
-    <script>
-        // Theme Toggle Logic
-        const toggleBtn = document.getElementById('theme-toggle');
-        const root = document.documentElement;
-        const savedTheme = localStorage.getItem('theme');
-
-        if (savedTheme) {
-            root.setAttribute('data-theme', savedTheme);
-            updateIcon(savedTheme);
-        }
-
-        if (toggleBtn) {
-            toggleBtn.addEventListener('click', () => {
-                const currentTheme = root.getAttribute('data-theme');
-                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                root.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                updateIcon(newTheme);
-            });
-        }
-
-        function updateIcon(theme) {
-            if (toggleBtn) toggleBtn.textContent = theme === 'light' ? '☾' : '☀︎';
-        }
-    </script>
+    <script src="js/theme.js"></script>
 </body>
 
 </html>

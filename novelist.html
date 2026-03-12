@@ -28,7 +28,7 @@
         <div class="container nav-inner">
             <a href="index" class="logo">TALKALISKER</a>
             <div class="nav-links">
-                <button id="theme-toggle" class="nav-link"
+                <button id="theme-toggle" class="nav-link" aria-label="Toggle dark mode"
                     style="background: none; border: none; cursor: pointer; color: inherit; font-size: 1.2rem;">☀︎</button>
                 <a href="developer" class="nav-link">Developer</a>
                 <a href="novelist" class="nav-link active">Writer</a>
@@ -54,8 +54,8 @@
                     A philosophical fantasy novel exploring the eternal struggle between existence and oblivion.
                     Currently in the editing process, weaving a tapestry of fate, choice, and consequences.
                 </p>
-                <div class="btn" style="border-color: var(--accent-writer); color: var(--accent-writer);">Read Excerpt
-                    (Coming Soon)</div>
+                <button disabled class="btn" style="border-color: var(--accent-writer); color: var(--accent-writer); background: transparent; cursor: not-allowed; opacity: 0.8;">Read Excerpt
+                    (Coming Soon)</button>
             </div>
 
             <!-- Short Stories / Digital Magazine Hub -->
@@ -139,30 +139,6 @@
 
 </body>
 
-<script>
-    const toggleBtn = document.getElementById('theme-toggle');
-    const root = document.documentElement;
-    const savedTheme = localStorage.getItem('theme');
-
-    // Initial Load
-    if (savedTheme) {
-        root.setAttribute('data-theme', savedTheme);
-        updateIcon(savedTheme);
-    }
-
-    // Toggle Logic
-    toggleBtn.addEventListener('click', () => {
-        const currentTheme = root.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-        root.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateIcon(newTheme);
-    });
-
-    function updateIcon(theme) {
-        toggleBtn.textContent = theme === 'light' ? '☾' : '☀︎';
-    }
-</script>
+<script src="js/theme.js"></script>
 
 </html>

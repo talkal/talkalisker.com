@@ -37,12 +37,12 @@
                 </a>
             </div>
             <div style="display: flex; align-items: center;">
-                <button id="lang-toggle" class="nav-link"
+                <button id="lang-toggle" class="nav-link" aria-label="Toggle language"
                     style="background: none; border: none; cursor: pointer; color: inherit; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; padding: 0; margin-left: 1rem;">
                     <span class="lang-en">ES</span>
                     <span class="lang-es">EN</span>
                 </button>
-                <button id="theme-toggle" class="nav-link theme-toggle" style="margin-left: 1rem;">☀︎</button>
+                <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle dark mode" style="margin-left: 1rem;">☀︎</button>
             </div>
         </div>
     </nav>
@@ -656,48 +656,10 @@
         </div>
     </footer>
 
+    <script src="js/theme.js"></script>
+    <script src="js/lang.js"></script>
     <script>
-        // Theme Toggle Logic (Shared)
-        const toggleBtn = document.getElementById('theme-toggle');
-        const langToggleBtn = document.getElementById('lang-toggle');
-        const root = document.documentElement;
-        const savedTheme = localStorage.getItem('theme');
-        const savedLang = localStorage.getItem('language') || 'en';
-
-        if (savedTheme) {
-            root.setAttribute('data-theme', savedTheme);
-            updateIcon(savedTheme);
-        }
-
-        // Initial Language Load
-        root.setAttribute('lang', savedLang);
-        updateDocumentMetaServices(savedLang);
-
-        if (toggleBtn) {
-            toggleBtn.addEventListener('click', () => {
-                const currentTheme = root.getAttribute('data-theme');
-                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                root.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                updateIcon(newTheme);
-            });
-        }
-
-        if (langToggleBtn) {
-            langToggleBtn.addEventListener('click', () => {
-                const currentLang = root.getAttribute('lang');
-                const newLang = currentLang === 'en' ? 'es' : 'en';
-                root.setAttribute('lang', newLang);
-                localStorage.setItem('language', newLang);
-                updateDocumentMetaServices(newLang);
-            });
-        }
-
-        function updateIcon(theme) {
-            if (toggleBtn) toggleBtn.textContent = theme === 'light' ? '☾' : '☀︎';
-        }
-
-        function updateDocumentMetaServices(lang) {
+        window.updateDocumentMetaServices = function(lang) {
             if (lang === 'es') {
                 document.title = 'Talkalisker | Creación de Sitios Web Premium y Landing Pages';
                 const metaDesc = document.querySelector('meta[name="description"]');
@@ -719,7 +681,7 @@
                 const msgInp = document.getElementById('messageInput');
                 if (msgInp) msgInp.placeholder = "Describe your vision...";
             }
-        }
+        };
 
         // Modal Logic
         const modal = document.getElementById('contactModal');

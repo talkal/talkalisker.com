@@ -30,7 +30,7 @@
         <div class="container nav-inner">
             <a href="index" class="logo">TALKALISKER</a>
             <div class="nav-links">
-                <button id="theme-toggle" class="theme-toggle">☀︎</button>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☀︎</button>
                 <a href="developer" class="nav-link">Developer</a>
                 <a href="novelist" class="nav-link">Writer</a>
                 <a href="copywriter" class="nav-link active">Copywriter</a>
@@ -126,11 +126,11 @@
                     <div class="gallery-container">
                         <div class="gallery-scroll">
                             <div class="gallery-item">
-                                <img src="assets/Easter%20Eggnigma.png" alt="Easter Eggnigma Main Campaign Visual">
+                                <img src="assets/Easter%20Eggnigma.png" alt="Easter Eggnigma Main Campaign Visual" loading="lazy">
                             </div>
                             <div class="gallery-item">
                                 <img src="assets/Easter%20Eggnigma%20Small.png"
-                                    alt="Easter Eggnigma Mobile/Small Visual">
+                                    alt="Easter Eggnigma Mobile/Small Visual" loading="lazy">
                             </div>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
 
                         <div
                             style="width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-subtle); aspect-ratio: 16/9; background: #050505;">
-                            <img src="assets/Buff%20Effect%20Promo%201.png" alt="Buff Effect Promo Visual"
+                            <img src="assets/Buff%20Effect%20Promo%201.png" alt="Buff Effect Promo Visual" loading="lazy"
                                 style="width: 100%; height: 100%; object-fit: contain; display: block;">
                         </div>
                     </div>
@@ -225,10 +225,10 @@
                         <div class="gallery-container">
                             <div class="gallery-scroll">
                                 <div class="gallery-item">
-                                    <img src="assets/Words%20Magic%201.png" alt="Playtika Words Magic Visual 1">
+                                    <img src="assets/Words%20Magic%201.png" alt="Playtika Words Magic Visual 1" loading="lazy">
                                 </div>
                                 <div class="gallery-item">
-                                    <img src="assets/Words%20Magic%202.png" alt="Playtika Words Magic Visual 2">
+                                    <img src="assets/Words%20Magic%202.png" alt="Playtika Words Magic Visual 2" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -278,10 +278,10 @@
                         <div class="gallery-container">
                             <div class="gallery-scroll">
                                 <div class="gallery-item">
-                                    <img src="assets/SL1.png" alt="Splendorland Visual 1">
+                                    <img src="assets/SL1.png" alt="Splendorland Visual 1" loading="lazy">
                                 </div>
                                 <div class="gallery-item">
-                                    <img src="assets/SL2.png" alt="Splendorland Visual 2">
+                                    <img src="assets/SL2.png" alt="Splendorland Visual 2" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -313,32 +313,6 @@
     </footer>
 
     <script src="js/gallery.js"></script>
-    <script>
-        const toggleBtn = document.getElementById('theme-toggle');
-        const root = document.documentElement;
-        const savedTheme = localStorage.getItem('theme');
-
-        // Initial Load
-        if (savedTheme) {
-            root.setAttribute('data-theme', savedTheme);
-            updateIcon(savedTheme);
-        }
-
-        // Toggle Logic
-        toggleBtn.addEventListener('click', () => {
-            const currentTheme = root.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-            root.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateIcon(newTheme);
-        });
-
-        function updateIcon(theme) {
-            toggleBtn.textContent = theme === 'light' ? '☾' : '☀︎';
-        }
-    </script>
+    <script src="js/theme.js"></script>
 </body>
-
 </html>
-<!-- Timestamp to force refresh: 02/26/2026 15:10:15 -->
