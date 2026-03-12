@@ -134,13 +134,15 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" style="direction: ltr;">
         <div class="container nav-inner">
             <a href="index.html" class="logo">TALKALISKER</a>
-            <div class="nav-links">
-                <a href="developer.html" class="nav-link">חזרה ←</a>
+            <div style="display: flex; align-items: center; gap: 1rem; direction: rtl;">
+                <div class="nav-links">
+                    <a href="developer.html" class="nav-link">חזרה ←</a>
+                </div>
+                <button id="theme-toggle" class="nav-link theme-toggle" style="direction: ltr;">☀︎</button>
             </div>
-            <button id="theme-toggle" class="nav-link theme-toggle">☀︎</button>
         </div>
     </nav>
 
@@ -355,7 +357,8 @@
                     <!-- Abstract representation of the 'Trifecta' -->
                     <div
                         style="width: 100%; max-width: 420px; margin: 0 auto; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; position: relative;">
-                        <svg viewBox="0 0 400 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                        <svg viewBox="0 0 400 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                            style="direction: ltr;">
                             <defs>
                                 <radialGradient id="gradLogic" cx="50%" cy="50%" r="50%">
                                     <stop offset="0%" stop-color="#00f2ea" stop-opacity="0.15" />
