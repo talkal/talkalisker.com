@@ -135,12 +135,13 @@ section:last-of-type {
 
 .logo-img {
     display: block;
-    height: 2.2rem;
     width: 2.2rem;
+    height: 2.2rem;
     min-width: 2.2rem;
     min-height: 2.2rem;
-    max-width: 100%;
-    flex-shrink: 0;
+    max-width: 2.2rem;
+    max-height: 2.2rem;
+    flex: 0 0 2.2rem;
     object-fit: contain;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(122, 139, 125, 0.2);
