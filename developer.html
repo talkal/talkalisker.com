@@ -64,20 +64,20 @@
                 </div>
 
                 <div style="position: relative; z-index: 1;">
-                    <h4
+                    <h4 class="animate-on-scroll"
                         style="font-family: var(--font-mono); color: var(--accent-developer); margin-bottom: 1rem; letter-spacing: 0.1em; text-transform: lowercase;">
                         01. /web_presence</h4>
-                    <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; line-height: 1.1;">
+                    <h1 class="animate-on-scroll delay-100" style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; line-height: 1.1;">
                         <span class="lang-en">Creating Authentic<br>Digital Presences.</span>
                         <span class="lang-es">Creando Presencias<br>Digitales Auténticas.</span>
                     </h1>
-                    <p
+                    <p class="animate-on-scroll delay-200"
                         style="max-width: 650px; margin-bottom: 2.5rem; color: var(--text-secondary); font-size: 1.125rem; line-height: 1.7;">
                         <span class="lang-en">Building high-performance websites that capture the true essence of your business. Combining technical precision with elegant, custom-tailored design.</span>
                         <span class="lang-es">Construyendo sitios web de alto rendimiento que capturan la verdadera esencia de tu negocio. Combinando precisión técnica con un diseño elegante a medida.</span>
                     </p>
 
-                    <div style="display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center;">
+                    <div class="animate-on-scroll delay-300" style="display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center;">
                         <a href="developer-services" class="btn"
                             style="background: var(--accent-developer); color: #000; border: none; font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 20px color-mix(in srgb, var(--accent-developer) 25%, transparent); padding: 1.1rem 2.25rem; border-radius: 6px;">
                             <span class="lang-en">Explore Services</span><span class="lang-es">Explorar Servicios</span>
@@ -101,7 +101,7 @@
             <div style="margin-bottom: 8rem; position: relative;">
                 <div
                     style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem;">
-                    <div>
+                    <div class="animate-on-scroll">
                         <h2 style="font-size: 2.5rem; margin-bottom: 0.75rem;">
                             <span class="lang-en">Digital Craftsmanship</span><span class="lang-es">Artesanía Digital</span>
                         </h2>
@@ -115,7 +115,7 @@
 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
                     <!-- Service 1 -->
-                    <a href="developer-services#web-dev" class="dev-service-card">
+                    <a href="developer-services#web-dev" class="dev-service-card animate-on-scroll delay-100">
                         <div class="dev-service-icon">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -147,7 +147,7 @@
                     </a>
 
                     <!-- Service 2 -->
-                    <a href="developer-services#ui-ux" class="dev-service-card">
+                    <a href="developer-services#ui-ux" class="dev-service-card animate-on-scroll delay-200">
                         <div class="dev-service-icon">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -179,7 +179,7 @@
                     </a>
 
                     <!-- Service 3 -->
-                    <a href="developer-services#consulting" class="dev-service-card">
+                    <a href="developer-services#consulting" class="dev-service-card animate-on-scroll delay-300">
                         <div class="dev-service-icon">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -215,12 +215,12 @@
 
             <!-- Featured Work (Proof of capability) -->
             <div id="work" style="margin-bottom: 4rem; scroll-margin-top: 100px;">
-                <h3
+                <h3 class="animate-on-scroll"
                     style="margin-bottom: 2rem; color: var(--accent-developer); font-family: var(--font-mono); font-size: 1rem; letter-spacing: 0.1em; text-transform: lowercase;">
                     <span class="lang-en">&lt;success_stories /&gt;</span>
                     <span class="lang-es">&lt;casos_de_éxito /&gt;</span>
                 </h3>
-                <div style="background: var(--dev-card-bg); padding: 3rem; border-radius: 16px; border: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-start; transition: all 0.4s ease; position: relative; overflow: hidden;"
+                <div class="animate-on-scroll delay-100" style="background: var(--dev-card-bg); padding: 3rem; border-radius: 16px; border: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-start; transition: all 0.4s ease; position: relative; overflow: hidden;"
                     onmouseover="this.style.borderColor='var(--dev-card-border-hover)'; this.style.background='var(--dev-card-hover-bg)';"
                     onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.background='var(--dev-card-bg)';">
 
@@ -292,6 +292,21 @@
         </p>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 
 <script src="js/theme.js"></script>
