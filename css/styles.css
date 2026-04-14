@@ -5,11 +5,11 @@
 
 :root {
   /* Core Palette */
-  --bg-core: #050505;
-  --bg-surface: #121212;
-  --bg-portal: rgba(255, 255, 255, 0.03);
+  --bg-core: #1a1917;
+  --bg-surface: #24221f;
+  --bg-portal: rgba(255, 255, 255, 0.02);
   /* Added for portal cards */
-  --bg-surface-frosted: rgba(18, 18, 18, 0.8);
+  --bg-surface-frosted: rgba(36, 34, 31, 0.8);
 
   /* Developer Custom Cards */
   --dev-card-bg: rgba(255, 255, 255, 0.02);
@@ -242,7 +242,7 @@ section {
 
 .nav-link {
   font-size: 0.9rem;
-  text-transform: uppercase;
+  text-transform: lowercase;
   letter-spacing: 0.05em;
   opacity: 0.7;
 }
@@ -342,7 +342,7 @@ section {
 /* Copywriter Section Specifics */
 .section-copy h2 {
   font-weight: 900;
-  text-transform: uppercase;
+  text-transform: lowercase;
   color: var(--accent-copywriter);
 }
 
@@ -358,7 +358,7 @@ section {
   background: var(--bg-surface);
   border: 1px solid var(--text-primary);
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: lowercase;
   letter-spacing: 0.05em;
   font-size: 0.8rem;
   transition: all var(--transition-fast);
@@ -496,7 +496,7 @@ section {
 .meta-item h5 {
   color: var(--text-secondary);
   font-size: 0.75rem;
-  text-transform: uppercase;
+  text-transform: lowercase;
   margin-bottom: 0.25rem;
 }
 
@@ -541,7 +541,7 @@ section {
 }
 
 .hero-title {
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-weight: 900;
   position: relative;
   display: inline-block;
@@ -750,7 +750,7 @@ section {
   display: flex;
   justify-content: space-between;
   font-family: var(--font-mono);
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
   color: var(--text-secondary);
@@ -805,7 +805,7 @@ section {
   color: var(--accent-copywriter);
   font-size: 0.7rem;
   margin-left: 0.5rem;
-  text-transform: uppercase;
+  text-transform: lowercase;
   letter-spacing: 0.05em;
   background: rgba(255, 0, 85, 0.1);
   padding: 0.25rem 0.5rem;
@@ -844,7 +844,7 @@ section {
 .section-label {
   color: var(--accent-copywriter);
   font-size: 0.7rem;
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-weight: bold;
   letter-spacing: 0.05em;
   margin-bottom: 0.25rem;
@@ -856,7 +856,7 @@ section {
 }
 
 .text-uc {
-  text-transform: uppercase;
+  text-transform: lowercase;
 }
 
 .text-mono {

@@ -49,7 +49,7 @@
     font-family: var(--font-mono);
     color: var(--text-secondary);
     font-size: 0.85rem;
-    text-transform: uppercase;
+    text-transform: lowercase;
     letter-spacing: 0.1em;
 }
 

@@ -135,7 +135,7 @@ section:last-of-type {
     color: var(--yoga-accent);
     margin-left: 2rem;
     font-size: 0.9rem;
-    text-transform: uppercase;
+    text-transform: lowercase;
     letter-spacing: 0.1em;
     transition: color 0.3s ease;
 }
@@ -152,7 +152,7 @@ section:last-of-type {
 
 .hero-sub {
     font-family: var(--font-sans);
-    text-transform: uppercase;
+    text-transform: lowercase;
     letter-spacing: 0.2em;
     color: var(--yoga-accent-warm);
     font-size: 0.9rem;
@@ -172,7 +172,7 @@ section:last-of-type {
 }
 
 .cv-label {
-    text-transform: uppercase;
+    text-transform: lowercase;
     font-size: 0.8rem;
     color: var(--yoga-accent);
     letter-spacing: 0.1em;
