@@ -239,8 +239,13 @@ section {
 }
 
 .logo-img {
+  display: block;
   height: 2.2rem;
   width: 2.2rem;
+  min-width: 2.2rem;
+  min-height: 2.2rem;
+  max-width: 100%;
+  flex-shrink: 0;
   object-fit: contain;
   border-radius: 50%; /* Make it a circular icon to hide potential background box edges */
   box-shadow: 0 0 10px rgba(184, 90, 68, 0.2);
