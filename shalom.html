@@ -137,13 +137,16 @@
     <!-- Navigation -->
     <nav class="navbar" style="direction: ltr;">
         <div class="container nav-inner">
-            <a href="index.html" class="logo"><img src="assets/talkalisker_logo.png" alt="Talkalisker Logo" class="logo-img">TalKalisker</a>
-            <div style="display: flex; align-items: center; gap: 1rem; direction: rtl;">
-                <div class="nav-links">
-                    <a href="developer.html" class="nav-link">חזרה ←</a>
-                </div>
-                <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle dark mode" style="direction: ltr;">☀︎</button>
+            <a href="index" class="logo"><img src="assets/talkalisker_logo.png" alt="Talkalisker Logo" class="logo-img">TalKalisker</a>
+            <div class="nav-links" id="nav-links">
+                <a href="developer" class="nav-link">חזרה ←</a>
+                <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle dark mode">☀︎</button>
             </div>
+            <button class="hamburger" id="hamburger-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
         </div>
     </nav>
 
@@ -507,6 +510,7 @@
         </div>
     </footer>
 
+    <script src="js/nav.js"></script>
     <script src="js/theme.js"></script>
 </body>
 

@@ -134,24 +134,32 @@
 
 <body>
 
-    <!-- Simple Navigation -->
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-inner">
-            <a href="#" class="logo"><img src="assets/talkalisker_logo.png" alt="Talkalisker Logo" class="logo-img">TalKalisker</a>
-            <div class="nav-links">
-                <!-- Direct Links optionally here, but the page itself is the menu -->
+            <a href="index" class="logo"><img src="assets/talkalisker_logo.png" alt="Talkalisker Logo" class="logo-img">TalKalisker</a>
+            <div class="nav-links" id="nav-links">
+                <a href="developer" class="nav-link">Developer</a>
+                <a href="novelist" class="nav-link">Writer</a>
+                <a href="copywriter" class="nav-link">Copywriter</a>
+                <a href="yoga" class="nav-link">Yoga</a>
                 <a href="#contact" class="nav-link">Contact</a>
+                <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle dark mode">☀︎</button>
             </div>
-            <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle dark mode">☀︎</button>
+            <button class="hamburger" id="hamburger-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
         </div>
     </nav>
 
     <!-- Hero / Intro -->
     <section class="section-hero" style="min-height: 40vh; padding-top: 8rem;">
         <div class="container">
-            <h4 class="hero-subtitle">Character Select</h4>
-            <h1 class="hero-title white-glow">Multiclass<br>Character.</h1>
-            <p class="hero-text">
+            <h4 class="hero-subtitle animate-on-scroll">Character Select</h4>
+            <h1 class="hero-title white-glow animate-on-scroll" style="transition-delay: 0.1s;">Multiclass<br>Character.</h1>
+            <p class="hero-text animate-on-scroll" style="transition-delay: 0.2s;">
                 Some people specialize in one thing. I prefer to specialize in many and unify them. <br>
                 Choose a path below to view my work.
             </p>
@@ -162,7 +170,7 @@
     <section class="container">
         <div class="portal-grid">
 
-            <a href="developer" class="portal-card dev">
+            <a href="developer" class="portal-card dev animate-on-scroll" style="transition-delay: 0.3s;">
                 <div>
                     <div class="card-label">Authentic</div>
                     <h2>Developer</h2>
@@ -173,7 +181,7 @@
             </a>
 
             <!-- Novelist Portal -->
-            <a href="novelist" class="portal-card writer">
+            <a href="novelist" class="portal-card writer animate-on-scroll" style="transition-delay: 0.4s;">
                 <div>
                     <div class="card-label">Creator</div>
                     <h2>The Novelist</h2>
@@ -184,7 +192,7 @@
             </a>
 
             <!-- Copywriter Portal -->
-            <a href="copywriter" class="portal-card copy">
+            <a href="copywriter" class="portal-card copy animate-on-scroll" style="transition-delay: 0.5s;">
                 <div>
                     <div class="card-label">Level 99</div>
                     <h2>Gaming Copywriter</h2>
@@ -194,7 +202,7 @@
             </a>
 
             <!-- Yoga Portal -->
-            <a href="yoga" class="portal-card yoga">
+            <a href="yoga" class="portal-card yoga animate-on-scroll" style="transition-delay: 0.6s;">
                 <div>
                     <div class="card-label">Instructor</div>
                     <h2>Vijnana Yoga</h2>
@@ -220,8 +228,9 @@
         </div>
     </section>
 
+    <script src="js/animations.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/theme.js"></script>
 </body>
-
-<script src="js/theme.js"></script>
 
 </html>

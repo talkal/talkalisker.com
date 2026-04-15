@@ -10,6 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/yoga.css">
     <meta name="description"
         content="Yoga Curriculum Vitae. Professional Yoga Instructor offering classes and workshops in Madrid.">
@@ -18,15 +19,22 @@
 <body class="yoga-body">
 
     <!-- Navigation -->
-    <div class="container">
-        <nav class="yoga-nav">
-            <a href="index" class="yoga-logo"><img src="assets/talkalisker_logo.png" alt="Talkalisker Logo" class="logo-img">TalKalisker</a>
-            <div>
-                <a href="index">Main Portfolio</a>
-                <a href="#contact" style="color: var(--yoga-text);">Contact</a>
+    <nav class="navbar yoga-navbar">
+        <div class="container nav-inner">
+            <a href="index" class="logo"><img src="assets/talkalisker_logo.png" alt="Talkalisker Logo" class="logo-img">TalKalisker</a>
+            <div class="nav-links" id="nav-links">
+                <a href="index" class="nav-link">Main Portfolio</a>
+                <a href="yoga" class="nav-link">Yoga Home</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle dark mode">☀︎</button>
             </div>
-        </nav>
-    </div>
+            <button class="hamburger" id="hamburger-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -201,6 +209,8 @@
         </div>
     </footer>
 
+    <script src="js/nav.js"></script>
+    <script src="js/theme.js"></script>
 </body>
 
 </html>

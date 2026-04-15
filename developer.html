@@ -31,7 +31,7 @@
     <nav class="navbar">
         <div class="container nav-inner">
             <a href="index" class="logo"><img src="assets/talkalisker_logo.png" alt="Talkalisker Logo" class="logo-img">TalKalisker</a>
-            <div class="nav-links">
+            <div class="nav-links" id="nav-links">
                 <a href="developer" class="nav-link active">
                     <span class="lang-en">Developer</span><span class="lang-es">Desarrollador</span>
                 </a>
@@ -39,18 +39,19 @@
                     <span class="lang-en">Writer</span><span class="lang-es">Escritor</span>
                 </a>
                 <a href="copywriter" class="nav-link">Copywriter</a>
-                <a href="yoga" class="nav-link"
-                    style="color: #F9F7F2; border: 1px solid rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 4px; margin-left: 1rem;">Yoga</a>
-            </div>
-            <div style="display: flex; align-items: center;">
+                <a href="yoga" class="nav-link">Yoga</a>
                 <button id="lang-toggle" class="nav-link" aria-label="Toggle language"
-                    style="background: none; border: none; cursor: pointer; color: inherit; font-size: 0.9rem; font-weight: 600; padding: 0; margin-left: 1rem;">
+                    style="background: none; border: none; cursor: pointer; color: inherit; font-size: 0.9rem; font-weight: 600; padding: 0;">
                     <span class="lang-en">es</span>
                     <span class="lang-es">en</span>
                 </button>
-                <button id="theme-toggle" class="nav-link" aria-label="Toggle dark mode"
-                    style="background: none; border: none; cursor: pointer; color: inherit; font-size: 1.2rem; margin-left: 1rem;">☀︎</button>
+                <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle dark mode">☀︎</button>
             </div>
+            <button class="hamburger" id="hamburger-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
         </div>
     </nav>
 
@@ -293,38 +294,25 @@
         </p>
     </footer>
 
+    <script src="js/animations.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/lang.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("is-visible");
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-                observer.observe(el);
-            });
-        });
+        window.updateDocumentMetaDev = function(lang) {
+            if (lang === 'es') {
+                document.title = 'Talkalisker | Diseño Web Auténtico';
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) metaDesc.content = "Talkalisker - Creando la auténtica presencia digital de tu negocio a través del diseño web a medida.";
+            } else {
+                document.title = 'Talkalisker | Authentic Web Design';
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) metaDesc.content = "Talkalisker - Creating your business' authentic digital presence through bespoke web design.";
+            }
+        };
     </script>
 </body>
 
-<script src="js/theme.js"></script>
-<script src="js/lang.js"></script>
-<script>
-    window.updateDocumentMetaDev = function(lang) {
-        if (lang === 'es') {
-            document.title = 'Talkalisker | Diseño Web Auténtico';
-            const metaDesc = document.querySelector('meta[name="description"]');
-            if (metaDesc) metaDesc.content = "Talkalisker - Creando la auténtica presencia digital de tu negocio a través del diseño web a medida.";
-        } else {
-            document.title = 'Talkalisker | Authentic Web Design';
-            const metaDesc = document.querySelector('meta[name="description"]');
-            if (metaDesc) metaDesc.content = "Talkalisker - Creating your business' authentic digital presence through bespoke web design.";
-        }
-    };
-</script>
-
 </html>
+
 

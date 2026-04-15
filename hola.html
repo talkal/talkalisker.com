@@ -78,10 +78,15 @@
     <nav class="navbar">
         <div class="container nav-inner">
             <a href="index" class="logo"><img src="assets/talkalisker_logo.png" alt="Talkalisker Logo" class="logo-img">TalKalisker</a>
-            <div class="nav-links">
-                <a href="developer.html" class="nav-link">← Volver</a>
+            <div class="nav-links" id="nav-links">
+                <a href="developer" class="nav-link">← Volver</a>
+                <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle dark mode">☀︎</button>
             </div>
-            <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle dark mode">☀︎</button>
+            <button class="hamburger" id="hamburger-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
         </div>
     </nav>
 
@@ -216,6 +221,7 @@
         </div>
     </footer>
 
+    <script src="js/nav.js"></script>
     <script src="js/theme.js"></script>
 </body>
 

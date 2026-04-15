@@ -32,19 +32,27 @@
     <nav class="navbar">
         <div class="container nav-inner">
             <a href="index" class="logo"><img src="assets/talkalisker_logo.png" alt="Talkalisker Logo" class="logo-img">TalKalisker</a>
-            <div class="nav-links">
-                <a href="developer.html" class="nav-link" style="margin-right: 1rem;">
+            <div class="nav-links" id="nav-links">
+                <a href="developer" class="nav-link">
                     <span class="lang-en">← Back</span><span class="lang-es">← Volver</span>
                 </a>
-            </div>
-            <div style="display: flex; align-items: center;">
+                <a href="novelist" class="nav-link">
+                    <span class="lang-en">Writer</span><span class="lang-es">Escritor</span>
+                </a>
+                <a href="copywriter" class="nav-link">Copywriter</a>
+                <a href="yoga" class="nav-link">Yoga</a>
                 <button id="lang-toggle" class="nav-link" aria-label="Toggle language"
-                    style="background: none; border: none; cursor: pointer; color: inherit; font-size: 0.9rem; font-weight: 600; padding: 0; margin-left: 1rem;">
+                    style="background: none; border: none; cursor: pointer; color: inherit; font-size: 0.9rem; font-weight: 600; padding: 0;">
                     <span class="lang-en">es</span>
                     <span class="lang-es">en</span>
                 </button>
-                <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle dark mode" style="margin-left: 1rem;">☀︎</button>
+                <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle dark mode">☀︎</button>
             </div>
+            <button class="hamburger" id="hamburger-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
         </div>
     </nav>
 
@@ -751,21 +759,8 @@
             }
         }
     </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("is-visible");
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-                observer.observe(el);
-            });
-        });
-    </script>
+    <script src="js/animations.js"></script>
+    <script src="js/nav.js"></script>
 </body>
 
 </html>

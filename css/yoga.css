@@ -112,52 +112,34 @@ section:last-of-type {
     border-bottom: none;
 }
 
-/* Navigation (Specific for Yoga Page) */
-.yoga-nav {
-    padding: 2rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Navigation Override for Yoga Page — inherits from .navbar in styles.css */
+.yoga-navbar {
+    background: rgba(249, 247, 242, 0.95);
     border-bottom: 1px solid var(--yoga-border);
 }
 
-.yoga-logo {
-    font-family: var(--font-serif);
-    font-weight: 700;
-    text-decoration: none;
+[data-theme="dark"] .yoga-navbar {
+    background: rgba(26, 26, 26, 0.95);
+}
+
+.yoga-navbar .logo {
     color: var(--yoga-text);
-    font-size: 1.25rem;
-    letter-spacing: 0.05em;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
 }
 
-.logo-img {
-    display: block;
-    width: 2.2rem;
-    height: 2.2rem;
-    min-width: 2.2rem;
-    min-height: 2.2rem;
-    max-width: 2.2rem;
-    max-height: 2.2rem;
-    flex: 0 0 2.2rem;
-    object-fit: contain;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(122, 139, 125, 0.2);
-    transition: transform 0.3s ease;
-}
-
-.yoga-logo:hover .logo-img {
-    transform: scale(1.05) rotate(5deg);
-}
-
-.yoga-nav a {
-    text-decoration: none;
+.yoga-navbar .nav-link {
     color: var(--yoga-accent);
-    margin-left: 2rem;
-    font-size: 0.9rem;
-    text-transform: lowercase;
+}
+
+.yoga-navbar .hamburger-bar {
+    background: var(--yoga-text);
+}
+
+/* Mobile drawer override */
+@media (max-width: 768px) {
+    .yoga-navbar .nav-links {
+        background: var(--yoga-bg);
+    }
+}
     letter-spacing: 0.1em;
     transition: color 0.3s ease;
 }

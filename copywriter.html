@@ -29,14 +29,18 @@
     <nav class="navbar">
         <div class="container nav-inner">
             <a href="index" class="logo"><img src="assets/talkalisker_logo.png" alt="Talkalisker Logo" class="logo-img">TalKalisker</a>
-            <div class="nav-links">
-                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☀︎</button>
+            <div class="nav-links" id="nav-links">
                 <a href="developer" class="nav-link">Developer</a>
                 <a href="novelist" class="nav-link">Writer</a>
                 <a href="copywriter" class="nav-link active">Copywriter</a>
-                <a href="yoga" class="nav-link"
-                    style="color: #F9F7F2; border: 1px solid rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 4px; margin-left: 1rem;">Yoga</a>
+                <a href="yoga" class="nav-link">Yoga</a>
+                <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle dark mode">☀︎</button>
             </div>
+            <button class="hamburger" id="hamburger-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
         </div>
     </nav>
 
@@ -312,6 +316,7 @@
         <p>&copy; 2026 Talkalisker. Built with precision.</p>
     </footer>
 
+    <script src="js/nav.js"></script>
     <script src="js/gallery.js"></script>
     <script src="js/theme.js"></script>
 </body>
