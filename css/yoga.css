@@ -140,9 +140,7 @@ section:last-of-type {
         background: var(--yoga-bg);
     }
 }
-    letter-spacing: 0.1em;
-    transition: color 0.3s ease;
-}
+
 
 .yoga-nav a:hover {
     color: var(--yoga-accent-warm);
