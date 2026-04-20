@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <meta name="client" content="Hadassah Shoulder Unit">
+    <meta name="project" content="UX Audit & Patient Flow Optimization">
     <meta name="date" content="2026-04-20">
     <meta name="type" content="System Audit">
     <meta name="confidential" content="false">
@@ -122,10 +123,62 @@
         .sev-medium { background: rgba(255, 159, 10, 0.1); color: #FF9F0A; }
         .sev-low { background: rgba(107, 142, 35, 0.1); color: #6B8E23; }
 
+        /* Proposal Card (Naming Strategy) */
+        .proposal-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .proposal-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; height: 100%; width: 4px;
+            background: var(--accent);
+        }
+        .proposal-name {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        .proposal-slogan {
+            font-family: var(--font-mono);
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+        .proposal-desc {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        .proposal-badge {
+            position: absolute;
+            top: 3rem; right: 3rem;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            background: rgba(184, 90, 68, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+        }
+
         /* Images & Evidence */
         .evidence-img {
             max-width: 100%;
-            height: auto;
+            max-height: 500px;
+            object-fit: contain;
             border-radius: 12px;
             border: 1px solid var(--border-subtle);
             margin: 2rem 0 1rem 0;
@@ -201,7 +254,7 @@
             <div class="lang-block" lang="en"><h1 id="summary">01. /summary</h1>
 <p>We have completed a comprehensive review of the Hadassah Shoulder Unit digital front-door. The primary goal was to simplify the patient journey from symptom discovery to appointment booking. The current site is information-dense but navigationally opaque for elderly patients—the primary demographic.</p>
 
-<div style="text-align:center;"><img src="assets/hadassah_home.png" alt="Analysis of the Hadassah Homepage Desktop Experience" class="evidence-img"><div class="img-caption">// figure: Analysis of the Hadassah Homepage Desktop Experience</div></div>
+<p>[Missing Asset: hadassah_home.png]</p>
 
 <h1 id="findings">02. /findings</h1>
 <p>The current digital experience acts as a library rather than a clinic. Patients are required to read through institutional history before finding actionable symptom guides.</p>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <meta name="client" content="Guillermo">
+    <meta name="project" content="Process Architecture">
     <meta name="date" content="2026-04-20">
     <meta name="type" content="Naming Strategy">
     <meta name="confidential" content="false">
@@ -122,10 +123,62 @@
         .sev-medium { background: rgba(255, 159, 10, 0.1); color: #FF9F0A; }
         .sev-low { background: rgba(107, 142, 35, 0.1); color: #6B8E23; }
 
+        /* Proposal Card (Naming Strategy) */
+        .proposal-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .proposal-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; height: 100%; width: 4px;
+            background: var(--accent);
+        }
+        .proposal-name {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        .proposal-slogan {
+            font-family: var(--font-mono);
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+        .proposal-desc {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        .proposal-badge {
+            position: absolute;
+            top: 3rem; right: 3rem;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            background: rgba(184, 90, 68, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+        }
+
         /* Images & Evidence */
         .evidence-img {
             max-width: 100%;
-            height: auto;
+            max-height: 500px;
+            object-fit: contain;
             border-radius: 12px;
             border: 1px solid var(--border-subtle);
             margin: 2rem 0 1rem 0;
@@ -199,51 +252,45 @@
 
         <article id="content">
             <div class="lang-block" lang="en"><h1 id="summary">01. /summary</h1>
-<p>This report presents the final naming proposals for the new process consultancy project. The goal is to convey precision, structure, and trust through names with Latin roots and technical resonance, aligned with the values of "order, system, and integration."</p>
+<p>Precision-engineered naming options for a consultancy focused on order, system, and integration.</p>
 
 <h1 id="proposals">02. /proposals</h1>
-<p>The following are the two strategic directions explored, each with specific options reflecting the robustness and synchrony of the proposed system.</p>
+<p>The following directions emphasize authority and synchronization.</p>
 
-<div class="finding-card"><div class="finding-meta"><strong>ORDO</strong><span class="severity sev-high">High</span></div><div class="finding-desc">Derived directly from the Latin "ordo." Conveys authority, structure, and a classic approach to business management. Ideal for a "total control" positioning.</div></div>
-<p>*Suggested Slogan:* "Every process in its place."</p>
 
-<div class="finding-card"><div class="finding-meta"><strong>STRUCTA</strong><span class="severity sev-high">High</span></div><div class="finding-desc">Based on architecture and process engineering. Suggests solid foundations and a custom-built operational infrastructure.</div></div>
-<p>*Suggested Slogan:* "The solid foundation your business needs."</p>
+<div class="proposal-card">
+<div class="proposal-badge">HIGH</div>
+<div class="proposal-name">ORDO</div>
+<div class="proposal-slogan">Every process in its place</div>
+<div class="proposal-desc">Derived from the Latin "ordo." Conveys authority, structure, and a classic approach to business management. Ideal for a "total control" positioning.</div>
+</div>
 
-<div class="finding-card"><div class="finding-meta"><strong>SINCRUS</strong><span class="severity sev-medium">Medium</span></div><div class="finding-desc">A contraction of "synchronized" with a robust suffix. Conveys organic modernity and the idea that the entire business beats at the same rhythm.</div></div>
-<p>*Suggested Slogan:* "Synchronized processes, concrete results."</p>
 
-<div class="finding-card"><div class="finding-meta"><strong>ÓRBITA</strong><span class="severity sev-medium">Medium</span></div><div class="finding-desc">Reference to perfect trajectories and systems in harmonic motion. It is evocative and technical without being cryptic.</div></div>
-<p>*Suggested Slogan:* "Solutions that keep everything in motion."</p>
+<div class="proposal-card">
+<div class="proposal-badge">HIGH</div>
+<div class="proposal-name">STRUCTA</div>
+<div class="proposal-slogan">The solid foundation your business needs</div>
+<div class="proposal-desc">Based on architecture and process engineering. Suggests solid foundations and a custom-built operational infrastructure.</div>
+</div>
 
-<div class="finding-card"><div class="finding-meta"><strong>PULSER</strong><span class="severity sev-high">High</span></div><div class="finding-desc">From the Latin "pulsus." Represents the rhythmic heartbeat and energy under control. Modern and technical.</div></div>
-<p>*Suggested Slogan:* "The pulse that synchronizes your company."</p>
 
-<h1 id="strategy">03. /strategy</h1>
-<p>The final selection should be based on the desired brand persona: the academic seriousness of <strong>ORDO</strong>, the technical precision of <strong>STRUCTA</strong>, or the harmonic dynamics of <strong>ÓRBITA</strong>.</p></div>
+<div class="proposal-card">
+<div class="proposal-badge">MEDIUM</div>
+<div class="proposal-name">SINCRUS</div>
+<div class="proposal-slogan">Synchronized processes, concrete results</div>
+<div class="proposal-desc">A contraction of "synchronized" with a robust suffix. Conveys organic modernity.</div>
+</div></div>
             <div class="lang-block" lang="es" style="display: none;"><h1 id="resumen">01. /resumen</h1>
-<p>Este informe presenta las propuestas finales de naming para el nuevo proyecto de consultoría de procesos. El objetivo es transmitir precisión, estructura y confianza a través de nombres con raíces latinas y sonoridad técnica, alineados con los valores de "orden, sistema e integración".</p>
+<p>Opciones de naming diseñadas para una consultoría enfocada en el orden, el sistema y la integración.</p>
 
 <h1 id="propuestas">02. /propuestas</h1>
-<p>A continuación se detallan las dos direcciones estratégicas exploradas, cada una con opciones específicas que reflejan la robustez y la sincronía del sistema propuesto.</p>
 
-<div class="finding-card"><div class="finding-meta"><strong>ORDO</strong><span class="severity sev-high">High</span></div><div class="finding-desc">Derivado directamente del latín "ordo". Transmite autoridad, estructura y un enfoque clásico de gestión empresarial. Es ideal para un posicionamiento de "control total".</div></div>
-<p>*Slogan sugerido:* "Cada proceso en su lugar".</p>
-
-<div class="finding-card"><div class="finding-meta"><strong>STRUCTA</strong><span class="severity sev-high">High</span></div><div class="finding-desc">Basado en la arquitectura y la ingeniería de procesos. Sugiere bases sólidas y una construcción a medida de la infraestructura operativa.</div></div>
-<p>*Slogan sugerido:* "La base sólida que su empresa necesita".</p>
-
-<div class="finding-card"><div class="finding-meta"><strong>SINCRUS</strong><span class="severity sev-medium">Medium</span></div><div class="finding-desc">Una contracción de "sincronizado" con sufijo robusto. Transmite una modernidad orgánica y la idea de que todo el negocio late al mismo ritmo.</div></div>
-<p>*Slogan sugerido:* "Procesos sincronizados, resultados concretos".</p>
-
-<div class="finding-card"><div class="finding-meta"><strong>ÓRBITA</strong><span class="severity sev-medium">Medium</span></div><div class="finding-desc">Referencia a trayectorias perfectas y sistemas en movimiento armónico. Es evocativo y técnico sin resultar críptico.</div></div>
-<p>*Slogan sugerido:* "Soluciones que mantienen todo en marcha".</p>
-
-<div class="finding-card"><div class="finding-meta"><strong>PULSER</strong><span class="severity sev-high">High</span></div><div class="finding-desc">Del latín "pulsus". Representa el latido rítmico y la energía bajo control. Moderno y técnico.</div></div>
-<p>*Slogan sugerido:* "El pulso que sincroniza su empresa".</p>
-
-<h1 id="estrategia">03. /estrategia</h1>
-<p>La selección final debe basarse en la personalidad que se desee proyectar: la seriedad académica de <strong>ORDO</strong>, la precisión técnica de <strong>STRUCTA</strong> o la dinámica armónica de <strong>ÓRBITA</strong>.</p></div>
+<div class="proposal-card">
+<div class="proposal-badge">ALTO</div>
+<div class="proposal-name">ORDO</div>
+<div class="proposal-slogan">Cada proceso en su lugar</div>
+<div class="proposal-desc">Transmite autoridad, estructura y un enfoque clásico de gestión empresarial.</div>
+</div></div>
             <div class="lang-block" lang="he" style="display: none;"></div>
         </article>
     </main>
