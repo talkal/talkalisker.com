@@ -616,28 +616,28 @@ section {
 
 /* Light Mode Overrides */
 [data-theme="light"] {
-  --bg-core: #f8f9fa;
-  --bg-surface: #ffffff;
+  --bg-core: #FAF8F5; /* Cream */
+  --bg-surface: #EFECE5; /* Beige */
   --bg-portal: #ffffff;
-  --bg-surface-frosted: rgba(255, 255, 255, 0.85);
+  --bg-surface-frosted: rgba(250, 248, 245, 0.85);
 
-  /* Developer Custom Cards (Light Mode) */
+  /* Developer Custom Cards (Light Mode) - Aligning with v2.0.0 */
   --dev-card-bg: #ffffff;
-  --dev-card-hover-bg: #f8f9fa;
-  --dev-card-border: rgba(162, 75, 54, 0.15);
+  --dev-card-hover-bg: #FAF8F5;
+  --dev-card-border: rgba(184, 90, 68, 0.15);
   --dev-card-border-hover: var(--accent-developer);
   --dev-tag-bg: rgba(0, 0, 0, 0.05);
   --dev-tag-border: rgba(0, 0, 0, 0.1);
-  --accent-developer: #A24B36;
+  --accent-developer: #B85A44; /* Terracotta v2.0.0 */
 
-  --text-primary: #1a1a1a;
-  --text-secondary: #555555;
-  --text-muted: #888888;
+  --text-primary: #2C2A28; /* Ink */
+  --text-secondary: #6F6B66; /* Muted */
+  --text-muted: #8F8B85;
 
-  --border-subtle: 1px solid rgba(0, 0, 0, 0.08);
+  --border-subtle: 1px solid rgba(44, 42, 40, 0.08);
 
   /* Adjust gradients for light mode to be visible but subtle */
-  --gradient-dev: linear-gradient(135deg, rgba(162, 75, 54, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
+  --gradient-dev: linear-gradient(135deg, rgba(184, 90, 68, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
   --gradient-writer: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
   --gradient-copy: linear-gradient(135deg, rgba(255, 0, 85, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
 }

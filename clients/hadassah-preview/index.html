@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Hadassah Patient Experience Digital Audit | Talkalisker Client Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Synchronized with talkalisker.com/developer-services */
+            --bg-core: #111111;
+            --bg-surface: #1A1A1A;
+            --accent: #B85A44;
+            --accent-red: #FF3B30;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A1A1A1;
+            --border-subtle: rgba(255, 255, 255, 0.05);
+            --font-main: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        [data-theme="light"] {
+            --bg-core: #FAF8F5;
+            --bg-surface: #EFECE5;
+            --text-primary: #2C2A28;
+            --text-secondary: #6F6B66;
+            --border-subtle: rgba(44, 42, 40, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: var(--bg-core); 
+            color: var(--text-primary); 
+            font-family: var(--font-main);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 300px;
+            background: var(--bg-surface);
+            border-right: 1px solid var(--border-subtle);
+            padding: 3rem 2rem;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo img { width: 32px; border-radius: 50%; background: white; padding: 2px; }
+
+        .nav-link {
+            display: block;
+            padding: 0.8rem 0;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover { color: var(--accent); }
+        .nav-link.active { color: var(--accent); border-right: 2px solid var(--accent); }
+
+        /* Main Content */
+        .main {
+            flex: 1;
+            padding: 4rem 10% 8rem 10%;
+            max-width: 1200px;
+        }
+
+        .report-header { margin-bottom: 6rem; }
+        .report-label { color: var(--accent-red); font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 1rem; }
+        .report-title { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem; }
+        .report-client { color: var(--accent); font-family: var(--font-mono); font-size: 1.2rem; }
+
+        section { padding: 4rem 0; border-top: 1px solid var(--border-subtle); }
+        h1, h2 { margin-bottom: 2rem; }
+        p { line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.1rem; }
+
+        /* Findings Card */
+        .finding-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .finding-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        .severity { padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 700; text-transform: uppercase; }
+        .sev-high { background: rgba(255, 59, 48, 0.1); color: var(--accent-red); }
+        .sev-medium { background: rgba(255, 159, 10, 0.1); color: #FF9F0A; }
+        .sev-low { background: rgba(107, 142, 35, 0.1); color: #6B8E23; }
+
+        @media print {
+            .sidebar { display: none; }
+            .main { padding: 0; max-width: 100%; }
+            body { background: white; color: black; }
+            .finding-card { page-break-inside: avoid; border: 1px solid #eee; }
+        }
+
+        @media (max-width: 900px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="../../assets/talkalisker_logo.png" alt="Logo">
+            TalKalisker
+        </div>
+        <nav>
+            <a href="#summary" class="nav-link">01. /summary</a>
+            <a href="#findings" class="nav-link">02. /findings</a>
+            <a href="#strategy" class="nav-link">03. /strategy</a>
+        </nav>
+        <div style="margin-top: auto;">
+            <button onclick="toggleTheme()" style="background: none; border: none; color: var(--text-secondary); cursor: pointer; font-family: var(--font-mono); font-size: 0.8rem;">
+                [toggle_theme]
+            </button>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="report-header">
+            <div class="report-label">// deliverable: System Audit</div>
+            <h1 class="report-title">Hadassah Patient Experience Digital Audit</h1>
+            <div class="report-client">// client: Hadassah Shoulder Unit</div>
+        </header>
+
+        <article id="content">
+            <h1>Executive Summary</h1>
+<p>We have completed a comprehensive review of the Hadassah Shoulder Unit digital front-door. The primary goal was to simplify the patient journey from symptom discovery to appointment booking. The current site is information-dense but navigationally opaque for elderly patients—the primary demographic.</p>
+
+<h1>01. /current_state</h1>
+<p>The current digital experience acts as a library rather than a clinic. Patients are required to read through institutional history before finding actionable symptom guides.</p>
+
+<h1>Findings</h1>
+
+
+<div class="finding-card">
+<div class="finding-meta">
+<strong>Information Overload on Homepage</strong>
+<span class="severity sev-high">High</span>
+</div>
+<div class="finding-desc">The homepage contains 14 different CTAs, leading to decision paralysis. Patients reported frustration when trying to locate the "Book Appointment" button. We recommend reducing the primary actions to 3 clear paths.</div>
+</div>
+
+
+<div class="finding-card">
+<div class="finding-meta">
+<strong>Mobile Responsiveness on Booking Form</strong>
+<span class="severity sev-medium">Medium</span>
+</div>
+<div class="finding-desc">Sidebars and popups are overlapping content on small screens (iPhone 13/14). This prevents patients from completing the symptom navigator on the go.</div>
+</div>
+
+
+<div class="finding-card">
+<div class="finding-meta">
+<strong>Visual Contrast</strong>
+<span class="severity sev-low">Low</span>
+</div>
+<div class="finding-desc">The light-gray text on white backgrounds in the "Preparation for Surgery" section does not meet accessibility standards for visually impaired patients.</div>
+</div>
+
+<h1>Recommendations</h1>
+<p>- <strong>Path 1:</strong> Implement a "Symptom Navigator" as the primary hero action.</p>
+<p>- <strong>Path 2:</strong> Simplify the menu architecture to "Learn", "Prepare", and "Contact".</p>
+<p>- <strong>Path 3:</strong> Redesign the booking form to be a multi-step, localized experience.</p>
+        </article>
+    </main>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme');
+            html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+        }
+    </script>
+</body>
+</html>

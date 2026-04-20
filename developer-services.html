@@ -259,7 +259,7 @@
                     <!-- Abstract representation of the 'Trifecta' -->
                     <div
                         style="width: 100%; max-width: 420px; margin: 0 auto; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; position: relative;">
-                        <svg viewBox="0 0 400 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                        <svg viewBox="0 0 400 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" class="trifecta-svg">
                             <defs>
                                 <radialGradient id="gradLogic" cx="50%" cy="50%" r="50%">
                                     <stop offset="0%" stop-color="#6B8E23" stop-opacity="0.15" />
@@ -276,13 +276,13 @@
                             </defs>
 
                             <!-- Logic/Tech Circle (Top Left) -->
-                            <circle cx="160" cy="150" r="110" fill="url(#gradLogic)" stroke="#6B8E23" />
+                            <circle cx="160" cy="150" r="110" fill="url(#gradLogic)" stroke="#6B8E23" stroke-width="2" stroke-opacity="0.4" />
 
                             <!-- Passion/Brand Circle (Top Right) -->
-                            <circle cx="240" cy="150" r="110" fill="url(#gradPassion)" stroke="#B85A44" />
+                            <circle cx="240" cy="150" r="110" fill="url(#gradPassion)" stroke="#B85A44" stroke-width="2" stroke-opacity="0.4" />
 
                             <!-- Narrative Circle (Bottom Center) -->
-                            <circle cx="200" cy="230" r="110" fill="url(#gradNarrative)" stroke="#d4af37" />
+                            <circle cx="200" cy="230" r="110" fill="url(#gradNarrative)" stroke="#d4af37" stroke-width="2" stroke-opacity="0.4" />
 
                             <!-- Center Text -->
                             <text x="200" y="180" font-family="var(--font-mono)" font-size="28" font-weight="800"
@@ -290,26 +290,32 @@
                                 letter-spacing="-1px">TK</text>
 
                             <!-- Labels -->
-                            <rect x="70" y="70" width="60" height="24" rx="4" fill="var(--bg-surface)" stroke="#6B8E23"
-                                stroke-width="1" stroke-opacity="0.5" />
-                            <text x="100" y="86" font-family="var(--font-mono)" font-size="10" fill="#6B8E23"
-                                text-anchor="middle" font-weight="600" class="lang-en">LOGIC</text>
-                            <text x="100" y="86" font-family="var(--font-mono)" font-size="10" fill="#6B8E23"
-                                text-anchor="middle" font-weight="600" class="lang-es">LÓGICA</text>
+                            <g class="svg-label-group">
+                                <rect x="70" y="70" width="60" height="24" rx="4" fill="var(--bg-surface)" stroke="#6B8E23"
+                                    stroke-width="1" stroke-opacity="0.5" />
+                                <text x="100" y="86" font-family="var(--font-mono)" font-size="10" fill="#6B8E23"
+                                    text-anchor="middle" font-weight="600" class="lang-en">LOGIC</text>
+                                <text x="100" y="86" font-family="var(--font-mono)" font-size="10" fill="#6B8E23"
+                                    text-anchor="middle" font-weight="600" class="lang-es">LÓGICA</text>
+                            </g>
 
-                            <rect x="270" y="70" width="60" height="24" rx="4" fill="var(--bg-surface)" stroke="#B85A44"
-                                stroke-width="1" stroke-opacity="0.5" />
-                            <text x="300" y="86" font-family="var(--font-mono)" font-size="10" fill="#B85A44"
-                                text-anchor="middle" font-weight="600" class="lang-en">PASSION</text>
-                            <text x="300" y="86" font-family="var(--font-mono)" font-size="10" fill="#B85A44"
-                                text-anchor="middle" font-weight="600" class="lang-es">PASIÓN</text>
+                            <g class="svg-label-group">
+                                <rect x="270" y="70" width="60" height="24" rx="4" fill="var(--bg-surface)" stroke="#B85A44"
+                                    stroke-width="1" stroke-opacity="0.5" />
+                                <text x="300" y="86" font-family="var(--font-mono)" font-size="10" fill="#B85A44"
+                                    text-anchor="middle" font-weight="600" class="lang-en">PASSION</text>
+                                <text x="300" y="86" font-family="var(--font-mono)" font-size="10" fill="#B85A44"
+                                    text-anchor="middle" font-weight="600" class="lang-es">PASIÓN</text>
+                            </g>
 
-                            <rect x="160" y="320" width="80" height="24" rx="4" fill="var(--bg-surface)"
-                                stroke="#d4af37" stroke-width="1" stroke-opacity="0.5" />
-                            <text x="200" y="336" font-family="var(--font-mono)" font-size="10" fill="#d4af37"
-                                text-anchor="middle" font-weight="600" class="lang-en">NARRATIVE</text>
-                            <text x="200" y="336" font-family="var(--font-mono)" font-size="10" fill="#d4af37"
-                                text-anchor="middle" font-weight="600" class="lang-es">NARRATIVA</text>
+                            <g class="svg-label-group">
+                                <rect x="160" y="320" width="80" height="24" rx="4" fill="var(--bg-surface)"
+                                    stroke="#d4af37" stroke-width="1" stroke-opacity="0.5" />
+                                <text x="200" y="336" font-family="var(--font-mono)" font-size="10" fill="#d4af37"
+                                    text-anchor="middle" font-weight="600" class="lang-en">NARRATIVE</text>
+                                <text x="200" y="336" font-family="var(--font-mono)" font-size="10" fill="#d4af37"
+                                    text-anchor="middle" font-weight="600" class="lang-es">NARRATIVA</text>
+                            </g>
 
                             <!-- Intersection Labels (Subtle) -->
                             <text x="200" y="112" font-family="var(--font-sans)" font-size="9"

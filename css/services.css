@@ -414,21 +414,55 @@ select.form-input:focus {
     }
 }
 
+/* Light Mode Overrides for Services */
+[data-theme="light"] .service-card,
+[data-theme="light"] .pricing-card {
+    background: #ffffff;
+    box-shadow: 0 10px 40px rgba(44, 42, 40, 0.05);
+    border-color: rgba(44, 42, 40, 0.1);
+}
+
+[data-theme="light"] .pricing-card.featured {
+    background: linear-gradient(180deg, rgba(184, 90, 68, 0.03) 0%, #ffffff 100%);
+    border-color: var(--accent-developer);
+}
+
+[data-theme="light"] .hero-bg-accent {
+    background: radial-gradient(circle, rgba(184, 90, 68, 0.08) 0%, rgba(250, 248, 245, 0) 70%);
+}
+
+[data-theme="light"] .process-step {
+    background: rgba(44, 42, 40, 0.02);
+    border-left-color: rgba(44, 42, 40, 0.1);
+}
+
+[data-theme="light"] .cta-box {
+    background: radial-gradient(circle at center, rgba(184, 90, 68, 0.05) 0%, rgba(250, 248, 245, 0) 60%);
+    border-color: rgba(44, 42, 40, 0.1);
+}
+
 /* Light theme overrides for modal */
 [data-theme="light"] .modal-card {
     background: #ffffff;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 60px rgba(44, 42, 40, 0.15);
+    border-color: var(--accent-developer);
 }
 
 [data-theme="light"] .form-input,
 [data-theme="light"] .form-textarea {
-    background-color: #f8f9fa;
-    border-color: #ddd;
-    color: #333;
+    background-color: #FAF8F5;
+    border-color: #EFECE5;
+    color: #2C2A28;
+}
+
+[data-theme="light"] .form-input:focus,
+[data-theme="light"] .form-textarea:focus {
+    background-color: #ffffff;
+    border-color: var(--accent-developer);
 }
 
 [data-theme="light"] select.form-input {
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232C2A28' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
 }
 
 .section-about {
