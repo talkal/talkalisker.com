@@ -64,6 +64,27 @@ function parseMarkdownContent(markdownContent, outputDir) {
     <div class="finding-meta"><strong>${title}</strong><span class="severity sev-${sevClass}">${sev}</span></div>
     <div class="finding-desc">${md.render(desc.trim())}</div>
 </div>\n`;
+        })
+        // Decision Cards (Meeting Summaries)
+        .replace(/^\- \*\*Decision:\*\* (.*?) \| \*\*Impact:\*\* (.*$)\n([\s\S]*?)(?=\n- |\n# |$)/gm, (match, title, impact, desc) => {
+            return `\n<div class="decision-card">
+    <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">${impact} Impact</span></div>
+    <div class="decision-title">${title}</div>
+    <div class="decision-desc">${md.render(desc.trim())}</div>
+</div>\n`;
+        })
+        // Action Items (Meeting Summaries)
+        .replace(/^\- \*\*Action:\*\* (.*?) \| \*\*Owner:\*\* (.*?) \| \*\*Status:\*\* (.*$)/gm, (match, task, owner, status) => {
+            const statusClass = status.toLowerCase().trim();
+            const checkedAttr = statusClass === 'done' ? 'style="background:var(--accent);"' : '';
+            return `\n<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ${checkedAttr}></div>
+        <div class="action-title">${task}</div>
+        <div class="action-owner">${owner}</div>
+    </div>
+    <div class="action-status status-${statusClass}">${status}</div>
+</div>\n`;
         });
 
     // Add CSS IDs to headings for navigation
