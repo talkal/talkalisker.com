@@ -1,0 +1,19 @@
+{
+  "name": "_dhs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "front-matter": "^4.0.2",
+    "handlebars": "^4.7.9",
+    "js-yaml": "^4.1.1",
+    "markdown-it": "^14.1.1"
+  }
+}

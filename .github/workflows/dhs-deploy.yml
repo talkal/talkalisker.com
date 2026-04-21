@@ -1,0 +1,36 @@
+name: Deliverables System CI/CD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'source_reports/**'
+      - '_dhs/**'
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        working-directory: ./_dhs
+        run: npm ci || npm install
+
+      - name: Compile Client Portals
+        run: node _dhs/scripts/build_all.js
+
+      - name: Commit Generated Reports
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Auto-generated client portals via DHS Pipeline"
+          file_pattern: clients/*
