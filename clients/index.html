@@ -1,4 +1,12 @@
-<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Client Portal | Talkalisker</title><link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/services.css"><style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHS Master Index</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <style>
         body { background: #111; color: #fff; font-family: 'Outfit', sans-serif; padding: 4rem 10%; }
         .project-section { margin-bottom: 5rem; }
         .project-header { font-family: 'JetBrains Mono'; color: #B85A44; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem; font-size: 0.9rem; letter-spacing: 0.1em; }
@@ -8,47 +16,42 @@
         .card-label { font-family: 'JetBrains Mono'; font-size: 0.7rem; color: #B85A44; margin-bottom: 0.5rem; text-transform: uppercase; }
         .card-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2; }
         .card-meta { font-family: 'JetBrains Mono'; font-size: 0.8rem; color: rgba(255,255,255,0.4); display: flex; justify-content: space-between; }
-    </style></head><body>
-        <div style="font-family: 'JetBrains Mono'; color: #666; margin-bottom: 0.5rem;">// talkalisker: access_granted</div>
-        <h1 style="font-size: 3rem; font-weight: 800; margin: 0 0 4rem 0;">Client Deliverables</h1>
-        
-            <div class="project-section">
-                <div class="project-header">FOLDER: /process_architecture</div>
-                <div class="grid">
-                    
-                        <a href="guillermo-naming-strategy/" class="card">
-                            <div class="card-label">Naming Strategy</div>
-                            <div class="card-title">Brand Naming &amp; Identity Architecture</div>
-                            <div class="card-meta"><span>Guillermo</span><span>2026-04-20</span></div>
-                        </a>
-                    
-                </div>
-            </div>
-        
-            <div class="project-section">
-                <div class="project-header">FOLDER: /brand_identity</div>
-                <div class="grid">
-                    
-                        <a href="guillermo-proposal-review-2026-04-20/" class="card">
-                            <div class="card-label">Meeting.ProposalReview</div>
-                            <div class="card-title">Branding &amp; Web Design Proposal Review</div>
-                            <div class="card-meta"><span>Guillermo</span><span>2026-04-20</span></div>
-                        </a>
-                    
-                </div>
-            </div>
-        
-            <div class="project-section">
-                <div class="project-header">FOLDER: /ux_audit_&amp;_patient_flow_optimization</div>
-                <div class="grid">
-                    
-                        <a href="hadassah-ux-audit/" class="card">
-                            <div class="card-label">System Audit</div>
-                            <div class="card-title">Hadassah Patient Experience Digital Audit</div>
-                            <div class="card-meta"><span>Hadassah Shoulder Unit</span><span>2026-04-20</span></div>
-                        </a>
-                    
-                </div>
-            </div>
-        
-    </body></html>
+    </style>
+</head>
+<body>
+    <div id="lock-screen" class="container" style="text-align: center; margin-top: 100px;">
+        <svg class="icon" style="color:var(--accent); margin-bottom:20px;" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 3.8l7.2 14.2H4.8L12 5.8z"/></svg>
+        <h2 style="margin-bottom:10px;">Master Archive</h2>
+        <p style="color:var(--text-secondary); margin-bottom: 20px;">Restricted access. Authentication required.</p>
+        <input type="password" id="auth-key" placeholder="Enter master key..." style="width: 100%; max-width:300px; padding: 1rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); margin-bottom: 1rem; font-family: var(--font-mono);">
+        <div>
+            <button onclick="attemptDecrypt()" style="width: 100%; max-width:300px; padding: 1rem; border-radius: 8px; border: none; background: var(--accent); color: white; font-weight: 700; cursor: pointer;">Decrypt Archive</button>
+        </div>
+        <div id="auth-error" style="color: #ff4a4a; margin-top: 1rem; display: none; font-size: 0.8rem; font-family: var(--font-mono);">ERROR: Invalid master key.</div>
+    </div>
+
+    <div id="decrypted-content" class="container" style="display: none;"></div>
+
+    <script id="encrypted-payload" type="application/json">"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"</script>
+    <script>
+        function attemptDecrypt() {
+            const key = document.getElementById('auth-key').value;
+            const payloadRaw = document.getElementById('encrypted-payload').textContent;
+            const ciphertext = payloadRaw.slice(1, -1);
+            
+            try {
+                const bytes = CryptoJS.AES.decrypt(ciphertext, key);
+                const decryptedStr = bytes.toString(CryptoJS.enc.Utf8);
+                if (!decryptedStr) throw new Error("Decryption returned empty");
+                
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('decrypted-content').innerHTML = decryptedStr;
+                document.getElementById('decrypted-content').style.display = 'block';
+            } catch (e) {
+                document.getElementById('auth-error').style.display = 'block';
+                document.getElementById('auth-key').value = '';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -8,11 +8,12 @@
     <meta name="project" content="UX Audit &amp; Patient Flow Optimization">
     <meta name="date" content="Mon Apr 20 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">
     <meta name="type" content="System Audit">
-    <meta name="confidential" content="false">
+    <meta name="confidential" content="true">
     <title>Hadassah Patient Experience Digital Audit | Talkalisker Client Portal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <style>
         :root {
             /* Synchronized with talkalisker.com/developer-services */
@@ -327,11 +328,7 @@
             TalKalisker
         </a>
         <nav id="sidebar-nav">
-            <div class="lang-nav" lang="en"><a href="#summary" class="nav-link">01. /summary</a>
-            <a href="#findings" class="nav-link">02. /findings</a>
-            <a href="#strategy" class="nav-link">03. /strategy</a></div>
-            <div class="lang-nav" lang="es" style="display: none;"></div>
-            <div class="lang-nav" lang="he" style="display: none;"></div>
+                <!-- Navigation is encrypted -->
         </nav>
         <div style="margin-top: auto;">
             <button onclick="toggleTheme()" class="theme-toggle" style="background: none; border: none; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s;">
@@ -356,35 +353,19 @@
         </header>
 
         <article id="content">
-            <div class="lang-block" lang="en"><h1 id="summary">01. /summary</h1>
-We have completed a comprehensive review of the Hadassah Shoulder Unit digital front-door. The primary goal was to simplify the patient journey from symptom discovery to appointment booking. The current site is information-dense but navigationally opaque for elderly patients—the primary demographic.
-<p>[Missing Asset: hadassah_home.png]</p>
-<h1 id="findings">02. /findings</h1>
-The current digital experience acts as a library rather than a clinic. Patients are required to read through institutional history before finding actionable symptom guides.
-<div class="finding-card">
-    <div class="finding-meta"><strong>Information Overload on Homepage</strong><span class="severity sev-high">High</span></div>
-    <div class="finding-desc"><p>The homepage contains 14 different CTAs, leading to decision paralysis. Patients reported frustration when trying to locate the &quot;Book Appointment&quot; button. We recommend reducing the primary actions to 3 clear paths.</p>
-</div>
-</div>
-<div class="finding-card">
-    <div class="finding-meta"><strong>Mobile Responsiveness on Booking Form</strong><span class="severity sev-medium">Medium</span></div>
-    <div class="finding-desc"><p>Sidebars and popups are overlapping content on small screens (iPhone 13/14). This prevents patients from completing the symptom navigator on the go.</p>
-</div>
-</div>
-<div class="finding-card">
-    <div class="finding-meta"><strong>Visual Contrast</strong><span class="severity sev-low">Low</span></div>
-    <div class="finding-desc"><p>The light-gray text on white backgrounds in the &quot;Preparation for Surgery&quot; section does not meet accessibility standards for visually impaired patients.</p>
-</div>
-</div>
-<h1 id="strategy">03. /strategy</h1>
-- **Path 1:** Implement a "Symptom Navigator" as the primary hero action.
-- **Path 2:** Simplify the menu architecture to "Learn", "Prepare", and "Contact".
-- **Path 3:** Redesign the booking form to be a multi-step, localized experience.
-</div>
-            <div class="lang-block" lang="es" style="display: none;"></div>
-            <div class="lang-block" lang="he" style="display: none;"></div>
+                <div id="lock-screen" style="max-width: 400px; margin: 4rem auto; text-align: center;">
+                    <div style="font-family: var(--font-mono); color: var(--accent); margin-bottom: 2rem;">🔒 AUTHENTICATION REQUIRED</div>
+                    <h2 style="margin-bottom: 1rem;">Classified Report</h2>
+                    <p style="margin-bottom: 2rem; color: var(--text-secondary); font-size: 0.9rem;">Please enter your client access key to decrypt this payload.</p>
+                    <input type="password" id="auth-key" placeholder="Enter key..." style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-subtle); background: var(--bg-core); color: var(--text-primary); margin-bottom: 1rem; font-family: var(--font-mono);">
+                    <button onclick="attemptDecrypt()" style="width: 100%; padding: 1rem; border-radius: 8px; border: none; background: var(--accent); color: white; font-weight: 700; cursor: pointer;">Authenticate &amp; Decrypt</button>
+                    <div id="auth-error" style="color: var(--accent-red); margin-top: 1rem; display: none; font-size: 0.8rem; font-family: var(--font-mono);">ERROR: Invalid key. Verification failed.</div>
+                </div>
+                <div id="decrypted-content" style="display: none;"></div>
         </article>
     </main>
+
+    <script id="encrypted-payload" type="application/json">"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"</script>
 
     <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
         <img id="lightbox-img" src="" alt="Zoomed Evidence">
@@ -436,6 +417,50 @@ The current digital experience acts as a library rather than a clinic. Patients 
 
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
+        }
+
+        function attemptDecrypt() {
+            const key = document.getElementById('auth-key').value;
+            const payloadRaw = document.getElementById('encrypted-payload').textContent;
+            // The template injects quotes around the string, so slice them off
+            const ciphertext = payloadRaw.slice(1, -1);
+            
+            try {
+                const bytes = CryptoJS.AES.decrypt(ciphertext, key);
+                const decryptedStr = bytes.toString(CryptoJS.enc.Utf8);
+                if (!decryptedStr) throw new Error("Decryption returned empty");
+                
+                const payload = JSON.parse(decryptedStr);
+                
+                // Hide lock screen
+                document.getElementById('lock-screen').style.display = 'none';
+                
+                // Inject decrypted DOM
+                document.getElementById('sidebar-nav').innerHTML = `
+                    <div class="lang-nav" lang="en">${payload.nav_en}</div>
+                    <div class="lang-nav" lang="es" style="display: none;">${payload.nav_es}</div>
+                    <div class="lang-nav" lang="he" style="display: none;">${payload.nav_he}</div>
+                `;
+                document.getElementById('decrypted-content').innerHTML = `
+                    <div class="lang-block" lang="en">${payload.content_en}</div>
+                    <div class="lang-block" lang="es" style="display: none;">${payload.content_es}</div>
+                    <div class="lang-block" lang="he" style="display: none;">${payload.content_he}</div>
+                `;
+                document.getElementById('decrypted-content').style.display = 'block';
+
+                // Re-bind listeners for fresh DOM
+                document.querySelectorAll('.evidence-img').forEach(img => {
+                    img.onclick = () => openLightbox(img.src);
+                });
+                
+                const html = document.documentElement;
+                const savedLang = localStorage.getItem('language') || 'en';
+                setLang(savedLang);
+
+            } catch (e) {
+                document.getElementById('auth-error').style.display = 'block';
+                document.getElementById('auth-key').value = '';
+            }
         }
 
         document.addEventListener('DOMContentLoaded', () => {

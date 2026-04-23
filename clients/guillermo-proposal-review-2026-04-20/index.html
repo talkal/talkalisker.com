@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <style>
         :root {
             /* Synchronized with talkalisker.com/developer-services */
@@ -327,11 +328,7 @@
             TalKalisker
         </a>
         <nav id="sidebar-nav">
-            <div class="lang-nav" lang="en"><a href="#overview" class="nav-link">01. /overview</a>
-            <a href="#decisions" class="nav-link">02. /decisions</a>
-            <a href="#action_items" class="nav-link">03. /action_items</a></div>
-            <div class="lang-nav" lang="es" style="display: none;"></div>
-            <div class="lang-nav" lang="he" style="display: none;"></div>
+                <!-- Navigation is encrypted -->
         </nav>
         <div style="margin-top: auto;">
             <button onclick="toggleTheme()" class="theme-toggle" style="background: none; border: none; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s;">
@@ -356,59 +353,19 @@
         </header>
 
         <article id="content">
-            <div class="lang-block" lang="en"><h1 id="overview">01. /overview</h1>
-Guillermo met with Tal and Yaeli to review the branding and web design proposal for his new AI digital transformation consulting firm in Madrid. While the creative direction was well-received, the initial pricing (€4,500) was identified as a significant friction point compared to Spanish market benchmarks (~€1,500).
-<p>The meeting focused on bridging this gap through transparency, rescoping, and demonstrating value without the benefit of a pre-existing project portfolio.</p>
-<h1 id="decisions">02. /decisions</h1>
-The following strategic pivot points were agreed upon to move the engagement forward:
-<div class="decision-card">
-    <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">High Impact</span></div>
-    <div class="decision-title">Reject initial €4,500 proposal</div>
-    <div class="decision-desc"><p>The current proposal is misaligned with early-stage budget constraints and local market anchors.</p>
-</div>
-</div>
-<div class="decision-card">
-    <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">High Impact</span></div>
-    <div class="decision-title">Adopt a Phased MVP approach</div>
-    <div class="decision-desc"><p>The project will be rescoped to prioritize &quot;Phase One&quot; (Basic brand kit + Landing page) to allow for an immediate go-to-market.</p>
-</div>
-</div>
-<div class="decision-card">
-    <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">Medium Impact</span></div>
-    <div class="decision-title">Standardize proposal format</div>
-    <div class="decision-desc"><p>Tal and Yaeli will adopt a structured format clearly distinguishing fundamental needs from optional &quot;Premium&quot; extras.</p>
-</div>
-</div>
-<h1 id="action_items">03. /action_items</h1>
-<div class="action-card">
-    <div class="action-info">
-        <div class="action-checkbox" ></div>
-        <div class="action-title">Deliver revised, itemized proposal</div>
-        <div class="action-owner">Tal & Yaeli</div>
-    </div>
-    <div class="action-status status-pending">Pending</div>
-</div>
-<div class="action-card">
-    <div class="action-info">
-        <div class="action-checkbox" ></div>
-        <div class="action-title">Review new proposal & finalize vendor choice</div>
-        <div class="action-owner">Guillermo</div>
-    </div>
-    <div class="action-status status-pending">Pending</div>
-</div>
-<div class="action-card">
-    <div class="action-info">
-        <div class="action-checkbox" ></div>
-        <div class="action-title">Discuss rebranding of existing US site</div>
-        <div class="action-owner">Tal</div>
-    </div>
-    <div class="action-status status-blocked">Blocked</div>
-</div>
-</div>
-            <div class="lang-block" lang="es" style="display: none;"></div>
-            <div class="lang-block" lang="he" style="display: none;"></div>
+                <div id="lock-screen" style="max-width: 400px; margin: 4rem auto; text-align: center;">
+                    <div style="font-family: var(--font-mono); color: var(--accent); margin-bottom: 2rem;">🔒 AUTHENTICATION REQUIRED</div>
+                    <h2 style="margin-bottom: 1rem;">Classified Report</h2>
+                    <p style="margin-bottom: 2rem; color: var(--text-secondary); font-size: 0.9rem;">Please enter your client access key to decrypt this payload.</p>
+                    <input type="password" id="auth-key" placeholder="Enter key..." style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-subtle); background: var(--bg-core); color: var(--text-primary); margin-bottom: 1rem; font-family: var(--font-mono);">
+                    <button onclick="attemptDecrypt()" style="width: 100%; padding: 1rem; border-radius: 8px; border: none; background: var(--accent); color: white; font-weight: 700; cursor: pointer;">Authenticate &amp; Decrypt</button>
+                    <div id="auth-error" style="color: var(--accent-red); margin-top: 1rem; display: none; font-size: 0.8rem; font-family: var(--font-mono);">ERROR: Invalid key. Verification failed.</div>
+                </div>
+                <div id="decrypted-content" style="display: none;"></div>
         </article>
     </main>
+
+    <script id="encrypted-payload" type="application/json">"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"</script>
 
     <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
         <img id="lightbox-img" src="" alt="Zoomed Evidence">
@@ -460,6 +417,50 @@ The following strategic pivot points were agreed upon to move the engagement for
 
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
+        }
+
+        function attemptDecrypt() {
+            const key = document.getElementById('auth-key').value;
+            const payloadRaw = document.getElementById('encrypted-payload').textContent;
+            // The template injects quotes around the string, so slice them off
+            const ciphertext = payloadRaw.slice(1, -1);
+            
+            try {
+                const bytes = CryptoJS.AES.decrypt(ciphertext, key);
+                const decryptedStr = bytes.toString(CryptoJS.enc.Utf8);
+                if (!decryptedStr) throw new Error("Decryption returned empty");
+                
+                const payload = JSON.parse(decryptedStr);
+                
+                // Hide lock screen
+                document.getElementById('lock-screen').style.display = 'none';
+                
+                // Inject decrypted DOM
+                document.getElementById('sidebar-nav').innerHTML = `
+                    <div class="lang-nav" lang="en">${payload.nav_en}</div>
+                    <div class="lang-nav" lang="es" style="display: none;">${payload.nav_es}</div>
+                    <div class="lang-nav" lang="he" style="display: none;">${payload.nav_he}</div>
+                `;
+                document.getElementById('decrypted-content').innerHTML = `
+                    <div class="lang-block" lang="en">${payload.content_en}</div>
+                    <div class="lang-block" lang="es" style="display: none;">${payload.content_es}</div>
+                    <div class="lang-block" lang="he" style="display: none;">${payload.content_he}</div>
+                `;
+                document.getElementById('decrypted-content').style.display = 'block';
+
+                // Re-bind listeners for fresh DOM
+                document.querySelectorAll('.evidence-img').forEach(img => {
+                    img.onclick = () => openLightbox(img.src);
+                });
+                
+                const html = document.documentElement;
+                const savedLang = localStorage.getItem('language') || 'en';
+                setLang(savedLang);
+
+            } catch (e) {
+                document.getElementById('auth-error').style.display = 'block';
+                document.getElementById('auth-key').value = '';
+            }
         }
 
         document.addEventListener('DOMContentLoaded', () => {

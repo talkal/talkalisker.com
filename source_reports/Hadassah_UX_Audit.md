@@ -4,6 +4,8 @@ project: "UX Audit & Patient Flow Optimization"
 date: 2026-04-20
 theme: "dark"
 type: "System Audit"
+confidential: true
+password: "client123"
 status: "Draft Preview"
 title: "Hadassah Patient Experience Digital Audit"
 ---

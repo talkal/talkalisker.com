@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <style>
         :root {
             /* Synchronized with talkalisker.com/developer-services */
@@ -327,9 +328,13 @@
             TalKalisker
         </a>
         <nav id="sidebar-nav">
-            <div class="lang-nav" lang="en">{{{nav_en}}}</div>
-            <div class="lang-nav" lang="es" style="display: none;">{{{nav_es}}}</div>
-            <div class="lang-nav" lang="he" style="display: none;">{{{nav_he}}}</div>
+            {{#if isProtected}}
+                <!-- Navigation is encrypted -->
+            {{else}}
+                <div class="lang-nav" lang="en">{{{nav_en}}}</div>
+                <div class="lang-nav" lang="es" style="display: none;">{{{nav_es}}}</div>
+                <div class="lang-nav" lang="he" style="display: none;">{{{nav_he}}}</div>
+            {{/if}}
         </nav>
         <div style="margin-top: auto;">
             <button onclick="toggleTheme()" class="theme-toggle" style="background: none; border: none; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s;">
@@ -354,11 +359,27 @@
         </header>
 
         <article id="content">
-            <div class="lang-block" lang="en">{{{content_en}}}</div>
-            <div class="lang-block" lang="es" style="display: none;">{{{content_es}}}</div>
-            <div class="lang-block" lang="he" style="display: none;">{{{content_he}}}</div>
+            {{#if isProtected}}
+                <div id="lock-screen" style="max-width: 400px; margin: 4rem auto; text-align: center;">
+                    <div style="font-family: var(--font-mono); color: var(--accent); margin-bottom: 2rem;">🔒 AUTHENTICATION REQUIRED</div>
+                    <h2 style="margin-bottom: 1rem;">Classified Report</h2>
+                    <p style="margin-bottom: 2rem; color: var(--text-secondary); font-size: 0.9rem;">Please enter your client access key to decrypt this payload.</p>
+                    <input type="password" id="auth-key" placeholder="Enter key..." style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-subtle); background: var(--bg-core); color: var(--text-primary); margin-bottom: 1rem; font-family: var(--font-mono);">
+                    <button onclick="attemptDecrypt()" style="width: 100%; padding: 1rem; border-radius: 8px; border: none; background: var(--accent); color: white; font-weight: 700; cursor: pointer;">Authenticate &amp; Decrypt</button>
+                    <div id="auth-error" style="color: var(--accent-red); margin-top: 1rem; display: none; font-size: 0.8rem; font-family: var(--font-mono);">ERROR: Invalid key. Verification failed.</div>
+                </div>
+                <div id="decrypted-content" style="display: none;"></div>
+            {{else}}
+                <div class="lang-block" lang="en">{{{content_en}}}</div>
+                <div class="lang-block" lang="es" style="display: none;">{{{content_es}}}</div>
+                <div class="lang-block" lang="he" style="display: none;">{{{content_he}}}</div>
+            {{/if}}
         </article>
     </main>
+
+    {{#if isProtected}}
+    <script id="encrypted-payload" type="application/json">"{{{encryptedPayload}}}"</script>
+    {{/if}}
 
     <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
         <img id="lightbox-img" src="" alt="Zoomed Evidence">
@@ -410,6 +431,50 @@
 
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
+        }
+
+        function attemptDecrypt() {
+            const key = document.getElementById('auth-key').value;
+            const payloadRaw = document.getElementById('encrypted-payload').textContent;
+            // The template injects quotes around the string, so slice them off
+            const ciphertext = payloadRaw.slice(1, -1);
+            
+            try {
+                const bytes = CryptoJS.AES.decrypt(ciphertext, key);
+                const decryptedStr = bytes.toString(CryptoJS.enc.Utf8);
+                if (!decryptedStr) throw new Error("Decryption returned empty");
+                
+                const payload = JSON.parse(decryptedStr);
+                
+                // Hide lock screen
+                document.getElementById('lock-screen').style.display = 'none';
+                
+                // Inject decrypted DOM
+                document.getElementById('sidebar-nav').innerHTML = `
+                    <div class="lang-nav" lang="en">${payload.nav_en}</div>
+                    <div class="lang-nav" lang="es" style="display: none;">${payload.nav_es}</div>
+                    <div class="lang-nav" lang="he" style="display: none;">${payload.nav_he}</div>
+                `;
+                document.getElementById('decrypted-content').innerHTML = `
+                    <div class="lang-block" lang="en">${payload.content_en}</div>
+                    <div class="lang-block" lang="es" style="display: none;">${payload.content_es}</div>
+                    <div class="lang-block" lang="he" style="display: none;">${payload.content_he}</div>
+                `;
+                document.getElementById('decrypted-content').style.display = 'block';
+
+                // Re-bind listeners for fresh DOM
+                document.querySelectorAll('.evidence-img').forEach(img => {
+                    img.onclick = () => openLightbox(img.src);
+                });
+                
+                const html = document.documentElement;
+                const savedLang = localStorage.getItem('language') || 'en';
+                setLang(savedLang);
+
+            } catch (e) {
+                document.getElementById('auth-error').style.display = 'block';
+                document.getElementById('auth-key').value = '';
+            }
         }
 
         document.addEventListener('DOMContentLoaded', () => {

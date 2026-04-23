@@ -3,6 +3,7 @@ const path = require('path');
 const fm = require('front-matter');
 const MarkdownIt = require('markdown-it');
 const Handlebars = require('handlebars');
+const CryptoJS = require("crypto-js");
 
 /**
  * Talkalisker DHS Publisher v3.0.0
@@ -153,7 +154,49 @@ function generateMasterIndex(baseDir) {
     });
 
     // We can also use Handlebars for the index eventually, but string literal is fine here
-    let indexHtml = `<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Client Portal | Talkalisker</title><link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/services.css"><style>
+    const masterPassword = "kalisker123"; // Tal's master password
+    
+    let htmlContent = `
+        <div class="logo">
+            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L2 22h20L12 2zm0 3.8l7.2 14.2H4.8L12 5.8z"/>
+            </svg>
+            TalKalisker Master Index
+        </div>
+
+        <div class="section-badge">Client Deliverables Dashboard</div>
+        
+        <div class="group-container">
+            ${Object.keys(groupedReports).sort().map(client => `
+            <div class="client-group">
+                <h2 class="client-name">${client.toUpperCase()}</h2>
+                <div class="reports-list">
+                    ${groupedReports[client].map(r => `
+                    <a href="${r.dir}/" class="report-row">
+                        <div class="report-meta">
+                            <span class="report-type">${r.type}</span>
+                            <span class="report-date">${r.date}</span>
+                        </div>
+                        <div class="report-title">${r.title}</div>
+                    </a>
+                    `).join('')}
+                </div>
+            </div>
+            `).join('')}
+        </div>
+    `;
+
+    const encryptedContent = CryptoJS.AES.encrypt(htmlContent, masterPassword).toString();
+
+    let indexHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHS Master Index</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <style>
         body { background: #111; color: #fff; font-family: 'Outfit', sans-serif; padding: 4rem 10%; }
         .project-section { margin-bottom: 5rem; }
         .project-header { font-family: 'JetBrains Mono'; color: #B85A44; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem; font-size: 0.9rem; letter-spacing: 0.1em; }
@@ -163,24 +206,45 @@ function generateMasterIndex(baseDir) {
         .card-label { font-family: 'JetBrains Mono'; font-size: 0.7rem; color: #B85A44; margin-bottom: 0.5rem; text-transform: uppercase; }
         .card-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2; }
         .card-meta { font-family: 'JetBrains Mono'; font-size: 0.8rem; color: rgba(255,255,255,0.4); display: flex; justify-content: space-between; }
-    </style></head><body>
-        <div style="font-family: 'JetBrains Mono'; color: #666; margin-bottom: 0.5rem;">// talkalisker: access_granted</div>
-        <h1 style="font-size: 3rem; font-weight: 800; margin: 0 0 4rem 0;">Client Deliverables</h1>
-        ${Object.keys(groupedReports).map(project => `
-            <div class="project-section">
-                <div class="project-header">FOLDER: /${project.toLowerCase().replace(/\s+/g, '_')}</div>
-                <div class="grid">
-                    ${groupedReports[project].map(r => `
-                        <a href="${r.dir}/" class="card">
-                            <div class="card-label">${r.type}</div>
-                            <div class="card-title">${r.title}</div>
-                            <div class="card-meta"><span>${r.client}</span><span>${r.date}</span></div>
-                        </a>
-                    `).join('')}
-                </div>
-            </div>
-        `).join('')}
-    </body></html>`;
+    </style>
+</head>
+<body>
+    <div id="lock-screen" class="container" style="text-align: center; margin-top: 100px;">
+        <svg class="icon" style="color:var(--accent); margin-bottom:20px;" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 3.8l7.2 14.2H4.8L12 5.8z"/></svg>
+        <h2 style="margin-bottom:10px;">Master Archive</h2>
+        <p style="color:var(--text-secondary); margin-bottom: 20px;">Restricted access. Authentication required.</p>
+        <input type="password" id="auth-key" placeholder="Enter master key..." style="width: 100%; max-width:300px; padding: 1rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); margin-bottom: 1rem; font-family: var(--font-mono);">
+        <div>
+            <button onclick="attemptDecrypt()" style="width: 100%; max-width:300px; padding: 1rem; border-radius: 8px; border: none; background: var(--accent); color: white; font-weight: 700; cursor: pointer;">Decrypt Archive</button>
+        </div>
+        <div id="auth-error" style="color: #ff4a4a; margin-top: 1rem; display: none; font-size: 0.8rem; font-family: var(--font-mono);">ERROR: Invalid master key.</div>
+    </div>
+
+    <div id="decrypted-content" class="container" style="display: none;"></div>
+
+    <script id="encrypted-payload" type="application/json">"${encryptedContent}"</script>
+    <script>
+        function attemptDecrypt() {
+            const key = document.getElementById('auth-key').value;
+            const payloadRaw = document.getElementById('encrypted-payload').textContent;
+            const ciphertext = payloadRaw.slice(1, -1);
+            
+            try {
+                const bytes = CryptoJS.AES.decrypt(ciphertext, key);
+                const decryptedStr = bytes.toString(CryptoJS.enc.Utf8);
+                if (!decryptedStr) throw new Error("Decryption returned empty");
+                
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('decrypted-content').innerHTML = decryptedStr;
+                document.getElementById('decrypted-content').style.display = 'block';
+            } catch (e) {
+                document.getElementById('auth-error').style.display = 'block';
+                document.getElementById('auth-key').value = '';
+            }
+        }
+    </script>
+</body>
+</html>`;
 
     fs.writeFileSync(path.join(clientsDir, 'index.html'), indexHtml);
     console.log("Master Index rebuilt successfully (v3.0).");
@@ -234,6 +298,17 @@ function publish(markdownPath, outputDir) {
         contentMap[`content_${l}`] = parseMarkdownContent(langMd, outputDir);
     });
 
+    const payload = {
+        content_en: contentMap.content_en, nav_en: contentMap.nav_en,
+        content_es: contentMap.content_es, nav_es: contentMap.nav_es,
+        content_he: contentMap.content_he, nav_he: contentMap.nav_he
+    };
+
+    const isProtected = !!metadata.password;
+    const encryptedPayload = isProtected 
+        ? CryptoJS.AES.encrypt(JSON.stringify(payload), metadata.password.toString()).toString()
+        : null;
+
     const templateData = {
         title: metadata.title || "Audit",
         client: metadata.client || "Client",
@@ -242,6 +317,8 @@ function publish(markdownPath, outputDir) {
         date: metadata.date || new Date().toISOString().split('T')[0],
         confidential: metadata.confidential || false,
         languages: JSON.stringify(langs),
+        isProtected,
+        encryptedPayload,
         ...contentMap
     };
 
