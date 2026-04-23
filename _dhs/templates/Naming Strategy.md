@@ -1,34 +1,47 @@
 ---
-client: "Client Name"
-project: "Brand Identity"
-date: 2026-04-20
-languages: '["en", "es"]'
-confidential: false
-type: "Naming Strategy"
 title: "Brand Naming & Identity Architecture"
+client: "[Client Name]"
+project: "Brand Strategy"
+type: "Naming.Strategy"
+date: "YYYY-MM-DD"
+confidential: true
+languages: ["en"]
 ---
 
-:::en
-# 01. /summary
-Strategic overview of the brand positioning and naming objectives.
+# 01. /executive_summary
+**Objective:** Present a curated selection of brand names that align with the company's core values, target demographic, and market positioning.
 
-# 02. /proposals
-The following names have been engineered to project authority and precision.
+The naming architecture process focused on extracting the core narrative of the brand. We screened out over 50 preliminary ideas through trademark availability, linguistic conflict checks, and cognitive recall testing to arrive at these final recommendations.
 
-- **Name:** ORDO | **Slogan:** Every process in its place | **Level:** HIGH
-Derived from the Latin "ordo," representing total control and structural integrity.
+# 02. /the_strategic_filter
+Every name below was weighed against our three strategic pillars:
+1.  **Resonance:** Does it evoke the right emotional response from the target demographic?
+2.  **Availability:** Is the `.com` (or modern equivalent) and trademark viable?
+3.  **Scalability:** Can the name bend and stretch as the company expands its product lines?
 
-- **Name:** STRUCTA | **Slogan:** The solid foundation your business needs | **Level:** HIGH
-Based on process engineering and architectural stability.
-:::
+# 03. /proposals
 
-:::es
-# 01. /resumen
-Descripción estratégica del posicionamiento de marca y los objetivos de naming.
+- **Name:** [Option One] | **Slogan:** [The descriptive tagline] | **Level:** HIGH
+**The Narrative:**
+Why does this name work? Explain the etymology or the psychological trigger it pulls.
+**The Vibe:**
+Modern, sterile, clinical, warm, inviting?
 
-# 02. /propuestas
-Los siguientes nombres han sido diseñados para proyectar autoridad y precisión.
+- **Name:** [Option Two] | **Slogan:** [The descriptive tagline] | **Level:** MEDIUM
+**The Narrative:**
+This is the safe, literal option. It describes exactly what you do without metaphor. 
+**The Vibe:**
+Authoritative, trustworthy, established.
 
-- **Name:** ORDO | **Slogan:** Cada proceso en su lugar | **Level:** ALTO
-Derivado del latín "ordo", representa el control total y la integridad estructural.
-:::
+- **Name:** [Option Three] | **Slogan:** [The descriptive tagline] | **Level:** LOW
+**The Narrative:**
+This is the abstract, "empty vessel" name (like Kodak or Google). It requires more marketing capital to establish meaning, but ultimately owns a unique space.
+**The Vibe:**
+Tech-forward, disruptive, infinite.
+
+# 04. /recommendation
+Based on our current go-to-market strategy, we recommend **[Option One]**. It bridges the gap between trust and innovation while allowing for immediate acquisition of digital assets.
+
+# 05. /action_items
+- **Action:** Select preferred name variant | **Owner:** Client | **Status:** Pending
+- **Action:** Initiate formal trademark and domain acquisition | **Owner:** Tal | **Status:** Blocked

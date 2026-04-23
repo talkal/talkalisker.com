@@ -1,30 +1,37 @@
 ---
-client: "Client Name"
-project: "Project Scope"
-date: 2026-04-21
-languages: '["en"]'
+title: "Project Sync & Alignment"
+client: "[Client Name]"
+project: "[Project Phase]"
+type: "Meeting.Summary"
+date: "YYYY-MM-DD"
 confidential: true
-type: "Meeting.Sync"
-title: "Weekly Alignment Sync"
+languages: ["en"]
 ---
 
-:::en
-# 01. /overview
-Brief overview of what was discussed in the meeting. 
-> *Attendees: Tal Kalisker, Client Name, Stakeholder 2*
+# 01. /executive_summary
+**Objective:** [State clearly what the meeting was about in 1 sentence]
 
-# 02. /decisions
-The following strategic decisions were committed to during the sync.
+Briefly summarize the core narrative of the sync. What was the overarching sentiment? Were there any major roadblocks identified, or did we achieve full alignment? Keep this section to a concise 2-3 paragraphs suitable for C-level stakeholders who won't read the detailed logs.
 
-- **Decision:** Pivot target audience to Enterprise | **Impact:** High
-We are dropping the SMB tier from the immediate roadmap to focus purely on enterprise sales motion.
+**Attendees:** Tal Kalisker, Yaeli, [Client Lead]
 
-- **Decision:** Delay homepage launch | **Impact:** Medium
-Launch pushed back by one week to finalize the interactive WebGL component.
+# 02. /strategic_decisions
+The following pivots, approvals, or strategic directions were formalized during the sync:
 
-# 03. /action_items
-Pending tasks to be completed before the next sync.
+- **Decision:** [e.g., Pivot from Webflow to custom React] | **Impact:** High
+[Provide the context for the decision. Why was this chosen over the alternative? What data or insight drove this?]
 
-- **Action:** Draft revised copy block | **Owner:** Tal | **Status:** Pending
-- **Action:** Provide WebGL asset | **Owner:** Client | **Status:** Blocked
-:::
+- **Decision:** [e.g., Target enterprise B2B over direct-to-consumer] | **Impact:** Medium
+[Keep it factual and focused on long-term implications.]
+
+# 03. /parking_lot
+Topics that were raised but require further investigation before a decision can be made:
+*   *Item 1:* Which ESP will be used for transactional emails?
+*   *Item 2:* Do we need to comply with GDPR immediately, or post-MVP?
+
+# 04. /action_items
+Clear next steps moving into the next sprint cycle:
+
+- **Action:** [e.g., Finalize wireframes for checkout] | **Owner:** Tal | **Status:** Pending
+- **Action:** [e.g., Provide API keys for Stripe] | **Owner:** [Client] | **Status:** Blocked
+- **Action:** [e.g., Deploy staging environment] | **Owner:** Yaeli | **Status:** Done
