@@ -16,9 +16,6 @@ const md = new MarkdownIt({
 });
 
 // Custom rendering for images to add classes and captions
-const defaultRender = md.renderer.rules.image || function(tokens, idx, options, env, self) {
-    return self.renderToken(tokens, idx, options);
-};
 
 md.renderer.rules.image = function (tokens, idx, options, env, self) {
     const token = tokens[idx];
@@ -85,6 +82,37 @@ function parseMarkdownContent(markdownContent, outputDir) {
     </div>
     <div class="action-status status-${statusClass}">${status}</div>
 </div>\n`;
+        })
+        // Metric Cards (Monthly Retainer)
+        .replace(/^\- \*\*Metric:\*\* (.*?) \| \*\*Value:\*\* (.*?) \| \*\*Trend:\*\* (.*$)/gm, (match, metric, value, trend) => {
+            const trendClass = trend.includes('+') ? 'trend-up' : (trend.includes('-') ? 'trend-down' : 'trend-neutral');
+            return `\n<div class="metric-card">
+    <div class="metric-title">${metric}</div>
+    <div class="metric-value">${value}</div>
+    <div class="metric-trend ${trendClass}">${trend}</div>
+</div>\n`;
+        })
+        // Ranking Cards (SEO Report)
+        .replace(/^\- \*\*Keyword:\*\* (.*?) \| \*\*Rank:\*\* (.*?) \| \*\*Change:\*\* (.*$)/gm, (match, keyword, rank, change) => {
+            const changeClass = change.includes('+') ? 'trend-up' : (change.includes('-') ? 'trend-down' : 'trend-neutral');
+            return `\n<div class="ranking-card">
+    <div class="ranking-keyword">${keyword}</div>
+    <div class="ranking-stats">
+        <div class="ranking-position">#${rank}</div>
+        <div class="ranking-change ${changeClass}">${change}</div>
+    </div>
+</div>\n`;
+        })
+        // Color Swatches (Project Handoff)
+        .replace(/^\- \*\*Color:\*\* (.*?) \| \*\*Hex:\*\* (.*?) \| \*\*Usage:\*\* (.*$)/gm, (match, color, hex, usage) => {
+            return `\n<div class="swatch-card">
+    <div class="swatch-color" style="background:${hex};"></div>
+    <div class="swatch-info">
+        <div class="swatch-name">${color}</div>
+        <div class="swatch-hex">${hex}</div>
+        <div class="swatch-usage">${usage}</div>
+    </div>
+</div>\n`;
         });
 
     // Add CSS IDs to headings for navigation
@@ -108,7 +136,10 @@ function generateMasterIndex(baseDir) {
 
             const client = html.match(/name="client" content="(.*?)"/)?.[1] || dir;
             const project = html.match(/name="project" content="(.*?)"/)?.[1] || client;
-            const date = html.match(/name="date" content="(.*?)"/)?.[1] || "";
+            const rawDate = html.match(/name="date" content="(.*?)"/)?.[1] || "";
+            // Normalize date to YYYY-MM-DD regardless of input format
+            const dateObj = new Date(rawDate);
+            const date = !isNaN(dateObj.getTime()) ? dateObj.toISOString().split('T')[0] : rawDate;
             const title = html.match(/<title>(.*?) \|/)?.[1] || "Audit Report";
             const type = html.match(/name="type" content="(.*?)"/)?.[1] || "Audit";
 
@@ -179,9 +210,9 @@ function publish(markdownPath, outputDir) {
     }
 
     const contentMap = {
-        content_en: "",
-        content_es: "",
-        content_he: ""
+        content_en: "", nav_en: "",
+        content_es: "", nav_es: "",
+        content_he: "", nav_he: ""
     };
 
     langs.forEach(l => {
@@ -191,6 +222,15 @@ function publish(markdownPath, outputDir) {
         if (matches.length > 0) {
             langMd = matches.map(m => m[1].trim()).join('\n\n');
         }
+
+        // Extract headings for dynamic sidebar navigation
+        const navItems = [];
+        const headingRegex = /^# (.*\/(\w+).*$)/gm;
+        let match;
+        while ((match = headingRegex.exec(langMd)) !== null) {
+            navItems.push(`<a href="#${match[2]}" class="nav-link">${match[1]}</a>`);
+        }
+        contentMap[`nav_${l}`] = navItems.join('\n            ');
         contentMap[`content_${l}`] = parseMarkdownContent(langMd, outputDir);
     });
 
@@ -214,6 +254,9 @@ function publish(markdownPath, outputDir) {
     generateMasterIndex(path.join(outputDir, '../../'));
 }
 
+// Export for reuse by delete_report.js
+module.exports = { generateMasterIndex };
+
 const args = process.argv.slice(2);
 if (args.length >= 2) publish(args[0], args[1]);
-else console.error("Usage: node publish.js [input_path] [output_dir]");
+else if (require.main === module) console.error("Usage: node publish.js [input_path] [output_dir]");

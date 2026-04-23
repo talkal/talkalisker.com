@@ -1,15 +1,15 @@
 {
-  "name": "_dhs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "name": "talkalisker-dhs",
+  "version": "3.0.0",
+  "description": "Talkalisker Deliverables System — AST-based report generation pipeline",
+  "author": "Tal Kalisker",
+  "license": "UNLICENSED",
+  "private": true,
   "type": "commonjs",
+  "scripts": {
+    "build": "node scripts/build_all.js",
+    "delete": "node scripts/delete_report.js"
+  },
   "dependencies": {
     "front-matter": "^4.0.2",
     "handlebars": "^4.7.9",
