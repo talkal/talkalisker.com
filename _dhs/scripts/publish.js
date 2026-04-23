@@ -5,6 +5,10 @@ const MarkdownIt = require('markdown-it');
 const Handlebars = require('handlebars');
 const CryptoJS = require("crypto-js");
 
+// Client password registry — single source of truth for all client passwords
+const registryPath = path.join(__dirname, '../clients.json');
+const clientRegistry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+
 /**
  * Talkalisker DHS Publisher v3.0.0
  * AST-Based Markdown to HTML Pipeline
@@ -154,73 +158,273 @@ function generateMasterIndex(baseDir) {
     });
 
     // We can also use Handlebars for the index eventually, but string literal is fine here
-    const masterPassword = "kalisker123"; // Tal's master password
-    
-    let htmlContent = `
-        <div class="logo">
-            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L2 22h20L12 2zm0 3.8l7.2 14.2H4.8L12 5.8z"/>
-            </svg>
-            TalKalisker Master Index
+    const masterPassword = clientRegistry._master || "kalisker123";
+        let htmlContent = `
+        <div class="header">
+            <div class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="#B85A44"><path d="M12 2L2 22h20L12 2zm0 3.8l7.2 14.2H4.8L12 5.8z"/></svg>
+                <span>TalKalisker</span>
+            </div>
+            <div class="subtitle">Client Deliverables Portal</div>
         </div>
 
-        <div class="section-badge">Client Deliverables Dashboard</div>
-        
-        <div class="group-container">
-            ${Object.keys(groupedReports).sort().map(client => `
-            <div class="client-group">
-                <h2 class="client-name">${client.toUpperCase()}</h2>
-                <div class="reports-list">
-                    ${groupedReports[client].map(r => `
-                    <a href="${r.dir}/" class="report-row">
-                        <div class="report-meta">
-                            <span class="report-type">${r.type}</span>
-                            <span class="report-date">${r.date}</span>
-                        </div>
-                        <div class="report-title">${r.title}</div>
-                    </a>
-                    `).join('')}
-                </div>
+        ${Object.keys(groupedReports).sort().map(project => `
+        <section class="project-section">
+            <div class="project-header">
+                <span class="project-label">PROJECT</span>
+                <span class="project-name">${project}</span>
             </div>
-            `).join('')}
-        </div>
+            <div class="grid">
+                ${groupedReports[project].map(r => `
+                <a href="${r.dir}/" class="card">
+                    <div class="card-type">${r.type}</div>
+                    <div class="card-title">${r.title}</div>
+                    <div class="card-footer">
+                        <span class="card-client">${r.client}</span>
+                        <span class="card-date">${r.date}</span>
+                    </div>
+                </a>
+                `).join('')}
+            </div>
+        </section>
+        `).join('')}
+
+        <footer class="index-footer">
+            <span>talkalisker.com</span>
+            <span>Deliverables System v3.0</span>
+        </footer>
     `;
 
     const encryptedContent = CryptoJS.AES.encrypt(htmlContent, masterPassword).toString();
 
     let indexHtml = `<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DHS Master Index</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>Client Portal | TalKalisker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <style>
-        body { background: #111; color: #fff; font-family: 'Outfit', sans-serif; padding: 4rem 10%; }
-        .project-section { margin-bottom: 5rem; }
-        .project-header { font-family: 'JetBrains Mono'; color: #B85A44; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem; font-size: 0.9rem; letter-spacing: 0.1em; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
-        .card { background: #1A1A1A; border: 1px solid rgba(255,255,255,0.05); padding: 2rem; border-radius: 12px; text-decoration: none; color: inherit; transition: border-color 0.3s, transform 0.2s; }
-        .card:hover { border-color: #B85A44; transform: translateY(-4px); }
-        .card-label { font-family: 'JetBrains Mono'; font-size: 0.7rem; color: #B85A44; margin-bottom: 0.5rem; text-transform: uppercase; }
-        .card-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2; }
-        .card-meta { font-family: 'JetBrains Mono'; font-size: 0.8rem; color: rgba(255,255,255,0.4); display: flex; justify-content: space-between; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-core: #0F0F0F;
+            --bg-surface: #1A1A1A;
+            --bg-elevated: #242424;
+            --accent: #B85A44;
+            --accent-glow: rgba(184, 90, 68, 0.15);
+            --text-primary: #F5F0EB;
+            --text-secondary: rgba(245, 240, 235, 0.45);
+            --border-subtle: rgba(255,255,255, 0.06);
+            --font-body: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+        body {
+            background: var(--bg-core);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            padding: 3rem 8%;
+        }
+        @media (max-width: 768px) { body { padding: 2rem 5%; } }
+
+        /* Header */
+        .header { margin-bottom: 4rem; }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* Project Sections */
+        .project-section { margin-bottom: 4rem; }
+        .project-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .project-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+        .project-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        /* Card Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.25rem;
+        }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.75rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px var(--accent-glow);
+        }
+        .card-type {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.3;
+            flex-grow: 1;
+        }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        /* Footer */
+        .index-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        /* Lock Screen */
+        .lock-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            text-align: center;
+        }
+        .lock-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 2.5rem;
+            opacity: 0.7;
+        }
+        .lock-badge {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .lock-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .lock-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            max-width: 360px;
+        }
+        .lock-input {
+            width: 100%;
+            max-width: 340px;
+            padding: 1rem 1.25rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-surface);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+        .lock-input:focus { outline: none; border-color: var(--accent); }
+        .lock-btn {
+            width: 100%;
+            max-width: 340px;
+            padding: 1rem;
+            border-radius: 10px;
+            border: none;
+            background: var(--accent);
+            color: white;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+        }
+        .lock-btn:hover { opacity: 0.9; transform: scale(1.01); }
+        .lock-btn:active { transform: scale(0.98); }
+        .lock-error {
+            color: #E85D4A;
+            margin-top: 1rem;
+            display: none;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+        }
     </style>
 </head>
 <body>
-    <div id="lock-screen" class="container" style="text-align: center; margin-top: 100px;">
-        <svg class="icon" style="color:var(--accent); margin-bottom:20px;" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 3.8l7.2 14.2H4.8L12 5.8z"/></svg>
-        <h2 style="margin-bottom:10px;">Master Archive</h2>
-        <p style="color:var(--text-secondary); margin-bottom: 20px;">Restricted access. Authentication required.</p>
-        <input type="password" id="auth-key" placeholder="Enter master key..." style="width: 100%; max-width:300px; padding: 1rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); margin-bottom: 1rem; font-family: var(--font-mono);">
-        <div>
-            <button onclick="attemptDecrypt()" style="width: 100%; max-width:300px; padding: 1rem; border-radius: 8px; border: none; background: var(--accent); color: white; font-weight: 700; cursor: pointer;">Decrypt Archive</button>
+    <div id="lock-screen" class="lock-container">
+        <div class="lock-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#B85A44"><path d="M12 2L2 22h20L12 2zm0 3.8l7.2 14.2H4.8L12 5.8z"/></svg>
+            <span>TalKalisker</span>
         </div>
-        <div id="auth-error" style="color: #ff4a4a; margin-top: 1rem; display: none; font-size: 0.8rem; font-family: var(--font-mono);">ERROR: Invalid master key.</div>
+        <div class="lock-badge">🔒 Restricted Access</div>
+        <h1 class="lock-title">Client Portal</h1>
+        <p class="lock-desc">Enter your master key to access the deliverables archive.</p>
+        <input type="password" id="auth-key" class="lock-input" placeholder="Enter master key..." onkeydown="if(event.key==='Enter')attemptDecrypt()">
+        <button onclick="attemptDecrypt()" class="lock-btn">Authenticate & Decrypt</button>
+        <div id="auth-error" class="lock-error">ERROR: Invalid key. Verification failed.</div>
     </div>
 
-    <div id="decrypted-content" class="container" style="display: none;"></div>
+    <div id="decrypted-content" style="display: none;"></div>
 
     <script id="encrypted-payload" type="application/json">"${encryptedContent}"</script>
     <script>
@@ -304,9 +508,15 @@ function publish(markdownPath, outputDir) {
         content_he: contentMap.content_he, nav_he: contentMap.nav_he
     };
 
-    const isProtected = !!metadata.password;
+    // Resolve password: per-report override > client registry > unprotected
+    const clientName = metadata.client || '';
+    const resolvedPassword = metadata.password 
+        || clientRegistry[clientName] 
+        || null;
+
+    const isProtected = !!resolvedPassword;
     const encryptedPayload = isProtected 
-        ? CryptoJS.AES.encrypt(JSON.stringify(payload), metadata.password.toString()).toString()
+        ? CryptoJS.AES.encrypt(JSON.stringify(payload), resolvedPassword.toString()).toString()
         : null;
 
     const templateData = {

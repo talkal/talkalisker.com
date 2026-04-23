@@ -4,7 +4,6 @@ project: "Process Architecture"
 date: 2026-04-20
 languages: '["en", "es"]'
 confidential: false
-password: "client123"
 type: "Naming Strategy"
 title: "Brand Naming & Identity Architecture"
 ---

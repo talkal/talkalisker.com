@@ -1,38 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DHS Master Index</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>Client Portal | TalKalisker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <style>
-        body { background: #111; color: #fff; font-family: 'Outfit', sans-serif; padding: 4rem 10%; }
-        .project-section { margin-bottom: 5rem; }
-        .project-header { font-family: 'JetBrains Mono'; color: #B85A44; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem; font-size: 0.9rem; letter-spacing: 0.1em; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
-        .card { background: #1A1A1A; border: 1px solid rgba(255,255,255,0.05); padding: 2rem; border-radius: 12px; text-decoration: none; color: inherit; transition: border-color 0.3s, transform 0.2s; }
-        .card:hover { border-color: #B85A44; transform: translateY(-4px); }
-        .card-label { font-family: 'JetBrains Mono'; font-size: 0.7rem; color: #B85A44; margin-bottom: 0.5rem; text-transform: uppercase; }
-        .card-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2; }
-        .card-meta { font-family: 'JetBrains Mono'; font-size: 0.8rem; color: rgba(255,255,255,0.4); display: flex; justify-content: space-between; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-core: #0F0F0F;
+            --bg-surface: #1A1A1A;
+            --bg-elevated: #242424;
+            --accent: #B85A44;
+            --accent-glow: rgba(184, 90, 68, 0.15);
+            --text-primary: #F5F0EB;
+            --text-secondary: rgba(245, 240, 235, 0.45);
+            --border-subtle: rgba(255,255,255, 0.06);
+            --font-body: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+        body {
+            background: var(--bg-core);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            padding: 3rem 8%;
+        }
+        @media (max-width: 768px) { body { padding: 2rem 5%; } }
+
+        /* Header */
+        .header { margin-bottom: 4rem; }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* Project Sections */
+        .project-section { margin-bottom: 4rem; }
+        .project-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .project-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+        .project-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        /* Card Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.25rem;
+        }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.75rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px var(--accent-glow);
+        }
+        .card-type {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.3;
+            flex-grow: 1;
+        }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        /* Footer */
+        .index-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        /* Lock Screen */
+        .lock-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            text-align: center;
+        }
+        .lock-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 2.5rem;
+            opacity: 0.7;
+        }
+        .lock-badge {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .lock-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .lock-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            max-width: 360px;
+        }
+        .lock-input {
+            width: 100%;
+            max-width: 340px;
+            padding: 1rem 1.25rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-surface);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+        .lock-input:focus { outline: none; border-color: var(--accent); }
+        .lock-btn {
+            width: 100%;
+            max-width: 340px;
+            padding: 1rem;
+            border-radius: 10px;
+            border: none;
+            background: var(--accent);
+            color: white;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+        }
+        .lock-btn:hover { opacity: 0.9; transform: scale(1.01); }
+        .lock-btn:active { transform: scale(0.98); }
+        .lock-error {
+            color: #E85D4A;
+            margin-top: 1rem;
+            display: none;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+        }
     </style>
 </head>
 <body>
-    <div id="lock-screen" class="container" style="text-align: center; margin-top: 100px;">
-        <svg class="icon" style="color:var(--accent); margin-bottom:20px;" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 3.8l7.2 14.2H4.8L12 5.8z"/></svg>
-        <h2 style="margin-bottom:10px;">Master Archive</h2>
-        <p style="color:var(--text-secondary); margin-bottom: 20px;">Restricted access. Authentication required.</p>
-        <input type="password" id="auth-key" placeholder="Enter master key..." style="width: 100%; max-width:300px; padding: 1rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); margin-bottom: 1rem; font-family: var(--font-mono);">
-        <div>
-            <button onclick="attemptDecrypt()" style="width: 100%; max-width:300px; padding: 1rem; border-radius: 8px; border: none; background: var(--accent); color: white; font-weight: 700; cursor: pointer;">Decrypt Archive</button>
+    <div id="lock-screen" class="lock-container">
+        <div class="lock-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#B85A44"><path d="M12 2L2 22h20L12 2zm0 3.8l7.2 14.2H4.8L12 5.8z"/></svg>
+            <span>TalKalisker</span>
         </div>
-        <div id="auth-error" style="color: #ff4a4a; margin-top: 1rem; display: none; font-size: 0.8rem; font-family: var(--font-mono);">ERROR: Invalid master key.</div>
+        <div class="lock-badge">🔒 Restricted Access</div>
+        <h1 class="lock-title">Client Portal</h1>
+        <p class="lock-desc">Enter your master key to access the deliverables archive.</p>
+        <input type="password" id="auth-key" class="lock-input" placeholder="Enter master key..." onkeydown="if(event.key==='Enter')attemptDecrypt()">
+        <button onclick="attemptDecrypt()" class="lock-btn">Authenticate & Decrypt</button>
+        <div id="auth-error" class="lock-error">ERROR: Invalid key. Verification failed.</div>
     </div>
 
-    <div id="decrypted-content" class="container" style="display: none;"></div>
+    <div id="decrypted-content" style="display: none;"></div>
 
+<<<<<<< HEAD
     <script id="encrypted-payload" type="application/json">"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"</script>
+=======
+    <script id="encrypted-payload" type="application/json">"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"</script>
+>>>>>>> 559bb3b (feat(dhs): v3.0 stable release - AES security, client registry, branded dashboard, and premium consulting templates)
     <script>
         function attemptDecrypt() {
             const key = document.getElementById('auth-key').value;

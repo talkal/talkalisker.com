@@ -4,7 +4,6 @@ project: "Brand Identity"
 date: 2026-04-20
 languages: '["en"]'
 confidential: false
-password: "client123"
 type: "Meeting.ProposalReview"
 title: "Branding & Web Design Proposal Review"
 ---
