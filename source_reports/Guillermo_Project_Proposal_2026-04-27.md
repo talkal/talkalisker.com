@@ -10,6 +10,7 @@ languages:
   - es
 ---
 
+:::en
 # 01. /executive_summary
 
 **Guillermo** is building a new kind of consultancy — one that doesn't leave transformation plans in a drawer. Voria is engineered specifically for the Spanish SME market (5–50 employees), targeting knowledge-intensive sectors like Law, Compliance, Accounting, and Healthcare-adjacent services. The strategic partnership with Rapinformes S.L. — a 35-year compliance firm with 7,000 clients — provides the institutional trust that conservative sectors demand before opening the door.
@@ -19,6 +20,20 @@ Left without a distinctive brand identity, custom web presence, and clear market
 **Our approach** delivers the complete digital foundation — from strategic naming and visual identity to a fully coded, high-performance website — in a compressed 5-week sprint. Rather than handing over a PDF brand guide and walking away, we embed the brand into working code, live infrastructure, and professional collateral that Guillermo can deploy immediately.
 
 **The outcome:** By June 8th, Guillermo will have a market-ready brand identity, a live high-performance website on a custom domain, a comprehensive brand kit extending to all professional touchpoints, and the technical infrastructure to begin client acquisition through Rapinformes' existing network of 7,000 contacts.
+:::
+
+:::es
+# 01. /resumen_ejecutivo
+
+**Guillermo** está construyendo un nuevo tipo de consultoría, una que no deja los planes de transformación en un cajón. Voria está diseñada específicamente para el mercado de las PYMES españolas (5–50 empleados), centrándose en sectores intensivos en conocimiento como Derecho, Cumplimiento, Contabilidad y servicios adyacentes a la Salud. La alianza estratégica con Rapinformes S.L. — una firma de cumplimiento con 35 años y 7.000 clientes — proporciona la confianza institucional que los sectores conservadores exigen antes de abrir la puerta.
+
+Sin una identidad de marca distintiva, presencia web personalizada y un posicionamiento de mercado claro, Voria corre el riesgo de ser absorbida por las más de 150 consultorías digitales genéricas que ya operan en este espacio. El tiempo es limitado: la asociación fundadora con Rapinformes crea un foso de credibilidad, pero solo si el mercado percibe a Voria como un jugador premium y diferenciado desde el primer día.
+
+**Nuestro enfoque** ofrece la base digital completa —desde el naming estratégico y la identidad visual hasta un sitio web de alto rendimiento totalmente programado— en un sprint comprimido de 5 semanas. En lugar de entregar una guía de marca en PDF y marcharnos, integramos la marca en código funcional, infraestructura en vivo y materiales profesionales que Guillermo puede desplegar de inmediato.
+
+**El resultado:** Para el 8 de junio, Guillermo tendrá una identidad de marca lista para el mercado, un sitio web de alto rendimiento en vivo en un dominio personalizado, un kit de marca integral que se extiende a todos los puntos de contacto profesionales y la infraestructura técnica para comenzar la adquisición de clientes a través de la red existente de Rapinformes de 7.000 contactos.
+:::
+
 
 # 02. /win_themes
 
