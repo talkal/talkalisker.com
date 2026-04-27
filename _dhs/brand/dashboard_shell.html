@@ -248,13 +248,14 @@
             border-radius: 8px;
             padding: 1.5rem;
             margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr 150px 150px;
+            gap: 1.5rem;
             align-items: center;
         }
         .metric-title, .ranking-keyword { font-weight: 700; font-size: 1.1rem; }
-        .metric-value, .ranking-position { font-family: var(--font-mono); font-size: 1.5rem; color: var(--accent); }
-        .metric-trend, .ranking-change { font-family: var(--font-mono); font-size: 0.85rem; margin-top: 0.3rem; text-align: right; }
+        .metric-value, .ranking-position { font-family: var(--font-mono); font-size: 1.5rem; color: var(--accent); text-align: center; }
+        .metric-trend, .ranking-change { font-family: var(--font-mono); font-size: 0.85rem; text-align: right; }
         .trend-up { color: #6B8E23; }
         .trend-down { color: var(--accent-red); }
         .trend-neutral { color: var(--text-secondary); }
