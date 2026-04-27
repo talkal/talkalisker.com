@@ -303,6 +303,40 @@
             letter-spacing: 0.08em;
         }
 
+        /* Deliverable Cards */
+        .deliverable-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.3s;
+        }
+        .deliverable-card:hover {
+            border-color: var(--accent);
+            transform: translateX(4px);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+        .deliverable-icon {
+            color: var(--accent);
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+        .deliverable-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        .deliverable-details {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
         /* Images & Evidence */
         .evidence-img {
             max-width: 100%;

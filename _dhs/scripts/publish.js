@@ -126,6 +126,18 @@ function parseMarkdownContent(markdownContent, outputDir) {
     <div class="signature-name">${name}</div>
     <div class="signature-role">${role}</div>
 </div>\n`;
+        })
+        // Deliverable Cards
+        .replace(/^\* \*\*Deliverable:\*\* (.*?) \| \*\*Details:\*\* (.*$)/gm, (match, title, details) => {
+            return `\n<div class="deliverable-card">
+    <div class="deliverable-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+    </div>
+    <div class="deliverable-body">
+        <div class="deliverable-title">${title}</div>
+        <div class="deliverable-details">${details}</div>
+    </div>
+</div>\n`;
         });
 
     // Add CSS IDs to headings for navigation
