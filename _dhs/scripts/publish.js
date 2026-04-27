@@ -498,29 +498,45 @@ function publish(markdownPath, outputDir) {
         langs = ['en'];
     }
 
-    const contentMap = {
-        content_en: "", nav_en: "",
-        content_es: "", nav_es: "",
-        content_he: "", nav_he: ""
-    };
+    const contentMap = {};
 
+    // Initialize content strings for each language
     langs.forEach(l => {
-        let langMd = bodyMarkdown;
-        const marker = new RegExp(`:::${l}([\\s\\S]*?):::`, 'g');
-        const matches = [...bodyMarkdown.matchAll(marker)];
-        if (matches.length > 0) {
-            langMd = matches.map(m => m[1].trim()).join('\n\n');
+        contentMap[`content_${l}`] = '';
+    });
+
+    // Parser for language blocks
+    const lines = bodyMarkdown.split('\n');
+    let currentLang = null; 
+    
+    lines.forEach(line => {
+        const markerMatch = line.trim().match(/^:::(\w+)$/);
+        if (markerMatch) {
+            currentLang = markerMatch[1];
+            return;
+        }
+        if (line.trim() === ':::') {
+            currentLang = null;
+            return;
         }
 
-        // Extract headings for dynamic sidebar navigation
-        const navItems = [];
-        const headingRegex = /^# (.*\/(\w+).*$)/gm;
-        let match;
-        while ((match = headingRegex.exec(langMd)) !== null) {
-            navItems.push(`<a href="#${match[2]}" class="nav-link">${match[1]}</a>`);
+        if (currentLang) {
+            if (langs.includes(currentLang)) {
+                contentMap[`content_${currentLang}`] += line + '\n';
+            }
+        } else {
+            // Shared content goes to all languages
+            langs.forEach(l => {
+                contentMap[`content_${l}`] += line + '\n';
+            });
         }
-        contentMap[`nav_${l}`] = navItems.join('\n            ');
-        contentMap[`content_${l}`] = parseMarkdownContent(langMd, outputDir);
+    });
+
+    // Render and build nav for each language
+    langs.forEach(l => {
+        const finalMd = contentMap[`content_${l}`].trim();
+        contentMap[`content_${l}`] = parseMarkdownContent(finalMd, outputDir);
+        contentMap[`nav_${l}`] = generateNav(finalMd);
     });
 
     const payload = {
