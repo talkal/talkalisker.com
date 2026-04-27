@@ -95,12 +95,36 @@ Dedicated "ping-pong" feedback cycles for precision adjustments. All final files
 - **Metric:** Payment 3 — Final Approval & Handover (33%) | **Value:** €1,000 | **Trend:** On completion
 
 **What is included:**
-* **Deliverable:** Brand Strategy & Naming | **Details:** Strategic naming research, brand identity & voice research, and 2 distinct brand directions for your strategic choice. (Phase 1)
-* **Deliverable:** Full Brand Identity Kit | **Details:** 2 complete branding options, logo suite (primary, secondary), color palette, typography system, and full brand guidelines. (Phase 2)
-* **Deliverable:** High-Performance Website | **Details:** Fully coded HTML5/CSS3/JS site, SEO architecture, custom UI/UX design system, and professional copywriting. (Phase 3)
-* **Deliverable:** Zero-Cost Cloud Hosting | **Details:** Secure GitHub Pages hosting setup with custom domain integration and 0€ recurring monthly fees. (Phase 3)
-* **Deliverable:** Digital Brand Assets | **Details:** Professional business card designs, LinkedIn brand banners, and custom email signatures for the founding team. (Phase 3)
-* **Deliverable:** Technical Handover | **Details:** Full source code delivery, GitHub repository ownership, and final print/digital file packages. (Phase 4)
+* **Deliverable:** Brand Strategy & Naming | **Details:** Research and creative direction (Phase 1):
+- Strategic naming research
+- Brand identity & voice development
+- 2 distinct brand directions for your strategic choice
+
+* **Deliverable:** Full Brand Identity Kit | **Details:** Visual system and guidelines (Phase 2):
+- Professional logo suite (primary, secondary, variations)
+- Premium color palette & typography system
+- Comprehensive brand guidelines document
+
+* **Deliverable:** High-Performance Website | **Details:** Custom engineering and deployment (Phase 3):
+- Fully coded HTML5/CSS3/JS high-performance site
+- SEO-optimized architecture and content strategy
+- Responsive UI/UX design system
+
+* **Deliverable:** Zero-Cost Cloud Hosting | **Details:** Technical infrastructure (Phase 3):
+- Secure GitHub Pages hosting setup
+- Custom domain integration
+- 0€ recurring monthly maintenance fees
+
+* **Deliverable:** Digital Brand Assets | **Details:** Professional touchpoints (Phase 3):
+- Business card designs for the founding team
+- Custom LinkedIn brand banners
+- Professional email signatures
+
+* **Deliverable:** Technical Handover | **Details:** Final delivery and ownership (Phase 4):
+- Full source code delivery & GitHub repository access
+- Print and digital file packages for all assets
+- 100% intellectual property ownership
+
 
 
 **Payment Structure:**

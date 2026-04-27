@@ -128,14 +128,15 @@ function parseMarkdownContent(markdownContent, outputDir) {
 </div>\n`;
         })
         // Deliverable Cards
-        .replace(/^\* \*\*Deliverable:\*\* (.*?) \| \*\*Details:\*\* (.*$)/gm, (match, title, details) => {
+        .replace(/^\* \*\*Deliverable:\*\* (.*?) \| \*\*Details:\*\* (.*$)\n([\s\S]*?)(?=\n\* |\n# |$)/gm, (match, title, subtitle, desc) => {
+            const fullDetails = subtitle + "\n" + desc;
             return `\n<div class="deliverable-card">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
     <div class="deliverable-body">
         <div class="deliverable-title">${title}</div>
-        <div class="deliverable-details">${details}</div>
+        <div class="deliverable-details">${md.render(fullDetails.trim())}</div>
     </div>
 </div>\n`;
         });
