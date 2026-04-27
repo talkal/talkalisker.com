@@ -1,11 +1,12 @@
 ---
-title: "Voria Digital Transformation — Project Proposal"
-client: "Guillermo"
-project: "Voria Digital Transformation"
-type: "Proposal.Strategy"
-date: "2026-04-27"
+title: Voria Digital Transformation — Project Proposal
+client: Guillermo
+project: Voria Digital Transformation
+type: Proposal.Strategy
+date: 2026-04-27
 confidential: true
-languages: ["en"]
+languages:
+  - '["en", "es"]'
 ---
 
 # 01. /executive_summary
@@ -16,8 +17,6 @@ Left without a distinctive brand identity, custom web presence, and clear market
 
 **Our approach** delivers the complete digital foundation — from strategic naming and visual identity to a fully coded, high-performance website — in a compressed 5-week sprint. Rather than handing over a PDF brand guide and walking away, we embed the brand into working code, live infrastructure, and professional collateral that Guillermo can deploy immediately.
 
-**Proof:** This is the same end-to-end methodology we used for the Hadassah Shoulder Unit digital audit — where we moved from initial assessment to a fully operational, branded patient portal with measurable UX improvements in under 4 weeks.
-
 **The outcome:** By June 8th, Guillermo will have a market-ready brand identity, a live high-performance website on a custom domain, a comprehensive brand kit extending to all professional touchpoints, and the technical infrastructure to begin client acquisition through Rapinformes' existing network of 7,000 contacts.
 
 # 02. /win_themes
@@ -27,12 +26,9 @@ These are the strategic pillars that run through every section of this proposal.
 - **Decision:** Avoid the "generic consultant" trap through strategic brand differentiation | **Impact:** High
 **Buyer Need:** The Spanish market has 150+ competing digital transformation firms. Without sharp positioning, Voria will be perceived as another generic consultancy despite its unique AI Readiness methodology and Rapinformes partnership.
 **Our Differentiator:** We deliver strategic naming research and 2 distinct brand directions — not template logos — with copywriting that positions the "AI Readiness" angle as a market differentiator, not a buzzword.
-**Proof Point:** Our naming strategy for Guillermo's initial brand exploration produced 12 viable candidates with full linguistic, cultural, and domain analysis across English and Spanish markets.
-
 - **Decision:** Launch a technically superior web presence that converts referrals into clients | **Impact:** High
 **Buyer Need:** Voria needs more than a brochure site. The website must function as a "digital business card" that converts warm referrals from Rapinformes' 7,000-client network into consultancy engagements.
 **Our Differentiator:** We build lightweight, secure HTML5/CSS3/JS sites with zero recurring hosting costs (GitHub Pages), sub-second load times, and SEO-optimized architecture — not bloated WordPress installs that become security liabilities.
-**Proof Point:** The talkalisker.com developer services page operates at 97+ Lighthouse performance scores on the same zero-cost GitHub Pages infrastructure we will deploy for Voria.
 
 - **Decision:** Deliver a complete brand system — not fragments — in 5 weeks | **Impact:** High
 **Buyer Need:** Guillermo operates under a "High Creative Latitude" model and needs a partner who delivers finished, well-reasoned directions rather than requiring micro-management. The timeline is fixed: Rapinformes is waiting.
@@ -46,7 +42,7 @@ These are the strategic pillars that run through every section of this proposal.
 Before proposing a solution, we need to demonstrate that we have done the work to understand Guillermo's situation — not from a textbook, but from listening.
 
 **Your Current State:**
-Guillermo is building Voria as a boutique consultancy that targets a very specific gap in the Spanish market: SMEs with 5-50 employees who need genuine digital transformation — not slide decks, but embedded technical implementation that makes their operations AI-compatible. The founding insight is sharp: most consultancies sell "digitalization" as a concept, but Voria's methodology audits the entire digital operation, fixes infrastructure gaps, and only then integrates AI agents. This is a real differentiator — if the market can see it.
+Guillermo is building Voria as a boutique consultancy that targets a very specific gap in the Spanish market: SMEs with 5-50 employees who need genuine digital transformation; not slide decks, but embedded technical implementation that makes their operations AI-compatible. The founding insight is sharp: most consultancies sell "digitalization" as a concept, but Voria's methodology audits the entire digital operation, fixes infrastructure gaps, and only then integrates AI agents. This is a real differentiator; if the market can see it.
 
 The strategic foundation is strong. Rapinformes S.L. — 35 years in the compliance industry, 7,000 active clients — has come in as a 10% equity partner and Voria's first client. This is rare institutional backing for a new venture. It means Voria doesn't need to cold-sell trust from zero; the trust is inherited. But inherited trust has a shelf life. It needs to be converted into visible, tangible brand authority before the market window closes.
 
@@ -92,17 +88,7 @@ Dedicated "ping-pong" feedback cycles for precision adjustments. All final files
 **Payment Structure:**
 Milestone-based, split equally across three triggers: project start, core deliverable completion, and final approval. No hidden fees, no ongoing subscriptions, no hosting costs.
 
-# 06. /proof
-
-*Evidence that we have done this before — and done it well.*
-
-**Case Study: Hadassah Shoulder Unit — UX Audit & Patient Flow Optimization**
-The Hadassah Shoulder Unit needed a digital front-door that simplified the patient journey from symptom discovery to appointment booking. Their existing site was information-dense but navigationally opaque for elderly patients. We delivered a comprehensive UX audit with severity-rated findings, a symptom-first navigation architecture, and a mobile-responsive booking flow — all within a branded, encrypted deliverable portal that the medical team could share securely.
-
-**Case Study: Rapinformes S.L. — Brand Naming Research**
-We conducted the initial naming exploration for this very engagement — producing 12 viable candidates across English and Spanish markets with full linguistic analysis, domain availability, and cultural resonance scoring. The research demonstrated that a "family resemblance" to Rapinformes' existing brand equity could be preserved while establishing a distinct market identity for the new venture.
-
-# 07. /action_items
+# 06. /action_items
 
 The following steps will move this engagement from proposal to execution:
 
