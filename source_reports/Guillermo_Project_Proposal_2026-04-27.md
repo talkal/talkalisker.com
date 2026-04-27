@@ -1,5 +1,5 @@
 ---
-title: Voria Digital Transformation — Project Proposal
+title: Voria (Placeholder) Digital Transformation — Project Proposal
 client: Guillermo
 project: Voria Digital Transformation
 type: Proposal.Strategy
