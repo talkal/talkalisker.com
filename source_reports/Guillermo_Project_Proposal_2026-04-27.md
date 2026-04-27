@@ -6,7 +6,8 @@ type: Proposal.Strategy
 date: 2026-04-27
 confidential: true
 languages:
-  - '["en", "es"]'
+  - en
+  - es
 ---
 
 # 01. /executive_summary
