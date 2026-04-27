@@ -161,10 +161,10 @@ function generateMasterIndex(baseDir) {
     const masterPassword = clientRegistry._master || "kalisker123";
         let htmlContent = `
         <div class="header">
-            <div class="logo">
+            <a href="https://talkalisker.com/developer-services" class="logo" style="text-decoration: none; color: inherit;">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="#B85A44"><path d="M12 2L2 22h20L12 2zm0 3.8l7.2 14.2H4.8L12 5.8z"/></svg>
                 <span>TalKalisker</span>
-            </div>
+            </a>
             <div class="subtitle">Client Deliverables Portal</div>
         </div>
 
@@ -412,10 +412,10 @@ function generateMasterIndex(baseDir) {
 </head>
 <body>
     <div id="lock-screen" class="lock-container">
-        <div class="lock-logo">
+        <a href="https://talkalisker.com/developer-services" class="lock-logo" style="text-decoration: none; color: inherit;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="#B85A44"><path d="M12 2L2 22h20L12 2zm0 3.8l7.2 14.2H4.8L12 5.8z"/></svg>
             <span>TalKalisker</span>
-        </div>
+        </a>
         <div class="lock-badge">🔒 Restricted Access</div>
         <h1 class="lock-title">Client Portal</h1>
         <p class="lock-desc">Enter your master key to access the deliverables archive.</p>
