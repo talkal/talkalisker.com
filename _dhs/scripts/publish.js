@@ -51,7 +51,7 @@ md.renderer.rules.image = function (tokens, idx, options, env, self) {
 function parseMarkdownContent(markdownContent, outputDir) {
     let processed = markdownContent
         // Proposal Cards
-        .replace(/^\- \*\*Name:\*\* (.*?) \| \*\*Slogan:\*\* (.*?) \| \*\*Level:\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\- \*\*Name:\*\*|\r?\n# |$(?![\s\S]))/gm, (match, name, slogan, level, desc) => {
+        .replace(/^\- \*\*(?:Name|Nombre|שם):\*\* (.*?) \| \*\*(?:Slogan|Eslogan|סלוגן):\*\* (.*?) \| \*\*(?:Level|Nivel|רמה):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\- \*\*(?:Name|Nombre|שם):\*\*|\r?\n# |$(?![\s\S]))/gm, (match, name, slogan, level, desc) => {
             return `\n<div class="proposal-card">
     <div class="proposal-badge">${level}</div>
     <div class="proposal-name">${name}</div>
@@ -60,7 +60,7 @@ function parseMarkdownContent(markdownContent, outputDir) {
 </div>\n`;
         })
         // Finding Cards
-        .replace(/^\- \*\*Finding:\*\* (.*?) \| \*\*Severity:\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\- \*\*Finding:\*\*|\r?\n# |$(?![\s\S]))/gm, (match, title, sev, desc) => {
+        .replace(/^\- \*\*(?:Finding|Hallazgo|ממצא):\*\* (.*?) \| \*\*(?:Severity|Severidad|חומרה):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\- \*\*(?:Finding|Hallazgo|ממצא):\*\*|\r?\n# |$(?![\s\S]))/gm, (match, title, sev, desc) => {
             const sevClass = sev.toLowerCase().trim();
             return `\n<div class="finding-card">
     <div class="finding-meta"><strong>${title}</strong><span class="severity sev-${sevClass}">${sev}</span></div>
@@ -68,7 +68,7 @@ function parseMarkdownContent(markdownContent, outputDir) {
 </div>\n`;
         })
         // Decision Cards (Meeting Summaries)
-        .replace(/^\- \*\*Decision:\*\* (.*?) \| \*\*Impact:\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\- \*\*Decision:\*\*|\r?\n# |$(?![\s\S]))/gm, (match, title, impact, desc) => {
+        .replace(/^\- \*\*(?:Decision|Decisión|החלטה):\*\* (.*?) \| \*\*(?:Impact|Impacto|השפעה):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\- \*\*(?:Decision|Decisión|החלטה):\*\*|\r?\n# |$(?![\s\S]))/gm, (match, title, impact, desc) => {
             return `\n<div class="decision-card">
     <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">${impact} Impact</span></div>
     <div class="decision-title">${title}</div>
@@ -76,7 +76,7 @@ function parseMarkdownContent(markdownContent, outputDir) {
 </div>\n`;
         })
         // Action Items (Meeting Summaries)
-        .replace(/^\- \*\*Action:\*\* (.*?) \| \*\*Owner:\*\* (.*?) \| \*\*Status:\*\* (.*$)/gm, (match, task, owner, status) => {
+        .replace(/^\- \*\*(?:Action|Acción|פעולה):\*\* (.*?) \| \*\*(?:Owner|Responsable|אחראי):\*\* (.*?) \| \*\*(?:Status|Estado|סטטוס):\*\* (.*$)/gm, (match, task, owner, status) => {
             const statusClass = status.toLowerCase().trim();
             const checkedAttr = statusClass === 'done' ? 'style="background:var(--accent);"' : '';
             return `\n<div class="action-card">
@@ -89,7 +89,7 @@ function parseMarkdownContent(markdownContent, outputDir) {
 </div>\n`;
         })
         // Metric Cards (Monthly Retainer)
-        .replace(/^\- \*\*Metric:\*\* (.*?) \| \*\*Value:\*\* (.*?) \| \*\*Trend:\*\* (.*$)/gm, (match, metric, value, trend) => {
+        .replace(/^\- \*\*(?:Metric|Métrica|מדד):\*\* (.*?) \| \*\*(?:Value|Valor|ערך):\*\* (.*?) \| \*\*(?:Trend|Tendencia|מגמה):\*\* (.*$)/gm, (match, metric, value, trend) => {
             const trendClass = trend.includes('+') ? 'trend-up' : (trend.includes('-') ? 'trend-down' : 'trend-neutral');
             return `\n<div class="metric-card">
     <div class="metric-title">${metric}</div>
@@ -98,7 +98,7 @@ function parseMarkdownContent(markdownContent, outputDir) {
 </div>\n`;
         })
         // Ranking Cards (SEO Report)
-        .replace(/^\- \*\*Keyword:\*\* (.*?) \| \*\*Rank:\*\* (.*?) \| \*\*Change:\*\* (.*$)/gm, (match, keyword, rank, change) => {
+        .replace(/^\- \*\*(?:Keyword|Palabra clave|מילת מפתח):\*\* (.*?) \| \*\*(?:Rank|Posición|דירוג):\*\* (.*?) \| \*\*(?:Change|Cambio|שינוי):\*\* (.*$)/gm, (match, keyword, rank, change) => {
             const changeClass = change.includes('+') ? 'trend-up' : (change.includes('-') ? 'trend-down' : 'trend-neutral');
             return `\n<div class="ranking-card">
     <div class="ranking-keyword">${keyword}</div>
@@ -109,7 +109,7 @@ function parseMarkdownContent(markdownContent, outputDir) {
 </div>\n`;
         })
         // Color Swatches (Project Handoff)
-        .replace(/^\- \*\*Color:\*\* (.*?) \| \*\*Hex:\*\* (.*?) \| \*\*Usage:\*\* (.*$)/gm, (match, color, hex, usage) => {
+        .replace(/^\- \*\*(?:Color|Color|צבע):\*\* (.*?) \| \*\*(?:Hex|Hex|קוד):\*\* (.*?) \| \*\*(?:Usage|Uso|שימוש):\*\* (.*$)/gm, (match, color, hex, usage) => {
             return `\n<div class="swatch-card">
     <div class="swatch-color" style="background:${hex};"></div>
     <div class="swatch-info">
@@ -120,7 +120,7 @@ function parseMarkdownContent(markdownContent, outputDir) {
 </div>\n`;
         })
         // Signature Cards
-        .replace(/^\- \*\*Signature:\*\* (.*?) \| \*\*Role:\*\* (.*$)/gm, (match, name, role) => {
+        .replace(/^\- \*\*(?:Signature|Firma|חתימה):\*\* (.*?) \| \*\*(?:Role|Cargo|תפקיד):\*\* (.*$)/gm, (match, name, role) => {
             return `\n<div class="signature-card">
     <div class="signature-line"></div>
     <div class="signature-name">${name}</div>
@@ -128,7 +128,7 @@ function parseMarkdownContent(markdownContent, outputDir) {
 </div>\n`;
         })
         // Deliverable Cards
-        .replace(/^\* \*\*Deliverable:\*\* (.*?) \| \*\*Details:\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\* \*\*Deliverable:\*\*|\r?\n# |$(?![\s\S]))/gm, (match, title, subtitle, desc) => {
+        .replace(/^\* \*\*(?:Deliverable|Entregable|תוצר):\*\* (.*?) \| \*\*(?:Details|Detalles|פרטים):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\* \*\*(?:Deliverable|Entregable|תוצר):\*\*|\r?\n# |$(?![\s\S]))/gm, (match, title, subtitle, desc) => {
             const fullDetails = subtitle + "\n" + desc;
             return `\n<div class="deliverable-card">
     <div class="deliverable-icon">
