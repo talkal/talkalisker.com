@@ -120,6 +120,7 @@ Dedicated "ping-pong" feedback cycles for precision adjustments. All final files
 - Business card designs for the founding team
 - Custom LinkedIn brand banners
 - Professional email signatures
+- **Special offer:** Included in the price
 
 * **Deliverable:** Technical Handover | **Details:** Final delivery and ownership (Phase 4):
 - Full source code delivery & GitHub repository access
