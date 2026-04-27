@@ -143,7 +143,7 @@ function parseMarkdownContent(markdownContent, outputDir) {
 
     // Add CSS IDs to headings for navigation
     processed = processed.replace(/^# (.*\/(\w+).*$)/gm, '<h1 id="$2">$1</h1>');
-    return md.render(processed);
+    return md.render(processed, { outputDir });
 }
 
 function generateNav(markdownContent) {
