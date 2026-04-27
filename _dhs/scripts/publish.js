@@ -166,8 +166,8 @@ function generateMasterIndex(baseDir) {
         const indexPath = path.join(clientsDir, dir, 'index.html');
         if (fs.existsSync(indexPath) && dir !== 'index.html') {
             const html = fs.readFileSync(indexPath, 'utf8');
-            const isConfidential = html.includes('name="confidential" content="true"');
-            if (isConfidential) return;
+            // Confidential reports are shown in the master index because it's master-password protected
+            // if (isConfidential) return;
 
             const client = html.match(/name="client" content="(.*?)"/)?.[1] || dir;
             const project = html.match(/name="project" content="(.*?)"/)?.[1] || client;
