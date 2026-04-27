@@ -51,7 +51,7 @@ md.renderer.rules.image = function (tokens, idx, options, env, self) {
 function parseMarkdownContent(markdownContent, outputDir) {
     let processed = markdownContent
         // Proposal Cards
-        .replace(/^\- \*\*Name:\*\* (.*?) \| \*\*Slogan:\*\* (.*?) \| \*\*Level:\*\* (.*$)\n([\s\S]*?)(?=\n- |\n# |$)/gm, (match, name, slogan, level, desc) => {
+        .replace(/^\- \*\*Name:\*\* (.*?) \| \*\*Slogan:\*\* (.*?) \| \*\*Level:\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\- \*\*Name:\*\*|\r?\n# |$)/gm, (match, name, slogan, level, desc) => {
             return `\n<div class="proposal-card">
     <div class="proposal-badge">${level}</div>
     <div class="proposal-name">${name}</div>
@@ -60,7 +60,7 @@ function parseMarkdownContent(markdownContent, outputDir) {
 </div>\n`;
         })
         // Finding Cards
-        .replace(/^\- \*\*Finding:\*\* (.*?) \| \*\*Severity:\*\* (.*$)\n([\s\S]*?)(?=\n- |\n# |$)/gm, (match, title, sev, desc) => {
+        .replace(/^\- \*\*Finding:\*\* (.*?) \| \*\*Severity:\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\- \*\*Finding:\*\*|\r?\n# |$)/gm, (match, title, sev, desc) => {
             const sevClass = sev.toLowerCase().trim();
             return `\n<div class="finding-card">
     <div class="finding-meta"><strong>${title}</strong><span class="severity sev-${sevClass}">${sev}</span></div>
@@ -68,7 +68,7 @@ function parseMarkdownContent(markdownContent, outputDir) {
 </div>\n`;
         })
         // Decision Cards (Meeting Summaries)
-        .replace(/^\- \*\*Decision:\*\* (.*?) \| \*\*Impact:\*\* (.*$)\n([\s\S]*?)(?=\n- |\n# |$)/gm, (match, title, impact, desc) => {
+        .replace(/^\- \*\*Decision:\*\* (.*?) \| \*\*Impact:\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\- \*\*Decision:\*\*|\r?\n# |$)/gm, (match, title, impact, desc) => {
             return `\n<div class="decision-card">
     <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">${impact} Impact</span></div>
     <div class="decision-title">${title}</div>
@@ -128,7 +128,7 @@ function parseMarkdownContent(markdownContent, outputDir) {
 </div>\n`;
         })
         // Deliverable Cards
-        .replace(/^\* \*\*Deliverable:\*\* (.*?) \| \*\*Details:\*\* (.*$)\n([\s\S]*?)(?=\n\* |\n# |$)/gm, (match, title, subtitle, desc) => {
+        .replace(/^\* \*\*Deliverable:\*\* (.*?) \| \*\*Details:\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\* \*\*Deliverable:\*\*|\r?\n# |$)/gm, (match, title, subtitle, desc) => {
             const fullDetails = subtitle + "\n" + desc;
             return `\n<div class="deliverable-card">
     <div class="deliverable-icon">
