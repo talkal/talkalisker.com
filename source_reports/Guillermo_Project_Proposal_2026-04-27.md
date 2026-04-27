@@ -35,7 +35,6 @@ Sin una identidad de marca distintiva, presencia web personalizada y un posicion
 :::
 
 
-:::en
 # 02. /win_themes
 
 These are the strategic pillars that run through every section of this proposal. Each theme connects a specific capability of ours to a specific need of Guillermo's.
@@ -146,6 +145,6 @@ The following steps will move this engagement from proposal to execution:
 
 - **Signature:** Guillermo | **Role:** Client (Voria Founders)
 - **Signature:** Tal | **Role:** Project Lead (TalKalisker)
-:::
+
 
 
