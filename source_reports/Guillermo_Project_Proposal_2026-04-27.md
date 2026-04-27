@@ -256,6 +256,12 @@ The following steps will move this engagement from proposal to execution:
 - **Action:** Prepare initial naming directions and brand research | **Owner:** Tal & Yaeli | **Status:** Pending
 - **Action:** Provide Rapinformes brand assets for "family resemblance" analysis | **Owner:** Guillermo | **Status:** Pending
 
+<br><br>
+
+---
+
+<br><br>
+
 # 07. /authorization
 
 - **Signature:** Guillermo | **Role:** Client (Voria Founders)
@@ -272,6 +278,12 @@ Los siguientes pasos moverán este compromiso de la propuesta a la ejecución:
 - **Acción:** Programar la reunión de inicio de la Fase 1 para el 5 de mayo | **Responsable:** Tal | **Estado:** Bloqueado
 - **Acción:** Preparar las direcciones iniciales de naming e investigación de marca | **Responsable:** Tal y Yaeli | **Estado:** Pendiente
 - **Acción:** Proporcionar los activos de marca de Rapinformes para el análisis de "parecido familiar" | **Responsable:** Guillermo | **Estado:** Pendiente
+
+<br><br>
+
+---
+
+<br><br>
 
 # 07. /autorización
 
