@@ -118,6 +118,14 @@ function parseMarkdownContent(markdownContent, outputDir) {
         <div class="swatch-usage">${usage}</div>
     </div>
 </div>\n`;
+        })
+        // Signature Cards
+        .replace(/^\- \*\*Signature:\*\* (.*?) \| \*\*Role:\*\* (.*$)/gm, (match, name, role) => {
+            return `\n<div class="signature-card">
+    <div class="signature-line"></div>
+    <div class="signature-name">${name}</div>
+    <div class="signature-role">${role}</div>
+</div>\n`;
         });
 
     // Add CSS IDs to headings for navigation

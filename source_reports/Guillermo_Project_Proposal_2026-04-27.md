@@ -98,3 +98,9 @@ The following steps will move this engagement from proposal to execution:
 - **Action:** Schedule Phase 1 kickoff meeting for May 5th | **Owner:** Tal | **Status:** Blocked
 - **Action:** Prepare initial naming directions and brand research | **Owner:** Tal & Yaeli | **Status:** Pending
 - **Action:** Provide Rapinformes brand assets for "family resemblance" analysis | **Owner:** Guillermo | **Status:** Pending
+
+# 07. /authorization
+
+- **Signature:** Guillermo | **Role:** Client (Voria Founders)
+- **Signature:** Tal | **Role:** Project Lead (TalKalisker)
+
