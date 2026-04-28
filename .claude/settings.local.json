@@ -1,10 +1,12 @@
 {
   "permissions": {
+    "allow": [
+      "Read(//c/Users/talka/.antigravity/agency-library/agency-agents/**)",
+      "Read(//c/Users/talka/Documents/TalKalisker/Projects/Shlomi/**)",
+      "Bash(node scripts/build_all.js)"
+    ],
     "additionalDirectories": [
       "C:\\Users\\talka\\Desktop\\talkalisker.com\\_dhs"
-    ],
-    "allow": [
-      "Read(//c/Users/talka/.antigravity/agency-library/agency-agents/**)"
     ]
   }
 }

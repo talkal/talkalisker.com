@@ -119,6 +119,19 @@ function parseMarkdownContent(markdownContent, outputDir) {
     </div>
 </div>\n`;
         })
+        // Benchmark Cards (Industry Reference)
+        // Syntax: - **Benchmark:** Institution | **Metric:** Key Takeaway or Stat
+        //         Description line(s)
+        .replace(/^\- \*\*(?:Benchmark|מידוד):\*\* (.*?) \| \*\*(?:Metric|Takeaway|תובנה):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\- \*\*(?:Benchmark|מידוד):\*\*|\r?\n# |$(?![\s\S]))/gm, (_match, institution, metric, desc) => {
+            return `\n<div class="benchmark-card">
+    <div class="benchmark-meta">
+        <span class="benchmark-label">Benchmark</span>
+        <span class="benchmark-institution">${institution}</span>
+    </div>
+    <div class="benchmark-metric">${metric}</div>
+    <div class="benchmark-desc">${md.render(desc.trim())}</div>
+</div>\n`;
+        })
         // Signature Cards
         .replace(/^\- \*\*(?:Signature|Firma|חתימה):\*\* (.*?) \| \*\*(?:Role|Cargo|תפקיד):\*\* (.*$)/gm, (match, name, role) => {
             return `\n<div class="signature-card">

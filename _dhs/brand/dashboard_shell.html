@@ -303,6 +303,62 @@
             letter-spacing: 0.08em;
         }
 
+        /* Benchmark Cards (Industry Reference) */
+        .benchmark-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 12px 12px 0;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .benchmark-card:hover {
+            transform: translateX(3px);
+            box-shadow: -3px 0 16px var(--accent-glow);
+        }
+        .benchmark-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.4rem;
+        }
+        .benchmark-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            background: rgba(184, 90, 68, 0.12);
+            padding: 2px 8px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .benchmark-institution {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .benchmark-metric {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.6rem;
+            font-style: italic;
+        }
+        .benchmark-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .benchmark-desc p { margin: 0; }
+        [lang="he"] .benchmark-card {
+            border-left: 1px solid var(--border-subtle);
+            border-right: 3px solid var(--accent);
+            border-radius: 12px 0 0 12px;
+        }
+        [lang="he"] .benchmark-card:hover { transform: translateX(-3px); }
+
         /* Deliverable Cards */
         .deliverable-card {
             background: var(--bg-surface);
