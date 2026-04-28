@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "additionalDirectories": [
+      "C:\\Users\\talka\\Desktop\\talkalisker.com\\_dhs"
+    ],
+    "allow": [
+      "Read(//c/Users/talka/.antigravity/agency-library/agency-agents/**)"
+    ]
+  }
+}

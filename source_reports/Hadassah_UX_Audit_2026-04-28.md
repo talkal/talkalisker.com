@@ -177,12 +177,24 @@ Implement interactive navigation and integrate doctor explainer videos.
 | 3 | Sharp, shooting pain, tingling down the arm. | Cervical Radiculopathy. | Notify: Pain may originate from the spine. Referral to spine evaluation. |
 
 ### Appendix B: Concept Flow (Landing Page Diagram)
-1. **Header:** Human & professional aspect – Hadassah doctors team photo, experience message, and CTA.
-2. **The Flow:** Interactive "Diagnose Yourself" tool offering 3 smart symptom cards.
-3. **Highlights:** Dedicated area for unique treatments and advanced tech (e.g., Reverse Shoulder Replacement) in styled cards.
-4. **Utility Hub:** Foldable info area (accordions) including tutorials, rehab stages, and post-op instructions.
-5. **FAQ:** Clean, modern design for common questions.
-6. **Other Pages Menu:** Links to sub-pages (About Us, Pathologies, Rehab, Surgeries).
+
+* **Deliverable:** 1. Header | **Details:** Human & professional aspect
+Hadassah doctors team photo, experience message, and CTA.
+
+* **Deliverable:** 2. The Flow | **Details:** Interactive "Diagnose Yourself" tool
+Offering 3 smart symptom cards to triage patient needs.
+
+* **Deliverable:** 3. Highlights | **Details:** Unique treatments and advanced tech
+Dedicated area for specialized procedures (e.g., Reverse Shoulder Replacement) in styled cards.
+
+* **Deliverable:** 4. Utility Hub | **Details:** Foldable information area (Accordions)
+Including tutorials, rehab stages, and post-op instructions.
+
+* **Deliverable:** 5. FAQ | **Details:** Patient Confidence Hub
+Clean, modern design answering common clinical and logistical questions.
+
+* **Deliverable:** 6. Other Pages Menu | **Details:** Information Architecture
+Links to sub-pages (About Us, Pathologies, Rehab, Surgeries).
 
 ### Appendix C: Pathology Pages Flow
 
@@ -407,12 +419,24 @@ Implement interactive navigation and integrate doctor explainer videos.
 | 3 | יש לי כאב חד, נימול או עקצוץ שיורד מהזרוע לכף היד. | רדיקולופתיה צווארית (כאב מופנה מהצוואר). | יידוע: הכאב עשוי לנבוע מעמוד השדרה. הפניה להערכת עמוד שדרה / עצב. |
 
 ### נספח ב: תרשים זרימת עמוד הנחיתה (Concept Flow)
-1. **הדר (Header):** הצגת הפן האנושי והמקצועי – תמונת צוות רופאי הכתף של הדסה לצד מסר של ניסיון ומצוינות קלינית. עם CTA לזימון תור. 
-2. **רכיב הניווט (The Flow):** כלי אינטראקטיבי "אבחן את עצמך" המציע 3 כרטיסיות סימפטומים חכמות המובילות את המשתמש ישירות לפתולוגיות הרלוונטיות ולדרכי הטיפול.
-3. **דגשים טכנולוגיים (Highlights):** אזור המוקדש לטיפולים ייחודיים וטכנולוגיות מתקדמות (כגון החלפת כתף הפוכה) המוצגים בכרטיסיות מעוצבות.
-4. **מרכז מידע (Utility Hub):** אזור מידע מתקפל (אקורדיונים) הכולל הדרכות, שלבי שיקום והנחיות לאחר ניתוח במבנה קריא ונגיש.
-5. **שאלות ותשובות (FAQ):** סגירת מעגל המידע באמצעות מענה על שאלות נפוצות בעיצוב נקי ומודרני.
-6. **תפריט העמודים האחרים:** פירוט וקישור לעמודי המשנה של היחידה: מי אנחנו, פתולוגיות, שיקום, ניתוחים וטיפולים.
+
+* **תוצר:** 1. הדר (Header) | **פרטים:** הצגת הפן האנושי והמקצועי
+תמונת צוות רופאי הכתף של הדסה לצד מסר של ניסיון ומצוינות קלינית. עם CTA לזימון תור.
+
+* **תוצר:** 2. רכיב הניווט (The Flow) | **פרטים:** כלי אינטראקטיבי "אבחן את עצמך"
+מציע 3 כרטיסיות סימפטומים חכמות המובילות את המשתמש ישירות לפתולוגיות הרלוונטיות ולדרכי הטיפול.
+
+* **תוצר:** 3. דגשים טכנולוגיים (Highlights) | **פרטים:** טיפולים ייחודיים וטכנולוגיות מתקדמות
+הצגת פתרונות קליניים מתקדמים (כגון החלפת כתף הפוכה) המוצגים בכרטיסיות מעוצבות.
+
+* **תוצר:** 4. מרכז מידע (Utility Hub) | **פרטים:** אזור מידע מתקפל (אקורדיונים)
+כולל הדרכות, שלבי שיקום והנחיות לאחר ניתוח במבנה קריא ונגיש.
+
+* **תוצר:** 5. שאלות ותשובות (FAQ) | **פרטים:** סגירת מעגל המידע
+מענה על שאלות נפוצות בעיצוב נקי ומודרני להפחתת חרדת מטופל.
+
+* **תוצר:** 6. תפריט העמודים האחרים | **פרטים:** ארכיטקטורת מידע (IA)
+פירוט וקישור לעמודי המשנה של היחידה: מי אנחנו, פתולוגיות, שיקום, ניתוחים וטיפולים.
 
 ### נספח ג: תרשים זרימת עמוד הפתולוגיות
 
