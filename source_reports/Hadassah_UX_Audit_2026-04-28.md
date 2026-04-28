@@ -81,11 +81,16 @@ Create tabs/accordions for pre-op checklist and chronological rehab timeline.
 - **Action:** Medium Priority - Accessible Medical Jargon | **Owner:** Content Team | **Status:** Pending
 Implement terminology mapping via tooltips.
 
-# 06. /implementation_roadmap
+# 06. /action_plan
 
-- **Phase 1: Quick Wins (2 Weeks):** Reorder content, add CTAs, and upgrade texts to an empathetic tone.
-- **Phase 2: Infrastructure (1-2 Months):** Build landing pages for pathologies and treatments.
-- **Phase 3: Advanced UX (3+ Months):** Implement interactive navigation and integrate doctor explainer videos.
+*Developer-ready handoff tasks for immediate execution.*
+
+- **Action:** Phase 1: Quick Wins (2 Weeks) | **Owner:** Agency | **Status:** Pending
+Reorder content, add CTAs, and upgrade texts to an empathetic tone.
+- **Action:** Phase 2: Infrastructure (1-2 Months) | **Owner:** Agency | **Status:** Pending
+Build landing pages for pathologies and treatments.
+- **Action:** Phase 3: Advanced UX (3+ Months) | **Owner:** Agency | **Status:** Pending
+Implement interactive navigation and integrate doctor explainer videos.
 
 # 07. /appendices
 
@@ -306,11 +311,16 @@ Implement terminology mapping via tooltips.
 - **פעולה:** עדיפות בינונית - הנגשת ז'רגון רפואי | **אחראי:** צוות תוכן | **סטטוס:** ממתין
 יישום מיפוי טרמינולוגיה באמצעות Tooltips.
 
-# 06. /מפת_דרכים_ליישום
+# 06. /תוכנית_פעולה
 
-- **שלב א': Quick Wins (שבועיים):** שינוי סדר התוכן, הוספת כפתורי CTA ושדרוג טקסטים לטון אמפתי.
-- **שלב ב': בניית תשתיות (1-2 חודשים):** הקמת עמודי נחיתה לפתולוגיות וטיפולים.
-- **שלב ג': חוויית משתמש מתקדמת (3+ חודשים):** הטמעת הניווט האינטראקטיבי ושילוב סרטוני הסבר של רופאים.
+*משימות מוכנות להעברה לצוות הפיתוח לביצוע מיידי.*
+
+- **פעולה:** שלב א': Quick Wins (שבועיים) | **אחראי:** סוכנות | **סטטוס:** ממתין
+שינוי סדר התוכן, הוספת כפתורי CTA ושדרוג טקסטים לטון אמפתי.
+- **פעולה:** שלב ב': בניית תשתיות (1-2 חודשים) | **אחראי:** סוכנות | **סטטוס:** ממתין
+הקמת עמודי נחיתה לפתולוגיות וטיפולים.
+- **פעולה:** שלב ג': חוויית משתמש מתקדמת (3+ חודשים) | **אחראי:** סוכנות | **סטטוס:** ממתין
+הטמעת הניווט האינטראקטיבי ושילוב סרטוני הסבר של רופאים.
 
 # 07. /נספחים_ומיפוי_קליני
 
