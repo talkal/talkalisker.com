@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Guillermo_Project_Proposal_2026-04-27.md",
+                "file": "Guillermo_Proposal_Review_2026-04-20.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Guillermo_Project_Proposal_2026-04-27"
+              "title": "Guillermo_Proposal_Review_2026-04-20"
             }
           }
         ]
@@ -185,8 +185,10 @@
   },
   "active": "d7ac7b76751d0090",
   "lastOpenFiles": [
+    "Guillermo_Project_Proposal_2026-04-27.md",
+    "Guillermo_Naming_Strategy.md",
     "Hadassah_UX_Audit.md",
-    "Guillermo_Proposal_Review_2026-04-20.md",
-    "Guillermo_Naming_Strategy.md"
+    "Hadassah_UX_Audit_2026-04-28.md",
+    "Guillermo_Proposal_Review_2026-04-20.md"
   ]
 }
