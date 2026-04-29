@@ -155,13 +155,13 @@ function parseMarkdownContent(markdownContent, outputDir) {
         });
 
     // Add CSS IDs to headings for navigation
-    processed = processed.replace(/^# (.*\/(\w+).*$)/gm, '<h1 id="$2">$1</h1>');
+    processed = processed.replace(/^# (.*\/([^\s]+).*$)/gm, '<h1 id="$2">$1</h1>');
     return md.render(processed, { outputDir });
 }
 
 function generateNav(markdownContent) {
     const navItems = [];
-    const headingRegex = /^# (.*\/(\w+).*$)/gm;
+    const headingRegex = /^# (.*\/([^\s]+).*$)/gm;
     let match;
     while ((match = headingRegex.exec(markdownContent)) !== null) {
         navItems.push(`<a href="#${match[2]}" class="nav-link">${match[1]}</a>`);
