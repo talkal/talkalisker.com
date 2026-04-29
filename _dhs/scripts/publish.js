@@ -140,6 +140,36 @@ function parseMarkdownContent(markdownContent, outputDir) {
     <div class="signature-role">${role}</div>
 </div>\n`;
         })
+        // Timeline Blocks — ```timeline fenced syntax
+        // Node:  Phase: Title | Period: Label
+        // Event: - Label — Description
+        .replace(/^```timeline\r?\n([\s\S]*?)^```/gm, (_match, block) => {
+            const lines = block.split('\n');
+            let html = '<div class="timeline">';
+            let inNode = false;
+
+            for (const line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed) continue;
+
+                const phaseMatch = trimmed.match(/^Phase:\s*(.*?)\s*\|\s*Period:\s*(.+)$/i);
+                if (phaseMatch) {
+                    if (inNode) html += '</div></div>';
+                    html += `<div class="timeline-node"><div class="timeline-marker"></div><div class="timeline-node-header"><span class="timeline-period">${phaseMatch[2].trim()}</span><h3 class="timeline-title">${phaseMatch[1].trim()}</h3></div><div class="timeline-events">`;
+                    inNode = true;
+                } else if (inNode && trimmed.startsWith('- ')) {
+                    const content = trimmed.slice(2).trim();
+                    const dashIdx = content.indexOf(' — ');
+                    const label = dashIdx !== -1 ? content.slice(0, dashIdx) : content;
+                    const desc  = dashIdx !== -1 ? content.slice(dashIdx + 3) : '';
+                    html += `<div class="timeline-event"><strong>${label}</strong>${desc ? ` — ${desc}` : ''}</div>`;
+                }
+            }
+
+            if (inNode) html += '</div></div>';
+            html += '</div>';
+            return html;
+        })
         // Deliverable Cards
         .replace(/^\* \*\*(?:Deliverable|Entregable|תוצר):\*\* (.*?) \| \*\*(?:Details|Detalles|פרטים):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\* \*\*(?:Deliverable|Entregable|תוצר):\*\*|\r?\n# |$(?![\s\S]))/gm, (match, title, subtitle, desc) => {
             const fullDetails = subtitle + "\n" + desc;

@@ -124,14 +124,25 @@ All clinical terms in patient-facing text receive inline tooltips using the term
 
 *Three delivery phases sequenced by impact-to-effort ratio: high-value quick wins first, structural infrastructure second, advanced interactive features third.*
 
-- **Action:** Phase 1 — Quick Wins (2 weeks) | **Owner:** Agency | **Status:** Pending
-Content reordering (CTA elevation, team section repositioning), brand voice rewrite across all existing copy, button contrast and typography corrections per UI spec, persistent booking CTA implementation.
+```timeline
+Phase: Phase 1 — Quick Wins | Period: Week 1–2
+- Rewrite patient-facing copy — Empathetic tone shift throughout all existing text
+- Deploy persistent CTA — "Reserve your consultation" fixed at every scroll position
+- Apply UI specification — Brand blue, 16px minimum type, 48px touch targets, 8px grid
+- Restructure trust signals — Team photography moves below clinical solution content
 
-- **Action:** Phase 2 — Infrastructure (1–2 months) | **Owner:** Agency | **Status:** Pending
-Dedicated pathology landing pages (5 core pathologies), SEO metadata implementation and URL restructuring, accordion/tab components for pre-op and post-op content, internal link architecture.
+Phase: Phase 2 — Infrastructure | Period: Month 1–2
+- Build 5 pathology landing pages — Frozen shoulder, rotator cuff, instability, osteoarthritis, impingement
+- Implement SEO metadata — URL restructure, meta descriptions, Rich Snippets markup
+- Build accordion components — Pre-op checklist and rehab timeline as collapsible panels
+- Internal link architecture — Cross-links between pathology pages, rehab guides, and FAQ
 
-- **Action:** Phase 3 — Advanced UX (3+ months) | **Owner:** Agency | **Status:** Pending
-Interactive intent-driven navigation system (3-step flow), Quick Exit emergency detection layer, physician explainer video integration, side-dependent rehabilitation content variants (HSS model).
+Phase: Phase 3 — Advanced UX | Period: Month 3+
+- Interactive navigation system — 3-intent flow (Diagnose / Pre-Op / Post-Op) with Progressive Disclosure
+- Quick Exit detection layer — Acute symptom identification and emergency routing
+- Physician explainer videos — Procedure videos embedded on pathology and pre-op pages
+- Side-dependent rehabilitation — Left/right shoulder content variants per HSS model
+```
 
 # 09. /pathology_page_architecture
 
@@ -420,14 +431,25 @@ Week-by-week recovery phases adapted from Appendix E. Accordion or interactive c
 
 *שלושה שלבי אספקה. ממוינים לפי יחס השפעה-מאמץ.*
 
-- **פעולה:** שלב א' — Quick Wins (שבועיים) | **אחראי:** סוכנות | **סטטוס:** ממתין
-מיון מחדש של תוכן (הרמת CTA, העברת אזור הצוות), שכתוב טון המותג בכל הטקסט הקיים, תיקוני ניגודיות וטיפוגרפיה לפי מפרט ה-UI, יישום CTA הזמנה קבוע.
+```timeline
+Phase: שלב א — Quick Wins | Period: שבועיים
+- שכתוב תוכן פונה למטופל — מעבר לטון אמפתי לאורך כל הטקסט הקיים
+- CTA קבוע — "קבע ייעוץ" קבוע בכל מיקום גלילה
+- החלת מפרט UI — כחול מותג, 16px מינימום, אזורי מגע 48px, מערכת 8px
+- ארגון מחדש של אותות אמון — צילומי צוות מועברים מתחת לתוכן הקליני
 
-- **פעולה:** שלב ב' — תשתיות (1–2 חודשים) | **אחראי:** סוכנות | **סטטוס:** ממתין
-עמודי נחיתה ייעודיים ל-5 פתולוגיות מרכזיות, יישום מטא-דאטה SEO ומבנה URL מחדש, רכיבי אקורדיון/טאב לתוכן טרום/לאחר-ניתוח, ארכיטקטורת קישורים פנימיים.
+Phase: שלב ב — תשתיות | Period: חודש 1–2
+- 5 עמודי פתולוגיה — כתף קפואה, שרוול מסובב, חוסר יציבות, שחיקת סחוס, תסמונת צביטה
+- יישום מטא-דאטה SEO — מבנה URL מחדש, תיאורי מטא, Rich Snippets
+- רכיבי אקורדיון — צ'קליסט טרום-ניתוח וציר שיקום כרכיבים מתקפלים
+- ארכיטקטורת קישורים פנימיים — קישורים בין עמודי פתולוגיה, מדריכי שיקום ו-FAQ
 
-- **פעולה:** שלב ג' — UX מתקדם (3+ חודשים) | **אחראי:** סוכנות | **סטטוס:** ממתין
-מערכת ניווט אינטראקטיבית ממוקדת-כוונה (זרימה ב-3 שלבים), שכבת גילוי Quick Exit, שילוב סרטוני הסבר רופאים, גרסאות שיקום תלויות-צד (מודל HSS).
+Phase: שלב ג — UX מתקדם | Period: חודש 3+
+- מערכת ניווט אינטראקטיבית — זרימה ב-3 כוונות עם Progressive Disclosure
+- שכבת Quick Exit — זיהוי סימפטומים חריפים וניתוב חירום
+- סרטוני הסבר רופאים — שילוב סרטונים בעמודי פתולוגיה וטרום-ניתוח
+- שיקום תלוי-צד — גרסאות כתף ימין/שמאל לפי מודל HSS
+```
 
 # 09. /ארכיטקטורת_עמוד_פתולוגיה
 

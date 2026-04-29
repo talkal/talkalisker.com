@@ -88,8 +88,21 @@ English content here.
 | Deliverable | `* **Deliverable:** Name \| **Details:** Subtitle` | Scope items, workflow steps (use `*` not `-`) |
 | Signature | `- **Signature:** Full Name \| **Role:** Title` | Approval sign-off lines |
 | Benchmark | `- **Benchmark:** Institution \| **Metric:** Key Stat` | Industry comparisons with evidence |
+| Timeline | ` ```timeline ` fenced block | Roadmaps, recovery phases, project sequences |
 
-Add a description paragraph on the next line after any card — it renders inside the card.
+**Timeline** — live demo of the syntax:
+
+```timeline
+Phase: Phase 1 Example | Period: Week 1–2
+- First item — Description of what happens in this step
+- Second item — Another deliverable or milestone in this phase
+
+Phase: Phase 2 Example | Period: Month 1–2
+- First item — Description
+- Second item — Description
+```
+
+Add a description paragraph on the next line after any card (except Timeline) — it renders inside the card.
 
 **Hebrew equivalents:** `ממצא` · `מדד` · `החלטה` · `פעולה` · `תוצר` · `מידוד`
 
