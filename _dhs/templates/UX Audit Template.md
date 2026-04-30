@@ -32,7 +32,28 @@ Plans are labeled with internal terminology ("Beta-Tier X") rather than user-ben
 - **Finding:** [e.g., Missing Hover States] | **Severity:** Low
 Interactive cards do not provide visual feedback when hovered, reducing the perceived clickability of the interface.
 
-# 04. /strategic_roadmap
+# 04. /page_architecture
+
+*The structure every [page type] must follow. Use when the audit recommends a specific page layout — maps sections of the page as ordered zones.*
+
+```pagezone
+Zone: Hero Section | Type: Hero
+Patient/user-identified headline + immediate CTA. Large headline in plain language. Clinical or product term in smaller text beneath. Primary CTA visible without scrolling.
+
+Zone: Key Features / Symptom Panel | Type: Content
+Icons + lists, no dense prose. Visual summary of the core value proposition or diagnostic criteria. Designed for scanning, not reading.
+
+Zone: Primary Call to Action | Type: CTA
+Persistent CTA module — button, form, or booking widget. Brief supporting proof (trust signal, availability note). Highest-converting zone on the page.
+
+Zone: FAQ / Trust Signals | Type: FAQ
+5–7 questions targeting Google Featured Snippets. Answers in first-person user voice. Reduces exit intent by closing the information loop.
+
+Zone: Related Content & Internal Links | Type: Navigation
+Cross-links to related pages, guides, or resources. Builds internal link equity and extends session depth.
+```
+
+# 05. /strategic_roadmap
 Prioritized sequence for implementation:
 
 1.  **Phase 1 (Quick Wins):** Copywriting tweaks and CSS hover states. (Days 1-3)

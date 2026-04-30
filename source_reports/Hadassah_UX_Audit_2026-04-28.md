@@ -148,23 +148,25 @@ Phase: Phase 3 — Advanced UX | Period: Month 3+
 
 *The structure every pathology landing page must follow. Consistent architecture enables Google to understand content relationships and patients to build a transferable mental model across all pathology pages.*
 
-* **Deliverable:** Hero Section | **Details:** Patient-identified headline + immediate CTA
-Clear, large-print headline using symptom language ("My shoulder is stiff and stuck"). English clinical term in smaller text beneath: "(Frozen Shoulder — Adhesive Capsulitis)." One-sentence TL;DR description. Primary "Reserve your consultation" CTA immediately visible without scrolling.
+```pagezone
+Zone: Hero Section | Type: Hero
+Large-print headline in symptom language: "My shoulder is stiff and stuck." Clinical term beneath in smaller text: "(Frozen Shoulder — Adhesive Capsulitis)." One-sentence TL;DR. Primary "Reserve your consultation" CTA visible without scrolling.
 
-* **Deliverable:** Symptom & Diagnosis Panel | **Details:** Icons + lists, no dense prose
-Visual symptom list using anatomical icons. Diagnosis timeline ("How long has this been happening?") and distinguishing signs (what separates this condition from clinically adjacent ones). Designed for scanning, not reading.
+Zone: Symptom & Diagnosis Panel | Type: Content
+Visual symptom list using anatomical icons. Diagnosis timeline ("How long has this been happening?") and distinguishing signs separating this condition from clinically adjacent ones. Designed for scanning, not reading.
 
-* **Deliverable:** Treatment Path Selector | **Details:** Conservative vs. Surgical — visually separated
-Two distinct visual tracks: Conservative Care (PT, injections, expected timeline) and Surgical Intervention (procedure name, what's involved, recovery preview). Separated so patients self-select the relevant path without reading both.
+Zone: Treatment Path Selector | Type: Content
+Two distinct visual tracks: Conservative Care (PT, injections, expected timeline) and Surgical Intervention (procedure name, what's involved, recovery preview). Visually separated so patients self-select the relevant path without reading both.
 
-* **Deliverable:** Recovery Timeline Component | **Details:** Chronological, milestone-based
+Zone: Recovery Timeline | Type: Content
 Week-by-week recovery phases adapted from Appendix E. Accordion or interactive component. Includes when to contact the surgical team — an embedded safety net within the timeline itself.
 
-* **Deliverable:** Related Pathologies & Internal Links | **Details:** Cross-navigation + SEO link equity
-3–4 related conditions with brief differentiators ("This is not Frozen Shoulder if..."). Internal links to pathology pages, rehabilitation guides, and condition-specific FAQ. Builds both site link equity and patient understanding simultaneously.
+Zone: Related Pathologies & Internal Links | Type: Navigation
+3–4 related conditions with brief differentiators ("This is not Frozen Shoulder if..."). Internal links to pathology pages, rehabilitation guides, and condition-specific FAQ. Builds site link equity and patient understanding simultaneously.
 
-* **Deliverable:** Pathology-Specific FAQ | **Details:** Rich Snippets target + patient anxiety resolution
+Zone: Pathology-Specific FAQ | Type: FAQ
 5–7 condition-specific questions structured for Google Featured Snippets. Answers written in first-person patient voice. Closes the information loop before the patient feels compelled to search elsewhere.
+```
 
 # 10. /appendices
 
@@ -455,23 +457,25 @@ Phase: שלב ג — UX מתקדם | Period: חודש 3+
 
 *המבנה שכל עמוד פתולוגיה חייב לעקוב אחריו. עקביות ארכיטקטורה מאפשרת לגוגל להבין את קשר התוכן ולמטופלים לבנות מודל מנטלי שמועבר מעמוד לעמוד.*
 
-* **תוצר:** סקציית Hero | **פרטים:** כותרת מזוהה עם מטופל + CTA מיידי
-כותרת ברורה בגדול בשפת הסימפטום ("הכתף שלי נוקשה ותקועה"). מונח קליני בגופן קטן מתחת: "(כתף קפואה — קפסוליטיס דביקה)." סיכום TL;DR במשפט אחד. CTA ראשי גלוי ללא גלילה.
+```pagezone
+Zone: סקציית Hero | Type: Hero
+כותרת גדולה בשפת הסימפטום: "הכתף שלי נוקשה ותקועה." מונח קליני בגופן קטן מתחת: "(כתף קפואה — קפסוליטיס דביקה)." סיכום TL;DR במשפט אחד. CTA ראשי "שריינו התייעצות" גלוי ללא גלילה.
 
-* **תוצר:** פאנל סימפטומים ואבחון | **פרטים:** איקוניות + רשימות, ללא פסקאות צפופות
-רשימת סימפטומים חזותית עם איקוניות אנטומיות. ציר זמן האבחון וסימנים מבדילים. מעוצב לסריקה, לא לקריאה.
+Zone: פאנל סימפטומים ואבחון | Type: Content
+רשימת סימפטומים חזותית עם איקוניות אנטומיות. ציר זמן האבחון ("כמה זמן זה קורה?") וסימנים מבדילים מפתולוגיות סמוכות. מעוצב לסריקה, לא לקריאה.
 
-* **תוצר:** בורר נתיב טיפולי | **פרטים:** שמרני מול ניתוחי — מובחן ויזואלית
-שני מסלולים ויזואליים נפרדים: טיפול שמרני (פיזיותרפיה, הזרקות, ציר זמן) וניתוח (שם הפרוצדורה, מה כרוך בה, תצוגה מקדימה של ההתאוששות). מובדלים ויזואלית כדי שמטופלים יבחרו את הנתיב הרלוונטי מבלי לקרוא את שניהם.
+Zone: בורר נתיב טיפולי | Type: Content
+שני מסלולים ויזואליים נפרדים: טיפול שמרני (פיזיותרפיה, הזרקות, ציר זמן) וניתוח (שם הפרוצדורה, מה כרוך בה, תצוגה מקדימה של ההתאוששות). מובדלים ויזואלית כדי שמטופלים יבחרו נתיב רלוונטי מבלי לקרוא את שניהם.
 
-* **תוצר:** רכיב ציר זמן שיקום | **פרטים:** כרונולוגי, מבוסס אבני דרך
+Zone: ציר זמן שיקום | Type: Content
 שלבי שיקום שבוע-אחר-שבוע מנספח ה'. אינטראקטיבי או מבוסס אקורדיון. כולל מתי לפנות לצוות המנתח — רשת ביטחון מוטמעת בתוך ציר הזמן עצמו.
 
-* **תוצר:** פתולוגיות קשורות וקישורים פנימיים | **פרטים:** ניווט צולב והון קישורים SEO
-3–4 מצבים קשורים עם מבדלים קצרים ("זה לא כתף קפואה אם..."). קישורים פנימיים לעמודי פתולוגיה, מדריכי שיקום ו-FAQ ייעודי.
+Zone: פתולוגיות קשורות וקישורים פנימיים | Type: Navigation
+3–4 מצבים קשורים עם מבדלים קצרים ("זה לא כתף קפואה אם..."). קישורים פנימיים לעמודי פתולוגיה, מדריכי שיקום ו-FAQ ייעודי. בונה הון קישורים ומבנה קוגניטיבי למטופל בו-זמנית.
 
-* **תוצר:** FAQ ספציפי לפתולוגיה | **פרטים:** יעד Rich Snippets + סגירת חרדת מטופל
+Zone: FAQ ספציפי לפתולוגיה | Type: FAQ
 5–7 שאלות ספציפיות לפתולוגיה מובנות ל-Featured Snippets של גוגל. תשובות בגוף ראשון. סוגר את מעגל המידע לפני שהמטופל מרגיש שעליו לחפש במקום אחר.
+```
 
 # 10. /נספחים
 

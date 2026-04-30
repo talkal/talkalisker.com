@@ -90,7 +90,7 @@ function parseMarkdownContent(markdownContent, outputDir) {
         })
         // Metric Cards (Monthly Retainer)
         .replace(/^\- \*\*(?:Metric|Métrica|מדד):\*\* (.*?) \| \*\*(?:Value|Valor|ערך):\*\* (.*?) \| \*\*(?:Trend|Tendencia|מגמה):\*\* (.*$)/gm, (match, metric, value, trend) => {
-            const trendClass = trend.includes('+') ? 'trend-up' : (trend.includes('-') ? 'trend-down' : 'trend-neutral');
+            const trendClass = /^\+\d/.test(trend.trim()) ? 'trend-up' : /^-\d/.test(trend.trim()) ? 'trend-down' : 'trend-neutral';
             return `\n<div class="metric-card">
     <div class="metric-title">${metric}</div>
     <div class="metric-value">${value}</div>
@@ -170,6 +170,47 @@ function parseMarkdownContent(markdownContent, outputDir) {
             html += '</div>';
             return html;
         })
+        // PageZone Blocks — ```pagezone fenced syntax
+        // Node:  Zone: Title | Type: TypeName
+        // Lines: description content (multi-line markdown)
+        .replace(/^```pagezone\r?\n([\s\S]*?)^```/gm, (_match, block) => {
+            const lines = block.split('\n');
+            let html = '<div class="pagezone-stack">';
+            let currentZone = null;
+            let currentDesc = [];
+            let order = 0;
+
+            const flushZone = () => {
+                if (!currentZone) return;
+                const paddedOrder = String(order).padStart(2, '0');
+                const desc = currentDesc.join('\n').trim();
+                html += `<div class="pagezone-card">
+    <div class="pagezone-order-bg">${paddedOrder}</div>
+    <div class="pagezone-marker"></div>
+    <div class="pagezone-header">
+        <span class="pagezone-type">${currentZone.type}</span>
+        <span class="pagezone-title">${currentZone.title}</span>
+    </div>
+    <div class="pagezone-desc">${desc ? md.render(desc) : ''}</div>
+</div>`;
+                currentDesc = [];
+            };
+
+            for (const line of lines) {
+                const trimmed = line.trim();
+                const zoneMatch = trimmed.match(/^Zone:\s*(.*?)\s*\|\s*Type:\s*(.+)$/i);
+                if (zoneMatch) {
+                    flushZone();
+                    order++;
+                    currentZone = { title: zoneMatch[1].trim(), type: zoneMatch[2].trim() };
+                } else if (currentZone) {
+                    currentDesc.push(line);
+                }
+            }
+            flushZone();
+            html += '</div>';
+            return html;
+        })
         // Deliverable Cards
         .replace(/^\* \*\*(?:Deliverable|Entregable|תוצר):\*\* (.*?) \| \*\*(?:Details|Detalles|פרטים):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\* \*\*(?:Deliverable|Entregable|תוצר):\*\*|\r?\n# |$(?![\s\S]))/gm, (match, title, subtitle, desc) => {
             const fullDetails = subtitle + "\n" + desc;
@@ -221,13 +262,13 @@ function generateMasterIndex(baseDir) {
             const title = html.match(/<title>(.*?) \|/)?.[1] || "Audit Report";
             const type = html.match(/name="type" content="(.*?)"/)?.[1] || "Audit";
 
-            if (!groupedReports[project]) groupedReports[project] = [];
-            groupedReports[project].push({ dir, client, date, title, type });
+            if (!groupedReports[client]) groupedReports[client] = [];
+            groupedReports[client].push({ dir, client, project, date, title, type });
         }
     });
 
-    Object.keys(groupedReports).forEach(p => {
-        groupedReports[p].sort((a, b) => new Date(b.date) - new Date(a.date));
+    Object.keys(groupedReports).forEach(c => {
+        groupedReports[c].sort((a, b) => new Date(b.date) - new Date(a.date));
     });
 
     // We can also use Handlebars for the index eventually, but string literal is fine here
@@ -241,19 +282,19 @@ function generateMasterIndex(baseDir) {
             <div class="subtitle">Client Deliverables Portal</div>
         </div>
 
-        ${Object.keys(groupedReports).sort().map(project => `
+        ${Object.keys(groupedReports).sort().map(client => `
         <section class="project-section">
             <div class="project-header">
-                <span class="project-label">PROJECT</span>
-                <span class="project-name">${project}</span>
+                <span class="project-label">CLIENT</span>
+                <span class="project-name">${client}</span>
             </div>
             <div class="grid">
-                ${groupedReports[project].map(r => `
+                ${groupedReports[client].map(r => `
                 <a href="${r.dir}/" class="card">
                     <div class="card-type">${r.type}</div>
                     <div class="card-title">${r.title}</div>
                     <div class="card-footer">
-                        <span class="card-client">${r.client}</span>
+                        <span class="card-client">${r.project}</span>
                         <span class="card-date">${r.date}</span>
                     </div>
                 </a>

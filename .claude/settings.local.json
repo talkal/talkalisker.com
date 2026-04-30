@@ -3,7 +3,9 @@
     "allow": [
       "Read(//c/Users/talka/.antigravity/agency-library/agency-agents/**)",
       "Read(//c/Users/talka/Documents/TalKalisker/Projects/Shlomi/**)",
-      "Bash(node scripts/build_all.js)"
+      "Bash(node scripts/build_all.js)",
+      "Bash(npm run *)",
+      "Bash(node scripts/publish.js \"../source_reports/Hadassah_UX_Audit_2026-04-28.md\" \"../clients/hadassah-shoulder-unit/\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\talka\\Desktop\\talkalisker.com\\_dhs"

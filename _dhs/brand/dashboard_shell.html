@@ -180,12 +180,12 @@
         .status-in { color: var(--accent); }
 
         /* ── Metric & Ranking Cards ── */
-        .metric-card, .ranking-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; display: grid; grid-template-columns: 1fr 150px 150px; gap: 1.5rem; align-items: center; }
+        .metric-card, .ranking-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; display: grid; grid-template-columns: 1fr 120px 2fr; gap: 1.5rem; align-items: center; }
         .metric-title, .ranking-keyword { font-weight: 700; font-size: 1.1rem; }
         .metric-value, .ranking-position { font-family: var(--font-mono); font-size: 1.5rem; color: var(--accent); text-align: center; }
-        .metric-trend, .ranking-change { font-family: var(--font-mono); font-size: 0.85rem; text-align: right; }
-        .trend-up { color: #6B8E23; }
-        .trend-down { color: var(--accent-red); }
+        .metric-trend, .ranking-change { font-family: var(--font-body); font-size: 0.875rem; line-height: 1.55; text-align: left; color: var(--text-secondary); }
+        .trend-up { color: #6B8E23; font-family: var(--font-mono); font-size: 0.85rem; }
+        .trend-down { color: var(--accent-red); font-family: var(--font-mono); font-size: 0.85rem; }
         .trend-neutral { color: var(--text-secondary); }
 
         /* ── Color Swatches ── */
@@ -204,7 +204,7 @@
 
         /* ── Timeline ── */
         .timeline { position: relative; padding-left: 2.75rem; margin: 1.5rem 0; }
-        .timeline::before { content: ''; position: absolute; left: 0.45rem; top: 0.6rem; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), transparent 90%); }
+        .timeline::before { content: ''; position: absolute; left: calc(0.3rem + 6px); top: calc(0.3rem + 7px); bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), transparent 90%); }
         .timeline-node { position: relative; margin-bottom: 3rem; }
         .timeline-marker { position: absolute; left: -2.45rem; top: 0.3rem; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg-core); box-shadow: 0 0 0 2px var(--accent); }
         .timeline-node-header { margin-bottom: 1rem; }
@@ -217,7 +217,7 @@
         .timeline-event:hover::before { background: var(--accent); }
         .timeline-event strong { color: var(--text-primary); }
         [lang="he"] .timeline { padding-left: 0; padding-right: 2.75rem; }
-        [lang="he"] .timeline::before { left: auto; right: 0.45rem; }
+        [lang="he"] .timeline::before { left: auto; right: calc(0.3rem + 6px); }
         [lang="he"] .timeline-marker { left: auto; right: -2.45rem; }
         [lang="he"] .timeline-event { padding-left: 1.1rem; padding-right: 1.35rem; }
         [lang="he"] .timeline-event::before { left: auto; right: 0; border-radius: 0 10px 10px 0; }
@@ -234,6 +234,25 @@
         .benchmark-desc p { margin: 0; }
         [lang="he"] .benchmark-card { border-left: 1px solid var(--border-subtle); border-right: 3px solid var(--accent); border-radius: 12px 0 0 12px; }
         [lang="he"] .benchmark-card:hover { transform: translateX(-3px); }
+
+        /* ── PageZone Cards (Page Architecture) ── */
+        .pagezone-stack { position: relative; padding-left: 2.75rem; margin: 1.5rem 0; }
+        .pagezone-stack::before { content: ''; position: absolute; left: 0.9rem; top: 1.2rem; bottom: 1.2rem; width: 2px; background: linear-gradient(to bottom, var(--accent) 0%, var(--border-subtle) 70%, transparent 100%); }
+        .pagezone-card { position: relative; overflow: hidden; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-top: 3px solid var(--accent); border-radius: 0 12px 12px 0; padding: 1.25rem 4rem 1.25rem 1.5rem; margin-bottom: 1.25rem; transition: border-color 0.2s, transform 0.2s; }
+        .pagezone-card:hover { border-color: rgba(184,90,68,0.4); transform: translateX(4px); }
+        .pagezone-marker { position: absolute; left: -2.1rem; top: 1.1rem; width: 14px; height: 14px; background: var(--accent); border: 3px solid var(--bg-core); box-shadow: 0 0 0 2px var(--accent); border-radius: 3px; }
+        .pagezone-order-bg { position: absolute; right: 1.25rem; top: 50%; transform: translateY(-50%); font-family: var(--font-mono); font-size: 4.5rem; font-weight: 800; color: var(--text-primary); opacity: 0.05; line-height: 1; pointer-events: none; user-select: none; }
+        .pagezone-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; }
+        .pagezone-type { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; background: rgba(184,90,68,0.12); color: var(--accent); }
+        .pagezone-title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); }
+        .pagezone-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; }
+        .pagezone-desc p { margin: 0; }
+        [lang="he"] .pagezone-stack { padding-left: 0; padding-right: 2.75rem; }
+        [lang="he"] .pagezone-stack::before { left: auto; right: 0.9rem; }
+        [lang="he"] .pagezone-marker { left: auto; right: -2.1rem; }
+        [lang="he"] .pagezone-card { border-radius: 12px 0 0 12px; padding-left: 4rem; padding-right: 1.5rem; }
+        [lang="he"] .pagezone-card:hover { transform: translateX(-4px); }
+        [lang="he"] .pagezone-order-bg { right: auto; left: 1.25rem; }
 
         /* ── Deliverable Cards ── */
         .deliverable-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; display: flex; gap: 1.5rem; align-items: flex-start; transition: transform 0.2s, border-color 0.2s; }

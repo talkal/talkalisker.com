@@ -860,6 +860,7 @@ This section is the authoritative list of all DHS card types. It is updated when
 | Signature | `**Signature:**` | Approval and signoff lines |
 | Benchmark | `**Benchmark:**` (with Metric/Takeaway) | Industry reference points with specific metrics — Cleveland Clinic, HSS, Mayo Clinic style comparisons. Hebrew: `**מידוד:**` + `**תובנה:**` |
 | Timeline | ` ```timeline ` fenced block with `Phase: Title \| Period: Label` nodes and `- Label — Desc` event lines | Implementation roadmaps, recovery phases, project sequences, any multi-phase delivery plan |
+| PageZone | ` ```pagezone ` fenced block with `Zone: Title \| Type: TypeName` nodes and description lines | Page architecture specs — ordered sections of a webpage with their type (Hero / Content / CTA / Navigation / Social Proof / FAQ / Footer). Communicates vertical page anatomy, not time sequence. |
 
 *New cards are added here as they are created. Each entry should include: card name, primary field trigger, and use case.*
 
