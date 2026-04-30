@@ -175,7 +175,31 @@ Zone: Consultation CTA | Type: CTA
 Full-width conversion zone. "Reserve your consultation — response within one business day." Phone number + contact form side by side. Brief reassurance copy: no-obligation, first consultation format, insurance note. Final answer to "what do I do next?"
 ```
 
-# 10. /pathology_page_architecture
+# 10. /pathologies_page_architecture
+
+*The pathologies index is the bridge between the homepage and the individual condition pages. It must answer one question: "Which of these sounds like what I'm experiencing?" — then route the patient there in a single click.*
+
+```pagezone
+Zone: Hero | Type: Hero
+Headline: "Shoulder Conditions We Treat." Subtext: "Find the condition that matches your symptoms — each page explains what's happening, what we can do, and what recovery looks like." Persistent "Reserve a Consultation" CTA visible above the fold. No institutional biography competes with this space.
+
+Zone: Symptom-Based Condition Grid | Type: Navigation
+Full grid of all pathologies (5–8 cards). Each card uses a patient-language symptom headline as the primary label ("My shoulder is stiff and stuck") with the clinical term in smaller secondary text ("Frozen Shoulder — Adhesive Capsulitis"). Cards include a one-sentence TL;DR of the condition and a single link to the dedicated pathology page. Grid layout adapts from 3 columns (desktop) to 1 column (mobile). Sorted by prevalence, not alphabetical order.
+
+Zone: Self-Diagnosis Guide | Type: Content
+"Not sure which condition fits?" — a brief decision aid that routes patients to the interactive navigation flow (Appendix B) or directly to the consultation CTA. Reduces bounce from patients who arrive at this page but cannot map their symptoms to a specific card. Framed as guidance, not medical advice.
+
+Zone: Comparison Table | Type: Content
+A scannable table comparing the most commonly confused conditions side by side: Frozen Shoulder vs. Rotator Cuff Tear vs. Impingement. Columns: primary symptom, onset pattern (sudden vs. gradual), night pain (yes/no), movement limitation type. Designed for patients who have read two pathology pages and remain unsure. Links each row back to its dedicated page.
+
+Zone: Treatment Philosophy | Type: Content
+A short paragraph introducing the unit's treatment approach: conservative care first, surgery when clinically indicated, evidence-based rehabilitation. Differentiates the unit from practices that default to surgical intervention. Positions the forthcoming pathology pages as honest clinical information, not sales funnels.
+
+Zone: Consultation CTA | Type: CTA
+Full-width closing conversion zone. "Not sure where to start? Reserve a consultation — we'll guide you from here." Phone + form side by side. Reassurance copy: no-obligation, response within one business day.
+```
+
+# 11. /pathology_page_architecture
 
 *The structure every pathology landing page must follow. Consistent architecture enables Google to understand content relationships and patients to build a transferable mental model across all pathology pages.*
 
@@ -199,7 +223,7 @@ Zone: Pathology-Specific FAQ | Type: FAQ
 5–7 condition-specific questions structured for Google Featured Snippets. Answers written in first-person patient voice. Closes the information loop before the patient feels compelled to search elsewhere.
 ```
 
-# 11. /appendices
+# 12. /appendices
 
 ### Appendix A: Terminology Mapping — Bridging the Semantic Gap
 
@@ -514,7 +538,31 @@ Zone: CTA לייעוץ | Type: CTA
 אזור המרה ברוחב מלא. "תאמו פגישת ייעוץ — מענה תוך יום עסקים אחד." מספר טלפון + טופס יצירת קשר זה לצד זה. טקסט הרגעה קצר: ללא התחייבות, פורמט ייעוץ ראשוני, הערת ביטוח. תשובה סופית לשאלה "מה אני עושה עכשיו?"
 ```
 
-# 10. /ארכיטקטורת_עמוד_פתולוגיה
+# 10. /ארכיטקטורת_עמוד_הפתולוגיות
+
+*עמוד אינדקס הפתולוגיות הוא הגשר בין דף הבית לעמודי המצב הספציפיים. הוא חייב לענות על שאלה אחת: "מה מבין אלה נשמע כמו מה שאני חווה?" — ולנתב את המטופל לשם בלחיצה אחת.*
+
+```pagezone
+Zone: Hero | Type: Hero
+כותרת: "מצבי כתף שאנחנו מטפלים בהם." תת-כותרת: "מצאו את המצב שתואם את הסימפטומים שלכם — כל עמוד מסביר מה קורה, מה אנחנו יכולים לעשות, ואיך נראית ההחלמה." CTA קבוע "תאמו פגישת ייעוץ" גלוי מעל הקפל. ללא ביוגרפיה מוסדית באזור זה.
+
+Zone: רשת מצבים מבוססת סימפטומים | Type: Navigation
+רשת מלאה של כל הפתולוגיות (5–8 כרטיסים). כל כרטיס משתמש בכותרת סימפטום בשפת המטופל כתווית ראשית ("הכתף שלי נוקשה, תפוסה ותקועה") עם המונח הקליני בטקסט משני קטן ("כתף קפואה — קפסוליטיס דביקה"). הכרטיסים כוללים סיכום TL;DR במשפט אחד וקישור לעמוד הפתולוגיה הייעודי. פריסה מותאמת: 3 עמודות (מחשב) ל-1 עמודה (נייד). מיון לפי שכיחות, לא אלפביתי.
+
+Zone: מדריך אבחון עצמי | Type: Content
+"לא בטוח/ה איזה מצב מתאים?" — כלי הכוונה קצר שמנתב מטופלים לזרימת הניווט האינטראקטיבי (נספח ב') או ישירות ל-CTA לייעוץ. מצמצם נטישה ממטופלים שמגיעים לעמוד אך לא מצליחים למפות את הסימפטומים שלהם לכרטיס ספציפי. ממוסגר כהכוונה, לא כייעוץ רפואי.
+
+Zone: טבלת השוואה | Type: Content
+טבלה סריקתית המשווה את המצבים הנפוצים ביותר שמבלבלים מטופלים: כתף קפואה מול קרע בשרוול המסובב מול תסמונת צביטה. עמודות: סימפטום ראשי, דפוס הופעה (פתאומי/הדרגתי), כאב לילי (כן/לא), סוג מגבלת תנועה. מעוצב למטופלים שקראו שני עמודי פתולוגיה ועדיין לא בטוחים. כל שורה מקשרת חזרה לעמוד הייעודי.
+
+Zone: פילוסופיית טיפול | Type: Content
+פסקה קצרה המציגה את גישת הטיפול של היחידה: טיפול שמרני ראשון, ניתוח כשמוצדק קלינית, שיקום מבוסס-ראיות. מבדלת את היחידה ממקומות שמפנים ישר לניתוח. ממצבת את עמודי הפתולוגיה כמידע קליני אמין, לא כמשפכי מכירה.
+
+Zone: CTA לייעוץ | Type: CTA
+אזור המרה ברוחב מלא. "לא בטוח/ה מאיפה להתחיל? תאמו פגישת ייעוץ — אנחנו נכוון משם." טלפון + טופס זה לצד זה. טקסט הרגעה: ללא התחייבות, מענה תוך יום עסקים אחד.
+```
+
+# 11. /ארכיטקטורת_עמוד_פתולוגיה
 
 *המבנה שכל עמוד פתולוגיה חייב לעקוב אחריו. עקביות ארכיטקטורה מאפשרת לגוגל להבין את קשר התוכן ולמטופלים לבנות מודל מנטלי שמועבר מעמוד לעמוד.*
 
@@ -538,7 +586,7 @@ Zone: FAQ ספציפי לפתולוגיה | Type: FAQ
 5–7 שאלות ספציפיות לפתולוגיה מובנות ל-Featured Snippets של גוגל. תשובות בגוף ראשון. סוגר את מעגל המידע לפני שהמטופל מרגיש שעליו לחפש במקום אחר.
 ```
 
-# 11. /נספחים
+# 12. /נספחים
 
 ### נספח א: מיפוי טרמינולוגיה — גישור הפער הסמנטי
 
