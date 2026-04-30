@@ -168,7 +168,37 @@ Zone: Pathology-Specific FAQ | Type: FAQ
 5–7 condition-specific questions structured for Google Featured Snippets. Answers written in first-person patient voice. Closes the information loop before the patient feels compelled to search elsewhere.
 ```
 
-# 10. /appendices
+# 10. /main_page_architecture
+
+*The homepage is the unit's front door. Every zone must serve one of three intents — diagnose, prepare, recover — and convert anxiety into a booked consultation.*
+
+```pagezone
+Zone: Hero | Type: Hero
+Patient-language headline: "Shoulder Pain? We specialize in exactly this." Hadassah Shoulder Unit name + hospital affiliation as secondary trust anchor. One-sentence unit description. Single primary CTA: "Reserve a Consultation" — visible above the fold on all devices.
+
+Zone: Intent Selector | Type: Navigation
+Three large, equal-weight buttons matching the three patient intents from Appendix B: "I have shoulder pain or an injury." / "I'm scheduled for shoulder surgery." / "I'm recovering from shoulder surgery." Each routes to the relevant diagnostic or pre/post-op flow. No other navigation competes with these three paths at this level.
+
+Zone: Why the Hadassah Shoulder Unit | Type: Social Proof
+3–4 trust metrics: annual procedure volume, years of unit operation, technology in use (robotic-assisted surgery, 3D imaging), international patient ratio. Hadassah brand halo. Kept scannable — no dense prose. Subtext: "You are in specialized hands."
+
+Zone: Condition Navigator | Type: Navigation
+Grid of 6–8 most common shoulder conditions using patient-language card labels ("My shoulder is stiff and stuck" → Frozen Shoulder). Each card links to the corresponding pathology page. Dual-language label: patient symptom headline + clinical term in smaller text. Entry point for the majority of self-diagnosing visitors.
+
+Zone: Patient Journey | Type: Content
+Three-step visual: Consultation → Diagnosis & Plan → Treatment or Surgery. Reduces the anxiety of the unknown. Each step has a one-sentence description and an estimated timeframe. Positions the unit as a guided process, not a hospital department.
+
+Zone: Team Introduction | Type: Social Proof
+2–3 key surgeon profiles. Name, title, subspecialty, one trust-building credential. Photo. Links to full bio page. Converts an institutional brand ("Hadassah") into human faces patients feel they are choosing, not being assigned.
+
+Zone: Patient Testimonials | Type: Social Proof
+3 outcome-focused patient quotes. Format: condition treated → outcome achieved → time to recovery. Attributed with first name and condition only (privacy-compliant). Placed after team — reinforces the faces with results.
+
+Zone: Consultation CTA | Type: CTA
+Full-width conversion zone. "Reserve your consultation — response within one business day." Phone number + contact form side by side. Brief reassurance copy: no-obligation, first consultation format, insurance note. Final answer to "what do I do next?"
+```
+
+# 11. /appendices
 
 ### Appendix A: Terminology Mapping — Bridging the Semantic Gap
 
@@ -477,7 +507,37 @@ Zone: FAQ ספציפי לפתולוגיה | Type: FAQ
 5–7 שאלות ספציפיות לפתולוגיה מובנות ל-Featured Snippets של גוגל. תשובות בגוף ראשון. סוגר את מעגל המידע לפני שהמטופל מרגיש שעליו לחפש במקום אחר.
 ```
 
-# 10. /נספחים
+# 10. /ארכיטקטורת_עמוד_ראשי
+
+*דף הבית הוא דלת הכניסה של היחידה. כל אזור חייב לשרת אחת משלוש כוונות — אבחון, הכנה, התאוששות — ולהמיר חרדת מטופל לפגישת ייעוץ מוזמנת.*
+
+```pagezone
+Zone: Hero | Type: Hero
+כותרת בשפת המטופל: "כאב בכתף? זה בדיוק מה שאנחנו מתמחים בו." שם יחידת הכתף של הדסה + שיוך לבית החולים כעוגן אמון משני. תיאור יחידה במשפט אחד. CTA ראשי יחיד: "שריינו ייעוץ" — גלוי מעל הקפל בכל המכשירים.
+
+Zone: בורר כוונות | Type: Navigation
+שלושה כפתורים גדולים שווי משקל המתאימים לשלוש כוונות המטופל מנספח ב: "יש לי כאב בכתף או פציעה." / "אני עתיד לעבור ניתוח כתף." / "אני מתאושש מניתוח כתף." כל אחד מנתב לזרימה הרלוונטית. אין ניווט אחר מתחרה בשלושה נתיבים אלה.
+
+Zone: למה יחידת כתף הדסה | Type: Social Proof
+3–4 מדדי אמון: נפח פרוצדורות שנתי, שנות פעילות היחידה, טכנולוגיה בשימוש (ניתוח בסיוע רובוט, הדמיה תלת-ממדית), שיעור מטופלים בינלאומיים. מותג הדסה כגב. סריקה בלבד — ללא טקסט צפוף. תת-טקסט: "אתה בידיים מתמחות."
+
+Zone: נווט פתולוגיות | Type: Navigation
+רשת של 6–8 מצבי כתף נפוצים עם תוויות כרטיס בשפת המטופל ("הכתף שלי נוקשה ותקועה" ← כתף קפואה). כל כרטיס מקשר לעמוד הפתולוגיה המתאים. תווית דו-שפתית: כותרת סימפטום בגדול + מונח קליני קטן. נקודת כניסה לרוב המבקרים שמאבחנים עצמם.
+
+Zone: מסע המטופל | Type: Content
+שלושה שלבים ויזואליים: ייעוץ ← אבחנה ותכנון ← טיפול או ניתוח. מפחית חרדת הלא נודע. לכל שלב תיאור במשפט אחד ופרק זמן משוער. ממצב את היחידה כתהליך מלווה, לא כמחלקה בבית חולים.
+
+Zone: היכרות עם הצוות | Type: Social Proof
+2–3 פרופילי מנתח מרכזיים. שם, תואר, תת-התמחות, אישור אמון אחד. תמונה. קישור לדף ביוגרפיה מלא. הופך מותג מוסדי ("הדסה") לפנים אנושיות שמטופלים מרגישים שהם בוחרים, לא מוקצים אליהם.
+
+Zone: המלצות מטופלים | Type: Social Proof
+3 ציטוטי מטופלים ממוקדי תוצאה. פורמט: מצב שטופל ← תוצאה שהושגה ← זמן התאוששות. מיוחס בשם פרטי ומצב בלבד (עמיד בפרטיות). ממוקם אחרי הצוות — מחזק פנים עם תוצאות.
+
+Zone: CTA לייעוץ | Type: CTA
+אזור המרה ברוחב מלא. "שריינו את הייעוץ שלכם — מענה תוך יום עסקים אחד." מספר טלפון + טופס יצירת קשר זה לצד זה. טקסט הרגעה קצר: ללא התחייבות, פורמט ייעוץ ראשוני, הערת ביטוח. תשובה סופית לשאלה "מה אני עושה עכשיו?"
+```
+
+# 11. /נספחים
 
 ### נספח א: מיפוי טרמינולוגיה — גישור הפער הסמנטי
 

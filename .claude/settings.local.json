@@ -5,7 +5,9 @@
       "Read(//c/Users/talka/Documents/TalKalisker/Projects/Shlomi/**)",
       "Bash(node scripts/build_all.js)",
       "Bash(npm run *)",
-      "Bash(node scripts/publish.js \"../source_reports/Hadassah_UX_Audit_2026-04-28.md\" \"../clients/hadassah-shoulder-unit/\")"
+      "Bash(node scripts/publish.js \"../source_reports/Hadassah_UX_Audit_2026-04-28.md\" \"../clients/hadassah-shoulder-unit/\")",
+      "Bash(git push *)",
+      "Bash(node scripts/publish.js \"../source_reports/Hadassah_UX_Audit_2026-04-28.md\" \"../clients/hadassah-ux-audit-2026-04-28/\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\talka\\Desktop\\talkalisker.com\\_dhs"
