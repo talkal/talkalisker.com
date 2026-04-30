@@ -900,14 +900,44 @@ section {
   }
 }
 
-/* --- BILINGUAL EN/ES TOGGLE --- */
-html[lang="en"] .lang-es {
+/* --- MULTILINGUAL TOGGLE (EN/ES/HE) --- */
+html[lang="en"] .lang-es, html[lang="en"] .lang-he {
   display: none !important;
 }
 
-html[lang="es"] .lang-en {
+html[lang="es"] .lang-en, html[lang="es"] .lang-he {
   display: none !important;
 }
+
+html[lang="he"] .lang-en, html[lang="he"] .lang-es {
+  display: none !important;
+}
+
+html[lang="he"] {
+  direction: rtl;
+}
+
+html[lang="he"] .navbar,
+html[lang="he"] .hero-services,
+html[lang="he"] .service-card,
+html[lang="he"] .about-content,
+html[lang="he"] .process-step,
+html[lang="he"] .pricing-card,
+html[lang="he"] .modal-card,
+html[lang="he"] .cta-box {
+  text-align: right;
+}
+
+html[lang="he"] .nav-links {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+html[lang="he"] .logo {
+  margin-right: 0;
+  margin-left: auto;
+}
+
 
 /* --- ACCESSIBILITY: REDUCED MOTION --- */
 @media (prefers-reduced-motion: reduce) {

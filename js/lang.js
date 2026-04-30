@@ -16,7 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (langToggleBtn) {
         langToggleBtn.addEventListener('click', () => {
             const currentLang = root.getAttribute('lang');
-            const newLang = currentLang === 'en' ? 'es' : 'en';
+            let newLang;
+            if (currentLang === 'en') newLang = 'es';
+            else if (currentLang === 'es') newLang = 'he';
+            else newLang = 'en';
+            
             root.setAttribute('lang', newLang);
             localStorage.setItem('language', newLang);
             updateDocumentMeta(newLang);
