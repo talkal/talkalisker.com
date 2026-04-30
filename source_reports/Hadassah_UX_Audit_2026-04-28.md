@@ -223,7 +223,37 @@ Zone: Pathology-Specific FAQ | Type: FAQ
 5–7 condition-specific questions structured for Google Featured Snippets. Answers written in first-person patient voice. Closes the information loop before the patient feels compelled to search elsewhere.
 ```
 
-# 12. /appendices
+# 12. /treatments_page_architecture
+
+*The treatments page is where a diagnosed patient — or one referred by their physician — comes to understand what the Hadassah Shoulder Unit actually does. It must communicate clinical capability and procedural range without reading like a surgical catalogue.*
+
+```pagezone
+Zone: Hero | Type: Hero
+Headline: "Treatments & Procedures — From Conservative Care to Advanced Surgery." Subtext: "Every shoulder condition has a treatment path. Here's what we offer and how each one works." Persistent "Reserve a Consultation" CTA. Clean, no-clutter layout — the patient is already motivated; don't slow them with institutional copy.
+
+Zone: Treatment Category Tabs | Type: Navigation
+Two primary tabs segmenting the page: "Conservative & Non-Surgical" and "Surgical Procedures." Tab selection filters the visible content below without a page reload. Default state shows both categories expanded. Allows patients to self-select based on where they are in their treatment journey — some arrive pre-diagnosis, others arrive with a surgical recommendation in hand.
+
+Zone: Conservative Treatments Grid | Type: Content
+Cards for each non-surgical treatment modality: Physical Therapy & Rehabilitation, Corticosteroid Injections, PRP (Platelet-Rich Plasma) Therapy, Hyaluronic Acid Injections, Shockwave Therapy, Activity Modification & Bracing. Each card includes: treatment name, one-sentence description, typical conditions treated (linked to pathology pages), expected timeline to results, and whether a referral is required. Sorted by frequency of recommendation.
+
+Zone: Surgical Procedures Grid | Type: Content
+Cards for each surgical procedure: Arthroscopic Rotator Cuff Repair, Arthroscopic Bankart Repair, Arthroscopic Capsular Release, Latarjet Procedure, Arthroscopic Acromioplasty, Anatomic Total Shoulder Replacement (TSA), Reverse Total Shoulder Replacement, Proximal Biceps Tenodesis. Each card includes: procedure name, patient-language description ("what happens during this surgery"), typical recovery duration, whether it's performed as day surgery or requires hospitalization, and a link to the relevant pathology page. Sorted by volume performed at the unit.
+
+Zone: Technology & Innovation | Type: Social Proof
+2–3 technology callouts demonstrating the unit's clinical edge: robotic-assisted surgery, 3D pre-operative imaging and planning, minimally invasive arthroscopic techniques. Each callout is a card with a brief explanation of how it benefits the patient (shorter recovery, higher precision, smaller incisions). Evidence over assertion — specific capability, not vague claims of excellence.
+
+Zone: Before Your Procedure | Type: Content
+A brief orientation section linking to the Pre-Operative Checklist (Appendix D) and the interactive Pre-Op Flow (Appendix B, Level 2B). Framed as: "Already scheduled? Here's everything you need to prepare." Reduces the patient's pre-surgical anxiety by making the next steps visible and concrete.
+
+Zone: Recovery & Rehabilitation | Type: Content
+Overview of the unit's post-operative rehabilitation philosophy: structured recovery protocols, side-dependent rehabilitation (per HSS model), milestone-based progression. Links to the Post-Operative Recovery Timeline (Appendix E) and the interactive Post-Op Flow (Appendix B, Level 2C). Framed as: "Recovery is part of the treatment, not an afterthought."
+
+Zone: Consultation CTA | Type: CTA
+Full-width closing conversion zone. "Ready to discuss your treatment options? Reserve a consultation — we'll build a plan together." Phone + form side by side. Reassurance copy: no-obligation, personalized treatment plan, response within one business day.
+```
+
+# 13. /appendices
 
 ### Appendix A: Terminology Mapping — Bridging the Semantic Gap
 
@@ -586,7 +616,37 @@ Zone: FAQ ספציפי לפתולוגיה | Type: FAQ
 5–7 שאלות ספציפיות לפתולוגיה מובנות ל-Featured Snippets של גוגל. תשובות בגוף ראשון. סוגר את מעגל המידע לפני שהמטופל מרגיש שעליו לחפש במקום אחר.
 ```
 
-# 12. /נספחים
+# 12. /ארכיטקטורת_עמוד_טיפולים
+
+*עמוד הטיפולים הוא המקום שבו מטופל מאובחן — או כזה שהופנה על-ידי הרופא שלו — מגיע להבין מה בדיוק יחידת הכתף של הדסה עושה. הוא חייב לתקשר יכולת קלינית ומגוון פרוצדורות בלי להיקרא כקטלוג ניתוחי.*
+
+```pagezone
+Zone: Hero | Type: Hero
+כותרת: "טיפולים ופרוצדורות — מטיפול שמרני ועד ניתוח מתקדם." תת-כותרת: "לכל מצב כתף יש נתיב טיפולי. הנה מה שאנחנו מציעים ואיך כל אחד עובד." CTA קבוע "תאמו פגישת ייעוץ". פריסה נקייה — המטופל כבר מונע לפעולה; אל תאטו אותו עם תוכן מוסדי.
+
+Zone: לשוניות קטגוריית טיפול | Type: Navigation
+שתי לשוניות ראשיות המפלחות את העמוד: "טיפול שמרני ולא-ניתוחי" ו"פרוצדורות ניתוחיות." בחירת לשונית מסננת את התוכן הגלוי מתחת ללא טעינת עמוד מחדש. מצב ברירת מחדל מציג את שתי הקטגוריות פתוחות. מאפשר למטופלים לבחור לפי שלב המסע שלהם — חלקם מגיעים לפני אבחון, אחרים מגיעים עם המלצה ניתוחית ביד.
+
+Zone: רשת טיפולים שמרניים | Type: Content
+כרטיסים לכל שיטת טיפול לא-ניתוחית: פיזיותרפיה ושיקום, הזרקות קורטיקוסטרואידים, טיפול PRP (פלזמה עשירת טסיות), הזרקות חומצה היאלורונית, טיפול בגלי הלם, התאמת פעילות וסדים. כל כרטיס כולל: שם הטיפול, תיאור במשפט אחד, מצבים אופייניים (מקושרים לעמודי פתולוגיה), ציר זמן לתוצאות צפויות, והאם נדרשת הפניה. ממוין לפי שכיחות המלצה.
+
+Zone: רשת פרוצדורות ניתוחיות | Type: Content
+כרטיסים לכל פרוצדורה ניתוחית: תיקון ארתרוסקופי של השרוול המסובב, תיקון Bankart ארתרוסקופי, שחרור ארתרוסקופי של הקפסולה, ניתוח Latarjet, Acromioplasty ארתרוסקופי, החלפת מפרק כתף אנטומית (TSA), החלפת מפרק כתף הפוכה, טנודזיס של גיד הביספס. כל כרטיס כולל: שם הפרוצדורה, תיאור בשפת המטופל ("מה קורה בניתוח הזה"), משך החלמה אופייני, האם מבוצע כניתוח יום או מצריך אשפוז, וקישור לעמוד הפתולוגיה הרלוונטי. ממוין לפי נפח ביצוע ביחידה.
+
+Zone: טכנולוגיה וחדשנות | Type: Social Proof
+2–3 קריאות טכנולוגיה המדגימות את היתרון הקליני של היחידה: ניתוח בסיוע רובוט, הדמיה ותכנון תלת-ממדי טרום-ניתוחי, טכניקות ארתרוסקופיות מינימלית-פולשניות. כל קריאה היא כרטיס עם הסבר קצר כיצד זה מועיל למטופל (החלמה קצרה יותר, דיוק גבוה יותר, חתכים קטנים יותר). ראיות על-פני טענות — יכולת ספציפית, לא שבחים כלליים.
+
+Zone: לפני הפרוצדורה | Type: Content
+סקציית אוריינטציה קצרה המקשרת לצ'קליסט הטרום-ניתוחי (נספח ד') ולזרימת טרום-ניתוח האינטראקטיבית (נספח ב', שלב 2ב). ממוסגר כ: "כבר נקבע תור? הנה כל מה שצריך כדי להתכונן." מפחית חרדה טרום-ניתוחית על-ידי הפיכת הצעדים הבאים לגלויים ומוחשיים.
+
+Zone: החלמה ושיקום | Type: Content
+סקירת פילוסופיית השיקום הלאחר-ניתוחית של היחידה: פרוטוקולי החלמה מובנים, שיקום תלוי-צד (לפי מודל HSS), התקדמות מבוססת אבני דרך. קישורים לציר זמן השיקום (נספח ה') ולזרימת הלאחר-ניתוח האינטראקטיבית (נספח ב', שלב 2ג). ממוסגר כ: "ההחלמה היא חלק מהטיפול, לא מחשבה שלאחר מעשה."
+
+Zone: CTA לייעוץ | Type: CTA
+אזור המרה ברוחב מלא. "מוכנים לדון באפשרויות הטיפול שלכם? תאמו פגישת ייעוץ — נבנה תוכנית יחד." טלפון + טופס זה לצד זה. טקסט הרגעה: ללא התחייבות, תוכנית טיפול מותאמת אישית, מענה תוך יום עסקים אחד.
+```
+
+# 13. /נספחים
 
 ### נספח א: מיפוי טרמינולוגיה — גישור הפער הסמנטי
 
