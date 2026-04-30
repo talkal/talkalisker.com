@@ -212,7 +212,7 @@ languages: '["en"]'
 - **Finding:** [Title — specific and outcome-framed] | **Severity:** High
 [2-3 sentence description. Lead with the user impact. Close with a concrete recommendation.]
 ```
-Severity values: `High` (red), `Medium` (orange/amber), `Low` (muted). Use them accurately — not everything is High.
+Severity values: `Critical` (bright red, reserved for safety risks or primary conversion blockers), `High` (red), `Medium` (orange/amber), `Low` (muted). Use them accurately — not everything is High.
 
 **Proposal Card** (Naming strategy, option comparison)
 ```markdown
@@ -835,6 +835,7 @@ When building a full bilingual report:
 
 ### Severity Calibration
 Severity is calibrated to client impact, not technical complexity:
+- **Critical**: Safety risk, regulatory exposure, or a single defect that blocks the primary user goal for the majority of visitors. Reserved for findings where inaction creates liability. Use sparingly — at most one per report.
 - **High**: Directly causing measurable loss (revenue, users, compliance) or blocking a primary user goal
 - **Medium**: Degrading experience or creating friction; addressable in current sprint without architectural change
 - **Low**: Polish, edge cases, or enhancements with marginal current impact
@@ -849,16 +850,16 @@ This section is the authoritative list of all DHS card types. It is updated when
 
 | Card Type | Primary Field Trigger | Use Case |
 |---|---|---|
-| Finding | `**Finding:**` | Audit observations with severity |
-| Proposal | `**Name:**` (with Slogan + Level) | Naming options, strategic alternatives |
-| Decision | `**Decision:**` | Meeting outcomes, strategic confirmations |
-| Action | `**Action:**` | Tasks with owner and status |
-| Metric | `**Metric:**` | KPIs, performance data with trends |
-| Ranking | `**Keyword:**` | SEO keyword positions |
-| Swatch | `**Color:**` | Brand color documentation |
-| Deliverable | `**Deliverable:**` (bullet: `*`) | Project scope items |
-| Signature | `**Signature:**` | Approval and signoff lines |
-| Benchmark | `**Benchmark:**` (with Metric/Takeaway) | Industry reference points with specific metrics — Cleveland Clinic, HSS, Mayo Clinic style comparisons. Hebrew: `**מידוד:**` + `**תובנה:**` |
+| Finding | `**Finding:**` / `**Hallazgo:**` / `**ממצא:**` | Audit observations with severity. Severity field: `**Severity:**` / `**Severidad:**` / `**חומרה:**` |
+| Proposal | `**Name:**` / `**Nombre:**` / `**שם:**` (with Slogan + Level) | Naming options, strategic alternatives |
+| Decision | `**Decision:**` / `**Decisión:**` / `**החלטה:**` | Meeting outcomes, strategic confirmations. Impact field: `**Impact:**` / `**Impacto:**` / `**השפעה:**` |
+| Action | `**Action:**` / `**Acción:**` / `**פעולה:**` | Tasks with owner and status. Owner: `**Owner:**` / `**Responsable:**` / `**אחראי:**`. Status: `**Status:**` / `**Estado:**` / `**סטטוס:**` |
+| Metric | `**Metric:**` / `**Métrica:**` / `**מדד:**` | KPIs, performance data with trends. Value: `**Value:**` / `**Valor:**` / `**ערך:**`. Trend: `**Trend:**` / `**Tendencia:**` / `**מגמה:**` |
+| Ranking | `**Keyword:**` / `**Palabra clave:**` / `**מילת מפתח:**` | SEO keyword positions |
+| Swatch | `**Color:**` / `**צבע:**` | Brand color documentation |
+| Deliverable | `**Deliverable:**` / `**Entregable:**` / `**תוצר:**` (bullet: `*`) | Project scope items |
+| Signature | `**Signature:**` / `**Firma:**` / `**חתימה:**` | Approval and signoff lines |
+| Benchmark | `**Benchmark:**` / `**מידוד:**` (with Metric/Takeaway/תובנה) | Industry reference points with specific metrics — Cleveland Clinic, HSS, Mayo Clinic style comparisons |
 | Timeline | ` ```timeline ` fenced block with `Phase: Title \| Period: Label` nodes and `- Label — Desc` event lines | Implementation roadmaps, recovery phases, project sequences, any multi-phase delivery plan |
 | PageZone | ` ```pagezone ` fenced block with `Zone: Title \| Type: TypeName` nodes and description lines | Page architecture specs — ordered sections of a webpage with their type (Hero / Content / CTA / Navigation / Social Proof / FAQ / Footer). Communicates vertical page anatomy, not time sequence. |
 

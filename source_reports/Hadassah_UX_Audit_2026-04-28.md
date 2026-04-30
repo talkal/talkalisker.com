@@ -1,7 +1,6 @@
 ---
 title: "Hadassah Shoulder Unit — Digital Patient Experience Audit"
 title_he: "יחידת הכתף הדסה — ביקורת חוויית מטופל דיגיטלית"
-aliases: ["יחידת הכתף הדסה — ביקורת חוויית מטופל דיגיטלית"]
 client: "Hadassah Shoulder Unit"
 project: "UX Audit & Patient Flow Optimization"
 date: 2026-04-28
@@ -23,9 +22,9 @@ This audit defines the complete transformation blueprint: restructure the experi
 
 *Quantitative baseline. All scores assessed against the primary patient journey: arriving with a shoulder symptom and converting to a booked appointment.*
 
-- **Metric:** Visual Design | **Value:** 6/10 | **Trend:** - (Professional and credible, but sterile — no interactive elements, no patient orientation in the visual language)
-- **Metric:** Usability Score | **Value:** 4/10 | **Trend:** - (8-step friction path before reaching any CTA; critical conversion actions buried beneath institutional content)
-- **Metric:** Accessibility Score | **Value:** 7/10 | **Trend:** - (Screen reader labels present, contrast meets WCAG AA baseline — foundation is sound, parity with interactive elements needed)
+- **Metric:** Visual Design | **Value:** 6/10 | **Trend:** Stable (Professional and credible, but sterile — no interactive elements, no patient orientation in the visual language)
+- **Metric:** Usability Score | **Value:** 4/10 | **Trend:** Stable (8-step friction path before reaching any CTA; critical conversion actions buried beneath institutional content)
+- **Metric:** Accessibility Score | **Value:** 7/10 | **Trend:** Stable (Screen reader labels present, contrast meets WCAG AA baseline — foundation is sound, parity with interactive elements needed)
 
 # 03. /key_findings
 
@@ -362,9 +361,9 @@ Zone: Pathology-Specific FAQ | Type: FAQ
 
 *קו בסיס כמותי. כל הציונים הוערכו מול מסע המטופל העיקרי: הגעה עם סימפטום בכתף והמרה לתור.*
 
-- **מדד:** עיצוב ויזואלי | **ערך:** 6/10 | **מגמה:** - (מקצועי ואמין, אך סטרילי — אין אלמנטים אינטראקטיביים, אין אוריינטציה ויזואלית ממוקדת מטופל)
-- **מדד:** שימושיות (UX) | **ערך:** 4/10 | **מגמה:** - (נתיב חיכוך של 8 שלבים לפני ה-CTA; פעולות המרה קריטיות קבורות תחת תוכן מוסדי)
-- **מדד:** נגישות (a11y) | **ערך:** 7/10 | **מגמה:** - (תוויות לקוראי מסך קיימות, ניגודיות עומדת בתקן WCAG AA — הבסיס טוב)
+- **מדד:** עיצוב ויזואלי | **ערך:** 6/10 | **מגמה:** Stable (מקצועי ואמין, אך סטרילי — אין אלמנטים אינטראקטיביים, אין אוריינטציה ויזואלית ממוקדת מטופל)
+- **מדד:** שימושיות (UX) | **ערך:** 4/10 | **מגמה:** Stable (נתיב חיכוך של 8 שלבים לפני ה-CTA; פעולות המרה קריטיות קבורות תחת תוכן מוסדי)
+- **מדד:** נגישות (a11y) | **ערך:** 7/10 | **מגמה:** Stable (תוויות לקוראי מסך קיימות, ניגודיות עומדת בתקן WCAG AA — הבסיס טוב)
 
 # 03. /ממצאים_עיקריים
 
