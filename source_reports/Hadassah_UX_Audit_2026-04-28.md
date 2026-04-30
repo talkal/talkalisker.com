@@ -146,31 +146,7 @@ Phase: Phase 3 — Advanced UX | Period: Month 3+
 - Side-dependent rehabilitation — Left/right shoulder content variants per HSS model
 ```
 
-# 09. /pathology_page_architecture
-
-*The structure every pathology landing page must follow. Consistent architecture enables Google to understand content relationships and patients to build a transferable mental model across all pathology pages.*
-
-```pagezone
-Zone: Hero Section | Type: Hero
-Large-print headline in symptom language: "My shoulder is stiff and stuck." Clinical term beneath in smaller text: "(Frozen Shoulder — Adhesive Capsulitis)." One-sentence TL;DR. Primary "Reserve your consultation" CTA visible without scrolling.
-
-Zone: Symptom & Diagnosis Panel | Type: Content
-Visual symptom list using anatomical icons. Diagnosis timeline ("How long has this been happening?") and distinguishing signs separating this condition from clinically adjacent ones. Designed for scanning, not reading.
-
-Zone: Treatment Path Selector | Type: Content
-Two distinct visual tracks: Conservative Care (PT, injections, expected timeline) and Surgical Intervention (procedure name, what's involved, recovery preview). Visually separated so patients self-select the relevant path without reading both.
-
-Zone: Recovery Timeline | Type: Content
-Week-by-week recovery phases adapted from Appendix E. Accordion or interactive component. Includes when to contact the surgical team — an embedded safety net within the timeline itself.
-
-Zone: Related Pathologies & Internal Links | Type: Navigation
-3–4 related conditions with brief differentiators ("This is not Frozen Shoulder if..."). Internal links to pathology pages, rehabilitation guides, and condition-specific FAQ. Builds site link equity and patient understanding simultaneously.
-
-Zone: Pathology-Specific FAQ | Type: FAQ
-5–7 condition-specific questions structured for Google Featured Snippets. Answers written in first-person patient voice. Closes the information loop before the patient feels compelled to search elsewhere.
-```
-
-# 10. /main_page_architecture
+# 09. /main_page_architecture
 
 *The homepage is the unit's front door. Every zone must serve one of three intents — diagnose, prepare, recover — and convert anxiety into a booked consultation.*
 
@@ -198,6 +174,30 @@ Zone: Patient Testimonials | Type: Social Proof
 
 Zone: Consultation CTA | Type: CTA
 Full-width conversion zone. "Reserve your consultation — response within one business day." Phone number + contact form side by side. Brief reassurance copy: no-obligation, first consultation format, insurance note. Final answer to "what do I do next?"
+```
+
+# 10. /pathology_page_architecture
+
+*The structure every pathology landing page must follow. Consistent architecture enables Google to understand content relationships and patients to build a transferable mental model across all pathology pages.*
+
+```pagezone
+Zone: Hero Section | Type: Hero
+Large-print headline in symptom language: "My shoulder is stiff and stuck." Clinical term beneath in smaller text: "(Frozen Shoulder — Adhesive Capsulitis)." One-sentence TL;DR. Primary "Reserve your consultation" CTA visible without scrolling.
+
+Zone: Symptom & Diagnosis Panel | Type: Content
+Visual symptom list using anatomical icons. Diagnosis timeline ("How long has this been happening?") and distinguishing signs separating this condition from clinically adjacent ones. Designed for scanning, not reading.
+
+Zone: Treatment Path Selector | Type: Content
+Two distinct visual tracks: Conservative Care (PT, injections, expected timeline) and Surgical Intervention (procedure name, what's involved, recovery preview). Visually separated so patients self-select the relevant path without reading both.
+
+Zone: Recovery Timeline | Type: Content
+Week-by-week recovery phases adapted from Appendix E. Accordion or interactive component. Includes when to contact the surgical team — an embedded safety net within the timeline itself.
+
+Zone: Related Pathologies & Internal Links | Type: Navigation
+3–4 related conditions with brief differentiators ("This is not Frozen Shoulder if..."). Internal links to pathology pages, rehabilitation guides, and condition-specific FAQ. Builds site link equity and patient understanding simultaneously.
+
+Zone: Pathology-Specific FAQ | Type: FAQ
+5–7 condition-specific questions structured for Google Featured Snippets. Answers written in first-person patient voice. Closes the information loop before the patient feels compelled to search elsewhere.
 ```
 
 # 11. /appendices
@@ -352,9 +352,9 @@ Full-width conversion zone. "Reserve your consultation — response within one b
 :::he
 # 01. /תקציר_מנהלים
 
-יחידת הכתף בהדסה מפעילה את השירות האורתופדי המתקדם ביותר קלינית בישראל — ובכל זאת, מטופלים שנתקלים באתר היחידה לראשונה מוצאים את עצמם מול חוויה שנבנתה לפי הלוגיקה הפנימית של המחלקה, לא לפי הצרכים שלהם. האתר מציג ספרייה מוסדית: רשימות כוח אדם, מיון ניתוחים לפי טכניקה, מרכז ידע קליני — בסדר שהגיוני למנהל מחלקה, לא לאדם שחש כאב ב-11 בלילה ומחפש תשובה.
+יחידת הכתף בהדסה מפעילה את השירות האורתופדי המתקדם ביותר קלינית בישראל, ובכל זאת, מטופלים שנתקלים באתר היחידה לראשונה מוצאים את עצמם מול חוויה שנבנתה לפי הלוגיקה הפנימית של המחלקה ולא לפי הצרכים שלהם. האתר מציג ספרייה מוסדית: רשימות כוח אדם, מיון ניתוחים לפי טכניקה, מרכז ידע קליני; בסדר שהגיוני למנהל מחלקה, לא לאדם שחש כאב ב-11 בלילה ומחפש תשובה.
 
-חוסר התאמה זה גובה מחיר בר-מדידה. מטופל הגולש באתר הנוכחי חייב לעבור **8 שכבות תוכן** לפני שמגיע לכפתור קביעת תור. מחקרים על מוצרים דיגיטליים בתחום הבריאות מצביעים על **~70% נטישה** בזרימות הדורשות יותר מ-3 צעדים לפני שמציגות פעולה ברת-ביצוע. במקביל, היעדר עמודי נחיתה ייעודיים לפתולוגיות מדכא את הדירוג בגוגל לשאילתות הכאב בעלות הערך הגבוה — ומעניק את הרכישה האורגנית למוסדות פחות מתקדמים קלינית שמשיבים על השאלה הדיגיטלית מהר יותר.
+חוסר התאמה זה גובה מחיר בר-מדידה. מטופל הגולש באתר הנוכחי חייב לעבור **8 שכבות תוכן** לפני שמגיע לכפתור קביעת תור. מחקרים על מוצרים דיגיטליים בתחום הבריאות מצביעים על **~70% נטישה** בזרימות הדורשות יותר מ-3 צעדים לפני שמציגות פעולה ברת-ביצוע. במקביל, היעדר עמודי נחיתה ייעודיים לפתולוגיות מדכא את הדירוג בגוגל לשאילתות הכאב בעלות הערך הגבוה — ומעניק את ההגעה האורגנית למוסדות פחות מתקדמים קלינית שמשיבים על השאלה הדיגיטלית מהר יותר.
 
 ביקורת זו מגדירה את תוכנית השינוי המלאה: ארגון מחדש של החוויה סביב שלוש כוונות מטופל (אבחון, הכנה, שיקום), קיצור נתיב ההמרה מ-8 צעדים ל-3, מעבר טון המותג מסמכות מוסדית לסמכותיות אמפתית, ויישום רשתות ביטחון קליניות. התוצאה: מטופל שמגיע להדסה כשהוא כבר סומך על היחידה, כבר מעודכן, וכבר מוכן לפעולה.
 
@@ -485,31 +485,7 @@ Phase: שלב ג — UX מתקדם | Period: חודש 3+
 - שיקום תלוי-צד — גרסאות כתף ימין/שמאל לפי מודל HSS
 ```
 
-# 09. /ארכיטקטורת_עמוד_פתולוגיה
-
-*המבנה שכל עמוד פתולוגיה חייב לעקוב אחריו. עקביות ארכיטקטורה מאפשרת לגוגל להבין את קשר התוכן ולמטופלים לבנות מודל מנטלי שמועבר מעמוד לעמוד.*
-
-```pagezone
-Zone: סקציית Hero | Type: Hero
-כותרת גדולה בשפת הסימפטום: "הכתף שלי נוקשה, תפוסה ותקועה." מונח קליני בגופן קטן מתחת: "(כתף קפואה — קפסוליטיס דביקה)." סיכום TL;DR במשפט אחד. CTA ראשי "תאמו פגישת ייעוץ" גלוי ללא גלילה.
-
-Zone: פאנל סימפטומים ואבחון | Type: Content
-רשימת סימפטומים חזותית עם איקוניות אנטומיות. ציר זמן האבחון ("כמה זמן זה קורה?") וסימנים מבדילים מפתולוגיות סמוכות. מעוצב לסריקה, לא לקריאה.
-
-Zone: בורר נתיב טיפולי | Type: Content
-שני מסלולים ויזואליים נפרדים: טיפול שמרני (פיזיותרפיה, הזרקות, ציר זמן) וניתוח (שם הפרוצדורה, מה כרוך בה, תצוגה מקדימה של ההתאוששות). מובדלים ויזואלית כדי שמטופלים יבחרו נתיב רלוונטי מבלי לקרוא את שניהם.
-
-Zone: ציר זמן שיקום | Type: Content
-שלבי שיקום שבוע-אחר-שבוע מנספח ה'. אינטראקטיבי או מבוסס אקורדיון. כולל מתי לפנות לצוות המנתח — רשת ביטחון מובנית בתוך ציר הזמן עצמו.
-
-Zone: פתולוגיות קשורות וקישורים פנימיים | Type: Navigation
-3–4 מצבים קשורים עם מבדלים קצרים ("זה לא כתף קפואה אם..."). קישורים פנימיים לעמודי פתולוגיה, מדריכי שיקום ו-FAQ ייעודי. בונה הון קישורים ומבנה קוגניטיבי למטופל בו-זמנית.
-
-Zone: FAQ ספציפי לפתולוגיה | Type: FAQ
-5–7 שאלות ספציפיות לפתולוגיה מובנות ל-Featured Snippets של גוגל. תשובות בגוף ראשון. סוגר את מעגל המידע לפני שהמטופל מרגיש שעליו לחפש במקום אחר.
-```
-
-# 10. /ארכיטקטורת_עמוד_ראשי
+# 09. /ארכיטקטורת_עמוד_ראשי
 
 *דף הבית הוא דלת הכניסה של היחידה. כל אזור חייב לשרת אחת משלוש כוונות — אבחון, הכנה, התאוששות — ולהמיר חרדת מטופל לפגישת ייעוץ מוזמנת.*
 
@@ -537,6 +513,30 @@ Zone: המלצות מטופלים | Type: Social Proof
 
 Zone: CTA לייעוץ | Type: CTA
 אזור המרה ברוחב מלא. "תאמו פגישת ייעוץ — מענה תוך יום עסקים אחד." מספר טלפון + טופס יצירת קשר זה לצד זה. טקסט הרגעה קצר: ללא התחייבות, פורמט ייעוץ ראשוני, הערת ביטוח. תשובה סופית לשאלה "מה אני עושה עכשיו?"
+```
+
+# 10. /ארכיטקטורת_עמוד_פתולוגיה
+
+*המבנה שכל עמוד פתולוגיה חייב לעקוב אחריו. עקביות ארכיטקטורה מאפשרת לגוגל להבין את קשר התוכן ולמטופלים לבנות מודל מנטלי שמועבר מעמוד לעמוד.*
+
+```pagezone
+Zone: סקציית Hero | Type: Hero
+כותרת גדולה בשפת הסימפטום: "הכתף שלי נוקשה, תפוסה ותקועה." מונח קליני בגופן קטן מתחת: "(כתף קפואה — קפסוליטיס דביקה)." סיכום TL;DR במשפט אחד. CTA ראשי "תאמו פגישת ייעוץ" גלוי ללא גלילה.
+
+Zone: פאנל סימפטומים ואבחון | Type: Content
+רשימת סימפטומים חזותית עם איקוניות אנטומיות. ציר זמן האבחון ("כמה זמן זה קורה?") וסימנים מבדילים מפתולוגיות סמוכות. מעוצב לסריקה, לא לקריאה.
+
+Zone: בורר נתיב טיפולי | Type: Content
+שני מסלולים ויזואליים נפרדים: טיפול שמרני (פיזיותרפיה, הזרקות, ציר זמן) וניתוח (שם הפרוצדורה, מה כרוך בה, תצוגה מקדימה של ההתאוששות). מובדלים ויזואלית כדי שמטופלים יבחרו נתיב רלוונטי מבלי לקרוא את שניהם.
+
+Zone: ציר זמן שיקום | Type: Content
+שלבי שיקום שבוע-אחר-שבוע מנספח ה'. אינטראקטיבי או מבוסס אקורדיון. כולל מתי לפנות לצוות המנתח — רשת ביטחון מובנית בתוך ציר הזמן עצמו.
+
+Zone: פתולוגיות קשורות וקישורים פנימיים | Type: Navigation
+3–4 מצבים קשורים עם מבדלים קצרים ("זה לא כתף קפואה אם..."). קישורים פנימיים לעמודי פתולוגיה, מדריכי שיקום ו-FAQ ייעודי. בונה הון קישורים ומבנה קוגניטיבי למטופל בו-זמנית.
+
+Zone: FAQ ספציפי לפתולוגיה | Type: FAQ
+5–7 שאלות ספציפיות לפתולוגיה מובנות ל-Featured Snippets של גוגל. תשובות בגוף ראשון. סוגר את מעגל המידע לפני שהמטופל מרגיש שעליו לחפש במקום אחר.
 ```
 
 # 11. /נספחים
