@@ -1,5 +1,7 @@
 ---
 title: "Hadassah Shoulder Unit — Digital Patient Experience Audit"
+title_he: "יחידת הכתף הדסה — ביקורת חוויית מטופל דיגיטלית"
+aliases: ["יחידת הכתף הדסה — ביקורת חוויית מטופל דיגיטלית"]
 client: "Hadassah Shoulder Unit"
 project: "UX Audit & Patient Flow Optimization"
 date: 2026-04-28

@@ -378,7 +378,11 @@
     <main class="main">
         <header class="report-header">
             <div class="report-label">// deliverable: {{type}}</div>
-            <h1 class="report-title">{{title}}</h1>
+            <h1 class="report-title">
+                <span class="lang-title" lang="en">{{title}}</span>
+                {{#if title_he}}<span class="lang-title" lang="he" style="display: none;">{{title_he}}</span>{{/if}}
+                {{#if title_es}}<span class="lang-title" lang="es" style="display: none;">{{title_es}}</span>{{/if}}
+            </h1>
             <div class="report-client">// client: {{client}}</div>
             <div class="report-date">// {{date}}</div>
             {{#if confidential}}<div class="confidential-badge">// Confidential</div>{{/if}}
@@ -436,16 +440,21 @@
             const html = document.documentElement;
             html.setAttribute('lang', lang);
             localStorage.setItem('language', lang);
-            document.querySelectorAll('.lang-block, .lang-nav').forEach(b => {
+            document.querySelectorAll('.lang-block, .lang-nav, .lang-title').forEach(b => {
                 const match = b.getAttribute('lang') === lang;
                 if (match) {
                     b.classList.add('lang-fade-in');
-                    b.style.display = 'block';
+                    b.style.display = b.classList.contains('lang-title') ? 'inline' : 'block';
                     b.addEventListener('animationend', () => b.classList.remove('lang-fade-in'), { once: true });
                 } else {
                     b.style.display = 'none';
                 }
             });
+            // Sync document title
+            const activeTitleEl = document.querySelector(`.lang-title[lang="${lang}"]`);
+            if (activeTitleEl) {
+                document.title = activeTitleEl.textContent + ' | Talkalisker Client Portal';
+            }
             const indicator = document.getElementById('lang-indicator');
             if (indicator) indicator.textContent = lang === 'he' ? 'עב' : lang.toUpperCase();
         }

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Portal | TalKalisker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-core: #0F0F0F;
+            --bg-surface: #1A1A1A;
+            --bg-elevated: #242424;
+            --accent: #B85A44;
+            --accent-glow: rgba(184, 90, 68, 0.15);
+            --text-primary: #F5F0EB;
+            --text-secondary: rgba(245, 240, 235, 0.45);
+            --border-subtle: rgba(255,255,255, 0.06);
+            --font-body: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+        body {
+            background: var(--bg-core);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            padding: 3rem 8%;
+        }
+        @media (max-width: 768px) { body { padding: 2rem 5%; } }
+
+        /* Header */
+        .header { margin-bottom: 4rem; }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* Project Sections */
+        .project-section { margin-bottom: 4rem; }
+        .project-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .project-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+        .project-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        /* Card Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.25rem;
+        }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.75rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px var(--accent-glow);
+        }
+        .card-type {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.3;
+            flex-grow: 1;
+        }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        /* Footer */
+        .index-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        /* Lock Screen */
+        .lock-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            text-align: center;
+        }
+        .lock-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 2.5rem;
+            opacity: 0.7;
+        }
+        .lock-badge {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .lock-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .lock-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            max-width: 360px;
+        }
+        .lock-input {
+            width: 100%;
+            max-width: 340px;
+            padding: 1rem 1.25rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-surface);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+        .lock-input:focus { outline: none; border-color: var(--accent); }
+        .lock-btn {
+            width: 100%;
+            max-width: 340px;
+            padding: 1rem;
+            border-radius: 10px;
+            border: none;
+            background: var(--accent);
+            color: white;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+        }
+        .lock-btn:hover { opacity: 0.9; transform: scale(1.01); }
+        .lock-btn:active { transform: scale(0.98); }
+        .lock-error {
+            color: #E85D4A;
+            margin-top: 1rem;
+            display: none;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+        }
+    </style>
+</head>
+<body>
+    <div id="lock-screen" class="lock-container">
+        <a href="https://talkalisker.com/developer-services" class="lock-logo" style="text-decoration: none; color: inherit;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#B85A44"><path d="M12 2L2 22h20L12 2zm0 3.8l7.2 14.2H4.8L12 5.8z"/></svg>
+            <span>TalKalisker</span>
+        </a>
+        <div class="lock-badge">🔒 Restricted Access</div>
+        <h1 class="lock-title">Client Portal</h1>
+        <p class="lock-desc">Enter your master key to access the deliverables archive.</p>
+        <input type="password" id="auth-key" class="lock-input" placeholder="Enter master key..." onkeydown="if(event.key==='Enter')attemptDecrypt()">
+        <button onclick="attemptDecrypt()" class="lock-btn">Authenticate & Decrypt</button>
+        <div id="auth-error" class="lock-error">ERROR: Invalid key. Verification failed.</div>
+    </div>
+
+    <div id="decrypted-content" style="display: none;"></div>
+
+    <script id="encrypted-payload" type="application/json">"U2FsdGVkX1+JXRr2zrR0KWXh1U80q1gfkqE+3w329+5c2yut1mARk4G9qnBjGT2bjRKRaJdSyDxMucQWtlV/Tt/sb5eGJYkRzHlE/C1NvMSsH9YTHSST+wgoEDNkpfvhbUe5SgYYqk1p8lPsxrUoZyf1iWOGaES9MWZMqQCmkzgQdr0CnZ1vhL5QvPyJILuiEDuqOkHBW6tHZDFv1I+sb+ScEzQMRm/ABwORn7o1tFk5WfsXOhTfzt+KougHpJVS5iXXqquNkZv4zXDb2tqe+3mLbV9NIbC6yL0gTw7zl+5RHLCJ8oJfGVA76sdrbISIGaU7AYfQWawtfb1xR94Rf5MnI64fUxdWt44D/MUc2JEzlOr58uuR90VSoD5TjTINCA6n/FnDCZmE45Tlm2YdGTMdmAdQerxCcrWx8hzjMXJAcqHNsgvuGknc9nOXf1PFPrlqtvnyIe1nTX0c0hLifUFDLf36PtNzDOJ+FoCmU9NTjP5q9tGjREbhmL8oMd4aDA2kJkrZoYnb4sVYJw9hYgxcVoBxtVNjQyaLrghbW8maL1uMpBxnOXzd93xijLwm60YhNAE0YHVkFRftXblyJRhUcLqn1E7L8SD9/y6KqDUb6QalA6Pvp/m5Yt0PhUQPEg3jcayZKT8c5u5rkgJ5Aiz4aVSmXJtssXkpDDNtJuPwULh7AlbrttbxOp8WrfqfSeN0MJ+zUxmW7p7q2wJXdmVgHaWkgk8QBGiYlZo3x5YiNlKUWGPjAYgELQsZ0FOpDRemxnmZSOJNQW8qjDop/JUaIThECpO7FOnc7JtsqfXFZyQ0iLhs0wPMeCv2mXpvmsuVfkfF/LIgTSdtemn58MKjPd15KY4RzcWeQXfWLfmoj84PrSQzsRhnBcs2E3oXtJ4usYifb2LI7FUEeBylZ0HIb9FJIKNaYJ8CMWieTRhZzZi5XJDmmCVU54yssCmx4+OiXKl8aCD9dgBg66LpDiuuKl1wl0zFwYFuEvOyNUY3YdpseovWpBa2V2VQn4zu21cmsaL+YWMF6GgpTZJdE0KV7oZJKwMUTxDzr7V1OO8F3b0iWnzfU5Nd7CR6UBxFWbVqZYmaw6UaxQvICiX2QydaWVB1/PNzbD92SWmg/k9SmnzODTU+U2G1yETI9LzSUNZ+rJAVPZwSu39IWcIUmv23+/WgtB22JE+gTaGIW0hq63daaAnJK6dxQI2PLd5q8WQjB/v0eiiFv2BxFJTfCsGOQu6M/p4DR850iFKqD1sKXHslwMm0uxnm0k7VAUKGFuqCRd9gLmxEcBvTYm/sLEDU64KbR9p84dKxaTCBAjy5RWbIS67/wKqRbwsbC22MASs+4XgPNkDgElCT0kU5q8VMZTcL3dQ84LH6h4OlguBW0AGxIZlDo8R8E1HrkWwF5yrSB52PjvFORsPwxQ2cDJtM6bLUR5Yyr/HQV6wremTmkNd0QuZYo6FFw8gR2cYMpIb6TITGQpTS/B5XaskTMuxBTys96QGn+KArtB8tU8iNXyHzwn+c3n7HFAsa+xEE6QTle+DRkE9vuf/XbanHxRpXebP0x88vXk6Elj4Sskma5+UOFMLLW4HjF6yj+ld3vJheC6JYPrNhUGN4e42l6VwkcDgmZ4FZ0+2f7t1yfdDEmi8TFBV1ncSpiF1LoHpRhcCdMyPiuKTTnkpzNEP1DbsJo7fOF88wNVaYCQZOtkBu8uH4hWr2XkD0BHI8fy+7v6rLo/+yFXWGXHoqNz7lXzYcCySrtlRYGJy+15XkQbFCcSd8w3pVB/rb8/VyzgG+86hm67u0WfpBMadPPVQYqAW2R+EVy1TJeLhIRNWg1OzkY3opa5K6UkMLhGSpzyfG0uKnD2MbH4g7PJovC9L/JmAInTWQsHOFaa1BhtOj+YSCL2SVtx2E7d/NWlrxf7KcsvOu+UCM7ezDmN6sgsUgBA=="</script>
+    <script>
+        function attemptDecrypt() {
+            const key = document.getElementById('auth-key').value;
+            const payloadRaw = document.getElementById('encrypted-payload').textContent;
+            const ciphertext = payloadRaw.slice(1, -1);
+            
+            try {
+                const bytes = CryptoJS.AES.decrypt(ciphertext, key);
+                const decryptedStr = bytes.toString(CryptoJS.enc.Utf8);
+                if (!decryptedStr) throw new Error("Decryption returned empty");
+                
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('decrypted-content').innerHTML = decryptedStr;
+                document.getElementById('decrypted-content').style.display = 'block';
+            } catch (e) {
+                document.getElementById('auth-error').style.display = 'block';
+                document.getElementById('auth-key').value = '';
+            }
+        }
+    </script>
+</body>
+</html>

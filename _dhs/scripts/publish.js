@@ -649,12 +649,25 @@ function publish(markdownPath, outputDir) {
         ? CryptoJS.AES.encrypt(JSON.stringify(payload), resolvedPassword.toString()).toString()
         : null;
 
+    let displayDate = metadata.date;
+    if (displayDate instanceof Date) {
+        // Adjust for timezone offset so '2026-04-28' doesn't become '2026-04-27'
+        const offset = displayDate.getTimezoneOffset() * 60000;
+        displayDate = new Date(displayDate.getTime() - offset).toISOString().split('T')[0];
+    } else if (!displayDate) {
+        displayDate = new Date().toISOString().split('T')[0];
+    } else {
+        displayDate = String(displayDate).split('T')[0];
+    }
+
     const templateData = {
         title: metadata.title || "Audit",
+        title_he: metadata.title_he || null,
+        title_es: metadata.title_es || null,
         client: metadata.client || "Client",
         project: metadata.project || metadata.client,
         type: metadata.type || "Draft",
-        date: metadata.date || new Date().toISOString().split('T')[0],
+        date: displayDate,
         confidential: metadata.confidential || false,
         languages: JSON.stringify(langs),
         isProtected,
