@@ -49,8 +49,8 @@
   /* 128px */
 
   /* Typography */
-  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Assistant', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Assistant', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: 'Playfair Display', serif;
   /* For Writer */
   --font-mono: 'JetBrains Mono', monospace;
@@ -911,6 +911,11 @@ html[lang="es"] .lang-en, html[lang="es"] .lang-he {
 
 html[lang="he"] .lang-en, html[lang="he"] .lang-es {
   display: none !important;
+}
+
+.lang-he {
+  font-family: 'Assistant', sans-serif;
+  line-height: 1.4;
 }
 
 html[lang="he"] {
