@@ -6,7 +6,7 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="client" content="TalKalisker">
     <meta name="project" content="Internal Systems">
-    <meta name="date" content="Thu Apr 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">
+    <meta name="date" content="2026-04-30">
     <meta name="type" content="Reference.Roadmap">
     <meta name="confidential" content="false">
     <title>DHS Visual Improvements — Implementation Roadmap | Talkalisker Client Portal</title>
@@ -340,7 +340,7 @@
     <div class="print-header">
         <div class="print-header-logo">TalKalisker</div>
         <div class="print-header-title">DHS Visual Improvements — Implementation Roadmap</div>
-        <div class="print-header-meta">// client: TalKalisker &nbsp; // date: Thu Apr 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time) &nbsp; // type: Reference.Roadmap</div>
+        <div class="print-header-meta">// client: TalKalisker &nbsp; // date: 2026-04-30 &nbsp; // type: Reference.Roadmap</div>
     </div>
 
     <aside class="sidebar" id="sidebar">
@@ -380,9 +380,13 @@
     <main class="main">
         <header class="report-header">
             <div class="report-label">// deliverable: Reference.Roadmap</div>
-            <h1 class="report-title">DHS Visual Improvements — Implementation Roadmap</h1>
+            <h1 class="report-title">
+                <span class="lang-title" lang="en">DHS Visual Improvements — Implementation Roadmap</span>
+                
+                
+            </h1>
             <div class="report-client">// client: TalKalisker</div>
-            <div class="report-date">// Thu Apr 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)</div>
+            <div class="report-date">// 2026-04-30</div>
             
         </header>
 
@@ -679,16 +683,21 @@ Add a <code>&lt;div class=&quot;print-header&quot;&gt;</code> to the template wi
             const html = document.documentElement;
             html.setAttribute('lang', lang);
             localStorage.setItem('language', lang);
-            document.querySelectorAll('.lang-block, .lang-nav').forEach(b => {
+            document.querySelectorAll('.lang-block, .lang-nav, .lang-title').forEach(b => {
                 const match = b.getAttribute('lang') === lang;
                 if (match) {
                     b.classList.add('lang-fade-in');
-                    b.style.display = 'block';
+                    b.style.display = b.classList.contains('lang-title') ? 'inline' : 'block';
                     b.addEventListener('animationend', () => b.classList.remove('lang-fade-in'), { once: true });
                 } else {
                     b.style.display = 'none';
                 }
             });
+            // Sync document title
+            const activeTitleEl = document.querySelector(`.lang-title[lang="${lang}"]`);
+            if (activeTitleEl) {
+                document.title = activeTitleEl.textContent + ' | Talkalisker Client Portal';
+            }
             const indicator = document.getElementById('lang-indicator');
             if (indicator) indicator.textContent = lang === 'he' ? 'עב' : lang.toUpperCase();
         }
