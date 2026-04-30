@@ -51,8 +51,7 @@
   /* Typography */
   --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-hebrew-heading: 'Heebo', sans-serif;
-  --font-hebrew-body: 'Rubik', sans-serif;
+  --font-hebrew: 'IBM Plex Sans Hebrew', sans-serif;
   --font-serif: 'Playfair Display', serif;
   /* For Writer */
   --font-mono: 'JetBrains Mono', monospace;
@@ -916,9 +915,8 @@ html[lang="he"] .lang-en, html[lang="he"] .lang-es {
 }
 
 .lang-he {
-  font-family: var(--font-hebrew-body);
-  line-height: 1.6;
-  letter-spacing: -0.01em;
+  font-family: var(--font-hebrew);
+  line-height: 1.5;
 }
 
 html[lang="he"] h1, 
@@ -927,9 +925,9 @@ html[lang="he"] h3,
 html[lang="he"] h4,
 html[lang="he"] .hero-title,
 html[lang="he"] .hero-subtitle {
-  font-family: var(--font-hebrew-heading) !important;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-family: var(--font-hebrew) !important;
+  font-weight: 600;
+  letter-spacing: normal;
 }
 
 html[lang="he"] {
