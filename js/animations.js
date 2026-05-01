@@ -17,4 +17,15 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('.animate-on-scroll').forEach((el) => {
         observer.observe(el);
     });
+
+    const barObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.style.width = e.target.dataset.width;
+                barObserver.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.skill-bar-fill').forEach(b => barObserver.observe(b));
 });

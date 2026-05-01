@@ -99,6 +99,18 @@
     box-shadow: 0 10px 30px rgba(184, 90, 68, 0.1);
 }
 
+.service-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent-developer);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-card:hover::before { transform: scaleX(1); }
+
 .service-icon {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
@@ -198,12 +210,16 @@
     gap: 1.25rem;
     margin-top: 4rem;
     margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.85rem 1.25rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .pricing-track-header--strategy {
     margin-top: 5rem;
+    border-color: rgba(212, 175, 55, 0.2);
+    background: rgba(212, 175, 55, 0.02);
 }
 
 .pricing-track-label {
@@ -224,15 +240,17 @@
     color: var(--text-muted);
 }
 
-/* Pricing upsell nudge line */
+/* Pricing upsell nudge callout */
 .pricing-upsell {
     font-size: 0.78rem;
-    color: var(--text-muted);
+    color: var(--accent-developer);
     font-family: var(--font-mono);
     margin-top: auto;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-subtle);
-    margin-bottom: 0.75rem;
+    padding: 0.6rem 0.85rem;
+    border: 1px solid rgba(184, 90, 68, 0.25);
+    border-radius: 6px;
+    background: rgba(184, 90, 68, 0.05);
+    margin-bottom: 1rem;
 }
 
 /* Strategy track grid — 2 cards, max half-width on large screens */
@@ -615,4 +633,102 @@ select.form-input:focus {
         grid-template-columns: 1fr 1fr;
         gap: 4rem;
     }
+}
+
+/* Skill bars — animated on scroll */
+.skill-bar-track {
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skill-bar-fill--ux   { background: var(--accent-developer); box-shadow: 0 0 10px rgba(184,90,68,0.35); }
+.skill-bar-fill--copy { background: var(--accent-writer);    box-shadow: 0 0 10px rgba(212,175,55,0.35); }
+.skill-bar-fill--code { background: #6B8E23;                 box-shadow: 0 0 10px rgba(107,142,35,0.35); }
+
+/* Venn diagram hover — circles breathe outward */
+.trifecta-svg {
+    transition: opacity 0.3s ease;
+}
+.trifecta-svg circle {
+    transition: stroke-opacity 0.4s ease;
+}
+.trifecta-svg:hover circle { stroke-opacity: 0.85; }
+
+/* Hero subtitle stagger */
+.hero-subtitle span {
+    opacity: 0;
+    animation: fadeInUp 0.5s var(--ease-custom) forwards;
+}
+.hero-subtitle span:nth-child(1) { animation-delay: 0.05s; }
+.hero-subtitle span:nth-child(2) { animation-delay: 0.2s; }
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Process section — surface background for visual landmark */
+.section-surface {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+}
+[data-theme="light"] .section-surface { background: #FEFCF9; }
+
+/* Process bridge — connector between diagram and steps */
+.process-bridge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.5rem 0 0;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+}
+.process-bridge::before,
+.process-bridge::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border-subtle);
+}
+
+/* Creator corner brackets */
+.creator-corner {
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    pointer-events: none;
+    z-index: 1;
+}
+.creator-corner--tl {
+    top: -1.5rem;
+    left: -1.5rem;
+    border-top: 2px solid var(--accent-developer);
+    border-left: 2px solid var(--accent-developer);
+}
+.creator-corner--br {
+    bottom: -1.5rem;
+    right: -1.5rem;
+    border-bottom: 2px solid var(--accent-writer);
+    border-right: 2px solid var(--accent-writer);
+}
+
+/* Site footer */
+.site-footer {
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: 0.8rem;
 }
