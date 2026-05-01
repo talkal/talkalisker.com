@@ -58,7 +58,7 @@
         <div class="container">
             <div class="hero-subtitle">
                 <span class="lang-en">// web services</span><span class="lang-es">// servicios web</span><span class="lang-he">// שירותי אינטרנט</span>
-                <span class="lang-en">// starting at €200</span><span class="lang-es">// desde 200€</span><span class="lang-he">// החל מ-200€</span>
+                <span class="lang-en">// starting at €1,200</span><span class="lang-es">// desde 1.200€</span><span class="lang-he">// החל מ-1,200€</span>
             </div>
             <div class="hero-title-wrapper animate-on-scroll" style="transition-delay: 0.2s;">
                 <h1 class="hero-title" style="margin-top: 1rem;">
@@ -350,6 +350,51 @@
                 <span class="lang-es">Del Concepto<br>Al Código.</span>
                 <span class="lang-he">מקור העיצוב<br>לקוד המוגמר.</span>
             </h2>
+
+            <!-- Concentric diagram: built from core out -->
+            <div class="concentric-diagram animate-on-scroll" aria-hidden="true">
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                    <defs>
+                        <radialGradient id="gradOuter" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#d4af37" stop-opacity="0.10"/>
+                            <stop offset="100%" stop-color="#d4af37" stop-opacity="0.02"/>
+                        </radialGradient>
+                        <radialGradient id="gradMiddle" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#6B8E23" stop-opacity="0.13"/>
+                            <stop offset="100%" stop-color="#6B8E23" stop-opacity="0.02"/>
+                        </radialGradient>
+                        <radialGradient id="gradInner" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#B85A44" stop-opacity="0.20"/>
+                            <stop offset="100%" stop-color="#B85A44" stop-opacity="0.04"/>
+                        </radialGradient>
+                    </defs>
+
+                    <!-- Outer ring: Copy & Experience -->
+                    <circle cx="200" cy="200" r="183" fill="url(#gradOuter)" stroke="#d4af37" stroke-width="1" stroke-opacity="0.45"/>
+                    <!-- Middle ring: Code -->
+                    <circle cx="200" cy="200" r="118" fill="url(#gradMiddle)" stroke="#6B8E23" stroke-width="1" stroke-opacity="0.45"/>
+                    <!-- Inner: Brand Design System -->
+                    <circle cx="200" cy="200" r="55" fill="url(#gradInner)" stroke="#B85A44" stroke-width="1" stroke-opacity="0.55"/>
+
+                    <!-- Outer ring labels -->
+                    <text x="200" y="47" text-anchor="middle" font-family="var(--font-mono)" font-size="9" letter-spacing="2.5" fill="#d4af37" opacity="0.8" class="c-label lang-en">COPY &amp; EXPERIENCE</text>
+                    <text x="200" y="47" text-anchor="middle" font-family="var(--font-mono)" font-size="9" letter-spacing="2" fill="#d4af37" opacity="0.8" class="c-label lang-es">COPY Y EXPERIENCIA</text>
+                    <text x="200" y="47" text-anchor="middle" font-family="var(--font-mono)" font-size="10" fill="#d4af37" opacity="0.8" class="c-label lang-he">קופי וחוויית משתמש</text>
+
+                    <!-- Middle ring labels -->
+                    <text x="200" y="107" text-anchor="middle" font-family="var(--font-mono)" font-size="9" letter-spacing="4" fill="#6B8E23" opacity="0.85" class="c-label lang-en">CODE</text>
+                    <text x="200" y="107" text-anchor="middle" font-family="var(--font-mono)" font-size="9" letter-spacing="2" fill="#6B8E23" opacity="0.85" class="c-label lang-es">CÓDIGO</text>
+                    <text x="200" y="107" text-anchor="middle" font-family="var(--font-mono)" font-size="10" fill="#6B8E23" opacity="0.85" class="c-label lang-he">קוד</text>
+
+                    <!-- Inner circle labels -->
+                    <text x="200" y="194" text-anchor="middle" font-family="var(--font-mono)" font-size="8.5" letter-spacing="2" fill="#B85A44" opacity="0.9" class="c-label lang-en">BRAND DESIGN</text>
+                    <text x="200" y="209" text-anchor="middle" font-family="var(--font-mono)" font-size="8.5" letter-spacing="2" fill="#B85A44" opacity="0.9" class="c-label lang-en">SYSTEM</text>
+                    <text x="200" y="194" text-anchor="middle" font-family="var(--font-mono)" font-size="8.5" letter-spacing="1.5" fill="#B85A44" opacity="0.9" class="c-label lang-es">SISTEMA</text>
+                    <text x="200" y="209" text-anchor="middle" font-family="var(--font-mono)" font-size="8.5" letter-spacing="1.5" fill="#B85A44" opacity="0.9" class="c-label lang-es">DE DISEÑO</text>
+                    <text x="200" y="201" text-anchor="middle" font-family="var(--font-mono)" font-size="10" fill="#B85A44" opacity="0.9" class="c-label lang-he">מערכת עיצוב</text>
+                </svg>
+            </div>
+
             <div class="process-steps">
                 <div class="process-step animate-on-scroll" style="transition-delay: 0.1s; ">
                     <h4>
@@ -410,20 +455,30 @@
                 <span class="lang-en">/ investment</span><span class="lang-es">/ inversión</span><span class="lang-he">/ השקעה</span>
             </h4>
             <h2>
-                <span class="lang-en">Transparent Pricing.<br>No Hidden Fees.</span>
-                <span class="lang-es">Precios Transparentes.<br>Sin Cargos Ocultos.</span>
-                <span class="lang-he">תמחור שקוף.<br>ללא עמלות נסתרות.</span>
+                <span class="lang-en">Invest Once.<br>Own It Forever.</span>
+                <span class="lang-es">Invierte Una Vez.<br>Tuyo Para Siempre.</span>
+                <span class="lang-he">השקע פעם אחת.<br>שלך לתמיד.</span>
             </h2>
+            <p class="pricing-subhead">
+                <span class="lang-en">No templates. No subscriptions. No lock-in. A hand-built asset that's yours.</span>
+                <span class="lang-es">Sin plantillas. Sin suscripciones. Sin dependencias. Un activo construido a mano que es tuyo.</span>
+                <span class="lang-he">ללא תבניות. ללא מנויים. ללא תלות. נכס בנוי ביד שהוא שלך.</span>
+            </p>
+            <!-- Track: Build -->
+            <div class="pricing-track-header">
+                <span class="pricing-track-label"><span class="lang-en">/ build</span><span class="lang-es">/ construir</span><span class="lang-he">/ בנה</span></span>
+                <span class="pricing-track-desc"><span class="lang-en">You know what you need. We build it.</span><span class="lang-es">Sabes lo que necesitas. Nosotros lo construimos.</span><span class="lang-he">אתה יודע מה צריך. אנחנו בונים.</span></span>
+            </div>
             <div class="pricing-grid">
                 <!-- Starter Tier -->
                 <div class="pricing-card">
-                    <h3>Landing Page</h3>
+                    <h3>Launchpad</h3>
                     <p style="color: var(--text-secondary);">
-                        <span class="lang-en">Perfect for campaigns & new products.</span>
-                        <span class="lang-es">Perfecto para campañas y nuevos productos.</span>
-                        <span class="lang-he">מושלם לקמפיינים ומוצרים חדשים.</span>
+                        <span class="lang-en">One page. Done right. Live in weeks.</span>
+                        <span class="lang-es">Una página. Bien hecha. En línea en semanas.</span>
+                        <span class="lang-he">דף אחד. כמו שצריך. באוויר תוך שבועות.</span>
                     </p>
-                    <div class="price">200€<span>/<span class="lang-en">project</span><span class="lang-es">proyecto</span><span class="lang-he">פרויקט</span></span></div>
+                    <div class="price">1,200€<span>/<span class="lang-en">project</span><span class="lang-es">proyecto</span><span class="lang-he">פרויקט</span></span></div>
                     <ul class="pricing-features">
                         <li><span style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
                             <span class="lang-en">One Long-Scroll Page</span><span class="lang-es">Página de Desplazamiento Largo</span><span class="lang-he">דף אחד (Long-Scroll)</span>
@@ -438,31 +493,34 @@
                             <span class="lang-en">Contact Form</span><span class="lang-es">Formulario de Contacto</span><span class="lang-he">טופס יצירת קשר</span>
                         </li>
                     </ul>
-                    <a href="#" onclick="openModal('Starter - Landing Page'); return false;" class="btn">
-                        <span class="lang-en">Choose Starter</span><span class="lang-es">Elegir Starter</span><span class="lang-he">בחר Starter</span>
+                    <p class="pricing-upsell">
+                        <span class="lang-en">Launchpad clients get €300 credit toward Foundation.</span>
+                        <span class="lang-es">Los clientes de Launchpad reciben un crédito de €300 hacia Foundation.</span>
+                        <span class="lang-he">לקוחות Launchpad מקבלים קרדיט של €300 לעבר Foundation.</span>
+                    </p>
+                    <a href="#" onclick="openModal('Launchpad'); return false;" class="btn">
+                        <span class="lang-en">Start My Page</span><span class="lang-es">Empezar Mi Página</span><span class="lang-he">התחל את הדף שלי</span>
                     </a>
                 </div>
 
                 <!-- Pro Tier -->
-                <div class="pricing-card featured">
-                    <h3>
-                        <span class="lang-en">Standard Website</span><span class="lang-es">Sitio Web Estándar</span><span class="lang-he">אתר אינטרנט סטנדרטי</span>
-                    </h3>
+                <div class="pricing-card">
+                    <h3>Foundation</h3>
                     <p style="color: var(--text-secondary);">
-                        <span class="lang-en">Complete presence for growing brands.</span>
-                        <span class="lang-es">Presencia completa para marcas en crecimiento.</span>
-                        <span class="lang-he">נוכחות מלאה למותגים בצמיחה.</span>
+                        <span class="lang-en">Your brand planted. Your site built. Nothing missing.</span>
+                        <span class="lang-es">Tu marca plantada. Tu sitio construido. Sin nada que falte.</span>
+                        <span class="lang-he">המותג שלך מושרש. האתר שלך בנוי. לא חסר דבר.</span>
                     </p>
-                    <div class="price">500€<span>/<span class="lang-en">project</span><span class="lang-es">proyecto</span><span class="lang-he">פרויקט</span></span></div>
+                    <div class="price">2,400€<span>/<span class="lang-en">project</span><span class="lang-es">proyecto</span><span class="lang-he">פרויקט</span></span></div>
                     <ul class="pricing-features">
                         <li><span style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
                             <span class="lang-en">Up to 5 Pages</span><span class="lang-es">Hasta 5 Páginas</span><span class="lang-he">עד 5 דפים</span>
                         </li>
                         <li><span style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
-                            <strong><span class="lang-en">GitHub Pages Hosting</span><span class="lang-es">Hosting GitHub Pages</span><span class="lang-he">אירוח GitHub Pages</span></strong>
+                            <strong><span class="lang-en">Free GitHub Pages Hosting</span><span class="lang-es">Hosting GitHub Pages Gratis</span><span class="lang-he">אירוח GitHub Pages חינם</span></strong>
                         </li>
                         <li><span style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
-                            <span class="lang-en">Content Management</span><span class="lang-es">Gestión de Contenido</span><span class="lang-he">ניהול תוכן</span>
+                            <span class="lang-en">Content Updates Included (1 month)</span><span class="lang-es">Actualizaciones de Contenido Incluidas (1 mes)</span><span class="lang-he">עדכוני תוכן כלולים (חודש)</span>
                         </li>
                         <li><span style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
                             <span class="lang-en">SEO Optimization</span><span class="lang-es">Optimización SEO</span><span class="lang-he">אופטימיזציית SEO</span>
@@ -471,24 +529,57 @@
                             <span class="lang-en">1 Month Support</span><span class="lang-es">1 Mes de Soporte</span><span class="lang-he">חודש תמיכה</span>
                         </li>
                     </ul>
-                    <a href="#" onclick="openModal('Standard Website'); return false;" class="btn"
+                    <a href="#" onclick="openModal('Foundation'); return false;" class="btn"
                         style="background: var(--accent-developer); color: #000; border-color: var(--accent-developer);">
-                        <span class="lang-en">Choose Standard</span><span class="lang-es">Elegir Estándar</span><span class="lang-he">בחר Standard</span>
+                        <span class="lang-en">Build My Site</span><span class="lang-es">Construir Mi Sitio</span><span class="lang-he">בנה את האתר שלי</span>
+                    </a>
+                </div>
+
+                <!-- Brand & Web Tier -->
+                <div class="pricing-card brand-web-card featured">
+                    <h3>
+                        <span class="lang-en">Brand & Web</span>
+                        <span class="lang-es">Marca y Web</span>
+                        <span class="lang-he">מותג ואתר</span>
+                    </h3>
+                    <p style="color: var(--text-secondary);">
+                        <span class="lang-en">One engagement. One vision. Brand and website, inseparable.</span>
+                        <span class="lang-es">Un compromiso. Una visión. Marca y web, inseparables.</span>
+                        <span class="lang-he">מעורבות אחת. חזון אחד. מותג ואתר, בלתי נפרדים.</span>
+                    </p>
+                    <div class="price">4,200€<span>/<span class="lang-en">project</span><span class="lang-es">proyecto</span><span class="lang-he">פרויקט</span></span></div>
+                    <ul class="pricing-features">
+                        <li><span style="color:var(--accent-writer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <strong><span class="lang-en">Everything in Full Branding</span><span class="lang-es">Todo del Branding Completo</span><span class="lang-he">הכל ממיתוג מלא</span></strong>
+                        </li>
+                        <li><span style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <strong><span class="lang-en">High-Performance Website (5 pages)</span><span class="lang-es">Sitio Web de Alto Rendimiento (5 páginas)</span><span class="lang-he">אתר ביצועים גבוהים (5 דפים)</span></strong>
+                        </li>
+                        <li><span style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <span class="lang-en">SEO Optimization</span><span class="lang-es">Optimización SEO</span><span class="lang-he">אופטימיזציית SEO</span>
+                        </li>
+                        <li><span style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <span class="lang-en">GitHub Pages Hosting</span><span class="lang-es">Hosting GitHub Pages</span><span class="lang-he">אירוח GitHub Pages</span>
+                        </li>
+                        <li><span style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <span class="lang-en">1 Month Support</span><span class="lang-es">1 Mes de Soporte</span><span class="lang-he">חודש תמיכה</span>
+                        </li>
+                    </ul>
+                    <a href="#" onclick="openModal('Brand & Web'); return false;" class="btn brand-web-btn">
+                        <span class="lang-en">Launch Everything</span><span class="lang-es">Lanzar Todo</span><span class="lang-he">השק הכל</span>
                     </a>
                 </div>
 
                 <!-- Enterprise Tier -->
                 <div class="pricing-card">
-                    <h3>
-                        <span class="lang-en">Custom App \ Website</span><span class="lang-es">App o Web a Medida</span><span class="lang-he">אפליקציה או אתר בהתאמה אישית</span>
-                    </h3>
+                    <h3>Flagship</h3>
                     <p style="color: var(--text-secondary);">
-                        <span class="lang-en">Tailored solutions for complex requirements.</span>
-                        <span class="lang-es">Soluciones a medida para requerimientos complejos.</span>
-                        <span class="lang-he">פתרונות מותאמים לדרישות מורכבות.</span>
+                        <span class="lang-en">Custom-engineered. Scoped around your specific problem.</span>
+                        <span class="lang-es">Ingeniería a medida. Diseñado en torno a tu problema específico.</span>
+                        <span class="lang-he">הנדסה מותאמת. בנוי סביב הבעיה הספציפית שלך.</span>
                     </p>
                     <div class="price">
-                        <span class="lang-en">Variable</span><span class="lang-es">Variable</span><span class="lang-he">משתנה</span><span>/<span class="lang-en">Project</span><span class="lang-es">Proyecto</span><span class="lang-he">פרויקט</span></span>
+                        <span class="lang-en">From </span><span class="lang-es">Desde </span><span class="lang-he">החל מ-</span>6,500€<span>/<span class="lang-en">project</span><span class="lang-es">proyecto</span><span class="lang-he">פרויקט</span></span>
                     </div>
                     <ul class="pricing-features">
                         <li><span style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
@@ -503,9 +594,100 @@
                         <li><span style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
                             <span class="lang-en">Priority Support</span><span class="lang-es">Soporte Prioritario</span><span class="lang-he">תמיכה בעדיפות גבוהה</span>
                         </li>
+                        <li><span style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <span class="lang-en">Multilingual & Multimarket Build</span><span class="lang-es">Construcción Multilingüe y Multimercado</span><span class="lang-he">בנייה רב-לשונית ורב-שוקית</span>
+                        </li>
+                        <li><span style="color:var(--accent-developer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <span class="lang-en">Dedicated Project Lead (Tal)</span><span class="lang-es">Líder de Proyecto Dedicado (Tal)</span><span class="lang-he">מנהל פרויקט ייעודי (טל)</span>
+                        </li>
                     </ul>
-                    <a href="#" onclick="openModal('Custom App/Website'); return false;" class="btn">
-                        <span class="lang-en">Contact for Quote</span><span class="lang-es">Pedir Presupuesto</span><span class="lang-he">צור קשר להצעת מחיר</span>
+                    <a href="#" onclick="openModal('Flagship'); return false;" class="btn">
+                        <span class="lang-en">Discuss My Project</span><span class="lang-es">Hablar de Mi Proyecto</span><span class="lang-he">דבר על הפרויקט שלי</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Track: Strategy First -->
+            <div class="pricing-track-header pricing-track-header--strategy">
+                <span class="pricing-track-label"><span class="lang-en">/ strategy first</span><span class="lang-es">/ estrategia primero</span><span class="lang-he">/ אסטרטגיה תחילה</span></span>
+                <span class="pricing-track-desc"><span class="lang-en">Not sure where to start? We find out together.</span><span class="lang-es">¿No sabes por dónde empezar? Lo descubrimos juntos.</span><span class="lang-he">לא בטוח מאיפה להתחיל? נגלה יחד.</span></span>
+            </div>
+            <div class="pricing-grid pricing-grid--strategy">
+                <!-- UX Audit Tier -->
+                <div class="pricing-card">
+                    <h3>
+                        <span class="lang-en">UX Audit</span>
+                        <span class="lang-es">Auditoría UX</span>
+                        <span class="lang-he">ביקורת UX</span>
+                    </h3>
+                    <p style="color: var(--text-secondary);">
+                        <span class="lang-en">Stop guessing why users leave. Get the answer.</span>
+                        <span class="lang-es">Deja de adivinar por qué los usuarios se van. Obtén la respuesta.</span>
+                        <span class="lang-he">תפסיק לנחש למה המשתמשים עוזבים. קבל את התשובה.</span>
+                    </p>
+                    <div class="price">1,500€<span>/<span class="lang-en">project</span><span class="lang-es">proyecto</span><span class="lang-he">פרויקט</span></span></div>
+                    <ul class="pricing-features">
+                        <li><span style="color:#6B8E23;font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <strong><span class="lang-en">Full UX/CX Findings Report</span><span class="lang-es">Informe Completo UX/CX</span><span class="lang-he">דוח ממצאי UX/CX מלא</span></strong>
+                        </li>
+                        <li><span style="color:#6B8E23;font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <span class="lang-en">Industry Benchmark Analysis</span><span class="lang-es">Análisis de Benchmarks del Sector</span><span class="lang-he">ניתוח מדדי ענף</span>
+                        </li>
+                        <li><span style="color:#6B8E23;font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <span class="lang-en">Brand Voice & Copy Audit</span><span class="lang-es">Auditoría de Voz de Marca y Copy</span><span class="lang-he">ביקורת קול מותג וקופי</span>
+                        </li>
+                        <li><span style="color:#6B8E23;font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <span class="lang-en">3-Phase Prioritised Fix Roadmap</span><span class="lang-es">Hoja de Ruta de Correcciones en 3 Fases</span><span class="lang-he">מפת דרכים מתועדפת לתיקונים</span>
+                        </li>
+                        <li><span style="color:#6B8E23;font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <span class="lang-en">New Information Architecture Proposal</span><span class="lang-es">Propuesta de Nueva Arquitectura de Información</span><span class="lang-he">הצעה לארכיטקטורת מידע חדשה</span>
+                        </li>
+                    </ul>
+                    <p class="pricing-upsell">
+                        <span class="lang-en">Findings often lead directly to Full Branding or Brand & Web.</span>
+                        <span class="lang-es">Los hallazgos suelen llevar directamente a Branding Completo o Marca y Web.</span>
+                        <span class="lang-he">הממצאים מובילים לרוב ישירות למיתוג מלא או מותג ואתר.</span>
+                    </p>
+                    <a href="#" onclick="openModal('UX Audit'); return false;" class="btn" style="border-color:#6B8E23; color:#6B8E23;">
+                        <span class="lang-en">Get My Audit</span><span class="lang-es">Obtener Mi Auditoría</span><span class="lang-he">קבל את הביקורת שלי</span>
+                    </a>
+                </div>
+
+                <!-- Full Branding Tier -->
+                <div class="pricing-card">
+                    <h3>
+                        <span class="lang-en">Full Branding</span>
+                        <span class="lang-es">Branding Completo</span>
+                        <span class="lang-he">מיתוג מלא</span>
+                    </h3>
+                    <p style="color: var(--text-secondary);">
+                        <span class="lang-en">The visual and verbal identity you've been putting off.</span>
+                        <span class="lang-es">La identidad visual y verbal que llevas tiempo postergando.</span>
+                        <span class="lang-he">הזהות הויזואלית והמילולית שדחית עד עכשיו.</span>
+                    </p>
+                    <div class="price">2,800€<span>/<span class="lang-en">project</span><span class="lang-es">proyecto</span><span class="lang-he">פרויקט</span></span></div>
+                    <ul class="pricing-features">
+                        <li><span style="color:var(--accent-writer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <strong><span class="lang-en">2 Brand Directions</span><span class="lang-es">2 Direcciones de Marca</span><span class="lang-he">2 כיווני מותג</span></strong>
+                        </li>
+                        <li><span style="color:var(--accent-writer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <span class="lang-en">Full Logo Suite</span><span class="lang-es">Suite de Logotipos</span><span class="lang-he">חבילת לוגו מלאה</span>
+                        </li>
+                        <li><span style="color:var(--accent-writer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <span class="lang-en">Color & Typography System</span><span class="lang-es">Sistema de Color y Tipografía</span><span class="lang-he">מערכת צבע וטיפוגרפיה</span>
+                        </li>
+                        <li><span style="color:var(--accent-writer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <span class="lang-en">Brand Guidelines Document</span><span class="lang-es">Manual de Marca</span><span class="lang-he">מדריך מותג</span>
+                        </li>
+                        <li><span style="color:var(--accent-writer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <span class="lang-en">Brand Voice & Copywriting</span><span class="lang-es">Voz de Marca y Copywriting</span><span class="lang-he">קול מותג וקופירייטינג</span>
+                        </li>
+                        <li><span style="color:var(--accent-writer);font-family:var(--font-mono);margin-right:0.5rem;">+</span>
+                            <span class="lang-en">Social Media Kit + Email Signature</span><span class="lang-es">Kit de Redes Sociales + Firma de Email</span><span class="lang-he">ערכת סושיאל מדיה + חתימת אימייל</span>
+                        </li>
+                    </ul>
+                    <a href="#" onclick="openModal('Full Branding'); return false;" class="btn" style="border-color: var(--accent-writer); color: var(--accent-writer);">
+                        <span class="lang-en">Build My Brand</span><span class="lang-es">Construir Mi Marca</span><span class="lang-he">בנה את המותג שלי</span>
                     </a>
                 </div>
             </div>
@@ -601,9 +783,12 @@
                     </label>
                     <select id="planInput" class="form-input" name="plan">
                         <option value="General Inquiry">General Inquiry / Consulta General / פנייה כללית</option>
-                        <option value="Starter - Landing Page">Starter - Landing Page (200€)</option>
-                        <option value="Standard Website">Standard Website / Sitio Web Estándar (500€)</option>
-                        <option value="Custom App/Website">Custom App/Website / App a Medida / אפליקציה בהתאמה אישית</option>
+                        <option value="Launchpad">Launchpad (€1,200)</option>
+                        <option value="UX Audit">UX Audit (€1,500)</option>
+                        <option value="Foundation">Foundation (€2,400)</option>
+                        <option value="Full Branding">Full Branding (€2,800)</option>
+                        <option value="Brand & Web">Brand & Web (€4,200)</option>
+                        <option value="Flagship">Flagship (from €6,500)</option>
                     </select>
                 </div>
                 <div class="form-group">

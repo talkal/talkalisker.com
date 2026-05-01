@@ -130,6 +130,29 @@
 }
 
 /* Process Timeline (simplified for vertical flow) */
+/* Pricing section subhead */
+.pricing-subhead {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+    max-width: 520px;
+}
+
+/* Concentric Diagram */
+.concentric-diagram {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1;
+    margin: 3.5rem auto 0;
+}
+
+.concentric-diagram svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
 .process-steps {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -168,6 +191,55 @@
     font-size: 0.95rem;
 }
 
+/* Pricing Track Headers */
+.pricing-track-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.pricing-track-header--strategy {
+    margin-top: 5rem;
+}
+
+.pricing-track-label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    color: var(--accent-developer);
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.pricing-track-header--strategy .pricing-track-label {
+    color: var(--accent-writer);
+}
+
+.pricing-track-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Pricing upsell nudge line */
+.pricing-upsell {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-subtle);
+    margin-bottom: 0.75rem;
+}
+
+/* Strategy track grid — 2 cards, max half-width on large screens */
+.pricing-grid--strategy {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 480px));
+}
+
 /* Pricing Tiers */
 .pricing-grid {
     display: grid;
@@ -193,7 +265,7 @@
 }
 
 .pricing-card.featured::after {
-    content: "BEST VALUE";
+    content: "MOST POPULAR";
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -203,6 +275,27 @@
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     font-weight: 800;
+}
+
+.pricing-card.brand-web-card {
+    border: 1px solid transparent;
+    background:
+        linear-gradient(180deg, rgba(212,175,55,0.05) 0%, rgba(184,90,68,0.05) 50%, var(--bg-surface) 100%) padding-box,
+        linear-gradient(135deg, var(--accent-writer) 0%, var(--accent-developer) 100%) border-box;
+}
+
+
+.brand-web-btn {
+    border-color: var(--accent-writer) !important;
+    color: var(--text-primary) !important;
+    background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(184,90,68,0.08)) !important;
+    transition: background 0.2s, color 0.2s;
+}
+
+.brand-web-btn:hover {
+    background: linear-gradient(135deg, var(--accent-writer), var(--accent-developer)) !important;
+    border-color: transparent !important;
+    color: #000 !important;
 }
 
 .price {
@@ -425,6 +518,12 @@ select.form-input:focus {
 [data-theme="light"] .pricing-card.featured {
     background: linear-gradient(180deg, rgba(184, 90, 68, 0.03) 0%, #ffffff 100%);
     border-color: var(--accent-developer);
+}
+
+[data-theme="light"] .pricing-card.brand-web-card {
+    background:
+        linear-gradient(180deg, rgba(212,175,55,0.04) 0%, rgba(184,90,68,0.03) 50%, #ffffff 100%) padding-box,
+        linear-gradient(135deg, var(--accent-writer) 0%, var(--accent-developer) 100%) border-box;
 }
 
 [data-theme="light"] .hero-bg-accent {
