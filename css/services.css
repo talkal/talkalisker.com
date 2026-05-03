@@ -270,11 +270,155 @@
     background: var(--bg-surface);
     border: 1px solid var(--border-subtle);
     border-radius: 16px;
-    padding: 3rem 2rem;
+    padding: 2.5rem 2rem 2rem;
     text-align: center;
     position: relative;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+}
+
+/* 4px top accent strip */
+.card-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--accent-developer);
+}
+.pricing-grid--strategy .pricing-card:first-child .card-accent { background: #6B8E23; }
+.pricing-grid--strategy .pricing-card:last-child  .card-accent { background: var(--accent-writer); }
+.brand-web-card .card-accent {
+    background: linear-gradient(90deg, var(--accent-writer), var(--accent-developer));
+}
+
+/* Product icon */
+.card-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: rgba(184, 90, 68, 0.1);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.25rem;
+    color: var(--accent-developer);
+}
+.pricing-grid--strategy .pricing-card:first-child .card-icon { background: rgba(107,142,35,0.1); color: #6B8E23; }
+.pricing-grid--strategy .pricing-card:last-child  .card-icon { background: rgba(212,175,55,0.1); color: var(--accent-writer); }
+.brand-web-card .card-icon {
+    background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(184,90,68,0.1));
+    color: var(--accent-writer);
+}
+
+/* Delivery timeline */
+.card-timeline {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    margin: -0.5rem 0 1rem;
+}
+
+/* Feature checkmark */
+.feat-check {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    margin-right: 0.6rem;
+    flex-shrink: 0;
+    color: var(--accent-developer);
+}
+.ux-audit-card    .feat-check { color: #6B8E23; }
+.full-branding-card .feat-check { color: var(--accent-writer); }
+
+/* Feature group divider */
+.feature-group-divider {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin: 0.4rem 0;
+}
+
+/* Payment terms */
+.card-payment {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+    margin: 0.25rem 0 1rem;
+}
+
+/* Team block (Full Branding) */
+.card-team {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0.75rem 0 0.25rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    background: rgba(212, 175, 55, 0.03);
+}
+.card-team-member {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+}
+.card-team-avatar {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: var(--accent-writer);
+    flex-shrink: 0;
+}
+
+/* Foundation callout inside Brand & Web */
+.card-callout {
+    font-size: 0.72rem;
+    color: var(--accent-developer);
+    font-family: var(--font-mono);
+    border: 1px solid rgba(184, 90, 68, 0.2);
+    border-radius: 5px;
+    background: rgba(184, 90, 68, 0.04);
+    padding: 0.4rem 0.75rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+/* Flagship — full-width with 2-col features on desktop */
+.pricing-card--flagship {
+    grid-column: 1 / -1;
+}
+@media (min-width: 900px) {
+    .pricing-card--flagship .pricing-features {
+        columns: 2;
+        column-gap: 2rem;
+    }
+    .pricing-card--flagship .pricing-features li {
+        break-inside: avoid;
+    }
+}
+
+/* Flagship scoping call micro-line */
+.card-scoping {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    margin-top: 0.4rem;
+}
+
+/* Strategy First: distinct shape */
+.pricing-grid--strategy .pricing-card {
+    border-radius: 10px;
+}
+.pricing-grid--strategy .pricing-features {
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    margin: 1rem -0.25rem 1.25rem;
 }
 
 .pricing-card.featured {
@@ -283,16 +427,19 @@
 }
 
 .pricing-card.featured::after {
-    content: "MOST POPULAR";
+    content: "Recommended";
     position: absolute;
     top: 1rem;
     right: 1rem;
-    font-size: 0.7rem;
-    background: var(--accent-developer);
-    color: #000;
-    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
+    font-style: italic;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    background: transparent;
+    border: 1px solid var(--accent-developer);
+    color: var(--accent-developer);
+    padding: 0.2rem 0.55rem;
     border-radius: 4px;
-    font-weight: 800;
 }
 
 .pricing-card.brand-web-card {
