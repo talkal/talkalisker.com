@@ -150,8 +150,14 @@ section {
   /* Reduced padding */
   z-index: 1000;
   background: var(--bg-surface-frosted);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   border-bottom: var(--border-subtle);
+  transition: background var(--transition-fast), padding var(--transition-fast);
+}
+
+.navbar.scrolled {
+  padding: 0.2rem 0;
+  background: rgba(26, 25, 23, 0.95);
 }
 
 /* ... existing code ... */
@@ -682,8 +688,8 @@ section {
 /* Scroll Reveal System */
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: translateY(40px);
+  transition: opacity 1s var(--motion-slow), transform 1s var(--motion-slow);
   will-change: opacity, transform;
 }
 .animate-on-scroll.is-visible {

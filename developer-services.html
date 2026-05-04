@@ -24,6 +24,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/services.css">
+    <link rel="mcp-actions" href="/mcp-actions.json">
 </head>
 
 <body>
@@ -72,10 +73,9 @@
             </div>
             <p style="max-width: 600px; margin: 2rem 0; color: var(--text-secondary); font-size: 1.1rem;"
                 class="animate-on-scroll" style="transition-delay: 0.4s;">
-                <span class="lang-en">Your digital presence should be as considered as your craft. I build hand-coded websites that reflect who you actually are — and convert because they earn trust.</span>
-                <span class="lang-es">Convierte visitantes en clientes con sitios web y landing pages de alta velocidad
-                    y estéticamente impresionantes. Construidos para el rendimiento, el SEO y la conversión.</span>
-                <span class="lang-he">הפוך מבקרים ללקוחות עם אתרי אינטרנט ודפי נחיתה מהירים ואסתטיים להפליא. בנויים לביצועים, SEO והמרה.</span>
+                <span class="lang-en">Your digital presence should be as considered as your craft. I use a specialized system of design and code agents to build unique platforms that reflect who you actually are.</span>
+                <span class="lang-es">Tu presencia digital debe ser tan cuidada como tu oficio. Utilizo un sistema especializado de agentes de diseño y código para construir plataformas únicas que reflejan quién eres realmente.</span>
+                <span class="lang-he">הנוכחות הדיגיטלית שלך צריכה להיות מושקעת כמו המלאכה שלך. אני משתמש במערכת ייעודית של סוכני עיצוב וקוד כדי לבנות פלטפורמות ייחודיות המשקפות את מי שאתה באמת.</span>
             </p>
             <div class="animate-on-scroll" style="transition-delay: 0.6s; display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center;">
                 <a href="#" onclick="openModal('General Inquiry'); return false;" class="btn"
@@ -102,71 +102,59 @@
             </h2>
             <div class="services-grid">
                 <!-- Landing Page Service -->
-                <div class="service-card animate-on-scroll" style="transition-delay: 0.2s; ">
-                    <div class="service-icon"><svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor"
-                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-                        </svg></div>
-                    <h3>
-                        <span class="lang-en">Strategic Landing Pages</span><span class="lang-es">Landing Pages Estratégicas</span><span class="lang-he">דפי נחיתה אסטרטגיים</span>
-                    </h3>
-                    <p>
-                        <span class="lang-en">We know the frustration of driving traffic only to see it bounce. We build elegantly designed, high-performing single pages tailored to connect deeply with your audience and convert visitors seamlessly.</span>
-                        <span class="lang-es">Conocemos la frustración de atraer tráfico y ver cómo se va. Creamos páginas únicas y elegantes diseñadas para conectar profundamente con tu audiencia y convertir visitantes.</span>
-                        <span class="lang-he">אנחנו מכירים את התסכול של הזרמת תנועה רק כדי לראות אותה עוזבת. אנחנו בונים דפים בודדים בעיצוב אלגנטי וביצועים גבוהים, המותאמים לחיבור עמוק עם הקהל שלך ולהמרת מבקרים בצורה חלקה.</span>
-                    </p>
+                <div class="service-card animate-on-scroll" style="transition-delay: 0.1s;">
+                    <div class="service-id">01</div>
+                    <div class="service-content">
+                        <h3>
+                            <span class="lang-en">Strategic Landing Pages</span><span class="lang-es">Landing Pages Estratégicas</span><span class="lang-he">דפי נחיתה אסטרטגיים</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Elegantly designed, high-performing single pages tailored to connect deeply and convert visitors into clients.</span>
+                            <span class="lang-es">Páginas únicas diseñadas para conectar profundamente y convertir visitantes en clientes.</span>
+                            <span class="lang-he">דפים בודדים בעיצוב אלגנטי וביצועים גבוהים, המותאמים לחיבור עמוק ולהמרת מבקרים ללקוחות.</span>
+                        </p>
+                    </div>
                     <ul>
                         <li><span class="lang-en">High Conversion Design</span><span class="lang-es">Diseño de Alta Conversión</span><span class="lang-he">עיצוב עם המרה גבוהה</span></li>
-                        <li><span class="lang-en">Speed Optimized (95+ Score)</span><span class="lang-es">Optimizado (Puntuación 95+)</span><span class="lang-he">אופטימיזציית מהירות (ציון 95+)</span></li>
-                        <li><span class="lang-en">Mobile Responsive</span><span class="lang-es">Responsivo en Móviles</span><span class="lang-he">מותאם לנייד</span></li>
-                        <li><span class="lang-en">Analytics Integration</span><span class="lang-es">Integración Analítica</span><span class="lang-he">אינטגרציה של אנליטיקה</span></li>
+                        <li><span class="lang-en">Speed Optimized (95+)</span><span class="lang-es">Optimizado (95+)</span><span class="lang-he">אופטימיזציית מהירות (95+)</span></li>
                     </ul>
                 </div>
+
                 <!-- Full Website Service -->
-                <div class="service-card animate-on-scroll" style="transition-delay: 0.4s; ">
-                    <div class="service-icon"><svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor"
-                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                            <path
-                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                            </path>
-                        </svg></div>
-                    <h3>
-                        <span class="lang-en">Bespoke Brand Platforms</span><span class="lang-es">Plataformas de Marca a Medida</span><span class="lang-he">פלטפורמות מותג בהתאמה אישית</span>
-                    </h3>
-                    <p>
-                        <span class="lang-en">Your business deserves more than a generic template that limits your goals. We build comprehensive, SEO-optimized digital homes that perfectly embody your distinct brand and scale effortlessly as you expand.</span>
-                        <span class="lang-es">Tu negocio merece más que una plantilla genérica que limite tus metas. Construimos hogares digitales integrales, optimizados para SEO y listos para escalar mientras te expandes.</span>
-                        <span class="lang-he">העסק שלך ראוי ליותר מתבנית גנרית שמגבילה את המטרות שלך. אנחנו בונים בתים דיגיטליים מקיפים, מותאמי SEO, המגלמים בצורה מושלמת את המותג הייחודי שלך וצומחים איתך ללא מאמץ.</span>
-                    </p>
+                <div class="service-card animate-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="service-id">02</div>
+                    <div class="service-content">
+                        <h3>
+                            <span class="lang-en">Bespoke Brand Platforms</span><span class="lang-es">Plataformas de Marca a Medida</span><span class="lang-he">פלטפורמות מותג בהתאמה אישית</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Comprehensive, SEO-optimized digital homes that perfectly embody your distinct brand and scale effortlessly.</span>
+                            <span class="lang-es">Hogares digitales integrales, optimizados para SEO y listos para escalar mientras te expandes.</span>
+                            <span class="lang-he">בתים דיגיטליים מקיפים, מותאמי SEO, המגלמים בצורה מושלמת את המותג שלך וצומחים איתך.</span>
+                        </p>
+                    </div>
                     <ul>
                         <li><span class="lang-en">Custom UI/UX Design</span><span class="lang-es">Diseño UI/UX Personalizado</span><span class="lang-he">עיצוב UI/UX מותאם אישית</span></li>
-                        <li><strong>HTML5 / CSS3 / JS</strong></li>
-                        <li><span class="lang-en">SEO Foundation Setup</span><span class="lang-es">Configuración Base de SEO</span><span class="lang-he">הגדרת תשתית SEO</span></li>
                         <li><span class="lang-en">Scalable Architecture</span><span class="lang-es">Arquitectura Escalable</span><span class="lang-he">ארכיטקטורה ניתנת להרחבה</span></li>
                     </ul>
                 </div>
+
                 <!-- Custom App Service -->
-                <div class="service-card animate-on-scroll" style="transition-delay: 0.6s; ">
-                    <div class="service-icon"><svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor"
-                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="16 18 22 12 16 6"></polyline>
-                            <polyline points="8 6 2 12 8 18"></polyline>
-                        </svg></div>
-                    <h3>
-                        <span class="lang-en">Custom Web Experiences</span><span class="lang-es">Experiencias Web a Medida</span><span class="lang-he">חוויות דיגיטליות ייחודיות</span>
-                    </h3>
-                    <p>
-                        <span class="lang-en">Off-the-shelf software rarely fits intricate workflows. We resolve those friction points by building sophisticated, scalable web applications engineered flawlessly around your specific needs.</span>
-                        <span class="lang-es">El software estandarizado rara vez se ajusta a flujos de trabajo complejos. Resolvemos esas fricciones creando aplicaciones diseñadas impecablemente en torno a tus necesidades.</span>
-                        <span class="lang-he">תוכנת מדף לעיתים רחוקות מתאימה לתהליכי עבודה מורכבים. אנחנו פותרים את נקודות החיכוך האלו על ידי בניית יישומי אינטרנט מתוחכמים וניתנים להרחבה, המתוכננים בדיוק סביב הצרכים הספציפיים שלך.</span>
-                    </p>
+                <div class="service-card animate-on-scroll" style="transition-delay: 0.3s;">
+                    <div class="service-id">03</div>
+                    <div class="service-content">
+                        <h3>
+                            <span class="lang-en">Custom Web Experiences</span><span class="lang-es">Experiencias Web a Medida</span><span class="lang-he">חוויות דיגיטליות ייחודיות</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Sophisticated web applications engineered flawlessly around your specific workflows and business needs.</span>
+                            <span class="lang-es">Aplicaciones diseñadas impecablemente en torno a tus necesidades y flujos de trabajo.</span>
+                            <span class="lang-he">יישומי אינטרנט מתוחכמים המתוכננים בדיוק סביב תהליכי העבודה והצרכים העסקיים שלך.</span>
+                        </p>
+                    </div>
                     <ul>
-                        <li><span class="lang-en">React / Next.js Frameworks</span><span class="lang-es">Frameworks React / Next.js</span><span class="lang-he">סביבות עבודה React / Next.js</span></li>
-                        <li><span class="lang-en">Database Integration</span><span class="lang-es">Integración de Bases de Datos</span><span class="lang-he">אינטגרציה של מסדי נתונים</span></li>
-                        <li><span class="lang-en">User Authentication</span><span class="lang-es">Autenticación de Usuarios</span><span class="lang-he">אימות משתמשים</span></li>
-                        <li><span class="lang-en">API Development</span><span class="lang-es">Desarrollo de APIs</span><span class="lang-he">פיתוח APIs</span></li>
+                        <li><span class="lang-en">React / Next.js Stack</span><span class="lang-es">Stack React / Next.js</span><span class="lang-he">טכנולוגיית React / Next.js</span></li>
+                        <li><span class="lang-en">API & Database Integrations</span><span class="lang-es">Integración de API y BD</span><span class="lang-he">אינטגרציה של API ומסדי נתונים</span></li>
                     </ul>
                 </div>
             </div>
@@ -202,15 +190,14 @@
                     </p>
                     <p style="color: var(--text-secondary); font-size: 1.15rem; line-height: 1.8;">
                         <span class="lang-en">With a unified background as a UI/UX copywriter, novelist, and developer,
-                            I build
-                            digital experiences from the ground up. By aligning a unique design system and cohesive
-                            narrative from day one, we create platforms that resonate emotionally and perform
-                            technically.</span>
+                            I architect digital experiences from the ground up. By orchestrating a high-end system of 
+                            design and code agents, I create platforms that are technically flawless and precisely 
+                            tailored to your brand's specific narrative and audience.</span>
                         <span class="lang-es">Con un fondo unificado como copywriter UI/UX, novelista y desarrollador,
-                            construyo experiencias digitales desde los cimientos. Al alinear un sistema de diseño único
-                            y una narrativa coherente desde el primer día, creamos plataformas con resonancia emocional
-                            y un rendimiento técnico impecable.</span>
-                        <span class="lang-he">עם רקע משולב כקופירייטר UI/UX, סופר ומפתח, אני בונה חוויות דיגיטליות מהיסוד. על ידי התאמת מערכת עיצוב ייחודית ונרטיב מגובש מהיום הראשון, אנחנו יוצרים פלטפורמות שמהדהדות רגשית ומתפקדות טכנית.</span>
+                            estructuro experiencias digitales desde los cimientos. Al orquestar un sistema avanzado de
+                            agentes de diseño y código, creo plataformas técnicamente impecables y adaptadas con
+                            precisión a la narrativa y audiencia específica de tu marca.</span>
+                        <span class="lang-he">עם רקע משולב כקופירייטר UI/UX, סופר ומפתח, אני בונה חוויות דיגיטליות מהיסוד. על ידי ניצוח על מערכת מתקדמת של סוכני עיצוב וקוד, אני יוצר פלטפורמות ללא דופי מבחינה טכנית המותאמות בדיוק לנרטיב ולקהל הספציפי של המותג שלך.</span>
                     </p>
                 </div>
             </div>
@@ -228,11 +215,12 @@
                     </h4>
                     <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Tal Kalisker</h2>
                     <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.8;">
-                        <span class="lang-en">I don't just build websites; I engineer digital experiences that bridge
-                            the gap between human emotion and technical precision.</span>
-                        <span class="lang-es">No me dedico sólo a construir páginas web; estructuro experiencias
-                            digitales que cierran la brecha entre la emoción humana y la precisión técnica.</span>
-                        <span class="lang-he">אני לא רק בונה אתרים; אני מהנדס חוויות דיגיטליות שמגשרות על הפער בין רגש אנושי לדיוק טכני.</span>
+                        <span class="lang-en">I don't just build websites; I orchestrate agentic systems to engineer 
+                            digital experiences that bridge the gap between human emotion and brand precision.</span>
+                        <span class="lang-es">No me dedico sólo a construir páginas web; orquesto sistemas de agentes
+                            para estructurar experiencias digitales que cierran la brecha entre la emoción humana y la
+                            precisión de marca.</span>
+                        <span class="lang-he">אני לא רק בונה אתרים; אני מנצח על מערכות סוכנים כדי להנדס חוויות דיגיטליות שמגשרות על הפער בין רגש אנושי לדיוק מותגי.</span>
                     </p>
                     <p style="color: var(--text-secondary); margin-bottom: 2rem;">
                         <span class="lang-en">My approach serves as a trifecta of disciplines:</span>
@@ -454,14 +442,12 @@
                 </div>
                 <div class="process-step animate-on-scroll" style="transition-delay: 0.5s; ">
                     <h4>
-                        <span class="lang-en">Development</span><span class="lang-es">Desarrollo</span><span class="lang-he">פיתוח</span>
+                        <span class="lang-en">Agentic Development</span><span class="lang-es">Desarrollo Agéntico</span><span class="lang-he">פיתוח אג'נטי</span>
                     </h4>
                     <p>
-                        <span class="lang-en">Hand-coded performance. We build using <strong>HTML5, CSS3, and
-                                JavaScript</strong> to ensure your site is lightweight, secure, and fast.</span>
-                        <span class="lang-es">Rendimiento nativo. Construimos con <strong>HTML5, CSS3 y
-                                JavaScript</strong> para asegurar que tu sitio sea extremadamente rápido y limpio.</span>
-                        <span class="lang-he">ביצועים בקידוד ידני. אנחנו בונים באמצעות <strong>HTML5, CSS3 ו-JavaScript</strong> כדי להבטיח שהאתר שלך יהיה קל משקל, מאובטח ומהיר.</span>
+                        <span class="lang-en">Precision orchestration. I build using a specialized system of code agents to ensure your platform is technically flawless, high-performance, and perfectly unique.</span>
+                        <span class="lang-es">Orquestación de precisión. Construyo utilizando un sistema especializado de agentes de código para asegurar que tu plataforma sea técnicamente impecable y única.</span>
+                        <span class="lang-he">ניצוח מדויק. אני בונה באמצעות מערכת מתקדמת של סוכני קוד כדי להבטיח שהפלטפורמה שלך תהיה מושלמת מבחינה טכנית, בעלת ביצועים גבוהים וייחודית לחלוטין.</span>
                     </p>
                 </div>
                 <div class="process-step animate-on-scroll" style="transition-delay: 0.7s; ">
@@ -492,9 +478,9 @@
                 <span class="lang-he">השקע פעם אחת.<br>שלך לתמיד.</span>
             </h2>
             <p class="pricing-subhead">
-                <span class="lang-en">No templates. No subscriptions. No lock-in. A hand-built asset that's yours.</span>
-                <span class="lang-es">Sin plantillas. Sin suscripciones. Sin dependencias. Un activo construido a mano que es tuyo.</span>
-                <span class="lang-he">ללא תבניות. ללא מנויים. ללא תלות. נכס בנוי ביד שהוא שלך.</span>
+                <span class="lang-en">No templates. No generic AI noise. Just a brand-exact digital asset, built with precision orchestration.</span>
+                <span class="lang-es">Sin plantillas. Sin ruido genérico de IA. Solo un activo digital exacto para tu marca, construido con orquestación de precisión.</span>
+                <span class="lang-he">ללא תבניות. ללא רעש AI גנרי. רק נכס דיגיטלי מדויק למותג, שנבנה עם ניצוח מדויק.</span>
             </p>
             <!-- Track: Build -->
             <div class="pricing-track-header">
@@ -741,12 +727,16 @@
             </p>
 
             <form id="contactForm" action="https://formspree.io/f/mnjbwzgq" method="POST"
-                onsubmit="handleFormSubmit(event)">
+                onsubmit="handleFormSubmit(event)"
+                data-mcp-action="project-inquiry"
+                data-mcp-description="Submit a project inquiry for web development, branding, or UX services. Provide your name, email, selected plan, and project details.">
                 <div class="form-group">
                     <label class="form-label">
                         <span class="lang-en">Selected Plan</span><span class="lang-es">Plan Seleccionado</span><span class="lang-he">תכנית נבחרת</span>
                     </label>
-                    <select id="planInput" class="form-input" name="plan">
+                    <select id="planInput" class="form-input" name="plan"
+                        data-mcp-param="plan"
+                        data-mcp-description="The service plan or package you are interested in (e.g., Launchpad, Foundation, Brand & Web, Flagship, UX Audit, Full Branding).">
                         <option value="General Inquiry">General Inquiry / Consulta General / פנייה כללית</option>
                         <option value="Launchpad">Launchpad (€1,200)</option>
                         <option value="UX Audit">UX Audit (€1,500)</option>
@@ -760,21 +750,27 @@
                     <label class="form-label">
                         <span class="lang-en">Your Name</span><span class="lang-es">Tu Nombre</span><span class="lang-he">השם שלך</span>
                     </label>
-                    <input type="text" id="nameInput" name="name" class="form-input" required placeholder="John Doe">
+                    <input type="text" id="nameInput" name="name" class="form-input" required placeholder="John Doe"
+                        data-mcp-param="name"
+                        data-mcp-description="Full name of the inquirer">
                 </div>
                 <div class="form-group">
                     <label class="form-label">
                         <span class="lang-en">Your Email</span><span class="lang-es">Tu Correo</span><span class="lang-he">האימייל שלך</span>
                     </label>
                     <input type="email" id="emailInput" name="email" class="form-input" required
-                        placeholder="hello@example.com">
+                        placeholder="hello@example.com"
+                        data-mcp-param="email"
+                        data-mcp-description="Email address for the reply">
                 </div>
                 <div class="form-group">
                     <label class="form-label">
                         <span class="lang-en">Project Details</span><span class="lang-es">Detalles del Proyecto</span><span class="lang-he">פרטי הפרויקט</span>
                     </label>
                     <textarea id="messageInput" name="message" class="form-textarea" required
-                        placeholder="Describe your vision..."></textarea>
+                        placeholder="Describe your vision..."
+                        data-mcp-param="message"
+                        data-mcp-description="Detailed description of the project vision, goals, and requirements."></textarea>
                 </div>
                 <input type="hidden" name="_subject" id="formSubject" value="New Project Inquiry">
                 <input type="text" name="_gotcha" style="display:none">
