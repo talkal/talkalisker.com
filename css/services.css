@@ -261,9 +261,15 @@
 /* Pricing Tiers */
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin-top: 4rem;
+}
+
+@media (max-width: 700px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .pricing-card {
@@ -388,17 +394,57 @@
     text-align: center;
 }
 
-/* Flagship — full-width with 2-col features on desktop */
-.pricing-card--flagship {
+/* Wide cards: Brand & Web + Flagship — full row */
+.pricing-card--wide {
     grid-column: 1 / -1;
 }
-@media (min-width: 900px) {
+
+@media (min-width: 768px) {
+    .pricing-card--wide {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 0 3rem;
+        text-align: left;
+        align-items: start;
+        padding: 2.5rem 3rem;
+    }
+    .pricing-card--wide .card-accent {
+        grid-column: 1 / -1;
+    }
+    .pricing-card--wide .card-left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        min-width: 0;
+    }
+    .pricing-card--wide .card-left .card-icon {
+        margin: 0 0 1.25rem;
+    }
+    .pricing-card--wide .pricing-features {
+        align-self: start;
+        background: rgba(0, 0, 0, 0.12);
+        border-radius: 10px;
+        padding: 1.5rem 1.75rem;
+        margin: 0;
+        text-align: left;
+    }
     .pricing-card--flagship .pricing-features {
         columns: 2;
-        column-gap: 2rem;
+        column-gap: 1.5rem;
     }
     .pricing-card--flagship .pricing-features li {
         break-inside: avoid;
+    }
+    /* Re-centre featured badge on wide card */
+    .pricing-card--wide.featured::after {
+        top: 1rem;
+        right: 1rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .pricing-card--wide .card-left {
+        display: contents;
     }
 }
 
