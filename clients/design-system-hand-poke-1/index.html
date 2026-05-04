@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark" data-languages="[&quot;en&quot;]">
+<html lang="en" data-theme="dark" data-languages="[&quot;en&quot;,&quot;he&quot;]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="client" content="Hadassah Shoulder Unit">
-    <meta name="project" content="UX Audit &amp; Patient Flow Optimization">
-    <meta name="date" content="2026-04-20">
-    <meta name="type" content="System Audit">
+    <meta name="client" content="Tamar Goldstein">
+    <meta name="project" content="Hand Poke Tattoo Artist &amp; Illustrator">
+    <meta name="date" content="2026-05-01">
+    <meta name="type" content="Delivery.Handoff">
     <meta name="confidential" content="true">
-    <title>Hadassah Patient Experience Digital Audit | Talkalisker Client Portal</title>
+    <title>Tamar Goldstein Hand Poke — Design System &amp; Brand Identity | Talkalisker Client Portal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -339,8 +339,8 @@
 
     <div class="print-header">
         <div class="print-header-logo">TalKalisker</div>
-        <div class="print-header-title">Hadassah Patient Experience Digital Audit</div>
-        <div class="print-header-meta">// client: Hadassah Shoulder Unit &nbsp; // date: 2026-04-20 &nbsp; // type: System Audit &nbsp; CONFIDENTIAL</div>
+        <div class="print-header-title">Tamar Goldstein Hand Poke — Design System &amp; Brand Identity</div>
+        <div class="print-header-meta">// client: Tamar Goldstein &nbsp; // date: 2026-05-01 &nbsp; // type: Delivery.Handoff &nbsp; CONFIDENTIAL</div>
     </div>
 
     <aside class="sidebar" id="sidebar">
@@ -349,7 +349,17 @@
             TalKalisker
         </a>
         <nav id="sidebar-nav">
-                <!-- Navigation is encrypted -->
+                <div class="lang-nav" lang="en"><a href="#executive_summary" class="nav-link">01. /executive_summary</a>
+            <a href="#design_philosophy" class="nav-link">02. /design_philosophy</a>
+            <a href="#color_palette" class="nav-link">03. /color_palette</a>
+            <a href="#typography" class="nav-link">04. /typography</a>
+            <a href="#action_items" class="nav-link">05. /action_items</a></div>
+                <div class="lang-nav" lang="es" style="display: none;"></div>
+                <div class="lang-nav" lang="he" style="display: none;"><a href="#תקציר_מנהלים" class="nav-link">01. /תקציר_מנהלים</a>
+            <a href="#פילוסופיית_עיצוב" class="nav-link">02. /פילוסופיית_עיצוב</a>
+            <a href="#פלטת_צבעים" class="nav-link">03. /פלטת_צבעים</a>
+            <a href="#טיפוגרפיה" class="nav-link">04. /טיפוגרפיה</a>
+            <a href="#פעולות_לביצוע" class="nav-link">05. /פעולות_לביצוע</a></div>
         </nav>
         <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.75rem;">
             <button onclick="toggleTheme()" style="background: none; border: none; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s;">
@@ -371,31 +381,224 @@
 
     <main class="main">
         <header class="report-header">
-            <div class="report-label">// deliverable: System Audit</div>
+            <div class="report-label">// deliverable: Delivery.Handoff</div>
             <h1 class="report-title">
-                <span class="lang-title" lang="en">Hadassah Patient Experience Digital Audit</span>
+                <span class="lang-title" lang="en">Tamar Goldstein Hand Poke — Design System &amp; Brand Identity</span>
                 
                 
             </h1>
-            <div class="report-client">// client: Hadassah Shoulder Unit</div>
-            <div class="report-date">// 2026-04-20</div>
+            <div class="report-client">// client: Tamar Goldstein</div>
+            <div class="report-date">// 2026-05-01</div>
             <div class="confidential-badge">// Confidential</div>
         </header>
 
         <article id="content">
-                <div id="lock-screen" style="max-width: 400px; margin: 4rem auto; text-align: center;">
-                    <div style="font-family: var(--font-mono); color: var(--accent); margin-bottom: 2rem;">AUTHENTICATION REQUIRED</div>
-                    <h2 style="margin-bottom: 1rem;">Classified Report</h2>
-                    <p style="margin-bottom: 2rem; color: var(--text-secondary); font-size: 0.9rem;">Please enter your client access key to decrypt this payload.</p>
-                    <input type="password" id="auth-key" placeholder="Enter key..." onkeydown="if(event.key==='Enter')attemptDecrypt()" style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-subtle); background: var(--bg-core); color: var(--text-primary); margin-bottom: 1rem; font-family: var(--font-mono);">
-                    <button onclick="attemptDecrypt()" style="width: 100%; padding: 1rem; border-radius: 8px; border: none; background: var(--accent); color: white; font-weight: 700; cursor: pointer;">Authenticate &amp; Decrypt</button>
-                    <div id="auth-error" style="color: var(--accent-red); margin-top: 1rem; display: none; font-size: 0.8rem; font-family: var(--font-mono);">ERROR: Invalid key. Verification failed.</div>
-                </div>
-                <div id="decrypted-content" style="display: none;"></div>
+                <div class="lang-block" lang="en"><h1 id="executive_summary">01. /executive_summary</h1>
+<p><strong>Tamar Goldstein</strong> is a Hand Poke Tattoo Artist and Illustrator whose work bridges the gap between traditional craft and contemporary botanical illustration. This report formalizes the <strong>Organic Precision</strong> design system, a visual framework built to reflect the gentle, intentional, and soulful nature of her process.</p>
+<p>The system is anchored in three core principles: <strong>Soulful Connection</strong>, <strong>Precise Artistry</strong>, and <strong>Natural Harmony</strong>. Every element — from the paper-like background tokens to the stippled micro-textures — has been designed to make her high-contrast illustrations the center of a serene, storytelling-driven experience.</p>
+<h1 id="design_philosophy">02. /design_philosophy</h1>
+<p>The design system is heavily anchored in the brand's core values. It must feel organic, intentional, and serene.</p>
+<div class="decision-card">
+    <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">High Impact</span></div>
+    <div class="decision-title">Soulful Connection</div>
+    <div class="decision-desc"><p><strong>Concept:</strong> Work done from the heart, focusing on the story and the person.<br>
+<strong>Application:</strong> Use of generous whitespace and an intimate, intentional layout that prioritizes the narrative behind each piece.</p>
+</div>
+</div>
+<div class="decision-card">
+    <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">High Impact</span></div>
+    <div class="decision-title">Precise Artistry</div>
+    <div class="decision-desc"><p><strong>Concept:</strong> The technical mastery of the hand poke method — dot by dot.<br>
+<strong>Application:</strong> Sharp grid alignment, fine-line borders, and stippling textures that mirror her &quot;pointillism&quot; tattooing technique.</p>
+</div>
+</div>
+<div class="decision-card">
+    <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">Medium Impact</span></div>
+    <div class="decision-title">Natural Harmony</div>
+    <div class="decision-desc"><p><strong>Concept:</strong> Deep connection to flora, fauna, and the cycles of life.<br>
+<strong>Application:</strong> A palette derived from &quot;The Winter Garden&quot; — muted, earthy, and analog.</p>
+</div>
+</div>
+<h1 id="color_palette">03. /color_palette</h1>
+<p>The palette reflects &quot;The Winter Garden&quot;. Muted, earthy tones that feel like natural paper and dried botanicals.</p>
+<div class="swatch-card">
+    <div class="swatch-color" style="background:#1A1A1A;"></div>
+    <div class="swatch-info">
+        <div class="swatch-name">Ink Black</div>
+        <div class="swatch-hex">#1A1A1A</div>
+        <div class="swatch-usage">Headings & primary art reproduction. Reflects the depth of tattoo ink.</div>
+    </div>
+</div>
+<div class="swatch-card">
+    <div class="swatch-color" style="background:#F9F7F2;"></div>
+    <div class="swatch-info">
+        <div class="swatch-name">Bone Paper</div>
+        <div class="swatch-hex">#F9F7F2</div>
+        <div class="swatch-usage">Main background. Mimics high-quality handmade paper.</div>
+    </div>
+</div>
+<div class="swatch-card">
+    <div class="swatch-color" style="background:#6B6B63;"></div>
+    <div class="swatch-info">
+        <div class="swatch-name">Sage Metadata</div>
+        <div class="swatch-hex">#6B6B63</div>
+        <div class="swatch-usage">Secondary text & captions. Provides a soft, botanical contrast.</div>
+    </div>
+</div>
+<div class="swatch-card">
+    <div class="swatch-color" style="background:#2D2D2A;"></div>
+    <div class="swatch-info">
+        <div class="swatch-name">Earth Dark</div>
+        <div class="swatch-hex">#2D2D2A</div>
+        <div class="swatch-usage">Hero backgrounds for high-contrast storytelling.</div>
+    </div>
+</div>
+<h1 id="typography">04. /typography</h1>
+<p>Typography projects <strong>Quiet Authority</strong>. We utilize a mix of traditional serif for artistry and modern sans-serif for precision.</p>
+<p><strong>Display &amp; Storytelling:</strong> Cormorant Garamond<br>
+A timeless serif that provides a sense of tradition, elegance, and artisanal heritage. Used for cinematic headings and the brand name.</p>
+<p><strong>Interface &amp; Utility:</strong> Inter<br>
+A precision-grade sans-serif used for body copy and UI elements. Ensures maximum readability across all devices.</p>
+<h1 id="action_items">05. /action_items</h1>
+<p>The following steps move the project from system definition to web implementation:</p>
+<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ></div>
+        <div class="action-title">Approve Design System & Brand tokens</div>
+        <div class="action-owner">Tamar</div>
+    </div>
+    <div class="action-status status-pending">Pending</div>
+</div>
+<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ></div>
+        <div class="action-title">Curate high-resolution assets for "Lemon Tree" gallery</div>
+        <div class="action-owner">Tamar</div>
+    </div>
+    <div class="action-status status-pending">Pending</div>
+</div>
+<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ></div>
+        <div class="action-title">Finalize content for "About" and "Process" sections</div>
+        <div class="action-owner">Tamar</div>
+    </div>
+    <div class="action-status status-in progress">In Progress</div>
+</div>
+<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ></div>
+        <div class="action-title">Begin website front-end development</div>
+        <div class="action-owner">Tal</div>
+    </div>
+    <div class="action-status status-pending">Pending</div>
+</div>
+</div>
+                <div class="lang-block" lang="es" style="display: none;"></div>
+                <div class="lang-block" lang="he" style="display: none;"><h1 id="תקציר_מנהלים">01. /תקציר_מנהלים</h1>
+<p><strong>תמר גולדשטיין</strong> היא אמנית קעקועי Hand Poke ומאיירת, שעבודתה מגשרת על הפער בין מלאכת יד מסורתית לאיור בוטני עכשווי. דוח זה מגדיר רשמית את מערכת העיצוב <strong>Organic Precision</strong> (דיוק אורגני), מסגרת ויזואלית שנבנתה כדי לשקף את הטבע העדין, המכוון והנשמתי של תהליך היצירה שלה.</p>
+<p>המערכת מעוגנת בשלושה עקרונות ליבה: <strong>חיבור מהלב</strong>, <strong>אמנות מדויקת</strong> ו<strong>הרמוניה טבעית</strong>. כל אלמנט — החל מטוקנים של רקע דמוי נייר ועד לטקסטורות עדינות של נקודות (Stippling) — עוצב כדי להפוך את האיורים שלה למרכז של חוויה שלווה מבוססת סיפור.</p>
+<h1 id="פילוסופיית_עיצוב">02. /פילוסופיית_עיצוב</h1>
+<p>מערכת העיצוב מעוגנת עמוק בערכי המותג. היא חייבת להרגיש אורגנית, מכוונת ושלווה.</p>
+<div class="decision-card">
+    <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">גבוהה Impact</span></div>
+    <div class="decision-title">חיבור מהלב</div>
+    <div class="decision-desc"><p><strong>קונספט:</strong> עבודה שנעשית מהלב, תוך התמקדות בסיפור ובאדם.<br>
+<strong>יישום:</strong> שימוש במרחב לבן (whitespace) נדיב ופריסה אינטימית ומכוונת שמתעדפת את הנרטיב מאחורי כל יצירה.</p>
+</div>
+</div>
+<div class="decision-card">
+    <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">גבוהה Impact</span></div>
+    <div class="decision-title">אמנות מדויקת</div>
+    <div class="decision-desc"><p><strong>קונספט:</strong> השליטה הטכנית בשיטת ה-Hand Poke — נקודה אחר נקודה.<br>
+<strong>יישום:</strong> יישור רשת חד, מסגרות בקו דק וטקסטורות נקודות המשקפות את טכניקת ה&quot;פוינטיליזם&quot; של הקעקועים שלה.</p>
+</div>
+</div>
+<div class="decision-card">
+    <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">בינונית Impact</span></div>
+    <div class="decision-title">הרמוניה טבעית</div>
+    <div class="decision-desc"><p><strong>קונספט:</strong> חיבור עמוק לצומח, לחי ולמחזורי החיים.<br>
+<strong>יישום:</strong> פלטת צבעים השאובה מ&quot;גינת החורף&quot; — עמומה, ארצית ואנלוגית.</p>
+</div>
+</div>
+<h1 id="פלטת_צבעים">03. /פלטת_צבעים</h1>
+<p>הפלטה משקפת את &quot;גינת החורף&quot;. גוונים עמומים וארציים שמרגישים כמו נייר טבעי וצמחים מיובשים.</p>
+<div class="swatch-card">
+    <div class="swatch-color" style="background:#1A1A1A;"></div>
+    <div class="swatch-info">
+        <div class="swatch-name">שחור דיו</div>
+        <div class="swatch-hex">#1A1A1A</div>
+        <div class="swatch-usage">כותרות ושעתוק אמנות. משקף את העומק של דיו קעקועים.</div>
+    </div>
+</div>
+<div class="swatch-card">
+    <div class="swatch-color" style="background:#F9F7F2;"></div>
+    <div class="swatch-info">
+        <div class="swatch-name">נייר עצם</div>
+        <div class="swatch-hex">#F9F7F2</div>
+        <div class="swatch-usage">רקע ראשי. מחקה נייר איכותי בעבודת יד.</div>
+    </div>
+</div>
+<div class="swatch-card">
+    <div class="swatch-color" style="background:#6B6B63;"></div>
+    <div class="swatch-info">
+        <div class="swatch-name">מרווה (Sage)</div>
+        <div class="swatch-hex">#6B6B63</div>
+        <div class="swatch-usage">טקסט משני וכותרות הסבר. מספק ניגודיות בוטנית רכה.</div>
+    </div>
+</div>
+<div class="swatch-card">
+    <div class="swatch-color" style="background:#2D2D2A;"></div>
+    <div class="swatch-info">
+        <div class="swatch-name">אדמה כהה</div>
+        <div class="swatch-hex">#2D2D2A</div>
+        <div class="swatch-usage">רקעים לכותרות ראשיות (Hero) לסיפור סיפורים בניגודיות גבוהה.</div>
+    </div>
+</div>
+<h1 id="טיפוגרפיה">04. /טיפוגרפיה</h1>
+<p>הטיפוגרפיה מקרינה <strong>סמכות שקטה</strong>. אנו משתמשים בשילוב של סריף מסורתי לאמנות וסנס-סריף מודרני לדיוק.</p>
+<p><strong>תצוגה וסיפור סיפורים:</strong> Cormorant Garamond<br>
+סריף נצחי המעניק תחושה של מסורת, אלגנטיות ומורשת אומנותית. משמש לכותרות קולנועיות ושם המותג.</p>
+<p><strong>ממשק ושימושיות:</strong> Inter<br>
+סנס-סריף ברמת דיוק גבוהה המשמש לטקסט גוף ואלמנטים של ממשק משתמש. מבטיח קריאות מקסימלית בכל המכשירים.</p>
+<h1 id="פעולות_לביצוע">05. /פעולות_לביצוע</h1>
+<p>השלבים הבאים מעבירים את הפרויקט מהגדרת מערכת ליישום אינטרנט:</p>
+<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ></div>
+        <div class="action-title">אישור מערכת העיצוב והמותג</div>
+        <div class="action-owner">תמר</div>
+    </div>
+    <div class="action-status status-ממתין">ממתין</div>
+</div>
+<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ></div>
+        <div class="action-title">איסוף נכסים ברזולוציה גבוהה לגלריית "עץ הלימון"</div>
+        <div class="action-owner">תמר</div>
+    </div>
+    <div class="action-status status-ממתין">ממתין</div>
+</div>
+<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ></div>
+        <div class="action-title">סגירת תוכן לעמודי "אודות" ו"תהליך"</div>
+        <div class="action-owner">תמר</div>
+    </div>
+    <div class="action-status status-בתהליך">בתהליך</div>
+</div>
+<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ></div>
+        <div class="action-title">תחילת פיתוח Front-end לאתר</div>
+        <div class="action-owner">טל</div>
+    </div>
+    <div class="action-status status-ממתין">ממתין</div>
+</div>
+</div>
         </article>
     </main>
 
-    <script id="encrypted-payload" type="application/json">"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"</script>
 
     <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
         <img id="lightbox-img" src="" alt="Zoomed Evidence">
