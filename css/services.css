@@ -588,6 +588,22 @@ h2 {
     color: #000 !important;
 }
 
+/* ─── Brand & Web card — WCAG AA contrast fixes ─────────────────────── */
+/* .card-timeline and .card-payment use --text-muted which falls below   */
+/* WCAG AA at 0.68rem. Elevate to --text-secondary within this card.     */
+.brand-web-card .card-timeline,
+.brand-web-card .card-payment {
+    color: var(--text-secondary);
+}
+
+/* Callout: terracotta on card bg = ~3.4:1 — below AA for 0.72rem text. */
+/* Use --text-primary for the label; keep terracotta border for identity. */
+.brand-web-card .card-callout {
+    color: var(--text-primary);
+    background: rgba(184, 90, 68, 0.10);
+    border-color: rgba(184, 90, 68, 0.35);
+}
+
 .price {
     font-size: 2.5rem;
     font-weight: 800;
