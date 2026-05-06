@@ -160,6 +160,10 @@ section {
   background: rgba(26, 25, 23, 0.95);
 }
 
+[data-theme="light"] .navbar.scrolled {
+  background: rgba(250, 248, 245, 0.95);
+}
+
 /* ... existing code ... */
 
 /* Project Card Compact Styles */

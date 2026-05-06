@@ -570,7 +570,8 @@ h2 {
 .pricing-card.brand-web-card {
     border: 1px solid transparent;
     background:
-        linear-gradient(180deg, rgba(212,175,55,0.05) 0%, rgba(184,90,68,0.05) 50%, var(--bg-surface) 100%) padding-box,
+        linear-gradient(180deg, rgba(212,175,55,0.05) 0%, rgba(184,90,68,0.05) 50%, transparent 100%) padding-box,
+        linear-gradient(var(--bg-surface), var(--bg-surface)) padding-box,
         linear-gradient(135deg, var(--accent-writer) 0%, var(--accent-developer) 100%) border-box;
 }
 
@@ -828,7 +829,8 @@ select.form-input:focus {
 
 [data-theme="light"] .pricing-card.brand-web-card {
     background:
-        linear-gradient(180deg, rgba(212,175,55,0.04) 0%, rgba(184,90,68,0.03) 50%, #ffffff 100%) padding-box,
+        linear-gradient(180deg, rgba(212,175,55,0.04) 0%, rgba(184,90,68,0.03) 50%, transparent 100%) padding-box,
+        linear-gradient(#ffffff, #ffffff) padding-box,
         linear-gradient(135deg, var(--accent-writer) 0%, var(--accent-developer) 100%) border-box;
 }
 
