@@ -28,11 +28,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateDocumentMeta(lang) {
-        // Find if any specific meta update function exists on the page (e.g., developer.html)
-        if (typeof window.updateDocumentMetaDev === 'function') {
-            window.updateDocumentMetaDev(lang);
-        } else if (typeof window.updateDocumentMetaMain === 'function') {
-            window.updateDocumentMetaMain(lang);
+        // Find the page-specific meta update function and call it
+        const handlers = [
+            'updateDocumentMetaDev',
+            'updateDocumentMetaServices',
+            'updateDocumentMetaMain',
+            'updateDocumentMetaCopywriter',
+            'updateDocumentMetaWriter',
+            'updateDocumentMetaYoga',
+        ];
+        for (const name of handlers) {
+            if (typeof window[name] === 'function') {
+                window[name](lang);
+                break;
+            }
         }
     }
 });
