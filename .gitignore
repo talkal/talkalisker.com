@@ -1,3 +1,7 @@
 
 # DHS Tools
 tools/
+
+# Obsidian
+.obsidian/
+

@@ -156,7 +156,7 @@ Ciclos dedicados de "ping-pong" para ajustes de precisión. Todos los archivos f
 
 - **Metric:** Total Project Investment (before discount) | **Value:** €3,000 | **Trend:** Fixed
 - **Metric:** Personal Discount | **Value:** −€300 | **Trend:** Applied
-- **Metric:** **Total Investment** | **Value:** **€2,700** | **Trend:** Fixed
+- **Metric:** Total Investment | **Value:** €2,700 | **Trend:** Fixed
 - **Metric:** Payment 1 — Project Start & Discovery (33%) | **Value:** €900 | **Trend:** Due upfront
 - **Metric:** Payment 2 — Major Deliverables & Web Dev (33%) | **Value:** €900 | **Trend:** On delivery
 - **Metric:** Payment 3 — Final Approval & Handover (33%) | **Value:** €900 | **Trend:** On completion
