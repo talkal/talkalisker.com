@@ -206,7 +206,7 @@ Milestone-based, split equally across three triggers: project start, core delive
 
 - **Métrica:** Inversión Total del Proyecto (antes del descuento) | **Valor:** €3.000 | **Tendencia:** Fijo
 - **Métrica:** Descuento Personal | **Valor:** −€300 | **Tendencia:** Aplicado
-- **Métrica:** **Inversión Total** | **Valor:** **€2.700** | **Tendencia:** Fijo
+- **Métrica:** Inversión Total | **Valor:** €2.700 | **Tendencia:** Fijo
 - **Métrica:** Pago 1 — Inicio del Proyecto y Descubrimiento (33%) | **Valor:** €900 | **Tendencia:** Debido por adelantado
 - **Métrica:** Pago 2 — Entregables Principales y Desarrollo Web (33%) | **Valor:** €900 | **Tendencia:** A la entrega
 - **Métrica:** Pago 3 — Aprobación Final y Entrega (33%) | **Valor:** €900 | **Tendencia:** Al finalizar
