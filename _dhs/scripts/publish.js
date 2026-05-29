@@ -134,8 +134,8 @@ function parseMarkdownContent(markdownContent, outputDir) {
         })
         // Signature Cards
         .replace(/^\- \*\*(?:Signature|Firma|חתימה):\*\* (.*?) \| \*\*(?:Role|Cargo|תפקיד):\*\* (.*$)/gm, (match, name, role) => {
-            return `\n<div class="signature-card">
-    <div class="signature-line"></div>
+            return `\n<div class="signature-card" onclick="openSignaturePad(this)" style="cursor: pointer;">
+    <div class="signature-line" style="display: flex; align-items: flex-end; justify-content: center; padding-bottom: 5px; color: var(--accent); font-family: var(--font-mono); font-size: 0.7rem;">[Click to Sign]</div>
     <div class="signature-name">${name}</div>
     <div class="signature-role">${role}</div>
 </div>\n`;

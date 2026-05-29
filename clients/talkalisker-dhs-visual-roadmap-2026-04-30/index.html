@@ -717,6 +717,20 @@ Add a <code>&lt;div class=&quot;print-header&quot;&gt;</code> to the template wi
         }
         function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
 
+        function openSignaturePad(card) {
+            const line = card.querySelector('.signature-line');
+            if (line.dataset.signed === 'true') return;
+            const name = prompt("Enter your full name to sign digitally:");
+            if (name) {
+                line.innerHTML = `<span style="font-family: 'Georgia', cursive; font-size: 1.5rem; color: var(--text-primary); line-height: 1;">${name}</span> <span style="font-size: 0.65rem; color: var(--text-secondary); margin-left: 10px; font-family: var(--font-mono);">(Digitally Signed ${new Date().toLocaleDateString()})</span>`;
+                line.style.borderBottom = 'none';
+                line.style.background = 'none';
+                line.style.height = 'auto';
+                line.dataset.signed = 'true';
+                card.style.cursor = 'default';
+            }
+        }
+
         function attemptDecrypt() {
             const key = document.getElementById('auth-key').value;
             const ciphertext = document.getElementById('encrypted-payload').textContent.slice(1, -1);
