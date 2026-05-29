@@ -591,12 +591,11 @@ function publish(markdownPath, outputDir) {
         langs = ['en'];
     }
 
-    const contentMap = {};
-
-    // Initialize content strings for each language
-    langs.forEach(l => {
-        contentMap[`content_${l}`] = '';
-    });
+    const contentMap = {
+        content_en: '', nav_en: '',
+        content_es: '', nav_es: '',
+        content_he: '', nav_he: ''
+    };
 
     // Parser for language blocks
     const lines = bodyMarkdown.split('\n');

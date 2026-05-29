@@ -704,12 +704,15 @@ cd _dhs &amp;&amp; node scripts/delete_report.js report-slug-name
                     <div class="lang-nav" lang="he" style="display: none;">${payload.nav_he}</div>
                 `;
                 document.getElementById('decrypted-content').innerHTML = `
-                    <div class="lang-block" lang="en">${payload.content_en}</div>
-                    <div class="lang-block" lang="es" style="display: none;">${payload.content_es}</div>
-                    <div class="lang-block" lang="he" style="display: none;">${payload.content_he}</div>
+                    <div class="lang-block" lang="en">${payload.content_en || ''}</div>
+                    <div class="lang-block" lang="es" style="display: none;">${payload.content_es || ''}</div>
+                    <div class="lang-block" lang="he" style="display: none;">${payload.content_he || ''}</div>
                 `;
                 document.getElementById('decrypted-content').style.display = 'block';
-                setLang(localStorage.getItem('language') || 'en');
+                const html = document.documentElement;
+                const available = JSON.parse(html.getAttribute('data-languages') || '["en"]');
+                const saved = localStorage.getItem('language') || available[0];
+                setLang(available.includes(saved) ? saved : available[0]);
                 initInteractiveFeatures();
             } catch (e) {
                 document.getElementById('auth-error').style.display = 'block';
@@ -828,9 +831,9 @@ cd _dhs &amp;&amp; node scripts/delete_report.js report-slug-name
                 document.getElementById('lang-toggle').style.display = 'flex';
                 document.getElementById('lang-indicator').style.display = 'inline-block';
                 document.getElementById('lang-toggle').addEventListener('click', toggleLang);
-                const saved = localStorage.getItem('language') || available[0];
-                setLang(available.includes(saved) ? saved : available[0]);
             }
+            const saved = localStorage.getItem('language') || available[0];
+            setLang(available.includes(saved) ? saved : available[0]);
 
             // Progress bar
             const bar = document.getElementById('progress-bar');
