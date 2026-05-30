@@ -61,7 +61,7 @@
 
 /* Fluid Typography & Spacing System */
 :root {
-    --text-hero: clamp(3rem, 10vw + 1rem, 7rem);
+    --text-hero: clamp(2.5rem, 6vw + 1rem, 5rem);
     --text-section: clamp(2rem, 5vw + 1rem, 4rem);
     --text-menu: clamp(1.25rem, 2vw + 1rem, 2.5rem);
     
@@ -352,8 +352,10 @@ h2 {
 }
 
 .pricing-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     padding: 2.5rem 2rem 2rem;
     text-align: center;
@@ -361,6 +363,13 @@ h2 {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    transition: transform 0.4s var(--motion-slow), box-shadow 0.4s var(--motion-slow), border-color 0.4s;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* 4px top accent strip */
@@ -672,9 +681,16 @@ h2 {
 }
 
 /* Light Mode Overrides for Services */
-[data-theme="light"] .service-card,
-[data-theme="light"] .pricing-card {
+[data-theme="light"] .service-card {
     background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .pricing-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
