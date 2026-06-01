@@ -83,9 +83,10 @@ Obsidian uses a superset of standard markdown. Handle each construct:
 - If not available, preserve the reference as a bracketed annotation: `[ref: Note Name]`
 - Never silently drop wikilinks
 
-### Embedded Files `![[filename.png]]` or `![[filename.pdf]]`
+### Embedded Files & Visuals (`![[filename.png]]`, `.canvas`, `.excalidraw`)
 - Images: confirm the file exists in `_dhs/assets/`. If yes, convert to `![description](filename.png)` syntax
 - If the image is missing, add a TODO: `<!-- TODO: add image filename.png to _dhs/assets/ -->`
+- Canvas / Excalidraw (`.canvas`, `.excalidraw`): Do NOT attempt to parse these directly. Add an Action item instructing the user to export them to PNG and place them in `_dhs/assets/` before referencing them as images.
 - PDFs: document as a reference link or action item ("Attach [filename.pdf] as supplementary deliverable")
 
 ### Callout Blocks
@@ -186,6 +187,7 @@ project: "[Project Name — the initiative this report belongs to]"
 type: "[Category].[Descriptor]"
 date: "YYYY-MM-DD"
 confidential: true
+status: "draft" # or "final"
 languages: '["en"]'
 # password: omit unless overriding clients.json — auto-resolved by client name
 ---
@@ -194,6 +196,10 @@ languages: '["en"]'
 **confidential defaults to `true`** unless the content is explicitly public-facing material (marketing copy, public case studies).
 
 **languages**: Set `'["en", "es"]'` if client has a Spanish context, `'["en", "he"]'` for Hebrew context, `'["en", "es", "he"]'` for full trilingual. When using multiple languages, wrap ALL content in `:::lang` blocks — no content should appear outside a block in a multi-language report.
+
+### Table of Contents (Auto-TOC)
+- If the report is complex (more than 3 main sections), generate an inline `## Table of Contents` below the executive summary.
+- Base the TOC on the top-level `# 0X.` headers.
 
 ### Section Heading Convention
 ```markdown

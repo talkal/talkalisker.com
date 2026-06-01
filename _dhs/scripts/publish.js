@@ -51,8 +51,9 @@ md.renderer.rules.image = function (tokens, idx, options, env, self) {
 function parseMarkdownContent(markdownContent, outputDir) {
     let processed = markdownContent
         // Proposal Cards
-        .replace(/^\- \*\*(?:Name|Nombre|שם):\*\* (.*?) \| \*\*(?:Slogan|Eslogan|סלוגן):\*\* (.*?) \| \*\*(?:Level|Nivel|רמה):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\- \*\*(?:Name|Nombre|שם):\*\*|\r?\n# |$(?![\s\S]))/gm, (match, name, slogan, level, desc) => {
-            return `\n<div class="proposal-card">
+        .replace(/^\- \*\*(?:Name|Nombre|שם):\*\* (.*?) \| \*\*(?:Slogan|Eslogan|סלוגן):\*\* (.*?) \| \*\*(?:Level|Nivel|רמה):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n#{1,6} |\r?\n---|\r?\n- \*\*|$(?![\s\S]))/gm, (match, name, slogan, level, desc) => {
+            const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+            return `\n<div class="proposal-card" id="card-${slug}">
     <div class="proposal-badge">${level}</div>
     <div class="proposal-name">${name}</div>
     <div class="proposal-slogan">${slogan}</div>
@@ -60,16 +61,18 @@ function parseMarkdownContent(markdownContent, outputDir) {
 </div>\n`;
         })
         // Finding Cards
-        .replace(/^\- \*\*(?:Finding|Hallazgo|ממצא):\*\* (.*?) \| \*\*(?:Severity|Severidad|חומרה):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\- \*\*(?:Finding|Hallazgo|ממצא):\*\*|\r?\n# |$(?![\s\S]))/gm, (match, title, sev, desc) => {
+        .replace(/^\- \*\*(?:Finding|Hallazgo|ממצא):\*\* (.*?) \| \*\*(?:Severity|Severidad|חומרה):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n#{1,6} |\r?\n---|\r?\n- \*\*|$(?![\s\S]))/gm, (match, title, sev, desc) => {
             const sevClass = sev.toLowerCase().trim();
-            return `\n<div class="finding-card">
+            const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+            return `\n<div class="finding-card" id="card-${slug}">
     <div class="finding-meta"><strong>${title}</strong><span class="severity sev-${sevClass}">${sev}</span></div>
     <div class="finding-desc">${md.render(desc.trim())}</div>
 </div>\n`;
         })
         // Decision Cards (Meeting Summaries)
-        .replace(/^\- \*\*(?:Decision|Decisión|החלטה):\*\* (.*?) \| \*\*(?:Impact|Impacto|השפעה):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\- \*\*(?:Decision|Decisión|החלטה):\*\*|\r?\n# |$(?![\s\S]))/gm, (match, title, impact, desc) => {
-            return `\n<div class="decision-card">
+        .replace(/^\- \*\*(?:Decision|Decisión|החלטה):\*\* (.*?) \| \*\*(?:Impact|Impacto|השפעה):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n#{1,6} |\r?\n---|\r?\n- \*\*|$(?![\s\S]))/gm, (match, title, impact, desc) => {
+            const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+            return `\n<div class="decision-card" id="card-${slug}">
     <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">${impact} Impact</span></div>
     <div class="decision-title">${title}</div>
     <div class="decision-desc">${md.render(desc.trim())}</div>
@@ -122,8 +125,9 @@ function parseMarkdownContent(markdownContent, outputDir) {
         // Benchmark Cards (Industry Reference)
         // Syntax: - **Benchmark:** Institution | **Metric:** Key Takeaway or Stat
         //         Description line(s)
-        .replace(/^\- \*\*(?:Benchmark|מידוד):\*\* (.*?) \| \*\*(?:Metric|Takeaway|תובנה):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\- \*\*(?:Benchmark|מידוד):\*\*|\r?\n# |$(?![\s\S]))/gm, (_match, institution, metric, desc) => {
-            return `\n<div class="benchmark-card">
+        .replace(/^\- \*\*(?:Benchmark|מידוד):\*\* (.*?) \| \*\*(?:Metric|Takeaway|תובנה):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n#{1,6} |\r?\n---|\r?\n- \*\*|$(?![\s\S]))/gm, (_match, institution, metric, desc) => {
+            const slug = institution.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+            return `\n<div class="benchmark-card" id="card-${slug}">
     <div class="benchmark-meta">
         <span class="benchmark-label">Benchmark</span>
         <span class="benchmark-institution">${institution}</span>
@@ -212,9 +216,10 @@ function parseMarkdownContent(markdownContent, outputDir) {
             return html;
         })
         // Deliverable Cards
-        .replace(/^\* \*\*(?:Deliverable|Entregable|תוצר):\*\* (.*?) \| \*\*(?:Details|Detalles|פרטים):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n\* \*\*(?:Deliverable|Entregable|תוצר):\*\*|\r?\n# |$(?![\s\S]))/gm, (match, title, subtitle, desc) => {
+        .replace(/^\* \*\*(?:Deliverable|Entregable|תוצר):\*\* (.*?) \| \*\*(?:Details|Detalles|פרטים):\*\* (.*)\r?\n([\s\S]*?)(?=\r?\n#{1,6} |\r?\n---|\r?\n\* \*\*|$(?![\s\S]))/gm, (match, title, subtitle, desc) => {
             const fullDetails = subtitle + "\n" + desc;
-            return `\n<div class="deliverable-card">
+            const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+            return `\n<div class="deliverable-card" id="card-${slug}">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -668,6 +673,8 @@ function publish(markdownPath, outputDir) {
         type: metadata.type || "Draft",
         date: displayDate,
         confidential: metadata.confidential || false,
+        status: metadata.status || "final",
+        isDraft: (metadata.status || "").toLowerCase() === "draft",
         languages: JSON.stringify(langs),
         isProtected,
         encryptedPayload,

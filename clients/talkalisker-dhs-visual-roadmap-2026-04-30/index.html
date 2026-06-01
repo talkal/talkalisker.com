@@ -129,7 +129,9 @@
         .finding-card:has(.sev-medium)   { border-left-color: #FF9F0A; }
         .finding-card:has(.sev-low)      { border-left-color: #6B8E23; }
         .finding-card.filter-hidden { display: none !important; }
-        .finding-meta { display: flex; justify-content: space-between; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.8rem; }
+        .finding-meta { display: flex; justify-content: space-between; margin-bottom: 1rem; align-items: baseline; }
+        .finding-meta strong { font-family: var(--font-main); font-size: 1.25rem; font-weight: 700; color: var(--text-primary); }
+        .finding-meta .severity { font-family: var(--font-mono); font-size: 0.8rem; }
         .severity { padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 700; text-transform: uppercase; }
         .sev-critical { background: rgba(255, 59, 48, 0.18); color: var(--accent-red); }
         .sev-high     { background: rgba(255, 59, 48, 0.1);  color: var(--accent-red); }
@@ -296,6 +298,21 @@
         #nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 90; backdrop-filter: blur(2px); }
         #nav-overlay.open { display: block; }
 
+        /* ── Draft Watermark ── */
+        .draft-watermark {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 15rem; font-weight: 800; color: var(--text-primary); opacity: 0.03;
+            pointer-events: none; z-index: 0; font-family: var(--font-main); letter-spacing: 0.1em;
+            user-select: none;
+        }
+
+        /* ── Deep Links Target Highlight ── */
+        :target { animation: targetHighlight 2s ease-out; }
+        @keyframes targetHighlight {
+            0% { box-shadow: 0 0 0 2px var(--accent), 0 0 40px rgba(184, 90, 68, 0.4); transform: scale(1.02); }
+            100% { box-shadow: 0 0 0 0 transparent, 0 0 0 transparent; transform: scale(1); }
+        }
+
         /* ── Print Header ── */
         .print-header { display: none; }
 
@@ -378,6 +395,7 @@
     </aside>
 
     <main class="main">
+        
         <header class="report-header">
             <div class="report-label">// deliverable: Reference.Roadmap</div>
             <h1 class="report-title">
@@ -418,7 +436,7 @@
 <div class="timeline"><div class="timeline-node"><div class="timeline-marker"></div><div class="timeline-node-header"><span class="timeline-period">Day 1–2</span><h3 class="timeline-title">Phase 1 — High-ROI Quick Wins</h3></div><div class="timeline-events"><div class="timeline-event"><strong>Scroll spy on sidebar nav</strong> — IntersectionObserver highlights active section while reading</div><div class="timeline-event"><strong>Date rendered in report header</strong> — Already in meta; surface it below the client line</div><div class="timeline-event"><strong>Hero gradient band</strong> — Terracotta-to-transparent sweep behind the report header</div><div class="timeline-event"><strong>Finding card severity left border</strong> — Color-coded bar by severity, scannable without reading</div><div class="timeline-event"><strong>Reading progress bar</strong> — Thin terracotta line at top of page, fills as user scrolls</div></div></div><div class="timeline-node"><div class="timeline-marker"></div><div class="timeline-node-header"><span class="timeline-period">Day 3–5</span><h3 class="timeline-title">Phase 2 — Card System Upgrades</h3></div><div class="timeline-events"><div class="timeline-event"><strong>Interactive action checkboxes</strong> — Click toggles Done/Pending in localStorage, no backend</div><div class="timeline-event"><strong>Language switch fade animation</strong> — 150ms opacity transition on incoming language block</div><div class="timeline-event"><strong>Language indicator pill</strong> — EN / עב pill shows current language next to the toggle button</div><div class="timeline-event"><strong>Confidential badge</strong> — Styled CONFIDENTIAL label in header for encrypted reports</div><div class="timeline-event"><strong>Section intro paragraph</strong> — First p per section rendered larger (1.2rem, lighter weight)</div></div></div><div class="timeline-node"><div class="timeline-marker"></div><div class="timeline-node-header"><span class="timeline-period">Day 6–9</span><h3 class="timeline-title">Phase 3 — Filtering & Interactivity</h3></div><div class="timeline-events"><div class="timeline-event"><strong>Findings filter bar</strong> — All / Critical / High / Medium / Low above finding card groups</div><div class="timeline-event"><strong>Action items filter bar</strong> — All / Pending / Blocked / Done above action card groups</div><div class="timeline-event"><strong>Expandable appendix tables</strong> — Large tables start collapsed with "Show full table" toggle</div><div class="timeline-event"><strong>Pull quote treatment</strong> — Blockquotes styled with large terracotta quote mark, larger type</div></div></div><div class="timeline-node"><div class="timeline-marker"></div><div class="timeline-node-header"><span class="timeline-period">Day 10–15</span><h3 class="timeline-title">Phase 4 — Mobile, Bilingual & Print</h3></div><div class="timeline-events"><div class="timeline-event"><strong>Mobile sidebar drawer</strong> — Hamburger → slide-in panel below 900px instead of stacking</div><div class="timeline-event"><strong>Swipe language switch</strong> — touchstart / touchend detects swipe, cycles languages on mobile</div><div class="timeline-event"><strong>Print one-pager mode</strong> — Print-only header with logo + client + date + confidential badge</div><div class="timeline-event"><strong>Section page-break control</strong> — page-break-before: always on major sections for clean PDF export</div></div></div></div>
 <h1 id="phase_1_detail">03. /phase_1_detail</h1>
 <p><em>5 changes. Combined effect: every report feels intentional the moment it opens.</em></p>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-scroll-spy-active-nav-highlighting">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -429,7 +447,7 @@ Create one <code>IntersectionObserver</code> targeting all <code>h1[id]</code> e
 </div>
     </div>
 </div>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-date-in-report-header">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -440,7 +458,7 @@ Create one <code>IntersectionObserver</code> targeting all <code>h1[id]</code> e
 </div>
     </div>
 </div>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-hero-gradient-band">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -451,7 +469,7 @@ Add <code>::before</code> pseudo-element to <code>.report-header</code>. Absolut
 </div>
     </div>
 </div>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-finding-card-severity-left-border">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -462,7 +480,7 @@ Add <code>::before</code> pseudo-element to <code>.report-header</code>. Absolut
 </div>
     </div>
 </div>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-reading-progress-bar">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -475,7 +493,7 @@ Add <code>&lt;div id=&quot;progress-bar&quot;&gt;&lt;/div&gt;</code> at top of <
 </div>
 <h1 id="phase_2_detail">04. /phase_2_detail</h1>
 <p><em>5 changes. Makes the portal feel like a living document, not a static PDF.</em></p>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-interactive-action-card-checkboxes">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -486,7 +504,7 @@ Action cards already render a <code>.action-checkbox</code> div. Add <code>data-
 </div>
     </div>
 </div>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-language-switch-fade-animation">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -497,7 +515,7 @@ In <code>setLang()</code>, instead of instant <code>display: block/none</code>, 
 </div>
     </div>
 </div>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-language-indicator-pill">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -508,7 +526,7 @@ Add <code>&lt;span id=&quot;lang-indicator&quot;&gt;EN&lt;/span&gt;</code> next 
 </div>
     </div>
 </div>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-confidential-badge-in-header">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -519,7 +537,7 @@ Add <code>{{#if confidential}}&lt;div class=&quot;confidential-badge&quot;&gt;//
 </div>
     </div>
 </div>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-section-intro-paragraph-style">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -532,7 +550,7 @@ Add <code>{{#if confidential}}&lt;div class=&quot;confidential-badge&quot;&gt;//
 </div>
 <h1 id="phase_3_detail">05. /phase_3_detail</h1>
 <p><em>4 changes. Transforms multi-finding audits from walls of cards into filtered, navigable sets.</em></p>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-findings-filter-bar">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -543,7 +561,7 @@ After <code>DOMContentLoaded</code>, detect any section containing 3+ <code>.fin
 </div>
     </div>
 </div>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-action-items-filter-bar">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -554,7 +572,7 @@ Same pattern as findings filter. Detect sections with 3+ <code>.action-card</cod
 </div>
     </div>
 </div>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-expandable-appendix-tables">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -565,7 +583,7 @@ On <code>DOMContentLoaded</code>, find all <code>&lt;table&gt;</code> elements w
 </div>
     </div>
 </div>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-pull-quote-treatment">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -578,7 +596,7 @@ On <code>DOMContentLoaded</code>, find all <code>&lt;table&gt;</code> elements w
 </div>
 <h1 id="phase_4_detail">06. /phase_4_detail</h1>
 <p><em>4 changes. Mobile-first delivery and print-ready exports.</em></p>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-mobile-sidebar-drawer">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -589,7 +607,7 @@ Below 900px: replace the stacked sidebar with a hidden drawer. Add <code>&lt;but
 </div>
     </div>
 </div>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-swipe-language-switch">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -600,7 +618,7 @@ In <code>DOMContentLoaded</code>, on touch devices: track <code>touchstart</code
 </div>
     </div>
 </div>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-print-one-pager-header">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -611,7 +629,7 @@ Add a <code>&lt;div class=&quot;print-header&quot;&gt;</code> to the template wi
 </div>
     </div>
 </div>
-<div class="deliverable-card">
+<div class="deliverable-card" id="card-section-page-break-control">
     <div class="deliverable-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
     </div>
@@ -623,25 +641,25 @@ Add a <code>&lt;div class=&quot;print-header&quot;&gt;</code> to the template wi
     </div>
 </div>
 <h1 id="implementation_notes">07. /implementation_notes</h1>
-<div class="decision-card">
+<div class="decision-card" id="card-implement-phases-in-order">
     <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">High Impact</span></div>
     <div class="decision-title">Implement phases in order</div>
     <div class="decision-desc"><p>Each phase is designed to be shippable independently. Phase 1 alone justifies a rebuild. Don't wait for Phase 4 to be complete to deploy Phase 1.</p>
 </div>
 </div>
-<div class="decision-card">
+<div class="decision-card" id="card-all-js-in-dashboard-shell-html-no-external-files">
     <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">Medium Impact</span></div>
     <div class="decision-title">All JS in dashboard_shell.html, no external files</div>
     <div class="decision-desc"><p>DHS portals are self-contained single HTML files. Keep all enhancements inline. No additional script tags, no npm packages for runtime. The CryptoJS CDN is the only external dependency and it stays that way.</p>
 </div>
 </div>
-<div class="decision-card">
+<div class="decision-card" id="card-css-first-js-only-when-css-cannot-do-it">
     <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">Medium Impact</span></div>
     <div class="decision-title">CSS-first, JS only when CSS cannot do it</div>
     <div class="decision-desc"><p>Scroll spy, progress bar, filters, drawer: JS required. Everything else (gradient, borders, typography, animations): pure CSS. Keeps the portal lightweight and functional without JavaScript where possible.</p>
 </div>
 </div>
-<div class="decision-card">
+<div class="decision-card" id="card-test-in-both-dark-and-light-themes-before-shipping-each-phase">
     <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">High Impact</span></div>
     <div class="decision-title">Test in both dark and light themes before shipping each phase</div>
     <div class="decision-desc"><p>Every color must use CSS variables. No hardcoded hex values in new code. Dark theme is the default and primary — light theme must not be an afterthought. Test the Hebrew RTL layout for Phase 1 and Phase 4 especially.</p>

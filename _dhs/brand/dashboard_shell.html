@@ -129,7 +129,9 @@
         .finding-card:has(.sev-medium)   { border-left-color: #FF9F0A; }
         .finding-card:has(.sev-low)      { border-left-color: #6B8E23; }
         .finding-card.filter-hidden { display: none !important; }
-        .finding-meta { display: flex; justify-content: space-between; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.8rem; }
+        .finding-meta { display: flex; justify-content: space-between; margin-bottom: 1rem; align-items: baseline; }
+        .finding-meta strong { font-family: var(--font-main); font-size: 1.25rem; font-weight: 700; color: var(--text-primary); }
+        .finding-meta .severity { font-family: var(--font-mono); font-size: 0.8rem; }
         .severity { padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 700; text-transform: uppercase; }
         .sev-critical { background: rgba(255, 59, 48, 0.18); color: var(--accent-red); }
         .sev-high     { background: rgba(255, 59, 48, 0.1);  color: var(--accent-red); }
@@ -296,6 +298,21 @@
         #nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 90; backdrop-filter: blur(2px); }
         #nav-overlay.open { display: block; }
 
+        /* ── Draft Watermark ── */
+        .draft-watermark {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 15rem; font-weight: 800; color: var(--text-primary); opacity: 0.03;
+            pointer-events: none; z-index: 0; font-family: var(--font-main); letter-spacing: 0.1em;
+            user-select: none;
+        }
+
+        /* ── Deep Links Target Highlight ── */
+        :target { animation: targetHighlight 2s ease-out; }
+        @keyframes targetHighlight {
+            0% { box-shadow: 0 0 0 2px var(--accent), 0 0 40px rgba(184, 90, 68, 0.4); transform: scale(1.02); }
+            100% { box-shadow: 0 0 0 0 transparent, 0 0 0 transparent; transform: scale(1); }
+        }
+
         /* ── Print Header ── */
         .print-header { display: none; }
 
@@ -376,6 +393,7 @@
     </aside>
 
     <main class="main">
+        {{#if isDraft}}<div class="draft-watermark">DRAFT</div>{{/if}}
         <header class="report-header">
             <div class="report-label">// deliverable: {{type}}</div>
             <h1 class="report-title">
