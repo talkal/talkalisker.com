@@ -25,7 +25,7 @@ These sectors require immense credibility before allowing external vendors acces
 The audience actively distrusts traditional "slide-deck" consultancies. They will only engage with vendors offering embedded, hands-on technological execution.
 
 
-## 3. BUSINESS IMPACT
+# 02. /business_impact
 
 - **Decision:** Capture Niche Market | **Impact:** High
 Capturing this audience enables high-implication, high-LTV retainer relationships via managed technological services.
@@ -34,7 +34,7 @@ Capturing this audience enables high-implication, high-LTV retainer relationship
 High opportunity to become the definitive technical partner for Spanish professional services; high risk of rejection if messaging resembles generic consulting rather than concrete technological execution.
 
 
-# 02. /audience_firmographics
+# 03. /audience_firmographics
 
 - **Finding:** Target Size & Geography | **Severity:** Medium
 Targeting SMEs with 5 to 50 employees. Initial geographic focus is the Madrid market before broader national expansion. These firms are large enough to feel acute operational pain but lack dedicated IT strategy departments.
@@ -42,7 +42,7 @@ Targeting SMEs with 5 to 50 employees. Initial geographic focus is the Madrid ma
 - **Finding:** Industry Focus | **Severity:** High
 Sectors are knowledge-intensive, complex, and highly regulated (e.g., law, compliance, accounting). Their output product is mainly digital (reports, compliance docs, digital assets), making workflows prime targets for technological automation.
 
-# 03. /psychographics_and_mindset
+# 04. /psychographics_and_mindset
 
 - **Finding:** Growth vs. Technological Ceiling | **Severity:** Critical
 The businesses are operationally mature but their technological systems have stayed behind. Founders are growth-oriented but trapped by manual bottlenecks. They cannot take on additional work without hiring more staff.
@@ -50,7 +50,7 @@ The businesses are operationally mature but their technological systems have sta
 - **Finding:** Core Values & Environment | **Severity:** High
 Because of the regulated nature of their work, these clients heavily value rigor, predictability, and reliability in their technology. They operate in conservative environments that demand institutional trust.
 
-# 04. /pain_points_and_friction
+# 05. /pain_points_and_friction
 
 - **Finding:** Emotional State | **Severity:** High
 Prospects arrive feeling overwhelmed, inefficient, frustrated, and bogged down by outdated technological systems that cause constant bottlenecks. They are losing time and energy.
@@ -61,7 +61,7 @@ They are acutely aware that competitors are adopting new technology faster than 
 - **Finding:** Consulting Fatigue | **Severity:** Critical
 They actively distrust traditional consultancies that deliver slide decks and reports without executing the actual technological implementation in their systems.
 
-# 05. /the_anti_audience
+# 06. /the_anti_audience
 
 - **Finding:** Cost-Cutters | **Severity:** High
 Companies whose primary motivation is merely to cut costs or reduce headcount must be actively disqualified. Voria's audience is growth-driven, seeking technological leverage.
