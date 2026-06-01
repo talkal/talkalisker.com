@@ -204,6 +204,7 @@ languages: '["en"]'
 - Number with zero-padding (`01`, `02`, ..., `10`, `11`)
 - The slug becomes the sidebar navigation anchor
 - Choose slugs that read well as nav items: `/executive_summary`, `/critical_findings`, `/strategic_roadmap`, `/investment`, `/action_items`
+- **CRITICAL PARSER LIMITATION**: All logical sections that follow a Card block (like a Finding or Decision) MUST begin with a top-level `# 0X.` header. Do NOT use `##` subheaders to break out of a card block. The `publish.js` Regex only looks for `\r?\n# ` to terminate a card. Using `##` will cause the new section to be swallowed into the previous card's description.
 
 ### Card Syntax Reference
 
@@ -886,4 +887,4 @@ This section is the authoritative list of all DHS card types. It is updated when
 
 ---
 
-*DHS Report Publisher · talkalisker Deliverables System v3.0 · Updated: 2026-04-26*
+*DHS Report Publisher · talkalisker Deliverables System v3.0 · Updated: 2026-06-01*
