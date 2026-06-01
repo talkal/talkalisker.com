@@ -14,27 +14,44 @@ languages: '["en"]'
 The target audience for Voria consists of operationally mature SMEs in Spain (5-50 employees) operating in conservative, knowledge-intensive sectors such as law, compliance, and healthcare. These organizations are fundamentally growth-oriented but have reached a hard capacity ceiling where daily operations block further scaling. They require structural modernization but suffer from deep consulting fatigue, demanding hands-on execution and high institutional trust rather than high-level advisory reports.
 
 ## 2. KEY FINDINGS
-**Finding 1**: The audience is physically trapped by their own operational success. **Strategic implication: Their primary driver is decoupling revenue growth from linear headcount increases.**
+- **Finding:** Operational Trap | **Severity:** Critical
+The audience is physically trapped by their own operational success. Their primary driver is decoupling revenue growth from linear headcount increases.
 
-**Finding 2**: These sectors require immense institutional credibility before allowing external vendors access to internal systems. **Strategic implication: Trust must be borrowed from established partners (e.g., Rapinformes) to bypass the initial defense mechanisms.**
+- **Finding:** Institutional Trust Requirement | **Severity:** High
+These sectors require immense credibility before allowing external vendors access to internal systems. Trust must be borrowed from established partners (e.g., Rapinformes) to bypass the initial defense mechanisms.
 
-**Finding 3**: The audience actively distrusts traditional "slide-deck" consultancies. **Strategic implication: The audience will only engage with vendors offering embedded, technical execution.**
+- **Finding:** Consulting Fatigue | **Severity:** High
+The audience actively distrusts traditional "slide-deck" consultancies. They will only engage with vendors offering embedded, technical execution.
 
 ## 3. BUSINESS IMPACT
-**Financial Impact**: Capturing this audience enables high-implication, high-LTV retainer relationships via managed services.
-**Risk/Opportunity**: High opportunity to become the definitive technical partner for Spanish professional services; high risk of rejection if messaging resembles generic consulting.
-**Time Horizon**: Immediate targeting via the Rapinformes 7,000-client network.
+- **Decision:** Capture Niche Market | **Impact:** High
+Capturing this audience enables high-implication, high-LTV retainer relationships via managed services.
+
+- **Decision:** Differentiate Messaging | **Impact:** High
+High opportunity to become the definitive technical partner for Spanish professional services; high risk of rejection if messaging resembles generic consulting.
+
+- **Action:** Leverage Rapinformes Pipeline | **Owner:** Sales | **Status:** Pending
+Immediate targeting via the Rapinformes 7,000-client network.
 
 ## 4. RECOMMENDATIONS
-**[Critical]**: Target only founders feeling acute operational pain — Owner: Sales | Timeline: Immediate | Expected Result: Higher conversion on Phase 1 audits.
-**[High]**: Disqualify cost-cutters early in the pipeline — Owner: Sales | Timeline: Immediate | Expected Result: Zero wasted cycles on misaligned prospects.
-**[Medium]**: Emphasize hands-on execution in all collateral — Owner: Marketing | Timeline: 14 days | Expected Result: Direct counter-positioning against the 150+ generic consultancies.
+- **Action:** Target founders feeling acute operational pain | **Owner:** Sales | **Status:** Pending
+Expected Result: Higher conversion on Phase 1 audits.
+
+- **Action:** Disqualify cost-cutters early | **Owner:** Sales | **Status:** Pending
+Expected Result: Zero wasted cycles on misaligned prospects.
+
+- **Action:** Emphasize hands-on execution in collateral | **Owner:** Marketing | **Status:** Pending
+Expected Result: Direct counter-positioning against the 150+ generic consultancies.
 
 ## 5. NEXT STEPS
-1. **Deploy Rapinformes joint-marketing campaign** — Deadline: June 20, 2026
-2. **Train sales on strict disqualification criteria** — Deadline: June 15, 2026
+- **Action:** Deploy Rapinformes joint-marketing campaign | **Owner:** Guillermo | **Status:** Pending
+Deadline: June 20, 2026
 
-**Decision Point**: Approve audience disqualification criteria to protect sales bandwidth.
+- **Action:** Train sales on strict disqualification criteria | **Owner:** Guillermo | **Status:** Pending
+Deadline: June 15, 2026
+
+- **Decision:** Approve audience disqualification criteria | **Impact:** High
+To protect sales bandwidth.
 
 # 02. /audience_firmographics
 
