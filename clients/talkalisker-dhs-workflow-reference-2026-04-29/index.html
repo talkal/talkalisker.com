@@ -651,9 +651,18 @@ cd _dhs &amp;&amp; node scripts/delete_report.js report-slug-name
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        const SUPABASE_URL = 'https://xsivyrmpcgomyiyrsidg.supabase.co';
-        const SUPABASE_KEY = 'sb_publishable_c9qIfHryD8QI-adbltinYQ_DGNFblET';
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        let supabase = null;
+        try {
+            const SUPABASE_URL = 'https://xsivyrmpcgomyiyrsidg.supabase.co';
+            const SUPABASE_KEY = 'sb_publishable_c9qIfHryD8QI-adbltinYQ_DGNFblET';
+            if (window.supabase) {
+                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+            } else {
+                console.warn('Supabase not loaded. Signatures will be disabled.');
+            }
+        } catch (e) {
+            console.error('Failed to init Supabase:', e);
+        }
 
         async function generateDocumentHash() {
             const text = document.querySelector('main').innerText;
@@ -674,6 +683,7 @@ cd _dhs &amp;&amp; node scripts/delete_report.js report-slug-name
         }
 
         async function checkSignatureStatus() {
+            if (!supabase) return;
             const requiresSigMeta = document.querySelector('meta[name="requires_signature"]');
             if (requiresSigMeta && requiresSigMeta.getAttribute('content') === 'true') {
                 const reportId = document.title.split(' | ')[0];
