@@ -695,12 +695,13 @@ cd _dhs &amp;&amp; node scripts/delete_report.js report-slug-name
             cards.forEach(card => {
                 const line = card.querySelector('.signature-line');
                 const dateStr = new Date(sigData.created_at).toLocaleString();
+                const emailStr = sigData.email && sigData.email !== 'unknown@client.com' ? `<br>Email: ${sigData.email}` : '';
                 
                 line.innerHTML = `
                     <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 5px;">
                         <span style="font-family: 'Georgia', cursive; font-size: 1.8rem; color: var(--text-primary); line-height: 1;">${sigData.client_name}</span>
                         <span style="font-size: 0.75rem; color: var(--text-secondary); font-family: var(--font-mono); line-height: 1.4;">
-                            ✓ Cryptographically Verified<br>
+                            ✓ Cryptographically Verified${emailStr}<br>
                             Date: ${dateStr}<br>
                             Hash: ${sigData.document_hash.substring(0, 16)}...
                         </span>
@@ -791,14 +792,72 @@ cd _dhs &amp;&amp; node scripts/delete_report.js report-slug-name
 
             const line = card.querySelector('.signature-line');
             if (line.dataset.signed === 'true') return;
+            if (line.dataset.signing === 'true') return;
+            line.dataset.signing = 'true';
             
-            const name = prompt("Enter your full legal name to permanently sign this document:");
-            if (!name) return;
+            line.innerHTML = `
+                <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; text-align: left; padding: 10px 0;">
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Enter details to verify signature:</div>
+                    <input type="text" id="sig-name" placeholder="Full Legal Name" style="padding: 10px; border-radius: 4px; border: 1px solid var(--border-subtle); background: var(--bg-core); color: var(--text-primary); font-family: var(--font-mono); width: 100%; box-sizing: border-box;">
+                    <input type="email" id="sig-email" placeholder="Email Address" style="padding: 10px; border-radius: 4px; border: 1px solid var(--border-subtle); background: var(--bg-core); color: var(--text-primary); font-family: var(--font-mono); width: 100%; box-sizing: border-box;">
+                    <button onclick="requestOtp(this.closest('.signature-card'))" style="padding: 10px; border-radius: 4px; border: none; background: var(--accent); color: white; cursor: pointer; font-weight: bold; width: 100%;">Send Security Code</button>
+                </div>
+            `;
+            line.style.height = 'auto';
+            line.style.borderBottom = 'none';
+        }
 
-            const originalHTML = line.innerHTML;
-            line.innerHTML = 'Securing signature...';
-            card.style.pointerEvents = 'none';
+        async function requestOtp(card) {
+            const name = card.querySelector('#sig-name').value.trim();
+            const email = card.querySelector('#sig-email').value.trim();
+            if (!name || !email) return alert("Please enter both name and email.");
+            
+            const btn = card.querySelector('button');
+            btn.innerText = 'Sending...';
+            btn.disabled = true;
 
+            const { data, error } = await supabase.auth.signInWithOtp({ email });
+            if (error) {
+                alert("Error sending code: " + error.message);
+                btn.innerText = 'Send Security Code';
+                btn.disabled = false;
+                return;
+            }
+
+            const line = card.querySelector('.signature-line');
+            line.dataset.name = name;
+            line.dataset.email = email;
+            line.innerHTML = `
+                <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; text-align: left; padding: 10px 0;">
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Enter 6-digit code sent to ${email}:</div>
+                    <input type="text" id="sig-code" placeholder="000000" style="padding: 10px; border-radius: 4px; border: 1px solid var(--border-subtle); background: var(--bg-core); color: var(--text-primary); font-family: var(--font-mono); width: 100%; box-sizing: border-box; text-align: center; font-size: 1.5rem; letter-spacing: 5px;">
+                    <button onclick="verifyOtp(this.closest('.signature-card'))" style="padding: 10px; border-radius: 4px; border: none; background: var(--accent); color: white; cursor: pointer; font-weight: bold; width: 100%;">Verify & Sign</button>
+                </div>
+            `;
+        }
+
+        async function verifyOtp(card) {
+            const code = card.querySelector('#sig-code').value.trim();
+            if (!code) return;
+
+            const line = card.querySelector('.signature-line');
+            const name = line.dataset.name;
+            const email = line.dataset.email;
+
+            const btn = card.querySelector('button');
+            btn.innerText = 'Verifying...';
+            btn.disabled = true;
+
+            const { data: authData, error: authErr } = await supabase.auth.verifyOtp({ email, token: code, type: 'email' });
+            
+            if (authErr) {
+                alert("Invalid code: " + authErr.message);
+                btn.innerText = 'Verify & Sign';
+                btn.disabled = false;
+                return;
+            }
+
+            btn.innerText = 'Securing...';
             try {
                 const reportId = document.title.split(' | ')[0];
                 const hash = await generateDocumentHash();
@@ -806,29 +865,23 @@ cd _dhs &amp;&amp; node scripts/delete_report.js report-slug-name
                 
                 const { data, error } = await supabase
                     .from('signatures')
-                    .insert([
-                        {
-                            report_id: reportId,
-                            client_name: name,
-                            ip_address: ip,
-                            user_agent: navigator.userAgent,
-                            document_hash: hash
-                        }
-                    ])
+                    .insert([{
+                        report_id: reportId,
+                        client_name: name,
+                        email: email,
+                        ip_address: ip,
+                        user_agent: navigator.userAgent,
+                        document_hash: hash
+                    }])
                     .select();
 
                 if (error) throw error;
-                
-                if (data && data.length > 0) {
-                    lockSignatureCard(data[0]);
-                }
+                if (data && data.length > 0) lockSignatureCard(data[0]);
             } catch (err) {
                 console.error("Signature failed:", err);
-                line.innerHTML = 'Signature failed. Try again.';
-                setTimeout(() => {
-                    line.innerHTML = originalHTML;
-                    card.style.pointerEvents = 'auto';
-                }, 3000);
+                alert("Database error: " + err.message);
+                btn.innerText = 'Verify & Sign';
+                btn.disabled = false;
             }
         }
 
