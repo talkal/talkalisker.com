@@ -675,7 +675,7 @@ function publish(markdownPath, outputDir) {
         confidential: metadata.confidential || false,
         status: metadata.status || "final",
         isDraft: (metadata.status || "").toLowerCase() === "draft",
-        signWebhook: metadata.sign_webhook || null,
+        requiresSignature: metadata.requires_signature || false,
         languages: JSON.stringify(langs),
         isProtected,
         encryptedPayload,

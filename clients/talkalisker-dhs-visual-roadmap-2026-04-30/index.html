@@ -9,7 +9,7 @@
     <meta name="date" content="2026-04-30">
     <meta name="type" content="Reference.Roadmap">
     <meta name="confidential" content="false">
-    
+    <meta name="requires_signature" content="false">
     <title>DHS Visual Improvements — Implementation Roadmap | Talkalisker Client Portal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -677,7 +677,70 @@ Add a <code>&lt;div class=&quot;print-header&quot;&gt;</code> to the template wi
         <img id="lightbox-img" src="" alt="Zoomed Evidence">
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
+        const SUPABASE_URL = 'https://xsivyrmpcgomyiyrsidg.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_c9qIfHryD8QI-adbltinYQ_DGNFblET';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function generateDocumentHash() {
+            const text = document.querySelector('main').innerText;
+            const msgBuffer = new TextEncoder().encode(text);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function getIpAddress() {
+            try {
+                const res = await fetch('https://api.ipify.org?format=json');
+                const data = await res.json();
+                return data.ip;
+            } catch (e) {
+                return 'unknown';
+            }
+        }
+
+        async function checkSignatureStatus() {
+            const requiresSigMeta = document.querySelector('meta[name="requires_signature"]');
+            if (requiresSigMeta && requiresSigMeta.getAttribute('content') === 'true') {
+                const reportId = document.title.split(' | ')[0];
+                const { data, error } = await supabase
+                    .from('signatures')
+                    .select('*')
+                    .eq('report_id', reportId)
+                    .order('created_at', { ascending: false })
+                    .limit(1);
+
+                if (data && data.length > 0) {
+                    lockSignatureCard(data[0]);
+                }
+            }
+        }
+
+        function lockSignatureCard(sigData) {
+            const cards = document.querySelectorAll('.signature-card');
+            cards.forEach(card => {
+                const line = card.querySelector('.signature-line');
+                const dateStr = new Date(sigData.created_at).toLocaleString();
+                
+                line.innerHTML = `
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 5px;">
+                        <span style="font-family: 'Georgia', cursive; font-size: 1.8rem; color: var(--text-primary); line-height: 1;">${sigData.client_name}</span>
+                        <span style="font-size: 0.75rem; color: var(--text-secondary); font-family: var(--font-mono); line-height: 1.4;">
+                            ✓ Cryptographically Verified<br>
+                            Date: ${dateStr}<br>
+                            Hash: ${sigData.document_hash.substring(0, 16)}...
+                        </span>
+                    </div>
+                `;
+                line.style.borderBottom = 'none';
+                line.style.background = 'none';
+                line.style.height = 'auto';
+                line.dataset.signed = 'true';
+                card.style.cursor = 'default';
+            });
+        }
         function toggleTheme() {
             const html = document.documentElement;
             const target = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -736,45 +799,64 @@ Add a <code>&lt;div class=&quot;print-header&quot;&gt;</code> to the template wi
         }
         function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
 
-        function openSignaturePad(card) {
-            const webhookMeta = document.querySelector('meta[name="sign_webhook"]');
-            const webhookUrl = webhookMeta ? webhookMeta.getAttribute('content') : '';
-
-            if (webhookUrl) {
+        async function openSignaturePad(card) {
+            const requiresSigMeta = document.querySelector('meta[name="requires_signature"]');
+            if (!requiresSigMeta || requiresSigMeta.getAttribute('content') !== 'true') {
+                // Fallback for non-enforced documents
                 const line = card.querySelector('.signature-line');
-                const originalHTML = line.innerHTML;
-                line.innerHTML = 'Sending request...';
-                card.style.pointerEvents = 'none';
-                
-                fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        title: document.title,
-                        date: new Date().toISOString(),
-                        url: window.location.href
-                    })
-                }).then(res => {
-                    line.innerHTML = 'Check your email to sign';
+                if (line.dataset.signed === 'true') return;
+                const name = prompt("Enter your full name to sign digitally:");
+                if (name) {
+                    line.innerHTML = `<span style="font-family: 'Georgia', cursive; font-size: 1.5rem; color: var(--text-primary); line-height: 1;">${name}</span> <span style="font-size: 0.65rem; color: var(--text-secondary); margin-left: 10px; font-family: var(--font-mono);">(Digitally Signed ${new Date().toLocaleDateString()})</span>`;
+                    line.style.borderBottom = 'none';
+                    line.style.background = 'none';
+                    line.style.height = 'auto';
+                    line.dataset.signed = 'true';
                     card.style.cursor = 'default';
-                }).catch(err => {
-                    line.innerHTML = 'Error. Try again.';
-                    card.style.pointerEvents = 'auto';
-                    setTimeout(() => line.innerHTML = originalHTML, 3000);
-                });
+                }
                 return;
             }
 
             const line = card.querySelector('.signature-line');
             if (line.dataset.signed === 'true') return;
-            const name = prompt("Enter your full name to sign digitally:");
-            if (name) {
-                line.innerHTML = `<span style="font-family: 'Georgia', cursive; font-size: 1.5rem; color: var(--text-primary); line-height: 1;">${name}</span> <span style="font-size: 0.65rem; color: var(--text-secondary); margin-left: 10px; font-family: var(--font-mono);">(Digitally Signed ${new Date().toLocaleDateString()})</span>`;
-                line.style.borderBottom = 'none';
-                line.style.background = 'none';
-                line.style.height = 'auto';
-                line.dataset.signed = 'true';
-                card.style.cursor = 'default';
+            
+            const name = prompt("Enter your full legal name to permanently sign this document:");
+            if (!name) return;
+
+            const originalHTML = line.innerHTML;
+            line.innerHTML = 'Securing signature...';
+            card.style.pointerEvents = 'none';
+
+            try {
+                const reportId = document.title.split(' | ')[0];
+                const hash = await generateDocumentHash();
+                const ip = await getIpAddress();
+                
+                const { data, error } = await supabase
+                    .from('signatures')
+                    .insert([
+                        {
+                            report_id: reportId,
+                            client_name: name,
+                            ip_address: ip,
+                            user_agent: navigator.userAgent,
+                            document_hash: hash
+                        }
+                    ])
+                    .select();
+
+                if (error) throw error;
+                
+                if (data && data.length > 0) {
+                    lockSignatureCard(data[0]);
+                }
+            } catch (err) {
+                console.error("Signature failed:", err);
+                line.innerHTML = 'Signature failed. Try again.';
+                setTimeout(() => {
+                    line.innerHTML = originalHTML;
+                    card.style.pointerEvents = 'auto';
+                }, 3000);
             }
         }
 
@@ -907,6 +989,7 @@ Add a <code>&lt;div class=&quot;print-header&quot;&gt;</code> to the template wi
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            checkSignatureStatus();
             const html = document.documentElement;
 
             // Theme

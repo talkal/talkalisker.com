@@ -189,14 +189,14 @@ date: "YYYY-MM-DD"
 confidential: true
 status: "draft" # or "final"
 languages: '["en"]'
-# sign_webhook: "https://hook.us1.make.com/..." # Provide webhook URL to trigger Make.com e-signature automation
+# requires_signature: true # Uncomment to enforce in-house digital signature on dashboard
 # password: omit unless overriding clients.json — auto-resolved by client name
 ---
 ```
 
 **confidential defaults to `true`** unless the content is explicitly public-facing material (marketing copy, public case studies).
 
-**sign_webhook**: If the report requires a legal signature (e.g. Proposal), ask the user to provide their Make.com webhook URL. Add the URL here. The dashboard will render a secure signing button that triggers the webhook automation.
+**requires_signature**: Set to `true` for Proposals or contracts. The dashboard will lock the signature card until the client signs, capturing their IP and generating a cryptographic hash of the document saved to your in-house database.
 
 **languages**: Set `'["en", "es"]'` if client has a Spanish context, `'["en", "he"]'` for Hebrew context, `'["en", "es", "he"]'` for full trilingual. When using multiple languages, wrap ALL content in `:::lang` blocks — no content should appear outside a block in a multi-language report.
 
