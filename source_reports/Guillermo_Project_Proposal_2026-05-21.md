@@ -5,6 +5,7 @@ project: Voria Digital Transformation
 type: Proposal.Strategy
 date: 2026-05-21
 confidential: true
+requires_signature: true
 languages:
   - en
   - es
