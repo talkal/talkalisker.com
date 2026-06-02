@@ -9,6 +9,7 @@
     <meta name="date" content="2026-04-29">
     <meta name="type" content="Reference.Workflow">
     <meta name="confidential" content="false">
+    
     <title>DHS — Client Report Workflow Reference | Talkalisker Client Portal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -708,6 +709,14 @@ cd _dhs &amp;&amp; node scripts/delete_report.js report-slug-name
         function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
 
         function openSignaturePad(card) {
+            const signUrlMeta = document.querySelector('meta[name="sign_url"]');
+            const signUrl = signUrlMeta ? signUrlMeta.getAttribute('content') : '';
+
+            if (signUrl) {
+                window.location.href = signUrl;
+                return;
+            }
+
             const line = card.querySelector('.signature-line');
             if (line.dataset.signed === 'true') return;
             const name = prompt("Enter your full name to sign digitally:");

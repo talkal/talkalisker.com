@@ -189,11 +189,14 @@ date: "YYYY-MM-DD"
 confidential: true
 status: "draft" # or "final"
 languages: '["en"]'
+# sign_url: "https://..." # Provide link to DocuSign/SignNow document if signature required
 # password: omit unless overriding clients.json — auto-resolved by client name
 ---
 ```
 
 **confidential defaults to `true`** unless the content is explicitly public-facing material (marketing copy, public case studies).
+
+**sign_url**: If the report requires a legal signature (e.g. Proposal), ask the user to generate a signing link in DocuSign or SignNow and provide it to you. Add the URL here. The dashboard will render a secure signing button instead of a static signature line.
 
 **languages**: Set `'["en", "es"]'` if client has a Spanish context, `'["en", "he"]'` for Hebrew context, `'["en", "es", "he"]'` for full trilingual. When using multiple languages, wrap ALL content in `:::lang` blocks — no content should appear outside a block in a multi-language report.
 

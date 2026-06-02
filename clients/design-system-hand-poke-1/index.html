@@ -9,6 +9,7 @@
     <meta name="date" content="2026-05-01">
     <meta name="type" content="Delivery.Handoff">
     <meta name="confidential" content="true">
+    
     <title>Tamar Goldstein Hand Poke — Design System &amp; Brand Identity | Talkalisker Client Portal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -682,6 +683,14 @@ A precision-grade sans-serif used for body copy and UI elements. Ensures maximum
         function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
 
         function openSignaturePad(card) {
+            const signUrlMeta = document.querySelector('meta[name="sign_url"]');
+            const signUrl = signUrlMeta ? signUrlMeta.getAttribute('content') : '';
+
+            if (signUrl) {
+                window.location.href = signUrl;
+                return;
+            }
+
             const line = card.querySelector('.signature-line');
             if (line.dataset.signed === 'true') return;
             const name = prompt("Enter your full name to sign digitally:");
