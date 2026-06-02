@@ -625,17 +625,17 @@ A precision-grade sans-serif used for body copy and UI elements. Ensures maximum
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        let supabase = null;
+        let supabaseClient = null;
         try {
             const SUPABASE_URL = 'https://xsivyrmpcgomyiyrsidg.supabase.co';
             const SUPABASE_KEY = 'sb_publishable_c9qIfHryD8QI-adbltinYQ_DGNFblET';
             if (window.supabase) {
-                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
             } else {
-                console.warn('Supabase not loaded. Signatures will be disabled.');
+                console.warn('supabaseClient not loaded. Signatures will be disabled.');
             }
         } catch (e) {
-            console.error('Failed to init Supabase:', e);
+            console.error('Failed to init supabaseClient:', e);
         }
 
         async function generateDocumentHash() {
@@ -657,11 +657,11 @@ A precision-grade sans-serif used for body copy and UI elements. Ensures maximum
         }
 
         async function checkSignatureStatus() {
-            if (!supabase) return;
+            if (!supabaseClient) return;
             const requiresSigMeta = document.querySelector('meta[name="requires_signature"]');
             if (requiresSigMeta && requiresSigMeta.getAttribute('content') === 'true') {
                 const reportId = document.title.split(' | ')[0];
-                const { data, error } = await supabase
+                const { data, error } = await supabaseClient
                     .from('signatures')
                     .select('*')
                     .eq('report_id', reportId)
@@ -800,7 +800,7 @@ A precision-grade sans-serif used for body copy and UI elements. Ensures maximum
             btn.innerText = 'Sending...';
             btn.disabled = true;
 
-            const { data, error } = await supabase.auth.signInWithOtp({ email });
+            const { data, error } = await supabaseClient.auth.signInWithOtp({ email });
             if (error) {
                 alert("Error sending code: " + error.message);
                 btn.innerText = 'Send Security Code';
@@ -832,7 +832,7 @@ A precision-grade sans-serif used for body copy and UI elements. Ensures maximum
             btn.innerText = 'Verifying...';
             btn.disabled = true;
 
-            const { data: authData, error: authErr } = await supabase.auth.verifyOtp({ email, token: code, type: 'email' });
+            const { data: authData, error: authErr } = await supabaseClient.auth.verifyOtp({ email, token: code, type: 'email' });
             
             if (authErr) {
                 alert("Invalid code: " + authErr.message);
@@ -847,7 +847,7 @@ A precision-grade sans-serif used for body copy and UI elements. Ensures maximum
                 const hash = await generateDocumentHash();
                 const ip = await getIpAddress();
                 
-                const { data, error } = await supabase
+                const { data, error } = await supabaseClient
                     .from('signatures')
                     .insert([{
                         report_id: reportId,
