@@ -9,7 +9,7 @@
     <meta name="date" content="{{date}}">
     <meta name="type" content="{{type}}">
     <meta name="confidential" content="{{confidential}}">
-    {{#if signUrl}}<meta name="sign_url" content="{{signUrl}}">{{/if}}
+    {{#if signWebhook}}<meta name="sign_webhook" content="{{signWebhook}}">{{/if}}
     <title>{{title}} | Talkalisker Client Portal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -494,11 +494,31 @@
         function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
 
         function openSignaturePad(card) {
-            const signUrlMeta = document.querySelector('meta[name="sign_url"]');
-            const signUrl = signUrlMeta ? signUrlMeta.getAttribute('content') : '';
+            const webhookMeta = document.querySelector('meta[name="sign_webhook"]');
+            const webhookUrl = webhookMeta ? webhookMeta.getAttribute('content') : '';
 
-            if (signUrl) {
-                window.location.href = signUrl;
+            if (webhookUrl) {
+                const line = card.querySelector('.signature-line');
+                const originalHTML = line.innerHTML;
+                line.innerHTML = 'Sending request...';
+                card.style.pointerEvents = 'none';
+                
+                fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        title: document.title,
+                        date: new Date().toISOString(),
+                        url: window.location.href
+                    })
+                }).then(res => {
+                    line.innerHTML = 'Check your email to sign';
+                    card.style.cursor = 'default';
+                }).catch(err => {
+                    line.innerHTML = 'Error. Try again.';
+                    card.style.pointerEvents = 'auto';
+                    setTimeout(() => line.innerHTML = originalHTML, 3000);
+                });
                 return;
             }
 
