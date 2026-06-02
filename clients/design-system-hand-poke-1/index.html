@@ -692,6 +692,7 @@ A precision-grade sans-serif used for body copy and UI elements. Ensures maximum
                     </div>
                 `;
                 line.style.borderBottom = 'none';
+            line.style.opacity = '1';
                 line.style.background = 'none';
                 line.style.height = 'auto';
                 line.dataset.signed = 'true';
@@ -766,6 +767,7 @@ A precision-grade sans-serif used for body copy and UI elements. Ensures maximum
                 if (name) {
                     line.innerHTML = `<span style="font-family: 'Georgia', cursive; font-size: 1.5rem; color: var(--text-primary); line-height: 1;">${name}</span> <span style="font-size: 0.65rem; color: var(--text-secondary); margin-left: 10px; font-family: var(--font-mono);">(Digitally Signed ${new Date().toLocaleDateString()})</span>`;
                     line.style.borderBottom = 'none';
+            line.style.opacity = '1';
                     line.style.background = 'none';
                     line.style.height = 'auto';
                     line.dataset.signed = 'true';
@@ -789,6 +791,7 @@ A precision-grade sans-serif used for body copy and UI elements. Ensures maximum
             `;
             line.style.height = 'auto';
             line.style.borderBottom = 'none';
+            line.style.opacity = '1';
         }
 
         async function requestOtp(card) {
