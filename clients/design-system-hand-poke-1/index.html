@@ -665,11 +665,10 @@ A precision-grade sans-serif used for body copy and UI elements. Ensures maximum
                     .from('signatures')
                     .select('*')
                     .eq('report_id', reportId)
-                    .order('created_at', { ascending: false })
-                    .limit(1);
+                    .order('created_at', { ascending: false });
 
                 if (data && data.length > 0) {
-                    lockSignatureCard(data[0]);
+                    data.forEach(sig => lockSignatureCard(sig));
                 }
             }
         }
@@ -677,26 +676,35 @@ A precision-grade sans-serif used for body copy and UI elements. Ensures maximum
         function lockSignatureCard(sigData) {
             const cards = document.querySelectorAll('.signature-card');
             cards.forEach(card => {
-                const line = card.querySelector('.signature-line');
-                const dateStr = new Date(sigData.created_at).toLocaleString();
-                const emailStr = sigData.email && sigData.email !== 'unknown@client.com' ? `<br>Email: ${sigData.email}` : '';
+                const roleEl = card.querySelector('.signature-role');
+                const cardRole = roleEl ? roleEl.innerText.trim() : 'unknown';
                 
-                line.innerHTML = `
-                    <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 5px;">
-                        <span style="font-family: 'Georgia', cursive; font-size: 1.8rem; color: var(--text-primary); line-height: 1;">${sigData.client_name}</span>
-                        <span style="font-size: 0.75rem; color: var(--text-secondary); font-family: var(--font-mono); line-height: 1.4;">
-                            ✓ Cryptographically Verified${emailStr}<br>
-                            Date: ${dateStr}<br>
-                            Hash: ${sigData.document_hash.substring(0, 16)}...
-                        </span>
-                    </div>
-                `;
-                line.style.borderBottom = 'none';
-            line.style.opacity = '1';
-                line.style.background = 'none';
-                line.style.height = 'auto';
-                line.dataset.signed = 'true';
-                card.style.cursor = 'default';
+                if (sigData.role === cardRole || sigData.role === 'unknown' || !sigData.role) {
+                    const line = card.querySelector('.signature-line');
+                    if (line && line.dataset.signed === 'true') return;
+                    
+                    const dateStr = new Date(sigData.created_at).toLocaleString();
+                    const emailStr = sigData.email && sigData.email !== 'unknown@client.com' ? `<br>Email: ${sigData.email}` : '';
+                    
+                    if (line) {
+                        line.innerHTML = `
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 5px;">
+                                <span style="font-family: 'Georgia', cursive; font-size: 1.8rem; color: var(--text-primary); line-height: 1;">${sigData.client_name}</span>
+                                <span style="font-size: 0.75rem; color: var(--text-secondary); font-family: var(--font-mono); line-height: 1.4;">
+                                    ✓ Cryptographically Verified${emailStr}<br>
+                                    Date: ${dateStr}<br>
+                                    Hash: ${sigData.document_hash.substring(0, 16)}...
+                                </span>
+                            </div>
+                        `;
+                        line.style.borderBottom = 'none';
+                        line.style.opacity = '1';
+                        line.style.background = 'none';
+                        line.style.height = 'auto';
+                        line.dataset.signed = 'true';
+                        card.style.cursor = 'default';
+                    }
+                }
             });
         }
         function toggleTheme() {
@@ -775,6 +783,9 @@ A precision-grade sans-serif used for body copy and UI elements. Ensures maximum
                 }
                 return;
             }
+
+            const roleEl = card.querySelector('.signature-role');
+            window.currentlySigningRole = roleEl ? roleEl.innerText.trim() : 'unknown';
 
             const line = card.querySelector('.signature-line');
             if (line.dataset.signed === 'true') return;
@@ -855,6 +866,7 @@ A precision-grade sans-serif used for body copy and UI elements. Ensures maximum
                     .insert([{
                         report_id: reportId,
                         client_name: name,
+                        role: window.currentlySigningRole || 'unknown',
                         email: email,
                         ip_address: ip,
                         user_agent: navigator.userAgent,
