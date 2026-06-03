@@ -1,13 +1,10 @@
-name: Deploy DHS Client Portals
+name: Deploy Talkalisker Website & Portals
 
 on:
   push:
     branches:
       - main
-    paths:
-      - 'source_reports/**'
-      - '_dhs/**'
-      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -34,9 +31,15 @@ jobs:
           cd _dhs
           npm run build
 
+      - name: Package Website
+        run: |
+          mkdir _site
+          # Copy everything except source folders, git metadata, and the new _site folder
+          rsync -av --exclude='_site' --exclude='.git' --exclude='.github' --exclude='_dhs' --exclude='source_reports' --exclude='scratch' --exclude='.obsidian' ./ ./_site/
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./clients
+          publish_dir: ./_site
           publish_branch: gh-pages
