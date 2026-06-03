@@ -36,6 +36,8 @@ jobs:
           mkdir _site
           # Copy everything except source folders, git metadata, and the new _site folder
           rsync -av --exclude='_site' --exclude='.git' --exclude='.github' --exclude='_dhs' --exclude='source_reports' --exclude='scratch' --exclude='.obsidian' ./ ./_site/
+          # Remove .gitignore from _site so it doesn't block the clients/ directory during gh-pages deployment
+          rm -f _site/.gitignore
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
