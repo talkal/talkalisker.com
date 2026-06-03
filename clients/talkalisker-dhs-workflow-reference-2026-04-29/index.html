@@ -683,10 +683,35 @@ cd _dhs &amp;&amp; node scripts/delete_report.js report-slug-name
         }
 
         async function checkSignatureStatus() {
+            const reportId = document.title.split(' | ')[0];
+            
+            // First load local storage signatures (fallback)
+            const cards = document.querySelectorAll('.signature-card');
+            cards.forEach(card => {
+                const roleEl = card.querySelector('.signature-role');
+                const role = roleEl ? roleEl.innerText.trim() : 'unknown';
+                const sigId = `sig_${reportId}_${role}`.replace(/\s+/g, '_');
+                const savedSig = localStorage.getItem(sigId);
+                if (savedSig) {
+                    try {
+                        const data = JSON.parse(savedSig);
+                        const line = card.querySelector('.signature-line');
+                        if (line && line.dataset.signed !== 'true') {
+                            line.innerHTML = `<span style="font-family: 'Georgia', cursive; font-size: 1.5rem; color: var(--text-primary); line-height: 1;">${data.name}</span> <span style="font-size: 0.65rem; color: var(--text-secondary); margin-left: 10px; font-family: var(--font-mono);">(Digitally Signed ${data.date})</span>`;
+                            line.style.borderBottom = 'none';
+                            line.style.opacity = '1';
+                            line.style.background = 'none';
+                            line.style.height = 'auto';
+                            line.dataset.signed = 'true';
+                            card.style.cursor = 'default';
+                        }
+                    } catch (e) {}
+                }
+            });
+
             if (!supabaseClient) return;
             const requiresSigMeta = document.querySelector('meta[name="requires_signature"]');
             if (requiresSigMeta && requiresSigMeta.getAttribute('content') === 'true') {
-                const reportId = document.title.split(' | ')[0];
                 const { data, error } = await supabaseClient
                     .from('signatures')
                     .select('*')
@@ -799,9 +824,16 @@ cd _dhs &amp;&amp; node scripts/delete_report.js report-slug-name
                 if (line.dataset.signed === 'true') return;
                 const name = prompt("Enter your full name to sign digitally:");
                 if (name) {
-                    line.innerHTML = `<span style="font-family: 'Georgia', cursive; font-size: 1.5rem; color: var(--text-primary); line-height: 1;">${name}</span> <span style="font-size: 0.65rem; color: var(--text-secondary); margin-left: 10px; font-family: var(--font-mono);">(Digitally Signed ${new Date().toLocaleDateString()})</span>`;
+                    const roleEl = card.querySelector('.signature-role');
+                    const role = roleEl ? roleEl.innerText.trim() : 'unknown';
+                    const reportId = document.title.split(' | ')[0];
+                    const sigId = `sig_${reportId}_${role}`.replace(/\s+/g, '_');
+                    const dateStr = new Date().toLocaleDateString();
+                    localStorage.setItem(sigId, JSON.stringify({ name, date: dateStr }));
+
+                    line.innerHTML = `<span style="font-family: 'Georgia', cursive; font-size: 1.5rem; color: var(--text-primary); line-height: 1;">${name}</span> <span style="font-size: 0.65rem; color: var(--text-secondary); margin-left: 10px; font-family: var(--font-mono);">(Digitally Signed ${dateStr})</span>`;
                     line.style.borderBottom = 'none';
-            line.style.opacity = '1';
+                    line.style.opacity = '1';
                     line.style.background = 'none';
                     line.style.height = 'auto';
                     line.dataset.signed = 'true';
@@ -935,6 +967,7 @@ cd _dhs &amp;&amp; node scripts/delete_report.js report-slug-name
                 const saved = localStorage.getItem('language') || available[0];
                 setLang(available.includes(saved) ? saved : available[0]);
                 initInteractiveFeatures();
+                checkSignatureStatus();
             } catch (e) {
                 document.getElementById('auth-error').style.display = 'block';
                 document.getElementById('auth-key').value = '';
