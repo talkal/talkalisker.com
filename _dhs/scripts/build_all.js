@@ -16,9 +16,22 @@ if (!fs.existsSync(sourceDir)) {
     process.exit(1);
 }
 
-const files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.md'));
+// Support optional single file compilation via argument
+const targetArg = process.argv[2];
+let files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.md'));
 
-console.log(`Found ${files.length} reports to process.`);
+if (targetArg) {
+    const baseName = path.basename(targetArg);
+    if (files.includes(baseName)) {
+        files = [baseName];
+        console.log(`Targeting single report: ${baseName}`);
+    } else {
+        console.error(`File not found in source_reports: ${baseName}`);
+        process.exit(1);
+    }
+} else {
+    console.log(`Found ${files.length} reports to process.`);
+}
 
 files.forEach(file => {
     const inputPath = path.join(sourceDir, file);
