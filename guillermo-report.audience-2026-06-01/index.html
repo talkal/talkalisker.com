@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-languages="[&quot;en&quot;]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="client" content="Guillermo">
+    <meta name="project" content="Voria Digital Transformation">
+    <meta name="date" content="2026-06-01">
+    <meta name="type" content="Report.Audience">
+    <meta name="confidential" content="true">
+    <meta name="requires_signature" content="false">
+    <title>Voria Target Audience Profile | Talkalisker Client Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <style>
+        :root {
+            /* Synchronized with talkalisker.com/developer-services */
+            --bg-core: #111111;
+            --bg-surface: #1A1A1A;
+            --accent: #B85A44;
+            --accent-red: #FF3B30;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A1A1A1;
+            --border-subtle: rgba(255, 255, 255, 0.05);
+            --font-main: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        [data-theme="light"] {
+            --bg-core: #FAF8F5;
+            --bg-surface: #EFECE5;
+            --text-primary: #2C2A28;
+            --text-secondary: #6F6B66;
+            --border-subtle: rgba(44, 42, 40, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg-core);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        [lang="he"] { direction: rtl; }
+        [lang="he"] .sidebar { border-right: none; border-left: 1px solid var(--border-subtle); }
+        [lang="he"] .nav-link.active { border-right: none; border-left: 2px solid var(--accent); padding-right: 0; padding-left: 0.5rem; }
+
+        /* ── Reading Progress Bar ── */
+        #progress-bar {
+            position: fixed; top: 0; left: 0;
+            height: 3px; width: 0%;
+            background: var(--accent);
+            z-index: 1000; transition: width 0.08s linear; pointer-events: none;
+        }
+
+        /* ── Sidebar ── */
+        .sidebar {
+            width: 300px; background: var(--bg-surface);
+            border-right: 1px solid var(--border-subtle);
+            padding: 3rem 2rem; height: 100vh;
+            position: sticky; top: 0;
+            display: flex; flex-direction: column; overflow-y: auto;
+        }
+        .logo { font-size: 1.2rem; font-weight: 700; margin-bottom: 3rem; display: flex; align-items: center; gap: 0.8rem; }
+        .logo img { width: 32px; border-radius: 50%; background: white; padding: 2px; }
+        .nav-link {
+            display: block; padding: 0.8rem 0;
+            color: var(--text-secondary); text-decoration: none;
+            font-family: var(--font-mono); font-size: 0.85rem; transition: color 0.2s;
+        }
+        .nav-link:hover { color: var(--accent); }
+        .nav-link.active { color: var(--accent); border-right: 2px solid var(--accent); padding-right: 0.5rem; }
+
+        /* ── Main Content ── */
+        .main { flex: 1; padding: 4rem 10% 8rem 10%; max-width: 1200px; }
+
+        /* ── Report Header ── */
+        .report-header { margin-bottom: 6rem; position: relative; }
+        .report-header::before {
+            content: ''; position: absolute;
+            inset: -4rem -10% -2rem -10%;
+            background: radial-gradient(ellipse 60% 80% at 0% 0%, rgba(184,90,68,0.07) 0%, transparent 70%);
+            pointer-events: none; z-index: 0;
+        }
+        .report-header > * { position: relative; z-index: 1; }
+        .report-label { color: var(--accent); font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 1rem; }
+        .report-title { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem; }
+        .report-client { color: var(--accent); font-family: var(--font-mono); font-size: 1.2rem; }
+        .report-date { color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.85rem; margin-top: 0.4rem; }
+        .confidential-badge {
+            display: inline-block; margin-top: 1rem;
+            font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase;
+            letter-spacing: 0.12em; color: var(--accent-red);
+            background: rgba(255, 59, 48, 0.08); border: 1px solid rgba(255, 59, 48, 0.2);
+            padding: 0.2rem 0.65rem; border-radius: 4px;
+        }
+
+        section { padding: 4rem 0; border-top: 1px solid var(--border-subtle); }
+        h1, h2 { margin-bottom: 2rem; }
+        p { line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.1rem; }
+        section > p:first-of-type { font-size: 1.15rem; font-weight: 300; color: var(--text-primary); line-height: 1.9; }
+
+        /* ── Pull Quotes ── */
+        blockquote {
+            position: relative; padding: 1.5rem 1.5rem 1.5rem 3.5rem;
+            font-size: 1.15rem; font-weight: 300; color: var(--text-primary);
+            line-height: 1.75; margin: 2rem 0;
+        }
+        blockquote::before {
+            content: '\201C'; position: absolute; left: 0.4rem; top: -0.75rem;
+            font-size: 5rem; color: var(--accent); opacity: 0.45;
+            font-family: Georgia, serif; line-height: 1;
+        }
+        [lang="he"] blockquote { padding: 1.5rem 3.5rem 1.5rem 1.5rem; }
+        [lang="he"] blockquote::before { left: auto; right: 0.4rem; content: '\201D'; }
+
+        /* ── Finding Cards ── */
+        .finding-card {
+            background: var(--bg-surface); border: 1px solid var(--border-subtle);
+            border-left: 3px solid var(--border-subtle);
+            border-radius: 12px; padding: 2rem; margin-bottom: 2rem;
+        }
+        .finding-card:has(.sev-critical) { border-left-color: var(--accent-red); }
+        .finding-card:has(.sev-high)     { border-left-color: var(--accent-red); }
+        .finding-card:has(.sev-medium)   { border-left-color: #FF9F0A; }
+        .finding-card:has(.sev-low)      { border-left-color: #6B8E23; }
+        .finding-card.filter-hidden { display: none !important; }
+        .finding-meta { display: flex; justify-content: space-between; margin-bottom: 1rem; align-items: baseline; }
+        .finding-meta strong { font-family: var(--font-main); font-size: 1.25rem; font-weight: 700; color: var(--text-primary); }
+        .finding-meta .severity { font-family: var(--font-mono); font-size: 0.8rem; }
+        .severity { padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 700; text-transform: uppercase; }
+        .sev-critical { background: rgba(255, 59, 48, 0.18); color: var(--accent-red); }
+        .sev-high     { background: rgba(255, 59, 48, 0.1);  color: var(--accent-red); }
+        .sev-medium   { background: rgba(255, 159, 10, 0.1); color: #FF9F0A; }
+        .sev-low      { background: rgba(107, 142, 35, 0.1); color: #6B8E23; }
+
+        /* ── Filter Bars ── */
+        .filter-bar { display: flex; gap: 0.4rem; margin-bottom: 1.25rem; flex-wrap: wrap; align-items: center; }
+        .filter-bar-label { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-right: 0.25rem; }
+        .filter-btn {
+            font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase;
+            letter-spacing: 0.08em; padding: 0.25rem 0.6rem; border-radius: 4px;
+            border: 1px solid var(--border-subtle); background: var(--bg-surface);
+            color: var(--text-secondary); cursor: pointer; transition: all 0.15s;
+        }
+        .filter-btn:hover, .filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+        .action-card.filter-hidden { display: none !important; }
+
+        /* ── Proposal Cards ── */
+        .proposal-card {
+            background: var(--bg-surface); border: 1px solid var(--border-subtle);
+            border-radius: 16px; padding: 3rem; margin: 3rem 0;
+            position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .proposal-card::before { content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 4px; background: var(--accent); }
+        .proposal-name { font-size: 3.2rem; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: -1px; margin-bottom: 0.5rem; line-height: 1; }
+        .proposal-slogan { font-family: var(--font-mono); font-style: italic; font-size: 1.1rem; color: var(--text-primary); margin-bottom: 1.5rem; opacity: 0.8; }
+        .proposal-desc { font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary); }
+        .proposal-badge { position: absolute; top: 3rem; right: 3rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; background: rgba(184, 90, 68, 0.1); color: var(--accent); padding: 0.3rem 0.8rem; border-radius: 4px; }
+
+        /* ── Decision Cards ── */
+        .decision-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-left: 3px solid var(--text-primary); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .decision-meta { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; justify-content: space-between; }
+        .decision-title { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; }
+
+        /* ── Action Cards ── */
+        .action-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: 6px; padding: 1rem 1.5rem; margin-bottom: 0.8rem; display: flex; align-items: center; justify-content: space-between; }
+        .action-info { display: flex; align-items: center; gap: 1rem; }
+        .action-checkbox { width: 18px; height: 18px; border: 2px solid var(--accent); border-radius: 3px; cursor: pointer; transition: background 0.2s, border-color 0.2s; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .action-checkbox.checked { background: var(--accent); border-color: var(--accent); }
+        .action-checkbox.checked::after { content: '✓'; color: white; font-size: 11px; line-height: 1; }
+        .action-title { font-weight: 600; }
+        .action-owner { font-family: var(--font-mono); font-size: 0.75rem; background: rgba(255,255,255,0.05); padding: 0.2rem 0.6rem; border-radius: 4px; color: var(--text-secondary); }
+        .action-status { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; }
+        .status-pending { color: #FF9F0A; }
+        .status-blocked { color: var(--accent-red); }
+        .status-done { color: #6B8E23; }
+        .status-in { color: var(--accent); }
+
+        /* ── Metric & Ranking Cards ── */
+        .metric-card, .ranking-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; display: grid; grid-template-columns: 1fr 120px 2fr; gap: 1.5rem; align-items: center; }
+        .metric-title, .ranking-keyword { font-weight: 700; font-size: 1.1rem; }
+        .metric-value, .ranking-position { font-family: var(--font-mono); font-size: 1.5rem; color: var(--accent); text-align: center; }
+        .metric-trend, .ranking-change { font-family: var(--font-body); font-size: 0.875rem; line-height: 1.55; text-align: left; color: var(--text-secondary); }
+        .trend-up { color: #6B8E23; font-family: var(--font-mono); font-size: 0.85rem; }
+        .trend-down { color: var(--accent-red); font-family: var(--font-mono); font-size: 0.85rem; }
+        .trend-neutral { color: var(--text-secondary); }
+
+        /* ── Color Swatches ── */
+        .swatch-card { display: flex; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px; overflow: hidden; margin-bottom: 1rem; }
+        .swatch-color { width: 100px; flex-shrink: 0; }
+        .swatch-info { padding: 1.5rem; }
+        .swatch-name { font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .swatch-hex { font-family: var(--font-mono); color: var(--accent); font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .swatch-usage { color: var(--text-secondary); font-size: 0.9rem; }
+
+        /* ── Signature Cards ── */
+        .signature-card { margin-top: 5rem; min-width: 260px; display: inline-block; margin-right: 5rem; }
+        .signature-line { height: 1px; background: var(--text-primary); opacity: 0.15; margin-bottom: 1.25rem; width: 100%; }
+        .signature-name { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem; }
+        .signature-role { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; }
+
+        /* ── Timeline ── */
+        .timeline { position: relative; padding-left: 2.75rem; margin: 1.5rem 0; }
+        .timeline::before { content: ''; position: absolute; left: calc(0.3rem + 6px); top: calc(0.3rem + 7px); bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), transparent 90%); }
+        .timeline-node { position: relative; margin-bottom: 3rem; }
+        .timeline-marker { position: absolute; left: -2.45rem; top: 0.3rem; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg-core); box-shadow: 0 0 0 2px var(--accent); }
+        .timeline-node-header { margin-bottom: 1rem; }
+        .timeline-period { display: block; font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.3rem; }
+        .timeline-title { font-size: 1.75rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; margin: 0; }
+        .timeline-events { display: flex; flex-direction: column; gap: 0.5rem; }
+        .timeline-event { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 0.85rem 1.1rem 0.85rem 1.35rem; position: relative; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.5; transition: border-color 0.2s, transform 0.2s; overflow: hidden; }
+        .timeline-event::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--border-subtle); transition: background 0.2s; }
+        .timeline-event:hover { border-color: rgba(184,90,68,0.35); transform: translateX(3px); }
+        .timeline-event:hover::before { background: var(--accent); }
+        .timeline-event strong { color: var(--text-primary); }
+        [lang="he"] .timeline { padding-left: 0; padding-right: 2.75rem; }
+        [lang="he"] .timeline::before { left: auto; right: calc(0.3rem + 6px); }
+        [lang="he"] .timeline-marker { left: auto; right: -2.45rem; }
+        [lang="he"] .timeline-event { padding-left: 1.1rem; padding-right: 1.35rem; }
+        [lang="he"] .timeline-event::before { left: auto; right: 0; border-radius: 0 10px 10px 0; }
+        [lang="he"] .timeline-event:hover { transform: translateX(-3px); }
+
+        /* ── Benchmark Cards ── */
+        .benchmark-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; padding: 1.25rem 1.5rem; margin-bottom: 1rem; transition: transform 0.2s; }
+        .benchmark-card:hover { transform: translateX(3px); }
+        .benchmark-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.4rem; }
+        .benchmark-label { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); background: rgba(184, 90, 68, 0.12); padding: 2px 8px; border-radius: 4px; flex-shrink: 0; }
+        .benchmark-institution { font-size: 1rem; font-weight: 700; color: var(--text-primary); }
+        .benchmark-metric { font-size: 0.875rem; font-weight: 500; color: var(--accent); margin-bottom: 0.6rem; font-style: italic; }
+        .benchmark-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
+        .benchmark-desc p { margin: 0; }
+        [lang="he"] .benchmark-card { border-left: 1px solid var(--border-subtle); border-right: 3px solid var(--accent); border-radius: 12px 0 0 12px; }
+        [lang="he"] .benchmark-card:hover { transform: translateX(-3px); }
+
+        /* ── PageZone Cards (Page Architecture) ── */
+        .pagezone-stack { position: relative; padding-left: 2.75rem; margin: 1.5rem 0; }
+        .pagezone-stack::before { content: ''; position: absolute; left: 0.9rem; top: 1.2rem; bottom: 1.2rem; width: 2px; background: linear-gradient(to bottom, var(--accent) 0%, var(--border-subtle) 70%, transparent 100%); }
+        .pagezone-card { position: relative; overflow: hidden; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-top: 3px solid var(--accent); border-radius: 0 12px 12px 0; padding: 1.25rem 4rem 1.25rem 1.5rem; margin-bottom: 1.25rem; transition: border-color 0.2s, transform 0.2s; }
+        .pagezone-card:hover { border-color: rgba(184,90,68,0.4); transform: translateX(4px); }
+        .pagezone-marker { position: absolute; left: -2.1rem; top: 1.1rem; width: 14px; height: 14px; background: var(--accent); border: 3px solid var(--bg-core); box-shadow: 0 0 0 2px var(--accent); border-radius: 3px; }
+        .pagezone-order-bg { position: absolute; right: 1.25rem; top: 50%; transform: translateY(-50%); font-family: var(--font-mono); font-size: 4.5rem; font-weight: 800; color: var(--text-primary); opacity: 0.05; line-height: 1; pointer-events: none; user-select: none; }
+        .pagezone-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; }
+        .pagezone-type { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; background: rgba(184,90,68,0.12); color: var(--accent); }
+        .pagezone-title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); }
+        .pagezone-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; }
+        .pagezone-desc p { margin: 0; }
+        [lang="he"] .pagezone-stack { padding-left: 0; padding-right: 2.75rem; }
+        [lang="he"] .pagezone-stack::before { left: auto; right: 0.9rem; }
+        [lang="he"] .pagezone-marker { left: auto; right: -2.1rem; }
+        [lang="he"] .pagezone-card { border-radius: 12px 0 0 12px; padding-left: 4rem; padding-right: 1.5rem; }
+        [lang="he"] .pagezone-card:hover { transform: translateX(-4px); }
+        [lang="he"] .pagezone-order-bg { right: auto; left: 1.25rem; }
+
+        /* ── Deliverable Cards ── */
+        .deliverable-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; display: flex; gap: 1.5rem; align-items: flex-start; transition: transform 0.2s, border-color 0.2s; }
+        .deliverable-card:hover { border-color: var(--accent); transform: translateX(4px); }
+        .deliverable-icon { color: var(--accent); flex-shrink: 0; margin-top: 0.25rem; }
+        .deliverable-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary); }
+        .deliverable-details { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.6; }
+
+        /* ── Evidence Images ── */
+        .evidence-img { max-width: 100%; max-height: 500px; object-fit: contain; border-radius: 12px; border: 1px solid var(--border-subtle); margin: 2rem 0 1rem 0; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s; }
+        .evidence-img:hover { transform: scale(1.02); }
+        .img-caption { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); text-align: center; margin-bottom: 2.5rem; }
+
+        /* ── Lightbox ── */
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: none; justify-content: center; align-items: center; z-index: 1000; cursor: zoom-out; }
+        .lightbox-overlay img { max-width: 90%; max-height: 90%; border-radius: 4px; }
+
+        /* ── Expandable Tables ── */
+        .table-overflow-row { display: none; }
+        .table-overflow-row.visible { display: table-row; }
+        .table-expand-btn { display: block; width: 100%; padding: 0.75rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-top: none; border-radius: 0 0 12px 12px; color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.75rem; cursor: pointer; text-align: center; letter-spacing: 0.05em; transition: color 0.2s, background 0.2s; }
+        .table-expand-btn:hover { color: var(--accent); background: rgba(184,90,68,0.04); }
+
+        /* ── Tables ── */
+        table { width: 100%; border-collapse: collapse; margin: 2rem 0; background: var(--bg-surface); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle); }
+        th { background: rgba(255,255,255,0.03); color: var(--accent); text-align: left; padding: 1.25rem 1.5rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; border-bottom: 1px solid var(--border-subtle); }
+        td { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); line-height: 1.6; vertical-align: top; font-size: 0.95rem; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(255,255,255,0.02); }
+
+        /* ── Language Fade Animation ── */
+        @keyframes langFadeIn { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
+        .lang-fade-in { animation: langFadeIn 150ms ease forwards; }
+
+        /* ── Language Indicator Pill ── */
+        #lang-indicator { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.08em; color: var(--text-secondary); background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 2px 7px; border-radius: 4px; min-width: 2.2rem; text-align: center; }
+
+        /* ── Mobile Drawer Button ── */
+        #nav-toggle { display: none; position: fixed; top: 1rem; left: 1rem; z-index: 200; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 6px; padding: 0.5rem 0.75rem; color: var(--text-primary); cursor: pointer; font-size: 1.2rem; line-height: 1; align-items: center; justify-content: center; }
+        [lang="he"] #nav-toggle { left: auto; right: 1rem; }
+        #nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 90; backdrop-filter: blur(2px); }
+        #nav-overlay.open { display: block; }
+
+        /* ── Draft Watermark ── */
+        .draft-watermark {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 15rem; font-weight: 800; color: var(--text-primary); opacity: 0.03;
+            pointer-events: none; z-index: 0; font-family: var(--font-main); letter-spacing: 0.1em;
+            user-select: none;
+        }
+
+        /* ── Deep Links Target Highlight ── */
+        :target { animation: targetHighlight 2s ease-out; }
+        @keyframes targetHighlight {
+            0% { box-shadow: 0 0 0 2px var(--accent), 0 0 40px rgba(184, 90, 68, 0.4); transform: scale(1.02); }
+            100% { box-shadow: 0 0 0 0 transparent, 0 0 0 transparent; transform: scale(1); }
+        }
+
+        /* ── Print Header ── */
+        .print-header { display: none; }
+
+        /* ── Print ── */
+        @media print {
+            #progress-bar, #nav-toggle, #nav-overlay { display: none !important; }
+            .sidebar { display: none; }
+            .main { padding: 0; max-width: 100%; }
+            body { background: white; color: black; display: block; }
+            .print-header { display: block; border-bottom: 2px solid #000; padding-bottom: 1.25rem; margin-bottom: 2rem; }
+            .print-header-logo { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
+            .print-header-title { font-size: 1.6rem; font-weight: 800; }
+            .print-header-meta { font-size: 0.8rem; color: #555; margin-top: 0.2rem; }
+            .finding-card, .action-card, .timeline-node, .deliverable-card, .benchmark-card { page-break-inside: avoid; }
+            .finding-card { border: 1px solid #ddd; }
+            h1 { page-break-after: avoid; }
+            .table-overflow-row { display: table-row !important; }
+            .table-expand-btn { display: none !important; }
+        }
+
+        /* ── Mobile / Responsive ── */
+        @media (max-width: 900px) {
+            body { display: block; }
+            .sidebar { width: 280px; height: 100vh; position: fixed; top: 0; left: 0; z-index: 100; transform: translateX(-100%); transition: transform 0.28s cubic-bezier(0.4,0,0.2,1); overflow-y: auto; }
+            .sidebar.open { transform: translateX(0); box-shadow: 8px 0 32px rgba(0,0,0,0.4); }
+            [lang="he"] .sidebar { left: auto; right: 0; transform: translateX(100%); }
+            [lang="he"] .sidebar.open { transform: translateX(0); }
+            #nav-toggle { display: flex; }
+            .main { padding: 5rem 5% 6rem 5%; }
+            table { display: block; overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+    <div id="nav-overlay" onclick="closeDrawer()"></div>
+    <button id="nav-toggle" onclick="toggleDrawer()" aria-label="Open navigation">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+    </button>
+
+    <div class="print-header">
+        <div class="print-header-logo">TalKalisker</div>
+        <div class="print-header-title">Voria Target Audience Profile</div>
+        <div class="print-header-meta">// client: Guillermo &nbsp; // date: 2026-06-01 &nbsp; // type: Report.Audience &nbsp; CONFIDENTIAL</div>
+    </div>
+
+    <aside class="sidebar" id="sidebar">
+        <a href="https://talkalisker.com/developer-services" class="logo" style="text-decoration: none; color: inherit;">
+            <img src="../../assets/talkalisker_logo.png" alt="Logo">
+            TalKalisker
+        </a>
+        <nav id="sidebar-nav">
+                <!-- Navigation is encrypted -->
+        </nav>
+        <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.75rem;">
+            <button onclick="toggleTheme()" style="background: none; border: none; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s;">
+                <svg id="sun-icon" style="display: none; fill: currentColor;" width="18" height="18" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41zM7.05 18.36c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41z"/></svg>
+                <svg id="moon-icon" style="fill: currentColor;" width="18" height="18" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+            </button>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <button id="lang-toggle" style="background: none; border: none; color: var(--text-secondary); cursor: pointer; display: none; align-items: center; gap: 0.5rem; transition: color 0.2s;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
+                </button>
+                <span id="lang-indicator" style="display: none;">EN</span>
+            </div>
+            <button onclick="window.print()" style="margin-top: 1rem; background: none; border: 1px solid var(--border-subtle); padding: 0.6rem 1rem; border-radius: 6px; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.2s; font-family: var(--font-mono); font-size: 0.75rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+                Export PDF
+            </button>
+        </div>
+    </aside>
+
+    <main class="main">
+        
+        <header class="report-header">
+            <div class="report-label">// deliverable: Report.Audience</div>
+            <h1 class="report-title">
+                <span class="lang-title" lang="en">Voria Target Audience Profile</span>
+                
+                
+            </h1>
+            <div class="report-client">// client: Guillermo</div>
+            <div class="report-date">// 2026-06-01</div>
+            <div class="confidential-badge">// Confidential</div>
+        </header>
+
+        <article id="content">
+                <div id="lock-screen" style="max-width: 400px; margin: 4rem auto; text-align: center;">
+                    <div style="font-family: var(--font-mono); color: var(--accent); margin-bottom: 2rem;">AUTHENTICATION REQUIRED</div>
+                    <h2 style="margin-bottom: 1rem;">Classified Report</h2>
+                    <p style="margin-bottom: 2rem; color: var(--text-secondary); font-size: 0.9rem;">Please enter your client access key to decrypt this payload.</p>
+                    <input type="password" id="auth-key" placeholder="Enter key..." onkeydown="if(event.key==='Enter')attemptDecrypt()" style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-subtle); background: var(--bg-core); color: var(--text-primary); margin-bottom: 1rem; font-family: var(--font-mono);">
+                    <button onclick="attemptDecrypt()" style="width: 100%; padding: 1rem; border-radius: 8px; border: none; background: var(--accent); color: white; font-weight: 700; cursor: pointer;">Authenticate &amp; Decrypt</button>
+                    <div id="auth-error" style="color: var(--accent-red); margin-top: 1rem; display: none; font-size: 0.8rem; font-family: var(--font-mono);">ERROR: Invalid key. Verification failed.</div>
+                </div>
+                <div id="decrypted-content" style="display: none;"></div>
+        </article>
+    </main>
+
+    <script id="encrypted-payload" type="application/json">"U2FsdGVkX18fqSkeVdi875yJ2YUo0RmEPLyfYLkL5KyhI16TJ2JpKTFrXmMgaPII6uFB7N6LSqQc8GDfHnJFGYoVnvsbigjZIehmbNWyUGa8VdHui2EV62Vy8NBNw2Zva/79y+eW2XV1jfM+QclhEfdNFOOYfY+XfIJjbWpYZBGRMqtwrdyVjSGjYIAQFQTXb1RmwE2O7VH/Cyt0D1WApIRaOP20St0cp/rQZPQvf6lhpn8rE95pr4zPDpJS22Rs6mZwmlagDylO3odLkn3/+xGfVILya5HfnIAoQ2pdu89oY2ifVE7XYvXc+vzYjxardGvzgrN3E/L8hHkUR6hmTW90ND2dHjYjEX9geV8dnvZ9ZQeIwLKio1bHbxeZu4bQzSGITacgUl6aTEWFNPBcUAQo37+8CTvJ9ZqQgai8cx/ifea5tSqbjezn0pdUb0OKkx9lhgHTJOrvPtwsyN2a0hBwrU6oEM0qEcr8OqN3btj5JBt7R0/B40QIiQxY2Vj7SbPrLsMHESTWpMzM2059xARjTiYFuSDYdXyUqWuF8Asvrz+scVrRvuB0f1uYD4bL5BW50whApTLNLM21m4sH8bNiroW5ZyHlEa3AHgwUu9uL/aHxaalRlVliONcgB5bq5QHv4XCt5KC4UgYZPogI7B4okCzUqg6BSoTeMcCc6UcQcIzgwgYyKC+5VOygpBz5/4TccL3eviJNu1S9+ldxF2/wiLa+gP9CualwUU8qzsPi1SUd7zAozB6CQM1UJVL6BjqGwyproRNsebNwvW57prmOqrAU/h4+YzAaFW51d3UygnB3DuHs+VxarfihntigsXOMBhjYTvQBU3T5Ph7CVH4c4/F9Pb75aY6pEMRJ9LYLKbOaT9ybQs4Iu65D65VkxUFUMZdm2mdWLzhKBguxVumaQClD+d0uO40A83FdT0Hz5dDlj2HNXMStaAiDPydYxLK4oJdUHbcSDfYpnN2+XUeAVBlc3s0oPpO2YmXvGMEBaT3QR2WKSm4CCmMRCaIBjNM9ikGaAzT+3fTBePpfvStRNN8Aqo4g7+nssO5JbMQQY2bNipYnbY+wGDvz6fyS+A4cn7MMcojGHZnCQGauV8jzc93/L6GpuDhSIKcnQHaQYJgSsgkooidxXBbVpO1Yk8lZAPakJszGCx1c3tjFjFEDsADvBYSxGU/p07UWjawwU8411ZX42+z5b4mqa3M5M+KGsBPlSXJnhacx1cmbSvKuA9eOQr4x4OAsRQ4On9cp/ZD8OZ+Jsa/rjm1u2jTUPayb96yDtHX3eeIiFdSgCN+PjsuDVF45J7ILPo4PqwthmnusBqh6KxX+Q3mNz1nfJ0k2F0bhak0d565NA1L+3Ry65R2mLzSbkEodETmulI4MMTd5XXujTazmzHE1QKhI+M4B7WsJj89X5GUV8drP4eV5maSxAMnziWnB1niUb8aA4fKjdCKzcqhAx4jVhNdiLryCl+DIkCmP1qx9k5er/Z8qz8WchOkhEtbuZpvponic9vKy65236dXdSTMPyYaeEOUXsxOsJkclwE+alQqoLrX8FegJInqbRbcFUV+/aZQMg3stdmg1lZULO0eBq0OcfkDZM16OzC+T6V8mxzB/8UjiuD2vh7aksfiGNeLFrbMTW2zUilcw1Oyh7/Zoh7VoRSrLDp0cf9jgjRp+xj1yhrcl2bODBdDSmu/+UpMB8SlaNnprWiPNIkOdG91l6Py1vPzRv9fc/0QMH9nZcdQUwHWR6OwUPxst5N5Sg2fNBH/J1UAeLMgCI+vfbfnakVMzijxUy5lC8oBBA1Nhjw18PWLO4OZQ8FyNds3KnT8H236KX1M26+rTG54tI1MzLI80U4IsMEIFNTJ9C0j4KmYH/FLx7qS4pVCwzRpqImy7BsXUx1oGoxqiwDCpEYekK/xm3ay2ozCCllAFskdlkg8H+kIutWIoyah0yHy/oNL43oK4M132qecSs9de8TyDi8f5X32yz7SHxa4iSUHvkCeronjNTFRC98T9Xkp2vcBthZ/KwJB3SgQFFLdBYPhGA/JP6X1JEsyRH4uFg4Uo1ZoZeRMCD5b9oqnaxLbw2UXz5Unjlplg3CTDqDGtEDneJ5jt4dXESBz6kAeJgrt2TrQPsmH7EM4MlW1a6iLNzcaK4Fvyh07XCr9W/q4U688HRkCXg9TUiZOjAfXCl/KzKbukPyxOiveX2EyZOD8KXdlXXbn2zCvZqsA+W+kIyZNQpzlUc18PZVM4QUjnP4GDabbx7EkvIJ6QIKf2/xQH/YwKmStzqg4DIfGxQqT9z7hdRj17CTTzx70kVkeuXnv8OErIUwFil8Pzc7cBv25ebE1vP98v0fT/zOVyD4mU8xbsczhRGwOKTnV3rl14WgWqsCxdOrlXfl7dqNex7CzJyuRz0DiA7pJ0wPNDqzydB2tRQ4nWkbUoiaB296sPS8X37qBF+R2ELChtYf4h3vAnjSbGmz1mmAq5YMBP593s8HBACIQlly/LyvAGdY0C5Nq0xcZOGXFEF+Ucn/UWLuYRNcjEBsUKAbnZ+60BokMXzBdigcpMwpNLQ50UVwc+fGoKl9L66vidP3/P5O3eF4QYWrOX2cNZwtw7+uwTdTWIiObIjJEqzn+FOmP+TZuxrWptqNhM4UxBIrGK304omkndhOrezOquvfDtco1YO3NSPghc/My+hzswpsGbBCz/+xNYaXZCTON1vfrIt9WhwWdYFKQsMemYUN+5wglog51s3v0vg7g82BGbRZcfEyomHzWVoC9vIb0LlRn+ePhY/OoboLHjXzUHPV0yFpUPfBgarBeBB6uep41SGntcvJwBDVxvjydnB/mDFTs8F9AMcl/YcKOdLiQr7dUZ2uRjH/kGZTGHlT6KcTSVM4wxQAWR/AS/AKTljzP7zlw8iyNH24q1bRBDFxK/ZKK6oBDOP939QwosIhQxtY0QxG0Rzr0z+9HXuzdD1yK/9JjKo5IQVO1ljVbATrc6H8s1QKf2/FvXTZ85C1iCN8gF39cRUJTdC6RGJo9OYPQg+rRRhXQckF8ebkr1JhiiNW3DvWMHByMP+2mOT14946wAYGqdN+1CAhAYx64UtqklvoX+duQNtQftNKq1PS/FsjQL+qi3yQ8R9qsLepxgOMhNMh6evhr1AVtJ8qRa9yTxxTKwdXgtQXOU9lM8MKoQ22lSbctYyJpT5J+fkKrj1HM1xvW/SxelMtjnWzsfGg6D0RtW21PLabxxYRFwrWtG5wVHLYoJMXrXPIO/DmWvucLtkh+VyLMRQKeToktDdaxZmVOIx1JiR9H0LjRqH7cMSD+TzzX/k6B0up7/xB68barO1wliUyXDgP4Emkvoguz06GQAzZK5Iezzl6XGk3Puvv7LK9C3+L/nDebmZYCBT2tF6+53OmVDCLX7v+NXD/ShMr6TFe2x7HbQtSm0QJUIDv6pDr2JveMB/2ItNCut2JJ6DJHD81c5lChoCMjIDe3usZkzGbA+dBfuaSBxay/t6pTiguOINa5wSKUdm+gG9aqwtirdDOeHkWWVNucn0Fx+Jn5zvmWa4eBhJRpb61vOifKifwpBUX4UsJ0ddukGSoLYm3WRNby0KwPvWBJyGDMi2mMpvTjC7BxL7XkHevVncYHzRoWKLA1qabB3ne8WjqfaTJlxHifY63toyH9GCe4TMb5QwVpFaTzmRRyBJPYng1KOqC8sb3A8MiPuSosx5sx3l99qJRI+33VWXC3U2zLLbsqAPpK6muZ04iZcK21PCCXeo4UmnUR2St8b50qKTW7Ry/qQXnOXcfsl1RP02G9212SMXmc12bTu3GJu5NM6Jix1zNY+gFtC2WUw1IU6XcHh328RM0R+yHXv7BMhuAgB6pE5a7dqEdgk1ri/CoPmb4gB0uQ5a5jQN9ZwHkxtNeC2PVuCjw2VnvMly8QqmL2lSd8vExVd4RFLxiwZaToFKGLmoiKMgun4kGDlcwIxQ50Z/kZtJz830pyCdfo/60/stY+47nRDl2vRjoUcALXbkc3++v8La/Gujae65rQIFoD1+toYqOnPQVvPK7NBRnBjyadOnOuRreb9bEv/jkkz3fxQzQveSol1+hL3fZViHaOhtSqPeWztnj/1oRjJaFJgNrp15/bJf8nl2M3bTAoAErKgrjxSBWHrdNI7TbCKyjmyMHtZ+XlezN44neZyVbmHX7O3ADOwHrnB//THXQHZr7TUOTW6Pbapn2NIQix1wdYtKuRZONGmjCEAwM/89jJ4I0w37ZppH3FyGt5wjMfW00HIiYYaZ/StL0A5nv2Rbggs5NNInjs0DZyT0uSNhkamSjRKPjXMUMyMuFpGfaNCUfveVENPwVP/exFZVpKRQdJzoQgpZrnGY2qEW0lvNbymNeFC1/fRjKCkAMH50dVWinhlwWJ8+zkmjZAizD7q0AxyFIClov4QIdWq/83T6bBwAvr45CcBAdqKWc6Lm8XpV2bmrrwK8ztPCB/GU0/OJYEPQl8DGCOV1mijwDrBYQySAEMp3MJ4Bs5dsVdZgZfXdwoNO/bdedATOJWc5EHlXG83K0Blye9sQLlHE2e8UkQsYmPL29tAJ07BoIm5vdsgAsy7bQ5jMUM0hC2Je0qE/wW7CzMFtcSPr2sfQxcbyhB0CeqY/kMajUjSVVkpMtLkn/GbiVd+3vfJt44UP9fH5w+cCyD3k++DD3EtlckhoUYjh4QGWfNBUh+SoHTlvRln8SqA8Y6/R9fxzvgxWQmOsAgRt7nGM4YaIKfU1ah4Hogrq3NkNfxDaRYSLtaX67xfDOkJZ25w0MDSQGBQJAZELGw5pryfjN8UZz9jTEjsNYUKYEx2ZpLS7NrMQehLBUrmg4qFCfb1luW/A51dUzZgwUhs8z4Ca1XRAmta9DtMwXSaBoLJ8zJ9HDYnZwxeZ0j39/ehB3lOJ+ygpH3eZUNA9CF/IqudZ7dYQYaic7XOvwXr43mcJ04LCKOiIa8NVvwgDncfj7MvUlDFf1Mh4Lc4V81MUTM9kcgpH9jmHJY2k42Z7kejIiJ2ESnv7F11TCCTqkrmAMG39ohv8nobeeexv+NKEJNWxTUdftWdkITcVrKHIC8m6tBAdpEX/i/n1tBt3XO5xUcZKxC9ipPswk/IaH4ZHvL2YfxIUcA7Jz1bfweTRctSwFEld5UUQnwZBibu8dhuxUa8c8XTCPdyd/OXUUaEkeHX9WWGyOSjX9dWYDg1bwZi0oo39R9rl3MUyJBo753Zc6Wg1YgMnO6yz1UrqRy8iAaIPK0EqotXUYXX6le43AIAFY+jWfhu6gBjvhsnPpGBwUpWOUYmj+vkOSPGMbA8Vp0MgdGuBoIq9EZlexQB1unxF1XdIaK6KmlNq6MjY4Qu1jY3wK9ENNsQAgcgAuL8E77FZHM7k2to6BCZ4810VF4wh2xIsR9xwnDY0ovN9UYh/4RH3ay3etZPBznohZ96UJ9aMabmvMV5Uu5L/Czg7NyqPP/ShtisFcPoSa4eDWE8Zz1otW2sK7oZVL5TYYqtsWgDf2whXRRNve45FF6mSV35Gu97fpOniBHllmszWigWqknHafSyauu1yrl/nHsQe3Ii+7tfWoAbeOdY1E707cXWvNN5GOafzyCYRcqwyWQeTp7MGMokoP2Yy92bofUVjocXqtyzDaHMTIFkBpzA7sY6TNX0QBO4vQd60Uxv2fInNzIvHf6vmmME3p4WuFAm1GRG+bsjwwxOCxn12IdrEJv4XTEX3ZyRF8lJt4rCQWjljj+gHIAygQbbo8axf+fo8WfAQBJASVIY+jgRizH5vfkP58s98RgRF2ItZHNLqABIycBHmNMr9wtPdLIpb/nDsfH+rlOOSYd0q20g6N6A2YE5gDwSxLtpG9l6MJDpq3cEvH5zsOyiQIpvlLhomXO5jkg9AJtAMXamBs2ZLEf/P9j6UX5fCwbhnwhWlk6FsN4Uhc+5YeYX9n7PMQ+Ot6APFZXpCIbzOYVP8qCxhKzhVHFju/9yp6GxtjztQvzv6F/WWVwgp88kCrDvT8fV4lcGLz7jKFAZlZA0hP4fRDCIOZIJIThPR2TySGqL2rynHZoqqjLMYDeL/KNbkG9lgO3UWX8dTwrtubbWTSM4Mr3EmPxBiaLL9iMFRu8yFUj6xQmhipJ0zthuhDUzSDd3S4yi9FLVAgthBnHSV21c3xvqJ7awRznQaLExpC2xNo4Rr7DQbwjzbupY9W/SLkZdeHRl37d86XurXkRr+0337gyowndzwTUpz4eJzQ1wAaTH2AAKuuF1GrovAM9zFG/ZWYz59EnSnTO2EB1pgWhvbctpXOpreWoSbeQNyQkam7AsZ/PZopsfI2B5oEaRYAWlOjWy+WXUbasHAH0PV7OXcqwWci1O5vy/6gu3E7i1y8MuNcyinvqNFlvJ5S6lNGqUAcE10KpJGtFp9TdeNHcYHBzbuU84IlbrBicf56MIRgmHGGrr1V8YojUq7PEp2xAUzfCV/jQ603MgF92VtksQyYY9cx822oafawRcW1SV4DWx2qaXwdH4VoIRqWFfvpbhGcdKFi1I83A+AXjpeJnYibtS+An8Ok1+NJAz4CACA84dGxC7AArDIdgQzayrmjZzp8xRSGUTO6sSpvzLslb36AyNWBVtdTSCqT1iY3EOFChr28WmA7ky3VJb2BEqpgB4QQYhRIwM/5WwewLioKm7YmJPdcWfYUBt2ihUx2vait7IlJEBHNZ2o6sKEB04in1NUKX+XaCuJearIt9k+uhZKGmd7Xf2stxfzxGMaXMwrMn/PGWSKT+1nIfNseFZVwRzCPHE2vQsEamfvFbdYeE4F0mY/Vm32RboQt1PWIkzzbC9HgmoJSVhlWi/lqnxcyx1kT0UIQAb+7Jc1XyfTpKKcRrsBAFDOsGh0AlXOK5SuNtjfFDCP+7d0MPbZF7/9AR2Tik+4am+LNbhmP/rck4T5Qs7ju94YndbWV1cJre+PIYoTCThfXoNiZXIIJvqeKhn+BlDFVYNJu2624xe5kr5KdS+iVIuSo7pnEbC8UMjJwExjs5PLZAU05bqBNfJ0JTZRgr/qdcjWiKsTgdi38WjDgxsSlVyg+KXfHQSrCjpfC3RcqH5NgPzn/C0oQFnJVXeeNStHHAtzJvtRt+u6OaQCSmd8ymoLfyqIuf+bUvY7D6np2bgoNmZcyVsYx6cigng/aM/bf3cgWsj9zz7FhDUJH/Mgp+OVAOQ+epIFZ9sCpa7OAYnDT3S+GEgzvN8nN+jSTLEbOf2vjMu/c7KfLf0lMMmgCZZXzR87v2IoSScks1d0ey4A0NDDtLL9JV2z/dQazl/Ixp7443opycB8L1Zm0KgTNDtTRexYVw6l6X2f8Y+pwuVylk7Nb34NzdCgGeHlVrhkFpFvgL47auwTMyK7dSSbonRSTfzHV1D8iQ4vrvstCP4RQ73DLZqf6uLdMF//0tqZId3VcaQCc1eiAi761vel3USPfIi1CIpdVcd+Hgq7jUyKw324hnY6nxhwjYyhfOwSqS/WeBljdAYunlENwKR+LxvjusdIXOOn+pasYr21VGMW+gIFTrU6DxAmV4FebS/suRJ4oly9mx5ofdPtVCviqErpYaZDQSQ92HK5MqDLZGY8ikbmfgUbAW1SZO+4Jsx9y0uLacGtASqHcpIVJYtSbaX85PsDRxJckKtDzZ6tG64Zkd/3Ad9nn0jlVDWz0zEFutLFK44xwQbKEfiHB+X/zL4ttBrxDNvLYHA6/OtxAyATZjZhC+mKkEQIumqPgA1FAK2F0IMi47D6YZtp+UnBIs0BvH/u3UUoKzMmUDeAafgf5wg98V/T/8CpnfK2Y6hQrUBp03INX09Ndg0GltRWLsLpYPMlRsvCPcbKTIftHKLRzdGOsqLY9qEmAG4ycFD5U67aYWofeodsOYuwRBAN/9BGW2CzWPpwzGazrwanQmORGBTEc4uyoXmWQUhNicSgtWYy57EfOSt6LouYFXQnKMJls7c08u4VxvCeKVE2dcjBZQamUVrlnmjmtEDd1OMPUwlPfT8OhtPOHMnQ7ZYQTS0xsEUdGEXRF20wgvcuYfn0pMzqK8e82zs0RQ5DP4vT0d5iyVhxawU+oQLmZ+D2PoBVkc6E9Q9WArRMMzNwqswutmP721aJmrWlDBHirgUVAJur/EHgUms4AZTYzjlMzEdZNDFxJ/D5QYMhXfczD9TFXjyal788pUX5/D2LKFkFkYtucY7zdNWpR+FVhTRTemtIAZhK1rHKyBuw8CFopQhfISZ+Ou/LGwIg6elF0+FfnInj4zAHvAmf+AxEPZ75vYpWsOx2Li8iTY2Mrl6M3elduVlC77B9375IQ8NOKXPXzyiEksdc/y3lIPz4wNkKhtH9JVHnI6VVGxW2/VxfMPQ0a3+k4O8Dmh1FrgQZ7YheI4A7VHWIW8rssPXHf91ZfUOt375ihkItg2prCMWZWC0SAdxjj/eBcQmTMyRMn90L2HHViMMQZVo3oWzrVJ/fuBPaos1KHaCUcB0OYWRD+cu16EG1squ/BYfrQsKBU7ZDAMxI0sxnI5E4XehrJe7g8wIjIAv4WgmjGrBhTfiEVFkPrOgMTaaJ1wWe+ZZMuK/gj7/13+ESRQGqcwwzCBEYmAoT93D2JtlfN7kFmdicp0eaM0liDRQ7Mf7NBJJTHvG/aDVgzPjopoxskSngEd7d6eLJ9pTU1EBrzT0N9FGtcpI00pxyiDKMhlHMv+j1YivS7QhDuK+RXnZpgU451SJj0z81bftF9mBYiwJ0nFKpP7XkZPRV7m5iG+jQeuVsWmemSMZR55f0PBbLkOFu7fBO+e3dLu3MwH6cplzfNBL5ejtl/sHeXSjubTpMB1DY0/MMrfistyBo6xMp31y6NMa26M7bwD1ESaKfi/+4S+BmELUxNJsQl6VnLNHsiENNGf57qVLMzMFCbpjg9PNaAxaWcjTjBGPeA5qhtW/x3pBKixkqHoQqalI6bCmdEliH4W8LiTu+HEIQ3GX0U/XnbGlrtsaCdTx34UR/ZWVpzyGVKfJWoEfKetoC9LcgOmDehlVcDNtWqnSj9jzItUYI7oOj+enj15+jLVVu2OaRnUGA5hS1xZ5K/V7N/r4H+3EQ8imFVgX4IIPVAdlot0vG17OpBY96eTu9MGdRdiV+uwQpIoKZ7UKqfBb1FwRoHWK4xR2mZPkubiwmqx0UjtqSFV/w/pdJZKrmiG0xNo8v+yfNAZkB9i7fC4IWIudthrdHRgm9wgmUpo2g1wjFcohxzPy1yNnTd+NaaK36LYfuwoTvq6/cPbzCExLRUksm0CYwV+AXvvN6jz+q/njaBfn36rFeJXAVVcd/Qzl7sCRG7qpjTMSpLndCWHrquAZKjZP6wgtyOKdBRdWwVooEFoJDET0BadrDgqkkhoCZ1mXgyoXon+uj9RDjc10BTY/junDWGQUkfzwEdt94qlN/UFcjC64E50b++FIpmkKaYfaFGuiRLRTAygKIqTTnj4EL0DWRvcgqchjvRa89FIveK0f9JRitHQM1cdIeEr4Gj3orONtsQ57ePQlvRFbaYAnsZcBHQ/sGMNmQxXlURGAF/XHYhPkRsf44ZpRse0wq0hwbJpQCjyadpFfaLPyi0YECQz+W7DQD55X2PZLkeFKXscCZeW5BVU3DaD+RJMXgWMPghyQwVElb+9vMObX92t3ZVaA07smTbbzAvYr7d3bhdbwdZZAZzD4XmsBVAoFwdKyz5yW/9Bgw57nqsGdUMtsM2WU1X9lWz1qgpmvS90DtzuYFopd6Mtb/Qwiw5rZxl/FiGk1EHqxWGMcMQZAr4hnq4cWbYDukOWoM0MyP9liCifz9L07VGrEfRaHy2oB13ObsO6o1fZJvdpoUl3dCNC6v3wcJLXexEdIaWk4mvyV8x4bqhBsk/UE55dS1Ql6JQ/f2+Jzc2NrVYkaPE/e+EPDw9RYkaorIlX9EWBEL9DQRm9QNUfwaIbKzGCm96BHRNPuWdRwLVSJQgeP+1H7q3m2arW4cJ5QgnD5THMLeYXDK2Sg6pY9R2zBIBtYdmwCXiiRYIKbeRyi5hQcLS6OExHG1K9pKZk5fJ+cO6W4zHIVE4J5a28AWvdFYeLDd0fVs2doSumXZi9K//HoCojJMkE6FujAs15p9ITAtqraIIyyMB7vRRLMhrGcxWgaveNLCym3xSE29IUg7qpOym5W6y8jsyl4Fi3f62h86sIeaEsTv9YCL01bKQA7/eg24IVr2E4Qz5+O2bng4gdgbIC4wAtsP6ZfqwP1+RGh2fa+Ge+zDLFz9eZT+lQlz+ydEe0HujoXf6iOQojzxOmQaWDRmqehqJJuQgeUKlmDgvVl91sj9vRgC0qW7AMua/B4IUhmtLMuSvxRBV/8JFl9/Q6NkaiZ6vpWTYNsTcubu32cjSvkrh1jLL8KIwOUwx74nu7zaoVxNCi8MlzU34zi8HzGEzrU62nPKEOoNeRFF0QiD9+1bFZI16av/Bnopfx1rkAqsgLC31Qyetd/B/EPvplXYqOlFG1DN6Alhpkl83jb1NMnDAZh7OoFkVUs7YGwubs2T1ICLSlYWPJZ4tQXiEhJec6DwZKU4D3S5y3ZeuHLOkfx0bKyjRd2MPi+uhN3s7ate/IBPUEtTeLF7YYOFzRB5PFJa5t6oHOnZ+zFyBS4fStZyEQiWxDpNtXaB2VnHy9zHqs4qlNNsSx3evwQtWT6YBu8EVogkAGvXUiwifhgwqsdalc4NQ=="</script>
+
+    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Zoomed Evidence">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        let supabaseClient = null;
+        try {
+            const SUPABASE_URL = 'https://xsivyrmpcgomyiyrsidg.supabase.co';
+            const SUPABASE_KEY = 'sb_publishable_c9qIfHryD8QI-adbltinYQ_DGNFblET';
+            if (window.supabase) {
+                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+            } else {
+                console.warn('supabaseClient not loaded. Signatures will be disabled.');
+            }
+        } catch (e) {
+            console.error('Failed to init supabaseClient:', e);
+        }
+
+        async function generateDocumentHash() {
+            const text = document.querySelector('main').innerText;
+            const msgBuffer = new TextEncoder().encode(text);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function getIpAddress() {
+            try {
+                const res = await fetch('https://api.ipify.org?format=json');
+                const data = await res.json();
+                return data.ip;
+            } catch (e) {
+                return 'unknown';
+            }
+        }
+
+        async function checkSignatureStatus() {
+            if (!supabaseClient) return;
+            const requiresSigMeta = document.querySelector('meta[name="requires_signature"]');
+            if (requiresSigMeta && requiresSigMeta.getAttribute('content') === 'true') {
+                const reportId = document.title.split(' | ')[0];
+                const { data, error } = await supabaseClient
+                    .from('signatures')
+                    .select('*')
+                    .eq('report_id', reportId)
+                    .order('created_at', { ascending: false });
+
+                if (data && data.length > 0) {
+                    data.forEach(sig => lockSignatureCard(sig));
+                }
+            }
+        }
+
+        function lockSignatureCard(sigData) {
+            const cards = document.querySelectorAll('.signature-card');
+            cards.forEach(card => {
+                const roleEl = card.querySelector('.signature-role');
+                const cardRole = roleEl ? roleEl.innerText.trim() : 'unknown';
+                
+                if (sigData.role === cardRole || sigData.role === 'unknown' || !sigData.role) {
+                    const line = card.querySelector('.signature-line');
+                    if (line && line.dataset.signed === 'true') return;
+                    
+                    const dateStr = new Date(sigData.created_at).toLocaleString();
+                    const emailStr = sigData.email && sigData.email !== 'unknown@client.com' ? `<br>Email: ${sigData.email}` : '';
+                    
+                    if (line) {
+                        line.innerHTML = `
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 5px;">
+                                <span style="font-family: 'Georgia', cursive; font-size: 1.8rem; color: var(--text-primary); line-height: 1;">${sigData.client_name}</span>
+                                <span style="font-size: 0.75rem; color: var(--text-secondary); font-family: var(--font-mono); line-height: 1.4;">
+                                    ✓ Cryptographically Verified${emailStr}<br>
+                                    Date: ${dateStr}<br>
+                                    Hash: ${sigData.document_hash.substring(0, 16)}...
+                                </span>
+                            </div>
+                        `;
+                        line.style.borderBottom = 'none';
+                        line.style.opacity = '1';
+                        line.style.background = 'none';
+                        line.style.height = 'auto';
+                        line.dataset.signed = 'true';
+                        card.style.cursor = 'default';
+                    }
+                }
+            });
+        }
+        function toggleTheme() {
+            const html = document.documentElement;
+            const target = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', target);
+            localStorage.setItem('theme', target);
+            updateIcons(target);
+        }
+        function updateIcons(theme) {
+            document.getElementById('sun-icon').style.display = theme === 'light' ? 'block' : 'none';
+            document.getElementById('moon-icon').style.display = theme === 'dark' ? 'block' : 'none';
+        }
+
+        function toggleLang() {
+            const html = document.documentElement;
+            const available = JSON.parse(html.getAttribute('data-languages') || '["en"]');
+            if (available.length < 2) return;
+            const current = html.getAttribute('lang') || 'en';
+            setLang(available[(available.indexOf(current) + 1) % available.length]);
+        }
+
+        function setLang(lang) {
+            const html = document.documentElement;
+            html.setAttribute('lang', lang);
+            localStorage.setItem('language', lang);
+            document.querySelectorAll('.lang-block, .lang-nav, .lang-title').forEach(b => {
+                const match = b.getAttribute('lang') === lang;
+                if (match) {
+                    b.classList.add('lang-fade-in');
+                    b.style.display = b.classList.contains('lang-title') ? 'inline' : 'block';
+                    b.addEventListener('animationend', () => b.classList.remove('lang-fade-in'), { once: true });
+                } else {
+                    b.style.display = 'none';
+                }
+            });
+            // Sync document title
+            const activeTitleEl = document.querySelector(`.lang-title[lang="${lang}"]`);
+            if (activeTitleEl) {
+                document.title = activeTitleEl.textContent + ' | Talkalisker Client Portal';
+            }
+            const indicator = document.getElementById('lang-indicator');
+            if (indicator) indicator.textContent = lang === 'he' ? 'עב' : lang.toUpperCase();
+        }
+
+        function toggleDrawer() {
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('nav-overlay').classList.toggle('open');
+        }
+        function closeDrawer() {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('nav-overlay').classList.remove('open');
+        }
+
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+        function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
+
+        async function openSignaturePad(card) {
+            const requiresSigMeta = document.querySelector('meta[name="requires_signature"]');
+            if (!requiresSigMeta || requiresSigMeta.getAttribute('content') !== 'true') {
+                // Fallback for non-enforced documents
+                const line = card.querySelector('.signature-line');
+                if (line.dataset.signed === 'true') return;
+                const name = prompt("Enter your full name to sign digitally:");
+                if (name) {
+                    line.innerHTML = `<span style="font-family: 'Georgia', cursive; font-size: 1.5rem; color: var(--text-primary); line-height: 1;">${name}</span> <span style="font-size: 0.65rem; color: var(--text-secondary); margin-left: 10px; font-family: var(--font-mono);">(Digitally Signed ${new Date().toLocaleDateString()})</span>`;
+                    line.style.borderBottom = 'none';
+            line.style.opacity = '1';
+                    line.style.background = 'none';
+                    line.style.height = 'auto';
+                    line.dataset.signed = 'true';
+                    card.style.cursor = 'default';
+                }
+                return;
+            }
+
+            const roleEl = card.querySelector('.signature-role');
+            window.currentlySigningRole = roleEl ? roleEl.innerText.trim() : 'unknown';
+
+            const line = card.querySelector('.signature-line');
+            if (line.dataset.signed === 'true') return;
+            if (line.dataset.signing === 'true') return;
+            line.dataset.signing = 'true';
+            
+            line.innerHTML = `
+                <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; text-align: left; padding: 10px 0;">
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Enter details to verify signature:</div>
+                    <input type="text" id="sig-name" placeholder="Full Legal Name" style="padding: 10px; border-radius: 4px; border: 1px solid var(--border-subtle); background: var(--bg-core); color: var(--text-primary); font-family: var(--font-mono); width: 100%; box-sizing: border-box;">
+                    <input type="email" id="sig-email" placeholder="Email Address" style="padding: 10px; border-radius: 4px; border: 1px solid var(--border-subtle); background: var(--bg-core); color: var(--text-primary); font-family: var(--font-mono); width: 100%; box-sizing: border-box;">
+                    <button onclick="requestOtp(this.closest('.signature-card'))" style="padding: 10px; border-radius: 4px; border: none; background: var(--accent); color: white; cursor: pointer; font-weight: bold; width: 100%;">Send Security Code</button>
+                </div>
+            `;
+            line.style.height = 'auto';
+            line.style.borderBottom = 'none';
+            line.style.opacity = '1';
+        }
+
+        async function requestOtp(card) {
+            const name = card.querySelector('#sig-name').value.trim();
+            const email = card.querySelector('#sig-email').value.trim();
+            if (!name || !email) return alert("Please enter both name and email.");
+            
+            const btn = card.querySelector('button');
+            btn.innerText = 'Sending...';
+            btn.disabled = true;
+
+            const { data, error } = await supabaseClient.auth.signInWithOtp({ email });
+            if (error) {
+                alert("Error sending code: " + error.message);
+                btn.innerText = 'Send Security Code';
+                btn.disabled = false;
+                return;
+            }
+
+            const line = card.querySelector('.signature-line');
+            line.dataset.name = name;
+            line.dataset.email = email;
+            line.innerHTML = `
+                <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; text-align: left; padding: 10px 0;">
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Enter 6-digit code sent to ${email}:</div>
+                    <input type="text" id="sig-code" placeholder="000000" style="padding: 10px; border-radius: 4px; border: 1px solid var(--border-subtle); background: var(--bg-core); color: var(--text-primary); font-family: var(--font-mono); width: 100%; box-sizing: border-box; text-align: center; font-size: 1.5rem; letter-spacing: 5px;">
+                    <button onclick="verifyOtp(this.closest('.signature-card'))" style="padding: 10px; border-radius: 4px; border: none; background: var(--accent); color: white; cursor: pointer; font-weight: bold; width: 100%;">Verify & Sign</button>
+                </div>
+            `;
+        }
+
+        async function verifyOtp(card) {
+            const code = card.querySelector('#sig-code').value.trim();
+            if (!code) return;
+
+            const line = card.querySelector('.signature-line');
+            const name = line.dataset.name;
+            const email = line.dataset.email;
+
+            const btn = card.querySelector('button');
+            btn.innerText = 'Verifying...';
+            btn.disabled = true;
+
+            const { data: authData, error: authErr } = await supabaseClient.auth.verifyOtp({ email, token: code, type: 'email' });
+            
+            if (authErr) {
+                alert("Invalid code: " + authErr.message);
+                btn.innerText = 'Verify & Sign';
+                btn.disabled = false;
+                return;
+            }
+
+            btn.innerText = 'Securing...';
+            try {
+                const reportId = document.title.split(' | ')[0];
+                const hash = await generateDocumentHash();
+                const ip = await getIpAddress();
+                
+                const { data, error } = await supabaseClient
+                    .from('signatures')
+                    .insert([{
+                        report_id: reportId,
+                        client_name: name,
+                        role: window.currentlySigningRole || 'unknown',
+                        email: email,
+                        ip_address: ip,
+                        user_agent: navigator.userAgent,
+                        document_hash: hash
+                    }])
+                    .select();
+
+                if (error) throw error;
+                if (data && data.length > 0) lockSignatureCard(data[0]);
+            } catch (err) {
+                console.error("Signature failed:", err);
+                alert("Database error: " + err.message);
+                btn.innerText = 'Verify & Sign';
+                btn.disabled = false;
+            }
+        }
+
+        function attemptDecrypt() {
+            const key = document.getElementById('auth-key').value;
+            const ciphertext = document.getElementById('encrypted-payload').textContent.slice(1, -1);
+            try {
+                const bytes = CryptoJS.AES.decrypt(ciphertext, key);
+                const decryptedStr = bytes.toString(CryptoJS.enc.Utf8);
+                if (!decryptedStr) throw new Error('empty');
+                const payload = JSON.parse(decryptedStr);
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('sidebar-nav').innerHTML = `
+                    <div class="lang-nav" lang="en">${payload.nav_en}</div>
+                    <div class="lang-nav" lang="es" style="display: none;">${payload.nav_es}</div>
+                    <div class="lang-nav" lang="he" style="display: none;">${payload.nav_he}</div>
+                `;
+                document.getElementById('decrypted-content').innerHTML = `
+                    <div class="lang-block" lang="en">${payload.content_en || ''}</div>
+                    <div class="lang-block" lang="es" style="display: none;">${payload.content_es || ''}</div>
+                    <div class="lang-block" lang="he" style="display: none;">${payload.content_he || ''}</div>
+                `;
+                document.getElementById('decrypted-content').style.display = 'block';
+                const html = document.documentElement;
+                const available = JSON.parse(html.getAttribute('data-languages') || '["en"]');
+                const saved = localStorage.getItem('language') || available[0];
+                setLang(available.includes(saved) ? saved : available[0]);
+                initInteractiveFeatures();
+            } catch (e) {
+                document.getElementById('auth-error').style.display = 'block';
+                document.getElementById('auth-key').value = '';
+            }
+        }
+
+        function initInteractiveFeatures() {
+            // Lightbox
+            document.querySelectorAll('.evidence-img').forEach(img => {
+                img.onclick = () => openLightbox(img.src);
+            });
+
+            // Interactive action checkboxes
+            document.querySelectorAll('.action-checkbox').forEach(cb => {
+                const titleEl = cb.closest('.action-info') && cb.closest('.action-info').querySelector('.action-title');
+                if (!titleEl) return;
+                const id = 'action_' + titleEl.textContent.trim().slice(0, 60).replace(/\s+/g, '_');
+                if (localStorage.getItem(id) === 'done') cb.classList.add('checked');
+                cb.addEventListener('click', () => {
+                    cb.classList.toggle('checked');
+                    localStorage.setItem(id, cb.classList.contains('checked') ? 'done' : '');
+                });
+            });
+
+            // Findings filter bars
+            document.querySelectorAll('section, .lang-block').forEach(container => {
+                const findings = Array.from(container.querySelectorAll(':scope > .finding-card, :scope > div > .finding-card'));
+                if (findings.length < 3 || container.querySelector('.filter-bar[data-type="finding"]')) return;
+                const bar = document.createElement('div');
+                bar.className = 'filter-bar'; bar.dataset.type = 'finding';
+                bar.innerHTML = '<span class="filter-bar-label">Filter:</span>' +
+                    ['All','Critical','High','Medium','Low'].map((s,i) =>
+                        `<button class="filter-btn${i===0?' active':''}" data-sev="${s.toLowerCase()}">${s}</button>`
+                    ).join('');
+                findings[0].parentNode.insertBefore(bar, findings[0]);
+                bar.addEventListener('click', e => {
+                    const btn = e.target.closest('.filter-btn'); if (!btn) return;
+                    bar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const sev = btn.dataset.sev;
+                    findings.forEach(card => card.classList.toggle('filter-hidden', sev !== 'all' && !card.querySelector('.sev-' + sev)));
+                });
+            });
+
+            // Action filter bars
+            document.querySelectorAll('section, .lang-block').forEach(container => {
+                const actions = Array.from(container.querySelectorAll(':scope > .action-card, :scope > div > .action-card'));
+                if (actions.length < 3 || container.querySelector('.filter-bar[data-type="action"]')) return;
+                const bar = document.createElement('div');
+                bar.className = 'filter-bar'; bar.dataset.type = 'action';
+                bar.innerHTML = '<span class="filter-bar-label">Filter:</span>' +
+                    ['All','Pending','Done','Blocked'].map((s,i) =>
+                        `<button class="filter-btn${i===0?' active':''}" data-status="${s.toLowerCase()}">${s}</button>`
+                    ).join('');
+                actions[0].parentNode.insertBefore(bar, actions[0]);
+                bar.addEventListener('click', e => {
+                    const btn = e.target.closest('.filter-btn'); if (!btn) return;
+                    bar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const status = btn.dataset.status;
+                    actions.forEach(card => {
+                        const statusEl = card.querySelector('.action-status');
+                        const match = status === 'all' || (statusEl && statusEl.textContent.trim().toLowerCase().includes(status));
+                        card.classList.toggle('filter-hidden', !match);
+                    });
+                });
+            });
+
+            // Expandable tables (collapse beyond 6 rows)
+            document.querySelectorAll('table').forEach(table => {
+                if (table.dataset.expanded !== undefined) return;
+                table.dataset.expanded = 'false';
+                const rows = Array.from(table.querySelectorAll('tbody tr'));
+                if (rows.length <= 6) return;
+                rows.slice(5).forEach(r => r.classList.add('table-overflow-row'));
+                const btn = document.createElement('button');
+                btn.className = 'table-expand-btn';
+                let expanded = false;
+                btn.textContent = `Show all ${rows.length} rows ↓`;
+                btn.addEventListener('click', () => {
+                    expanded = !expanded;
+                    rows.slice(5).forEach(r => r.classList.toggle('visible', expanded));
+                    btn.textContent = expanded ? 'Collapse ↑' : `Show all ${rows.length} rows ↓`;
+                });
+                table.insertAdjacentElement('afterend', btn);
+            });
+
+            // Scroll spy
+            const headings = document.querySelectorAll('h1[id]');
+            if (headings.length) {
+                const spy = new IntersectionObserver(entries => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
+                            const link = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+                            if (link) link.classList.add('active');
+                        }
+                    });
+                }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+                headings.forEach(h => spy.observe(h));
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            checkSignatureStatus();
+            const html = document.documentElement;
+
+            // Theme
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            html.setAttribute('data-theme', savedTheme);
+            updateIcons(savedTheme);
+
+            // Language
+            const available = JSON.parse(html.getAttribute('data-languages') || '["en"]');
+            if (available.length > 1) {
+                document.getElementById('lang-toggle').style.display = 'flex';
+                document.getElementById('lang-indicator').style.display = 'inline-block';
+                document.getElementById('lang-toggle').addEventListener('click', toggleLang);
+            }
+            const saved = localStorage.getItem('language') || available[0];
+            setLang(available.includes(saved) ? saved : available[0]);
+
+            // Progress bar
+            const bar = document.getElementById('progress-bar');
+            window.addEventListener('scroll', () => {
+                const max = document.documentElement.scrollHeight - window.innerHeight;
+                bar.style.width = max > 0 ? (window.scrollY / max * 100) + '%' : '0%';
+            }, { passive: true });
+
+            // Swipe to switch language
+            if (available.length > 1) {
+                let tx = 0;
+                document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+                document.addEventListener('touchend', e => {
+                    if (Math.abs(e.changedTouches[0].clientX - tx) > 70) toggleLang();
+                }, { passive: true });
+            }
+
+            initInteractiveFeatures();
+        });
+    </script>
+</body>
+</html>
