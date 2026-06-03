@@ -8,7 +8,10 @@
   "type": "commonjs",
   "scripts": {
     "build": "node scripts/build_all.js",
-    "delete": "node scripts/delete_report.js"
+    "delete": "node scripts/delete_report.js",
+    "lint": "node scripts/validate.js",
+    "watch": "node scripts/watch.js",
+    "sync-pull": "node scripts/sync_pull.js"
   },
   "dependencies": {
     "crypto-js": "^4.2.0",
