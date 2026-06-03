@@ -1,0 +1,1040 @@
+/* Services Page Specific Styles */
+
+/* Hero Extensions */
+.hero-services {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg-accent {
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(184, 90, 68, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.hero-subtitle {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    font-family: var(--font-mono);
+    color: var(--accent-developer);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+/* Tech Marquee */
+.tech-marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background: rgba(184, 90, 68, 0.03);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 1rem 0;
+    display: flex;
+    white-space: nowrap;
+}
+
+.tech-marquee {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-transform: lowercase;
+    letter-spacing: 0.1em;
+}
+
+.tech-marquee span.dot {
+    color: var(--accent-developer);
+    margin: 0 2rem;
+    opacity: 0.5;
+}
+
+/* Fluid Typography & Spacing System */
+:root {
+    --text-hero: clamp(2.5rem, 6vw + 1rem, 5rem);
+    --text-section: clamp(2rem, 5vw + 1rem, 4rem);
+    --text-menu: clamp(1.25rem, 2vw + 1rem, 2.5rem);
+    
+    --space-unit: clamp(1rem, 2vw, 2rem);
+    --space-sm: calc(var(--space-unit) * 0.5);
+    --space-md: var(--space-unit);
+    --space-lg: calc(var(--space-unit) * 2);
+    --space-xl: calc(var(--space-unit) * 4);
+    
+    --motion-slow: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    --motion-fast: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hero-title {
+    font-size: var(--text-hero) !important;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+}
+
+h2 {
+    font-size: var(--text-section);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+
+    /* Scrolls exactly half to loop */
+}
+
+[data-theme="light"] .tech-marquee-wrapper {
+    background: rgba(184, 90, 68, 0.05);
+}
+
+/* The "Clinical Menu" Grid - Refactored from Cards */
+.services-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 4rem;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.service-card {
+    display: grid;
+    grid-template-columns: 80px 1fr 300px;
+    align-items: center;
+    padding: var(--space-lg) 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-subtle);
+    border-radius: 0;
+    transition: all var(--motion-slow);
+    overflow: visible;
+}
+
+.service-card:hover {
+    transform: none;
+    background: rgba(184, 90, 68, 0.03);
+    padding-left: var(--space-md);
+}
+
+.service-card::before {
+    display: none;
+}
+
+.service-card h3 {
+    font-size: var(--text-menu);
+    font-weight: 700;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.service-card p {
+    grid-column: 2;
+    max-width: 600px;
+    margin-top: 1rem;
+    opacity: 0.7;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.service-card ul {
+    grid-column: 3;
+    grid-row: 1 / 3;
+    margin-top: 0;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.service-id {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--accent-developer);
+    opacity: 0.5;
+}
+
+.service-card:hover .service-id {
+    opacity: 1;
+}
+
+.service-content {
+    transition: transform var(--motion-fast);
+}
+
+@media (max-width: 1024px) {
+    .service-card {
+        grid-template-columns: 50px 1fr;
+        padding: 2.5rem 0;
+    }
+    .service-card ul {
+        display: none;
+    }
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-developer);
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.service-card ul {
+    list-style: none;
+    margin-top: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.service-card li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.service-card li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent-developer);
+}
+
+/* Process Timeline (simplified for vertical flow) */
+/* Pricing section subhead */
+.pricing-subhead {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+    max-width: 520px;
+}
+
+/* Concentric Diagram */
+.concentric-diagram {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1;
+    margin: 3.5rem auto 0;
+}
+
+.concentric-diagram svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    counter-reset: process-counter;
+    margin-top: 4rem;
+}
+
+.process-step {
+    position: relative;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border-left: 1px solid var(--border-subtle);
+}
+
+.process-step::before {
+    counter-increment: process-counter;
+    content: "0" counter(process-counter);
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-developer);
+    opacity: 0.5;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.process-step h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.process-step p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Pricing Track Headers */
+.pricing-track-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    padding: 0.85rem 1.25rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.pricing-track-header--strategy {
+    margin-top: 5rem;
+    border-color: rgba(212, 175, 55, 0.2);
+    background: rgba(212, 175, 55, 0.02);
+}
+
+.pricing-track-label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    color: var(--accent-developer);
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.pricing-track-header--strategy .pricing-track-label {
+    color: var(--accent-writer);
+}
+
+.pricing-track-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Pricing upsell nudge callout */
+.pricing-upsell {
+    font-size: 0.78rem;
+    color: var(--accent-developer);
+    font-family: var(--font-mono);
+    margin-top: auto;
+    padding: 0.6rem 0.85rem;
+    border: 1px solid rgba(184, 90, 68, 0.25);
+    border-radius: 6px;
+    background: rgba(184, 90, 68, 0.05);
+    margin-bottom: 1rem;
+}
+
+/* Strategy track grid — 2 cards, max half-width on large screens */
+.pricing-grid--strategy {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 480px));
+}
+
+/* Pricing Tiers */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+@media (max-width: 700px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pricing-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.4s var(--motion-slow), box-shadow 0.4s var(--motion-slow), border-color 0.4s;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 4px top accent strip */
+.card-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--accent-developer);
+}
+.pricing-grid--strategy .pricing-card:first-child .card-accent { background: #6B8E23; }
+.pricing-grid--strategy .pricing-card:last-child  .card-accent { background: var(--accent-writer); }
+.brand-web-card .card-accent {
+    background: linear-gradient(90deg, var(--accent-writer), var(--accent-developer));
+}
+
+/* Product icon */
+.card-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: rgba(184, 90, 68, 0.1);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.25rem;
+    color: var(--accent-developer);
+}
+.pricing-grid--strategy .pricing-card:first-child .card-icon { background: rgba(107,142,35,0.1); color: #6B8E23; }
+.pricing-grid--strategy .pricing-card:last-child  .card-icon { background: rgba(212,175,55,0.1); color: var(--accent-writer); }
+.brand-web-card .card-icon {
+    background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(184,90,68,0.1));
+    color: var(--accent-writer);
+}
+
+/* Delivery timeline */
+.card-timeline {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    margin: -0.5rem 0 1rem;
+}
+
+/* Feature checkmark */
+.feat-check {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    margin-right: 0.6rem;
+    flex-shrink: 0;
+    color: var(--accent-developer);
+}
+.ux-audit-card    .feat-check { color: #6B8E23; }
+.full-branding-card .feat-check { color: var(--accent-writer); }
+
+/* Feature group divider */
+.feature-group-divider {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin: 0.4rem 0;
+}
+
+/* Payment terms */
+.card-payment {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+    margin: 0.25rem 0 1rem;
+}
+
+/* Team block (Full Branding) */
+.card-team {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0.75rem 0 0.25rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    background: rgba(212, 175, 55, 0.03);
+}
+.card-team-member {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+}
+.card-team-avatar {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: var(--accent-writer);
+    flex-shrink: 0;
+}
+
+/* Foundation callout inside Brand & Web */
+.card-callout {
+    font-size: 0.72rem;
+    color: var(--accent-developer);
+    font-family: var(--font-mono);
+    border: 1px solid rgba(184, 90, 68, 0.2);
+    border-radius: 5px;
+    background: rgba(184, 90, 68, 0.04);
+    padding: 0.4rem 0.75rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+/* Wide cards: Brand & Web + Flagship — full row */
+.pricing-card--wide {
+    grid-column: 1 / -1;
+}
+
+@media (min-width: 768px) {
+    .pricing-card--wide {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 0 3rem;
+        text-align: left;
+        align-items: start;
+        padding: 2.5rem 3rem;
+    }
+    .pricing-card--wide .card-accent {
+        grid-column: 1 / -1;
+    }
+    .pricing-card--wide .card-left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        min-width: 0;
+    }
+    .pricing-card--wide .card-left .card-icon {
+        margin: 0 0 1.25rem;
+    }
+    .pricing-card--wide .pricing-features {
+        align-self: start;
+        background: rgba(0, 0, 0, 0.12);
+        border-radius: 10px;
+        padding: 1.5rem 1.75rem;
+        margin: 0;
+        text-align: left;
+    }
+    .pricing-card--flagship .pricing-features {
+        columns: 2;
+        column-gap: 1.5rem;
+    }
+    .pricing-card--flagship .pricing-features li {
+        break-inside: avoid;
+    }
+    /* Re-centre featured badge on wide card */
+    .pricing-card--wide.featured::after {
+        top: 1rem;
+        right: 1rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .pricing-card--wide .card-left {
+        display: contents;
+    }
+}
+
+/* Flagship scoping call micro-line */
+.card-scoping {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    margin-top: 0.4rem;
+}
+
+/* Strategy First: distinct shape */
+.pricing-grid--strategy .pricing-card {
+    border-radius: 10px;
+}
+.pricing-grid--strategy .pricing-features {
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    margin: 1rem -0.25rem 1.25rem;
+}
+
+.pricing-card.featured {
+    border-color: var(--accent-developer);
+    background: linear-gradient(180deg, rgba(184, 90, 68, 0.05) 0%, var(--bg-surface) 100%);
+}
+
+.pricing-card.featured::after {
+    content: "Recommended";
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.65rem;
+    font-style: italic;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    background: transparent;
+    border: 1px solid var(--accent-developer);
+    color: var(--accent-developer);
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+}
+
+.pricing-card.brand-web-card {
+    border: 1px solid transparent;
+    background:
+        linear-gradient(180deg, rgba(212,175,55,0.05) 0%, rgba(184,90,68,0.05) 50%, transparent 100%) padding-box,
+        linear-gradient(var(--bg-surface), var(--bg-surface)) padding-box,
+        linear-gradient(135deg, var(--accent-writer) 0%, var(--accent-developer) 100%) border-box;
+}
+
+
+.brand-web-btn {
+    border-color: var(--accent-writer) !important;
+    color: var(--text-primary) !important;
+    background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(184,90,68,0.08)) !important;
+    transition: background 0.2s, color 0.2s;
+}
+
+.brand-web-btn:hover {
+    background: linear-gradient(135deg, var(--accent-writer), var(--accent-developer)) !important;
+    border-color: transparent !important;
+    color: #000 !important;
+}
+
+/* ─── Brand & Web card — WCAG AA contrast fixes ─────────────────────── */
+/* .card-timeline and .card-payment use --text-muted which falls below   */
+/* WCAG AA at 0.68rem. Elevate to --text-secondary within this card.     */
+.brand-web-card .card-timeline,
+.brand-web-card .card-payment {
+    color: var(--text-secondary);
+}
+
+/* Callout: terracotta on card bg = ~3.4:1 — below AA for 0.72rem text. */
+/* Use --text-primary for the label; keep terracotta border for identity. */
+.brand-web-card .card-callout {
+    color: var(--text-primary);
+    background: rgba(184, 90, 68, 0.10);
+    border-color: rgba(184, 90, 68, 0.35);
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 1.5rem 0;
+    color: var(--text-primary);
+}
+
+.price span {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.pricing-features {
+    list-style: none;
+    margin: 2rem 0;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.pricing-features li {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pricing-features li svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--accent-developer);
+}
+
+/* CTA Section */
+.cta-box {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: radial-gradient(circle at center, rgba(184, 90, 68, 0.1) 0%, rgba(0, 0, 0, 0) 60%);
+    border-radius: 24px;
+    border: 1px solid var(--border-subtle);
+    margin: 4rem 0;
+}
+
+.cta-box h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Utility Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s var(--ease-custom) forwards;
+}
+
+/* Light Mode Overrides for Services */
+[data-theme="light"] .service-card {
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .pricing-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .hero-bg-accent {
+    background: radial-gradient(circle, rgba(184, 90, 68, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+/* Contact Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s var(--ease-custom);
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--accent-developer);
+    padding: 3rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s var(--ease-custom);
+    box-shadow: 0 0 50px rgba(184, 90, 68, 0.1);
+}
+
+.modal-overlay.active .modal-card {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: var(--text-primary);
+}
+
+.modal-title {
+    font-family: var(--font-mono);
+    color: var(--accent-developer);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.modal-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-subtle);
+    padding: 1rem;
+    color: var(--text-primary);
+    border-radius: 8px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--accent-developer);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+select.form-input {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a0a0a0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    cursor: pointer;
+}
+
+select.form-input:focus {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f2ea' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+
+/* About Me Section Extensions */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    .about-visual {
+        transform: scale(0.9);
+    }
+}
+
+/* Light Mode Overrides for Services */
+[data-theme="light"] .service-card,
+[data-theme="light"] .pricing-card {
+    background: #ffffff;
+    box-shadow: 0 10px 40px rgba(44, 42, 40, 0.05);
+    border-color: rgba(44, 42, 40, 0.1);
+}
+
+[data-theme="light"] .pricing-card.featured {
+    background: linear-gradient(180deg, rgba(184, 90, 68, 0.03) 0%, #ffffff 100%);
+    border-color: var(--accent-developer);
+}
+
+[data-theme="light"] .pricing-card.brand-web-card {
+    background:
+        linear-gradient(180deg, rgba(212,175,55,0.04) 0%, rgba(184,90,68,0.03) 50%, transparent 100%) padding-box,
+        linear-gradient(#ffffff, #ffffff) padding-box,
+        linear-gradient(135deg, var(--accent-writer) 0%, var(--accent-developer) 100%) border-box;
+}
+
+[data-theme="light"] .hero-bg-accent {
+    background: radial-gradient(circle, rgba(184, 90, 68, 0.08) 0%, rgba(250, 248, 245, 0) 70%);
+}
+
+[data-theme="light"] .process-step {
+    background: rgba(44, 42, 40, 0.02);
+    border-left-color: rgba(44, 42, 40, 0.1);
+}
+
+[data-theme="light"] .cta-box {
+    background: radial-gradient(circle at center, rgba(184, 90, 68, 0.05) 0%, rgba(250, 248, 245, 0) 60%);
+    border-color: rgba(44, 42, 40, 0.1);
+}
+
+/* Light theme overrides for modal */
+[data-theme="light"] .modal-card {
+    background: #ffffff;
+    box-shadow: 0 20px 60px rgba(44, 42, 40, 0.15);
+    border-color: var(--accent-developer);
+}
+
+[data-theme="light"] .form-input,
+[data-theme="light"] .form-textarea {
+    background-color: #FAF8F5;
+    border-color: #EFECE5;
+    color: #2C2A28;
+}
+
+[data-theme="light"] .form-input:focus,
+[data-theme="light"] .form-textarea:focus {
+    background-color: #ffffff;
+    border-color: var(--accent-developer);
+}
+
+[data-theme="light"] select.form-input {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232C2A28' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.section-about {
+    padding: 4rem 0;
+    background: linear-gradient(180deg, var(--bg-core) 0%, rgba(20, 20, 20, 1) 100%);
+}
+
+[data-theme="light"] .section-about {
+    background: var(--bg-core);
+}
+
+/* Make SVG Venn Diagram lines thicker and more visible */
+.about-visual svg circle {
+    stroke-width: 2px;
+    stroke-opacity: 0.7;
+    transition: stroke-width 0.3s ease, stroke-opacity 0.3s ease;
+}
+
+
+/* About Section Grids */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 6rem;
+}
+
+@media (min-width: 900px) {
+    .about-intro-grid {
+        grid-template-columns: 1.5fr 1fr;
+        gap: 5rem;
+    }
+
+    .about-intro-grid .about-image-wrap {
+        order: 2;
+    }
+
+    .about-intro-grid .about-intro-content {
+        order: 1;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+    }
+}
+
+/* Skill bars — animated on scroll */
+.skill-bar-track {
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skill-bar-fill--ux   { background: var(--accent-developer); box-shadow: 0 0 10px rgba(184,90,68,0.35); }
+.skill-bar-fill--copy { background: var(--accent-writer);    box-shadow: 0 0 10px rgba(212,175,55,0.35); }
+.skill-bar-fill--code { background: #6B8E23;                 box-shadow: 0 0 10px rgba(107,142,35,0.35); }
+
+/* Venn diagram hover — circles breathe outward */
+.trifecta-svg {
+    transition: opacity 0.3s ease;
+}
+.trifecta-svg circle {
+    transition: stroke-opacity 0.4s ease;
+}
+.trifecta-svg:hover circle { stroke-opacity: 0.85; }
+
+/* Hero subtitle stagger */
+.hero-subtitle span {
+    opacity: 0;
+    animation: fadeInUp 0.5s var(--ease-custom) forwards;
+}
+.hero-subtitle span:nth-child(1) { animation-delay: 0.05s; }
+.hero-subtitle span:nth-child(2) { animation-delay: 0.2s; }
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Process section — surface background for visual landmark */
+.section-surface {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+}
+[data-theme="light"] .section-surface { background: #FEFCF9; }
+
+/* Process bridge — connector between diagram and steps */
+.process-bridge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.5rem 0 0;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+}
+.process-bridge::before,
+.process-bridge::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border-subtle);
+}
+
+/* Creator corner brackets */
+.creator-corner {
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    pointer-events: none;
+    z-index: 1;
+}
+.creator-corner--tl {
+    top: -1.5rem;
+    left: -1.5rem;
+    border-top: 2px solid var(--accent-developer);
+    border-left: 2px solid var(--accent-developer);
+}
+.creator-corner--br {
+    bottom: -1.5rem;
+    right: -1.5rem;
+    border-bottom: 2px solid var(--accent-writer);
+    border-right: 2px solid var(--accent-writer);
+}
+
+/* Site footer */
+.site-footer {
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}

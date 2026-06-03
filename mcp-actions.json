@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "site": "https://talkalisker.com",
+  "actions": [
+    {
+      "id": "project-inquiry",
+      "name": "Submit Project Inquiry",
+      "description": "Send a detailed inquiry for web development, branding, or UX audit services. Includes name, email, plan selection, and project description.",
+      "method": "declarative",
+      "endpoint": "/developer-services.html",
+      "parameters": {
+        "required": ["name", "email", "plan", "message"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Full name of the person inquiring"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Contact email address"
+          },
+          "plan": {
+            "type": "string",
+            "enum": ["General Inquiry", "Launchpad", "UX Audit", "Foundation", "Full Branding", "Brand & Web", "Flagship"],
+            "description": "The specific service package of interest"
+          },
+          "message": {
+            "type": "string",
+            "description": "Details about the project, goals, and timeline"
+          }
+        }
+      }
+    }
+  ]
+}

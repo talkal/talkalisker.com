@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breather | Privacy Policy</title>
+    <meta name="description" content="Privacy Policy for the Breather app. No data collection. Just breathing.">
+    <link rel="icon" type="image/png" href="assets/breather-icon.png">
+    <link rel="stylesheet" href="css/breather.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .privacy-content {
+            margin: var(--spacing-xxl) auto;
+            max-width: 800px;
+        }
+        .privacy-card {
+            padding: var(--spacing-xxl) var(--spacing-xl);
+        }
+        h2 {
+            font-size: 1.75rem;
+            margin-top: var(--spacing-xl);
+            margin-bottom: var(--spacing-md);
+            color: var(--primary);
+        }
+        ul {
+            margin-bottom: var(--spacing-lg);
+            padding-left: var(--spacing-xl);
+        }
+        li {
+            color: var(--textSecondary);
+            margin-bottom: var(--spacing-sm);
+        }
+        .last-updated {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: var(--spacing-xl);
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: var(--spacing-xl);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="glass-panel" style="border-radius: 0 0 24px 24px; border-top: none; border-left: none; border-right: none;">
+        <nav class="nav-bar">
+            <div class="logo"><a href="breather.html" style="color: inherit; text-decoration: none;">Breather</a></div>
+            <a href="breather.html" class="nav-link">Back to App Page</a>
+        </nav>
+    </header>
+
+    <main class="container privacy-content">
+        <div class="glass-card privacy-card">
+            <h1>Privacy Policy</h1>
+            <p class="last-updated">Last updated: June 1, 2026</p>
+
+            <p>
+                Breather ("the app") is a breathing guide that displays a floating bubble over
+                other apps on your device. This policy explains what information the app does and
+                does not handle. In short: <strong>Breather does not collect, store, or transmit
+                any personal data.</strong>
+            </p>
+
+            <h2>Information We Collect</h2>
+            <p>
+                None. Breather has no account system, no analytics, no advertising, and no
+                third-party tracking. The app does not send any information off your device.
+            </p>
+
+            <h2>Information Stored on Your Device</h2>
+            <p>
+                Breather saves your breathing preferences (inhale, hold, and exhale durations,
+                your selected breathing pattern, and theme choice) locally on your device so they
+                persist between sessions. This data never leaves your device and is removed when
+                you uninstall the app.
+            </p>
+
+            <h2>Permissions the App Requests</h2>
+            <p>
+                Breather requests a small number of Android permissions, used only to provide the
+                app's core functionality:
+            </p>
+            <ul>
+                <li>
+                    <strong>Display over other apps (SYSTEM_ALERT_WINDOW):</strong> required to show
+                    the breathing bubble on top of your other apps. The overlay only renders the
+                    breathing guide and does not read, capture, or interact with the content of any
+                    other app.
+                </li>
+                <li>
+                    <strong>Foreground service / notifications (FOREGROUND_SERVICE,
+                    FOREGROUND_SERVICE_SPECIAL_USE, POST_NOTIFICATIONS):</strong> required to keep the
+                    breathing overlay running reliably while you use other apps, and to show a
+                    notification (with a "Stop" action) while a session is active, as required by
+                    Android.
+                </li>
+                <li>
+                    <strong>Vibrate (VIBRATE):</strong> used for the optional gentle haptic tap on
+                    each breathing phase change.
+                </li>
+            </ul>
+
+            <h2>Children's Privacy</h2>
+            <p>
+                Breather does not collect data from anyone, including children. The app is suitable
+                for all ages and contains no ads or external links to user-generated content.
+            </p>
+
+            <h2>Changes to This Policy</h2>
+            <p>
+                If this policy changes, the updated version will be posted at this URL with a new
+                "Last updated" date.
+            </p>
+
+            <h2>Contact</h2>
+            <p>
+                Questions about this policy can be sent to
+                <a href="mailto:talkalisker@gmail.com" style="color: var(--primary);">talkalisker@gmail.com</a>.
+            </p>
+
+            <a href="breather.html" class="back-link">&larr; Back to home</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Talkalisker Developer Services. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

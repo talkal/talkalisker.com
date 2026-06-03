@@ -1,0 +1,199 @@
+/* Yoga Page Design System
+   Theme: Precision, Flow, Stillness (Vijnana)
+   Palette: Earthy, Light, Breathable */
+
+:root {
+    --yoga-bg: #F9F7F2;
+    /* Cream/Bone */
+    --yoga-text: #2C2C2C;
+    /* Soft Charcoal */
+    --yoga-accent: #7A8B7D;
+    /* Sage Green */
+    --yoga-accent-warm: #C27D63;
+    /* Terracotta */
+    --yoga-border: #E0DED8;
+
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+}
+
+[data-theme="dark"] {
+    --yoga-bg: #1a1a1a;
+    --yoga-text: #e0e0e0;
+    --yoga-accent: #9CAD9F;
+    /* Slightly lighter sage */
+    --yoga-accent-warm: #D48F75;
+    /* Lighter terracotta */
+    --yoga-border: #333;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: inherit;
+    font-size: 1.2rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+    margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+    opacity: 0.8;
+}
+
+body.yoga-body {
+    background-color: var(--yoga-bg);
+    color: var(--yoga-text);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+.serif {
+    font-family: var(--font-serif);
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--yoga-text);
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--yoga-accent);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    color: #4a4a4a;
+    /* Slightly softer for body text */
+    max-width: 700px;
+}
+
+/* Layout */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 6rem 0;
+    border-bottom: 1px solid var(--yoga-border);
+}
+
+section:last-of-type {
+    border-bottom: none;
+}
+
+/* Navigation Override for Yoga Page — inherits from .navbar in styles.css */
+.yoga-navbar {
+    background: rgba(249, 247, 242, 0.95);
+    border-bottom: 1px solid var(--yoga-border);
+}
+
+[data-theme="dark"] .yoga-navbar {
+    background: rgba(26, 26, 26, 0.95);
+}
+
+.yoga-navbar .logo {
+    color: var(--yoga-text);
+}
+
+.yoga-navbar .nav-link {
+    color: var(--yoga-accent);
+}
+
+.yoga-navbar .hamburger-bar {
+    background: var(--yoga-text);
+}
+
+/* Mobile drawer override */
+@media (max-width: 768px) {
+    .yoga-navbar .nav-links {
+        background: var(--yoga-bg);
+    }
+}
+
+
+.yoga-nav a:hover {
+    color: var(--yoga-accent-warm);
+}
+
+/* Hero */
+.hero-section {
+    text-align: center;
+    padding: 8rem 0;
+}
+
+.hero-sub {
+    font-family: var(--font-sans);
+    text-transform: lowercase;
+    letter-spacing: 0.2em;
+    color: var(--yoga-accent-warm);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* Curriculum Grid */
+.cv-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.cv-item {
+    margin-bottom: 2rem;
+}
+
+.cv-label {
+    text-transform: lowercase;
+    font-size: 0.8rem;
+    color: var(--yoga-accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+.yoga-footer {
+    background: #EFECE6;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .cv-grid {
+        grid-template-columns: 1fr;
+    }
+}

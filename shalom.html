@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>בואו נדבר על האתר שלכם</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon-dev.svg?v=2">
+    <link rel="icon" type="image/png" href="assets/favicon-dev.png?v=2">
+    <meta name="description"
+        content="בניית אתרי פרימיום לעסקים של ישראלים במדריד. תמשכו לקוחות חדשים עם אתר מהיר, מודרני ומקצועי.">
+    <!-- Open Graph for Social Sharing (WhatsApp, LinkedIn, etc.) -->
+    <meta property="og:title" content="בואו נדבר על האתר שלכם">
+    <meta property="og:description"
+        content="בניית אתרי פרימיום לעסקים של ישראלים במדריד. תמשכו לקוחות חדשים עם אתר מהיר, מודרני ומקצועי.">
+    <meta property="og:image" itemprop="image" content="https://talkalisker.com/assets/favicon-dev.png?v=2">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:url" content="https://talkalisker.com/shalom">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://talkalisker.com/assets/favicon-dev.png?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Adding a Hebrew-supporting font alongside standard fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;800&family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/services.css">
+    <style>
+        /* RTL Overrides */
+        body {
+            font-family: 'Assistant', 'Inter', sans-serif;
+            text-align: right;
+        }
+
+        .hero-title,
+        .hero-subtitle,
+        p,
+        h2,
+        h3,
+        h4 {
+            text-align: right;
+        }
+
+        .cta-box {
+            text-align: center;
+        }
+
+        .cta-box h2,
+        .cta-box p {
+            text-align: center;
+        }
+
+        .pricing-card {
+            text-align: right;
+        }
+
+        .pricing-features {
+            text-align: right;
+        }
+
+        /* Adjusting bullets for RTL */
+        .service-card li,
+        .pricing-features li {
+            padding-left: 0;
+            padding-right: 1.5rem;
+        }
+
+        .service-card li::before,
+        .pricing-features li::before {
+            left: auto;
+            right: 0;
+            content: "←" !important;
+            /* Flip arrow direction */
+        }
+
+        /* Adjusting original price margin */
+        .original-price {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+
+        .discount-badge {
+            background: rgba(184, 90, 68, 0.15);
+            color: var(--accent-developer);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1rem;
+            border: 1px dashed var(--accent-developer);
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: #fff !important;
+            border-color: #25D366 !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            padding: 1.2rem 2.5rem;
+            margin: 0 auto;
+            max-width: 400px;
+            flex-direction: row;
+            /* Match RTL flow */
+        }
+
+        .whatsapp-btn svg {
+            margin-left: 10px;
+            margin-right: 0;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1eb955;
+            border-color: #1eb955 !important;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            color: #fff !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" style="direction: ltr;">
+        <div class="container nav-inner">
+            <a href="index" class="logo"><img src="assets/talkalisker_logo.png" alt="Talkalisker Logo" class="logo-img">TalKalisker</a>
+            <div class="nav-links" id="nav-links">
+                <a href="developer" class="nav-link">חזרה ←</a>
+                <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle dark mode">☀︎</button>
+            </div>
+            <button class="hamburger" id="hamburger-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-services" style="min-height: 70vh;">
+        <div class="hero-bg-accent"></div>
+        <div class="container">
+            <div class="hero-subtitle">
+                <span>// הצעה בלעדית</span>
+                <span>// לישראלים במדריד</span>
+            </div>
+            <div class="hero-title-wrapper fade-in-up" style="animation-delay: 0.2s;">
+                <h1 class="hero-title" style="margin-top: 1rem; font-size: 3rem;">
+                    שלום!<br>
+                    אם אתם קוראים את זה,<br>
+                    <span style="color: var(--accent-developer);">אנחנו באותה קבוצה במדריד.</span>
+                </h1>
+            </div>
+            <p style="max-width: 600px; margin: 2rem 0; color: var(--text-secondary); font-size: 1.2rem; line-height: 1.6;"
+                class="fade-in-up" style="animation-delay: 0.4s;">
+                אני בונה <strong>אתרי פרימיום</strong> לעסקים ומותגים. תמשכו לקוחות חדשים עם אתר מהיר, מעוצב בקפידה,
+                ובנוי להמיר כניסות למכירות - במיוחד לישראלים שפותחים עסק בספרד.
+            </p>
+            <div class="fade-in-up" style="animation-delay: 0.6s;">
+                <a href="#contacto" class="btn"
+                    style="background: var(--accent-developer); color: #000; border-color: var(--accent-developer); padding: 1rem 2.5rem; font-size: 1rem;">
+                    בואו נדבר על הפרויקט שלכם
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section with Local Discount -->
+    <section id="pricing">
+        <div class="container">
+            <h4 class="section-label">
+                / תעריפים מיוחדים
+            </h4>
+            <h2>
+                מחירים שקופים.<br>
+                הנחת חברים מהקבוצה.
+            </h2>
+            <div class="pricing-grid">
+                <!-- Starter Tier -->
+                <div class="pricing-card">
+                    <div class="discount-badge">20% הנחה לחברי הקבוצה</div>
+                    <h3>עמוד נחיתה</h3>
+                    <p style="color: var(--text-secondary);">
+                        מושלם לקמפיינים ספציפיים ולמוצרים חדשים.
+                    </p>
+                    <div class="price">
+                        <span class="original-price">200€</span>160€<span> / פרויקט</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-left:0.5rem;display:inline-block;">+</span>
+                            עמוד גלילה ארוך (Landing Page)</li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-left:0.5rem;display:inline-block;">+</span>
+                            עיצוב רספונסיבי לנייד</li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-left:0.5rem;display:inline-block;">+</span>
+                            <strong>אחסון חינם ב-GitHub</strong>
+                        </li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-left:0.5rem;display:inline-block;">+</span>
+                            טופס יצירת קשר / לידים</li>
+                    </ul>
+                    <a href="#contacto" class="btn"
+                        style="margin-top: 1.5rem; width: 100%; display: block; text-align: center;">
+                        יאללה, בוא נדבר
+                    </a>
+                </div>
+
+                <!-- Pro Tier (Featured) -->
+                <div class="pricing-card featured">
+                    <div class="discount-badge" style="background: var(--accent-developer); color: #000; border: none;">
+                        20% הנחה לחברי הקבוצה</div>
+                    <h3>אתר תדמית (Standard Website)</h3>
+                    <p style="color: var(--text-secondary);">
+                        נוכחות דיגיטלית מלאה למותגים מקומיים בצמיחה.
+                    </p>
+                    <div class="price">
+                        <span class="original-price">500€</span>400€<span> / פרויקט</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-left:0.5rem;display:inline-block;">+</span>
+                            עד 5 עמודים</li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-left:0.5rem;display:inline-block;">+</span>
+                            <strong>אחסון מקצועי ב-GitHub Pages</strong>
+                        </li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-left:0.5rem;display:inline-block;">+</span>
+                            שילוב גוגל מפות</li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-left:0.5rem;display:inline-block;">+</span>
+                            אופטימיזציית SEO מקומית</li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-left:0.5rem;display:inline-block;">+</span>
+                            חודש של תמיכה ישירה</li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-left:0.5rem;display:inline-block;">+</span>
+                            <strong>אינטגרציית עברית/ספרדית</strong>
+                        </li>
+                    </ul>
+                    <a href="#contacto" class="btn"
+                        style="background: var(--accent-developer); color: #000; border-color: var(--accent-developer); margin-top: 1.5rem; width: 100%; display: block; text-align: center;">
+                        יאללה, בוא נדבר
+                    </a>
+                </div>
+
+                <!-- Custom App / Website Tier -->
+                <div class="pricing-card">
+                    <h3>אפליקציה / אתר בהתאמה אישית</h3>
+                    <p style="color: var(--text-secondary);">
+                        פתרונות תפורים אישית לדרישות מורכבות יותר.
+                    </p>
+                    <div class="price">
+                        משתנה<span> / פרויקט</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-left:0.5rem;display:inline-block;">+</span>
+                            עיצוב UI/UX מתקדם</li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-left:0.5rem;display:inline-block;">+</span>
+                            שילוב חנות אינטרנטית (E-commerce)</li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-left:0.5rem;display:inline-block;">+</span>
+                            פונקציונליות ייחודית צד-לקוח/שרת</li>
+                        <li><span
+                                style="color:var(--accent-developer);font-family:var(--font-mono);margin-left:0.5rem;display:inline-block;">+</span>
+                            תמיכה מועדפת (Priority)</li>
+                    </ul>
+                    <a href="#contacto" class="btn"
+                        style="margin-top: 1.5rem; width: 100%; display: block; text-align: center;">
+                        בקשת הצעת מחיר
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Architect Section -->
+    <section id="about" class="section-about">
+        <div class="container">
+            <!-- The Architect Trifecta -->
+            <div class="about-grid">
+                <div class="about-content">
+                    <h4 class="section-label">
+                        / האדריכל
+                    </h4>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">טל קליסקר</h2>
+                    <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.8;">
+                        אני לא רק בונה אתרים; אני מהנדס חוויות דיגיטליות שמגשרות על הפער שבין רגש אנושי לדיוק טכני.
+                    </p>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                        הגישה שלי מורכבת ממשולש של דיסציפלינות:
+                    </p>
+
+                    <div class="skill-bars">
+                        <div class="skill-item" style="margin-bottom: 1.5rem;">
+                            <div
+                                style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: var(--text-primary); font-family: var(--font-mono); font-size: 0.9rem;">
+                                <span>UX / UI עיצוב</span>
+                                <span style="color: var(--accent-developer);">
+                                    ממוקד במשתמש
+                                </span>
+                            </div>
+                            <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;">
+                                <div
+                                    style="height: 100%; width: 95%; background: var(--accent-developer); border-radius: 2px; box-shadow: 0 0 10px rgba(184, 90, 68, 0.3);">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" style="margin-bottom: 1.5rem;">
+                            <div
+                                style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: var(--text-primary); font-family: var(--font-mono); font-size: 0.9rem;">
+                                <span>קופירייטינג</span>
+                                <span style="color: var(--accent-writer);">
+                                    מהדהד רגשית
+                                </span>
+                            </div>
+                            <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;">
+                                <div
+                                    style="height: 100%; width: 90%; background: var(--accent-writer); border-radius: 2px; box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div
+                                style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: var(--text-primary); font-family: var(--font-mono); font-size: 0.9rem;">
+                                <span>
+                                    כתיבת קוד ידנית (HTML/CSS)
+                                </span>
+                                <span style="color: var(--accent-copywriter);">
+                                    יציבה וניתנת להרחבה
+                                </span>
+                            </div>
+                            <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;">
+                                <div
+                                    style="height: 100%; width: 100%; background: var(--accent-copywriter); border-radius: 2px; box-shadow: 0 0 10px rgba(255, 0, 85, 0.3);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-visual" style="position: relative;">
+                    <!-- Abstract representation of the 'Trifecta' -->
+                    <div
+                        style="width: 100%; max-width: 420px; margin: 0 auto; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; position: relative;">
+                        <svg viewBox="0 0 400 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                            style="direction: ltr;">
+                            <defs>
+                                <radialGradient id="gradLogic" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#6B8E23" stop-opacity="0.15" />
+                                    <stop offset="100%" stop-color="#6B8E23" stop-opacity="0.0" />
+                                </radialGradient>
+                                <radialGradient id="gradPassion" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#B85A44" stop-opacity="0.15" />
+                                    <stop offset="100%" stop-color="#B85A44" stop-opacity="0.0" />
+                                </radialGradient>
+                                <radialGradient id="gradNarrative" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#d4af37" stop-opacity="0.15" />
+                                    <stop offset="100%" stop-color="#d4af37" stop-opacity="0.0" />
+                                </radialGradient>
+                            </defs>
+
+                            <!-- Logic/Tech Circle (Top Left) -->
+                            <circle cx="160" cy="150" r="110" fill="url(#gradLogic)" stroke="#6B8E23" />
+
+                            <!-- Passion/Brand Circle (Top Right) -->
+                            <circle cx="240" cy="150" r="110" fill="url(#gradPassion)" stroke="#B85A44" />
+
+                            <!-- Narrative Circle (Bottom Center) -->
+                            <circle cx="200" cy="230" r="110" fill="url(#gradNarrative)" stroke="#d4af37" />
+
+                            <!-- Center Text -->
+                            <text x="200" y="180" font-family="var(--font-mono)" font-size="28" font-weight="800"
+                                fill="var(--text-primary)" text-anchor="middle" opacity="0.9"
+                                letter-spacing="-1px">TK</text>
+
+                            <!-- Labels -->
+                            <rect x="70" y="70" width="60" height="24" rx="4" fill="var(--bg-surface)" stroke="#6B8E23"
+                                stroke-width="1" stroke-opacity="0.5" />
+                            <text x="100" y="86" font-family="var(--font-mono)" font-size="10" fill="#6B8E23"
+                                text-anchor="middle" font-weight="600">לוגיקה</text>
+
+                            <rect x="270" y="70" width="60" height="24" rx="4" fill="var(--bg-surface)" stroke="#B85A44"
+                                stroke-width="1" stroke-opacity="0.5" />
+                            <text x="300" y="86" font-family="var(--font-mono)" font-size="10" fill="#B85A44"
+                                text-anchor="middle" font-weight="600">תשוקה</text>
+
+                            <rect x="160" y="320" width="80" height="24" rx="4" fill="var(--bg-surface)"
+                                stroke="#d4af37" stroke-width="1" stroke-opacity="0.5" />
+                            <text x="200" y="336" font-family="var(--font-mono)" font-size="10" fill="#d4af37"
+                                text-anchor="middle" font-weight="600">נרטיב</text>
+
+                            <!-- Intersection Labels (Subtle) -->
+                            <text x="200" y="112" font-family="var(--font-sans)" font-size="9"
+                                fill="var(--text-secondary)" text-anchor="middle" opacity="0.8">עיצוב UI/UX</text>
+
+                            <text x="145" y="210" font-family="var(--font-sans)" font-size="9" text-anchor="end"
+                                fill="var(--text-secondary)" opacity="0.8">
+                                <tspan x="145" dy="0">ארכיטקטורת</tspan>
+                                <tspan x="145" dy="12">תוכנה</tspan>
+                            </text>
+
+                            <text x="255" y="210" font-family="var(--font-sans)" font-size="9" text-anchor="start"
+                                fill="var(--text-secondary)" opacity="0.8">
+                                <tspan x="255" dy="0">קופירייטינג</tspan>
+                            </text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Process Section -->
+    <section id="process">
+        <div class="container">
+            <h4 class="section-label">
+                / התהליך
+            </h4>
+            <h2>
+                מהרעיון<br>
+                עד לשורת הקוד האחרונה.
+            </h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <h4>
+                        אפיון ותגלית (Discovery)
+                    </h4>
+                    <p>
+                        אנו מנתחים את קהל היעד, מטרות העסק והזהות הנוכחית כדי לבנות את האסטרטגיה המושלמת.
+                    </p>
+                </div>
+                <div class="process-step">
+                    <h4>
+                        מערכת עיצוב וזהות מותג
+                    </h4>
+                    <p>
+                        מתחילים ביצירת שפה חזותית ברורה הכוללת טיפוגרפיה, צבעים, ורכיבים התואמים בדיוק למותג שלך.
+                    </p>
+                </div>
+                <div class="process-step">
+                    <h4>
+                        פיתוח (Development)
+                    </h4>
+                    <p>
+                        ביצועי קוד כתיבת יד. בונים בעזרת <strong>HTML5, CSS3 ו-JavaScript</strong> כדי להבטיח שהאתר יהיה
+                        מהיר, מאובטח וקל לטעינה.
+                    </p>
+                </div>
+                <div class="process-step">
+                    <h4>
+                        השקה (Launch & Growth)
+                    </h4>
+                    <p>
+                        העלאה חלקה דרך <strong>GitHub Pages</strong> לאחסון חינמי ואמין. כולל בדיקת סיום של SEO. המוצר
+                        הדיגיטלי באוויר!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Direct Contact CTA -->
+    <section id="contacto" style="margin-bottom: 4rem;">
+        <div class="container">
+            <div class="cta-box" style="padding: 4rem 2rem;">
+                <h2>
+                    נמשיך לדבר בוואטסאפ?
+                </h2>
+                <p style="margin-bottom: 2.5rem; color: var(--text-secondary); font-size: 1.1rem;">
+                    תכתבו לי בלי התחייבות כדי לדבר על מה שהעסק שלכם צריך. אשמח לעזור.
+                </p>
+                <a href="https://wa.me/972587367906?text=היי טל! קראתי את העמוד בקבוצה ואשמח לשמוע פרטים על בניית אתר עם ההנחה."
+                    target="_blank" class="btn whatsapp-btn">
+                    <!-- WhatsApp SVG Icon -->
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                        </path>
+                    </svg>
+                    שלח.י הודעה ל- 058-736-7906
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-contact">
+        <div class="container">
+            <footer class="main-footer">
+                <p>&copy; 2026 Talkalisker. Built with precision.</p>
+            </footer>
+        </div>
+    </section>
+
+    <script src="js/nav.js"></script>
+    <script src="js/theme.js"></script>
+</body>
+
+</html>

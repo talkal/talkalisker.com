@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talkalisker | Authentic Web Design</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon-dev.svg?v=2">
+    <link rel="icon" type="image/png" href="assets/favicon-dev.png?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=DM+Sans:wght@400;500;700&family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <meta name="description"
+        content="Talkalisker - Creating your business' authentic digital presence through bespoke web design.">
+    <!-- Open Graph for Social Sharing (WhatsApp, LinkedIn, etc.) -->
+    <meta property="og:title" content="Talkalisker | Authentic Web Design">
+    <meta property="og:description"
+        content="Talkalisker - Creating your business' authentic digital presence through bespoke web design.">
+    <meta property="og:image" content="https://talkalisker.com/assets/favicon-dev.png">
+    <meta property="og:url" content="https://talkalisker.com/developer.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index" class="logo"><img src="assets/talkalisker_logo.png" alt="Talkalisker Logo" class="logo-img">TalKalisker</a>
+            <div class="nav-links" id="nav-links">
+                <!-- Developer specific nav items can go here if needed -->
+                <button id="lang-toggle" class="nav-link" aria-label="Toggle language"
+                    style="background: none; border: none; cursor: pointer; color: inherit; font-size: 0.9rem; font-weight: 600; padding: 0;">
+                    <span class="lang-en">es</span>
+                    <span class="lang-es">en</span>
+                </button>
+                <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle dark mode">☀︎</button>
+            </div>
+            <button class="hamburger" id="hamburger-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Developer Section Content -->
+    <section class="section-dev" style="padding-top: 8rem;">
+        <div class="container">
+            <!-- Hero Section -->
+            <div style="margin-bottom: 6rem; position: relative;">
+                <!-- Decorative element -->
+                <div
+                    style="position: absolute; top: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, var(--dev-card-border) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 0;">
+                </div>
+
+                <div style="position: relative; z-index: 1;">
+                    <h4 class="animate-on-scroll"
+                        style="font-family: var(--font-mono); color: var(--accent-developer); margin-bottom: 1rem; letter-spacing: 0.1em; text-transform: lowercase;">
+                        01. /web_presence</h4>
+                    <h1 class="animate-on-scroll delay-100" style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; line-height: 1.1;">
+                        <span class="lang-en">Creating Authentic<br>Digital Presences.</span>
+                        <span class="lang-es">Creando Presencias<br>Digitales Auténticas.</span>
+                    </h1>
+                    <p class="animate-on-scroll delay-200"
+                        style="max-width: 650px; margin-bottom: 2.5rem; color: var(--text-secondary); font-size: 1.125rem; line-height: 1.7;">
+                        <span class="lang-en">Building high-performance websites that capture the true essence of your business. Combining technical precision with elegant, custom-tailored design.</span>
+                        <span class="lang-es">Construyendo sitios web de alto rendimiento que capturan la verdadera esencia de tu negocio. Combinando precisión técnica con un diseño elegante a medida.</span>
+                    </p>
+
+                    <div class="animate-on-scroll delay-300" style="display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center;">
+                        <a href="developer-services" class="btn"
+                            style="background: var(--accent-developer); color: #000; border: none; font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 20px color-mix(in srgb, var(--accent-developer) 25%, transparent); padding: 1.1rem 2.25rem; border-radius: 6px;">
+                            <span class="lang-en">Explore Services</span><span class="lang-es">Explorar Servicios</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </a>
+                        <a href="#work" class="btn"
+                            style="background: transparent; border: 1px solid var(--border-subtle); color: var(--text-primary); display: inline-flex; align-items: center; gap: 0.5rem; padding: 1.1rem 2.25rem; border-radius: 6px;"
+                            onmouseover="this.style.borderColor='var(--text-primary)'; this.style.backgroundColor='var(--dev-card-bg)';"
+                            onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.backgroundColor='transparent';">
+                            <span class="lang-en">View Work</span><span class="lang-es">Ver Trabajos</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Overview (Top Priority) -->
+            <div style="margin-bottom: 8rem; position: relative;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem;">
+                    <div class="animate-on-scroll">
+                        <h2 style="font-size: 2.5rem; margin-bottom: 0.75rem;">
+                            <span class="lang-en">Digital Craftsmanship</span><span class="lang-es">Artesanía Digital</span>
+                        </h2>
+                        <p
+                            style="color: var(--text-secondary); max-width: 550px; font-size: 1.05rem; line-height: 1.6;">
+                            <span class="lang-en">Creating a premium digital presence that actually reflects your unique business and resonates with your true audience.</span>
+                            <span class="lang-es">Creando una presencia digital premium que refleja verdaderamente tu negocio único y resuena con tu audiencia.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <!-- Service 1 -->
+                    <a href="developer-services#web-dev" class="dev-service-card animate-on-scroll delay-100">
+                        <div class="dev-service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                <path d="M2 17l10 5 10-5" />
+                                <path d="M2 12l10 5 10-5" />
+                            </svg>
+                        </div>
+                        <h3
+                            style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.5rem; line-height: 1.3;">
+                            <span class="lang-en">Bespoke<br>Web Design</span>
+                            <span class="lang-es">Diseño Web<br>a Medida</span>
+                        </h3>
+                        <p
+                            style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2.5rem; flex-grow: 1;">
+                            <span class="lang-en">End-to-end creation of stunning websites tailored exactly to your brand's aesthetic and business objectives.</span>
+                            <span class="lang-es">Creación integral de sitios web cautivadores adaptados exactamente a la estética y objetivos de tu marca.</span>
+                        </p>
+                        <span
+                            style="color: var(--accent-developer); font-family: var(--font-mono); font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">
+                            <span class="lang-en">Details</span><span class="lang-es">Detalles</span>
+                            <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="transition: transform 0.3s ease;">
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <!-- Service 2 -->
+                    <a href="developer-services#ui-ux" class="dev-service-card animate-on-scroll delay-200">
+                        <div class="dev-service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                            </svg>
+                        </div>
+                        <h3
+                            style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.5rem; line-height: 1.3;">
+                            <span class="lang-en">Flawless<br>User Experience</span>
+                            <span class="lang-es">Experiencia<br>Impecable</span>
+                        </h3>
+                        <p
+                            style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2.5rem; flex-grow: 1;">
+                            <span class="lang-en">Fast, accessible, and deeply responsive interfaces designed specifically to turn your visitors into loyal clients.</span>
+                            <span class="lang-es">Interfaces rápidas, accesibles y plenamente responsivas diseñadas para convertir a tus visitantes en clientes.</span>
+                        </p>
+                        <span
+                            style="color: var(--accent-developer); font-family: var(--font-mono); font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">
+                            <span class="lang-en">Details</span><span class="lang-es">Detalles</span>
+                            <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="transition: transform 0.3s ease;">
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <!-- Service 3 -->
+                    <a href="developer-services#consulting" class="dev-service-card animate-on-scroll delay-300">
+                        <div class="dev-service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                                <line x1="12" y1="22.08" x2="12" y2="12" />
+                            </svg>
+                        </div>
+                        <h3
+                            style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.5rem; line-height: 1.3;">
+                            <span class="lang-en">Brand & Tech<br>Strategy</span>
+                            <span class="lang-es">Estrategia<br>Digital</span>
+                        </h3>
+                        <p
+                            style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2.5rem; flex-grow: 1;">
+                            <span class="lang-en">Deep dives into your brand identity to build a unified strategy for SEO, performance, and conversion.</span>
+                            <span class="lang-es">Inmersión profunda en tu identidad de marca para construir una estrategia unificada de posicionamiento y conversión.</span>
+                        </p>
+                        <span
+                            style="color: var(--accent-developer); font-family: var(--font-mono); font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">
+                            <span class="lang-en">Details</span><span class="lang-es">Detalles</span>
+                            <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="transition: transform 0.3s ease;">
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Featured Work (Proof of capability) -->
+            <div id="work" style="margin-bottom: 4rem; scroll-margin-top: 100px;">
+                <h3 class="animate-on-scroll"
+                    style="margin-bottom: 2rem; color: var(--accent-developer); font-family: var(--font-mono); font-size: 1rem; letter-spacing: 0.1em; text-transform: lowercase;">
+                    <span class="lang-en">&lt;success_stories /&gt;</span>
+                    <span class="lang-es">&lt;casos_de_éxito /&gt;</span>
+                </h3>
+
+                <!-- Breather -->
+                <div class="animate-on-scroll delay-100" style="background: var(--dev-card-bg); padding: 3rem; border-radius: 16px; border: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-start; transition: all 0.4s ease; position: relative; overflow: hidden; margin-bottom: 2rem;"
+                    onmouseover="this.style.borderColor='var(--dev-card-border-hover)'; this.style.background='var(--dev-card-hover-bg)';"
+                    onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.background='var(--dev-card-bg)';">
+
+                    <div
+                        style="position: absolute; right: -50px; bottom: -50px; width: 250px; height: 250px; background: radial-gradient(circle, var(--dev-card-border) 0%, transparent 60%); border-radius: 50%; pointer-events: none;">
+                    </div>
+
+                    <div style="position: relative; z-index: 1;">
+                        <h2 style="margin-bottom: 0.75rem; font-size: 2.5rem; letter-spacing: -0.02em;">Breather
+                        </h2>
+                        <p
+                            style="color: var(--text-secondary); font-size: 1.125rem; max-width: 600px; line-height: 1.6;">
+                            <span class="lang-en">A persistent breathing guide that floats over any feed to break the dopamine loop without closing your apps. Regulation over restriction.</span>
+                            <span class="lang-es">Una guía de respiración persistente que flota sobre cualquier feed para romper el ciclo de dopamina sin cerrar tus aplicaciones. Regulación sobre restricción.</span>
+                        </p>
+                    </div>
+
+                    <div
+                        style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 0.5rem 0 0.5rem 0; position: relative; z-index: 1;">
+                        <span class="dev-tag">HTML5</span>
+                        <span class="dev-tag">Canvas</span>
+                        <span class="dev-tag">UI/UX</span>
+                    </div>
+
+                    <a href="breather.html" class="btn"
+                        style="background: transparent; color: var(--accent-developer); border: 1px solid var(--accent-developer); display: inline-flex; align-items: center; gap: 0.5rem; border-radius: 6px; position: relative; z-index: 1; margin-top: 1rem;"
+                        onmouseover="this.style.background='var(--accent-developer)'; this.style.color='#000';"
+                        onmouseout="this.style.background='transparent'; this.style.color='var(--accent-developer)';">
+                        <span class="lang-en">View Landing Page</span><span class="lang-es">Ver Landing Page</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="animate-on-scroll delay-100" style="background: var(--dev-card-bg); padding: 3rem; border-radius: 16px; border: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-start; transition: all 0.4s ease; position: relative; overflow: hidden;"
+                    onmouseover="this.style.borderColor='var(--dev-card-border-hover)'; this.style.background='var(--dev-card-hover-bg)';"
+                    onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.background='var(--dev-card-bg)';">
+
+                    <!-- Decorative background element -->
+                    <div
+                        style="position: absolute; right: -50px; bottom: -50px; width: 250px; height: 250px; background: radial-gradient(circle, var(--dev-card-border) 0%, transparent 60%); border-radius: 50%; pointer-events: none;">
+                    </div>
+
+                    <div style="position: relative; z-index: 1;">
+                        <h2 style="margin-bottom: 0.75rem; font-size: 2.5rem; letter-spacing: -0.02em;">Tortilleando
+                        </h2>
+                        <p
+                            style="color: var(--text-secondary); font-size: 1.125rem; max-width: 600px; line-height: 1.6;">
+                            <span class="lang-en">A comprehensive, high-performance platform for finding, rating, and
+                                reviewing the best
+                                Tortilla de Patatas across Spain. Built with a focus on speed, responsive design, and
+                                intuitive UX.</span>
+                            <span class="lang-es">Una plataforma integral y de alto rendimiento para encontrar, valorar
+                                y reseñar las mejores Tortillas de Patatas en toda España. Construida con enfoque en la
+                                velocidad, diseño responsivo y UX intuitiva.</span>
+                        </p>
+                    </div>
+
+                    <div
+                        style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 0.5rem 0 0.5rem 0; position: relative; z-index: 1;">
+                        <span class="dev-tag">Node.js</span>
+                        <span class="dev-tag">Express</span>
+                        <span class="dev-tag">UI/UX</span>
+                    </div>
+
+                    <a href="Tortilleando/" class="btn"
+                        style="background: transparent; color: var(--accent-developer); border: 1px solid var(--accent-developer); display: inline-flex; align-items: center; gap: 0.5rem; border-radius: 6px; position: relative; z-index: 1; margin-top: 1rem;"
+                        onmouseover="this.style.background='var(--accent-developer)'; this.style.color='#000';"
+                        onmouseout="this.style.background='transparent'; this.style.color='var(--accent-developer)';">
+                        <span class="lang-en">View Live Project</span><span class="lang-es">Ver Proyecto en Vivo</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-contact animate-on-scroll">
+        <div class="container">
+            <div class="contact-links">
+                <a href="mailto:talkalisker@gmail.com" class="contact-link email">
+                    <span class="lang-en">Email</span><span class="lang-es">Correo</span>
+                </a>
+                <a href="https://www.linkedin.com/in/tal-kalisker-9b60a9142/" target="_blank"
+                    class="contact-link linkedin"><span>LinkedIn</span></a>
+                <a href="https://github.com/talkalisker" target="_blank" class="contact-link"><span>GitHub</span></a>
+            </div>
+            <footer class="main-footer">
+                <p>
+                    <span class="lang-en">&copy; 2026 Talkalisker. Built with precision.</span>
+                    <span class="lang-es">&copy; 2026 Talkalisker. Construido con precisión.</span>
+                </p>
+            </footer>
+        </div>
+    </section>
+
+    <script src="js/animations.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/lang.js"></script>
+    <script>
+        window.updateDocumentMetaDev = function(lang) {
+            if (lang === 'es') {
+                document.title = 'Talkalisker | Diseño Web Auténtico';
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) metaDesc.content = "Talkalisker - Creando la auténtica presencia digital de tu negocio a través del diseño web a medida.";
+            } else {
+                document.title = 'Talkalisker | Authentic Web Design';
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) metaDesc.content = "Talkalisker - Creating your business' authentic digital presence through bespoke web design.";
+            }
+        };
+    </script>
+</body>
+
+</html>
+
+
