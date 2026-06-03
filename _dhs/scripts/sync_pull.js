@@ -34,32 +34,15 @@ try {
         stashed = true;
     }
 
-    // 2. Discard generated client files to prevent pull conflicts
-    console.log(`[CLEAN] Restoring clients folder...`);
-    runCmd('git restore clients/');
-
-    // 3. Pull latest remote commits
+    // 2. Pull latest remote commits
     console.log(`[PULL] Fetching and merging remote updates...`);
     runCmd('git pull');
 
-    // 4. Rebuild all HTML deliverables
-    console.log(`[BUILD] Rebuilding all deliverables with new templates/metadata...`);
+    // 3. Rebuild all HTML deliverables locally
+    console.log(`[BUILD] Rebuilding all deliverables...`);
     execSync(`node "${buildScript}"`, { cwd: path.join(__dirname, '../'), stdio: 'inherit' });
 
-    // 5. Stage generated HTML files
-    console.log(`[STAGE] Staging built client deliverables...`);
-    runCmd('git add clients/');
-
-    // 6. Commit if changes exist
-    const stagedStatus = runCmd('git status --porcelain clients/');
-    if (stagedStatus.length > 0) {
-        console.log(`[COMMIT] Committing updated deliverables...`);
-        runCmd('git commit -m "chore(dhs): automatic deliverables compile rebuild"');
-    } else {
-        console.log(`[INFO] No deliverable changes to commit.`);
-    }
-
-    // 7. Restore local changes
+    // 4. Restore local changes
     if (stashed) {
         console.log(`[UNSTASH] Restoring stashed drafts...`);
         runCmd('git stash pop');

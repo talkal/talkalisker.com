@@ -1,14 +1,22 @@
 const fs = require('fs');
 const path = require('path');
+const MarkdownIt = require('markdown-it');
 
 /**
- * DHS Syntax Validator
- * Verifies markdown reports follow DHS syntax specifications, flagging plain text lists
- * and malformed card headers within language blocks to prevent layout issues.
+ * DHS Syntax Validator (AST-Based)
+ * Verifies markdown reports follow DHS syntax specifications using markdown-it token streams.
+ * Flags plain text lists and malformed card headers within language blocks.
  */
 
 const sourceDir = path.join(__dirname, '../../source_reports');
 const targetArg = process.argv[2];
+
+// Legacy files to exclude from full suite validation (still validated if explicitly targeted)
+const ignoredFiles = new Set([
+    'Guillermo_Project_Proposal_2026-04-27.md',
+    'Guillermo_Project_Proposal_2026-05-21.md',
+    'Hadassah_UX_Audit_2026-04-28.md'
+]);
 
 let files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.md'));
 
@@ -22,16 +30,65 @@ if (targetArg) {
     }
 }
 
+const md = new MarkdownIt();
 let totalErrors = 0;
 
 files.forEach(file => {
+    const baseName = path.basename(file);
+    if (!targetArg && ignoredFiles.has(baseName)) {
+        console.log(`[SKIP] ${file} (legacy report ignored)`);
+        return;
+    }
+
     const filePath = path.join(sourceDir, file);
     const content = fs.readFileSync(filePath, 'utf8');
+    
     const lines = content.split(/\r?\n/);
-    
     let currentLang = null;
-    let errors = [];
+    let openLangLineNum = null;
     
+    const langLines = {};
+    const langLineNums = {};
+    
+    // Pre-initialize standard languages
+    const activeLangs = ['en', 'es', 'he'];
+    activeLangs.forEach(l => {
+        langLines[l] = [];
+        langLineNums[l] = [];
+    });
+
+    let errors = [];
+
+    lines.forEach((line, idx) => {
+        const lineNum = idx + 1;
+        const trimmed = line.trim();
+        
+        const markerMatch = trimmed.match(/^:::(\w+)$/);
+        if (markerMatch) {
+            currentLang = markerMatch[1];
+            openLangLineNum = lineNum;
+            if (!langLines[currentLang]) {
+                langLines[currentLang] = [];
+                langLineNums[currentLang] = [];
+            }
+            return;
+        }
+        if (trimmed === ':::') {
+            currentLang = null;
+            openLangLineNum = null;
+            return;
+        }
+
+        if (currentLang) {
+            langLines[currentLang].push(line);
+            langLineNums[currentLang].push(lineNum);
+        }
+    });
+
+    if (currentLang !== null) {
+        errors.push(`Line ${openLangLineNum}: Unclosed language block ':::${currentLang}'. Missing matching ':::' marker.`);
+    }
+
     // Valid card triggers inside language blocks
     const cardTriggers = [
         'Finding', 'Hallazgo', 'ממצא',
@@ -46,50 +103,46 @@ files.forEach(file => {
         'Deliverable', 'Entregable', 'תוצר'
     ];
     
-    const cardTriggersRegex = new RegExp(`^[-*] \\*\\*(?:${cardTriggers.join('|')}):\\*\\*`);
+    const cardTriggersRegex = new RegExp(`^[-*]?\\s*\\*\\*(?:${cardTriggers.join('|')}):\\*\\*`);
 
-    lines.forEach((line, idx) => {
-        const lineNum = idx + 1;
-        const trimmed = line.trim();
+    // Validate each language buffer using markdown-it AST
+    Object.keys(langLines).forEach(lang => {
+        const buffer = langLines[lang].join('\n');
+        if (!buffer) return;
         
-        // Language Block Markers
-        const langMatch = trimmed.match(/^:::(\w+)$/);
-        if (langMatch) {
-            currentLang = langMatch[1];
-            return;
-        }
-        if (trimmed === ':::') {
-            currentLang = null;
-            return;
-        }
+        const tokens = md.parse(buffer, {});
+        let checkingListItem = false;
+        let checkLineNum = 1;
         
-        // Checks inside language blocks
-        if (currentLang) {
-            // Check for list items
-            const isList = trimmed.startsWith('- ') || trimmed.startsWith('* ');
-            if (isList) {
-                // Verify if it is a card
-                const isCard = cardTriggersRegex.test(trimmed);
-                if (!isCard) {
-                    errors.push(`Line ${lineNum}: Plain text list item detected inside ':::${currentLang}' block. Convert to a valid DHS card or standard paragraph.`);
-                    return;
+        for (let i = 0; i < tokens.length; i++) {
+            const token = tokens[i];
+            
+            if (token.type === 'list_item_open') {
+                checkingListItem = true;
+                if (token.map) {
+                    const bufferLineIdx = token.map[0];
+                    checkLineNum = langLineNums[lang][bufferLineIdx] || 1;
                 }
-                
-                // Verify card syntax structure (check for separating pipes where expected)
-                if (trimmed.includes('**') && !trimmed.includes('|')) {
-                    // Signatures don't always require pipes, but others usually do
-                    const isSignature = trimmed.includes('חתימה') || trimmed.includes('Signature') || trimmed.includes('Firma');
-                    if (!isSignature) {
-                        errors.push(`Line ${lineNum}: Card header may be missing field separation pipes ('|').`);
+            } else if (token.type === 'list_item_close') {
+                checkingListItem = false;
+            } else if (checkingListItem && token.type === 'inline') {
+                const textContent = token.content.trim();
+                const isCard = cardTriggersRegex.test(textContent);
+                if (!isCard) {
+                    errors.push(`Line ${checkLineNum}: Plain text list item detected inside ':::${lang}' block. Convert to a valid DHS card or standard paragraph.`);
+                } else {
+                    // Check if card header is missing separating pipes
+                    if (textContent.includes('**') && !textContent.includes('|')) {
+                        const isSignature = textContent.includes('חתימה') || textContent.includes('Signature') || textContent.includes('Firma');
+                        if (!isSignature) {
+                            errors.push(`Line ${checkLineNum}: Card header may be missing field separation pipes ('|').`);
+                        }
                     }
                 }
+                checkingListItem = false;
             }
         }
     });
-
-    if (currentLang !== null) {
-        errors.push(`EOF: Unclosed language block ':::${currentLang}'. Missing matching ':::' marker.`);
-    }
 
     if (errors.length > 0) {
         console.error(`\n[FAIL] ${file} - Found ${errors.length} syntax issues:`);

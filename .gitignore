@@ -5,3 +5,6 @@ tools/
 # Obsidian
 .obsidian/
 
+# Compiled Clients Portals
+clients/
+
