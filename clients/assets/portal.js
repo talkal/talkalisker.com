@@ -36,7 +36,7 @@
             const cards = document.querySelectorAll('.signature-card');
             cards.forEach(card => {
                 const roleEl = card.querySelector('.signature-role');
-                const role = roleEl ? roleEl.innerText.trim() : 'unknown';
+                const role = roleEl ? roleEl.textContent.trim() : 'unknown';
                 const sigId = `sig_${reportId}_${role}`.replace(/\s+/g, '_');
                 const savedSig = localStorage.getItem(sigId);
                 if (savedSig) {
@@ -75,7 +75,7 @@
             const cards = document.querySelectorAll('.signature-card');
             cards.forEach(card => {
                 const roleEl = card.querySelector('.signature-role');
-                const cardRole = roleEl ? roleEl.innerText.trim() : 'unknown';
+                const cardRole = roleEl ? roleEl.textContent.trim() : 'unknown';
                 
                 if (sigData.role === cardRole || sigData.role === 'unknown' || !sigData.role) {
                     const line = card.querySelector('.signature-line');
