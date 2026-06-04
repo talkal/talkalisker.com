@@ -765,19 +765,41 @@ async function publish(markdownPath, outputDir) {
         await page.goto('file://' + indexPath, { waitUntil: 'networkidle0' });
         
         if (isProtected) {
-            // Wait for lock screen and crypto-js to load
+            // Wait for CryptoJS (CDN) — don't wait for portal.js (defer), call CryptoJS inline instead
             await page.waitForSelector('#auth-key');
             await page.waitForFunction('typeof CryptoJS !== "undefined"');
-            
-            // Use evaluate instead of type/click to avoid dropped characters in headless CI
-            await page.evaluate((pass) => {
-                document.getElementById('auth-key').value = pass;
-                attemptDecrypt();
+
+            // Inline the decryption — avoids ReferenceError when portal.js defer hasn't executed yet
+            const decrypted = await page.evaluate((pass) => {
+                const ciphertext = document.getElementById('encrypted-payload').textContent.slice(1, -1);
+                try {
+                    const bytes = CryptoJS.AES.decrypt(ciphertext, pass);
+                    const str = bytes.toString(CryptoJS.enc.Utf8);
+                    if (!str) return null;
+                    return JSON.parse(str);
+                } catch (e) {
+                    return null;
+                }
             }, resolvedPassword.toString());
-            
-            // Wait for decryption
-            await page.waitForSelector('#decrypted-content', { visible: true });
-            // Wait a moment for rendering
+
+            if (!decrypted) throw new Error('Inline decryption failed — wrong password or corrupt payload');
+
+            // Inject decrypted HTML into the page so Puppeteer can render it as PDF
+            await page.evaluate((payload) => {
+                const lockScreen = document.getElementById('lock-screen');
+                if (lockScreen) lockScreen.style.display = 'none';
+                const container = document.getElementById('decrypted-content');
+                if (container) {
+                    container.innerHTML = `
+                        <div class="lang-block" lang="en">${payload.content_en || ''}</div>
+                        <div class="lang-block" lang="es" style="display:none;">${payload.content_es || ''}</div>
+                        <div class="lang-block" lang="he" style="display:none;">${payload.content_he || ''}</div>
+                    `;
+                    container.style.display = 'block';
+                }
+            }, decrypted);
+
+            // Brief render settle
             await new Promise(r => setTimeout(r, 1000));
         }
 
