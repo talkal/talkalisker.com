@@ -435,6 +435,112 @@
                 }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
                 headings.forEach(h => spy.observe(h));
             }
+            
+            initCommenting();
+        }
+
+        async function getStableBlockId(el) {
+            const text = el.innerText.trim().substring(0, 100);
+            const msgBuffer = new TextEncoder().encode(text);
+            const hashBuffer = await crypto.subtle.digest('SHA-1', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return 'block_' + hashArray.map(b => b.toString(16).padStart(2, '0')).join('').substring(0, 10);
+        }
+
+        async function fetchComments() {
+            if (!supabaseClient) return;
+            const reportId = document.title.split(' | ')[0];
+            const { data, error } = await supabaseClient
+                .from('comments')
+                .select('*')
+                .eq('report_id', reportId)
+                .order('created_at', { ascending: true });
+            if (error) { console.error('Error fetching comments:', error); return; }
+            
+            data.forEach(comment => {
+                const thread = document.getElementById(comment.block_id + '_thread');
+                if (thread) {
+                    const date = new Date(comment.created_at).toLocaleString();
+                    const item = document.createElement('div');
+                    item.className = 'comment-item';
+                    item.innerHTML = `
+                        <div class="comment-meta">
+                            <span class="comment-author">${comment.client_name}</span>
+                            <span>${date}</span>
+                        </div>
+                        <div class="comment-text">${comment.comment_text}</div>
+                    `;
+                    thread.insertBefore(item, thread.querySelector('.comment-form'));
+                }
+            });
+        }
+
+        async function submitComment(blockId, text, btn) {
+            if (!supabaseClient || !text.trim()) return;
+            btn.disabled = true;
+            btn.textContent = 'Posting...';
+            const reportId = document.title.split(' | ')[0];
+            const name = localStorage.getItem('client_name') || 'Client';
+            
+            const { data, error } = await supabaseClient
+                .from('comments')
+                .insert([{ report_id: reportId, block_id: blockId, client_name: name, comment_text: text }])
+                .select();
+                
+            if (error) {
+                alert("Failed to post comment.");
+            } else if (data && data.length > 0) {
+                const comment = data[0];
+                const thread = document.getElementById(blockId + '_thread');
+                const date = new Date(comment.created_at).toLocaleString();
+                const item = document.createElement('div');
+                item.className = 'comment-item';
+                item.innerHTML = `
+                    <div class="comment-meta">
+                        <span class="comment-author">${comment.client_name}</span>
+                        <span>${date}</span>
+                    </div>
+                    <div class="comment-text">${comment.comment_text}</div>
+                `;
+                thread.insertBefore(item, thread.querySelector('.comment-form'));
+                thread.querySelector('textarea').value = '';
+            }
+            btn.disabled = false;
+            btn.textContent = 'Post Comment';
+        }
+
+        async function initCommenting() {
+            const blocks = document.querySelectorAll('.finding-card, .action-card, .proposal-card, .deliverable-card');
+            for (const el of blocks) {
+                if (el.querySelector('.comment-toggle-btn')) continue;
+                
+                const blockId = await getStableBlockId(el);
+                
+                const btn = document.createElement('button');
+                btn.className = 'comment-toggle-btn';
+                btn.title = 'Add Comment';
+                btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> <span>Discuss</span>`;
+                
+                const thread = document.createElement('div');
+                thread.id = blockId + '_thread';
+                thread.className = 'comment-thread-container';
+                thread.innerHTML = `
+                    <div class="comment-form">
+                        <textarea placeholder="Type your comment..."></textarea>
+                        <button onclick="submitComment('${blockId}', this.previousElementSibling.value, this)">Post Comment</button>
+                    </div>
+                `;
+                
+                btn.addEventListener('click', () => {
+                    thread.classList.toggle('open');
+                    if (thread.classList.contains('open')) thread.querySelector('textarea').focus();
+                });
+                
+                el.appendChild(btn);
+                el.appendChild(thread);
+            }
+            
+            fetchComments();
         }
 
         let searchOriginalContentMap = new Map();
