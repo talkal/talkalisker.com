@@ -331,14 +331,32 @@
         [lang="he"] .comment-toggle-btn { right: auto; left: 1rem; }
 
         .comment-thread-container {
-            margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px dashed var(--border-subtle);
-            display: none; animation: langFadeIn 0.2s ease-out;
+            position: absolute; right: -320px; top: 0; width: 300px;
+            background: var(--bg-surface); border: 1px solid var(--border-subtle);
+            border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 1rem; display: none; animation: langFadeIn 0.2s ease-out; z-index: 50;
         }
         .comment-thread-container.open { display: block; }
         
+        .client-highlight { background-color: rgba(184, 90, 68, 0.4); color: inherit; border-radius: 2px; cursor: pointer; }
+        .client-highlight:hover { background-color: rgba(184, 90, 68, 0.6); }
+
+        .floating-selection-btn {
+            position: absolute; background: var(--bg-surface); border: 1px solid var(--border-subtle);
+            border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 1000; color: var(--text-primary);
+            transition: transform 0.2s; transform: translate(-50%, -100%); margin-top: -10px;
+        }
+        .floating-selection-btn:hover { transform: translate(-50%, -100%) scale(1.1); color: var(--accent); }
+
+        @media (max-width: 1300px) {
+            .comment-thread-container { position: static; width: 100%; margin-top: 1rem; box-shadow: none; border-color: transparent; padding: 0; border-top: 1px dashed var(--border-subtle); }
+            [lang="he"] .comment-thread-container { position: static; }
+        }
+        
         .comment-item {
-            background: rgba(0,0,0,0.2); border-left: 2px solid var(--accent);
-            padding: 1rem; border-radius: 0 8px 8px 0; margin-bottom: 1rem;
+            background: rgba(255,255,255,0.03); border-left: 2px solid var(--accent);
+            padding: 0.75rem; border-radius: 0 8px 8px 0; margin-bottom: 0.75rem;
         }
         [lang="he"] .comment-item { border-left: none; border-right: 2px solid var(--accent); border-radius: 8px 0 0 8px; }
         
