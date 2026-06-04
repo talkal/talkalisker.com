@@ -4,6 +4,43 @@
             const SUPABASE_KEY = 'sb_publishable_c9qIfHryD8QI-adbltinYQ_DGNFblET';
             if (window.supabase) {
                 supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+                
+                // Magic Link Auto-Sign Listener
+                supabaseClient.auth.onAuthStateChange(async (event, session) => {
+                    if (event === 'SIGNED_IN' && session) {
+                        const reportId = document.title.split(' | ')[0];
+                        const pendingSigJson = localStorage.getItem('pending_sig_' + reportId);
+                        if (pendingSigJson) {
+                            localStorage.removeItem('pending_sig_' + reportId);
+                            try {
+                                const pending = JSON.parse(pendingSigJson);
+                                const hash = await generateDocumentHash();
+                                const ip = await getIpAddress();
+                                
+                                const { data, error } = await supabaseClient
+                                    .from('signatures')
+                                    .insert([{
+                                        report_id: reportId,
+                                        client_name: pending.name,
+                                        role: pending.role,
+                                        email: pending.email,
+                                        ip_address: ip,
+                                        user_agent: navigator.userAgent,
+                                        document_hash: hash
+                                    }])
+                                    .select();
+
+                                if (error) throw error;
+                                if (data && data.length > 0) lockSignatureCard(data[0]);
+                                
+                                // Clean up session to prevent lingering auth state
+                                supabaseClient.auth.signOut();
+                            } catch (err) {
+                                console.error("Auto-signature failed:", err);
+                            }
+                        }
+                    }
+                });
             } else {
                 console.warn('supabaseClient not loaded. Signatures will be disabled.');
             }
@@ -291,10 +328,10 @@
             
             line.innerHTML = `
                 <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; text-align: left; padding: 10px 0;">
-                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Enter details to verify signature:</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Enter details to receive a secure signing link:</div>
                     <input type="text" id="sig-name" placeholder="Full Legal Name" style="padding: 10px; border-radius: 4px; border: 1px solid var(--border-subtle); background: var(--bg-core); color: var(--text-primary); font-family: var(--font-mono); width: 100%; box-sizing: border-box;">
                     <input type="email" id="sig-email" placeholder="Email Address" style="padding: 10px; border-radius: 4px; border: 1px solid var(--border-subtle); background: var(--bg-core); color: var(--text-primary); font-family: var(--font-mono); width: 100%; box-sizing: border-box;">
-                    <button onclick="requestOtp(this.closest('.signature-card'))" style="padding: 10px; border-radius: 4px; border: none; background: var(--accent); color: white; cursor: pointer; font-weight: bold; width: 100%;">Send Security Code</button>
+                    <button onclick="requestMagicLink(this.closest('.signature-card'))" style="padding: 10px; border-radius: 4px; border: none; background: var(--accent); color: white; cursor: pointer; font-weight: bold; width: 100%;">Send Secure Link</button>
                 </div>
             `;
             line.style.height = 'auto';
@@ -302,7 +339,7 @@
             line.style.opacity = '1';
         }
 
-        async function requestOtp(card) {
+        async function requestMagicLink(card) {
             const name = card.querySelector('#sig-name').value.trim();
             const email = card.querySelector('#sig-email').value.trim();
             if (!name || !email) return alert("Please enter both name and email.");
@@ -311,74 +348,39 @@
             btn.innerText = 'Sending...';
             btn.disabled = true;
 
-            const { data, error } = await supabaseClient.auth.signInWithOtp({ email });
+            const reportId = document.title.split(' | ')[0];
+            localStorage.setItem('pending_sig_' + reportId, JSON.stringify({
+                name, email, role: window.currentlySigningRole || 'unknown'
+            }));
+            
+            const key = window._portalDecryptKey || (document.getElementById('auth-key') ? document.getElementById('auth-key').value : null);
+            if (key) localStorage.setItem('temp_decrypt_key_' + reportId, key);
+
+            const { data, error } = await supabaseClient.auth.signInWithOtp({ 
+                email,
+                options: {
+                    emailRedirectTo: window.location.href
+                }
+            });
+            
             if (error) {
-                alert("Error sending code: " + error.message);
-                btn.innerText = 'Send Security Code';
+                alert("Error sending link: " + error.message);
+                btn.innerText = 'Send Secure Link';
                 btn.disabled = false;
                 return;
             }
 
             const line = card.querySelector('.signature-line');
-            line.dataset.name = name;
-            line.dataset.email = email;
             line.innerHTML = `
                 <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; text-align: left; padding: 10px 0;">
-                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Enter 6-digit code sent to ${email}:</div>
-                    <input type="text" id="sig-code" placeholder="000000" style="padding: 10px; border-radius: 4px; border: 1px solid var(--border-subtle); background: var(--bg-core); color: var(--text-primary); font-family: var(--font-mono); width: 100%; box-sizing: border-box; text-align: center; font-size: 1.5rem; letter-spacing: 5px;">
-                    <button onclick="verifyOtp(this.closest('.signature-card'))" style="padding: 10px; border-radius: 4px; border: none; background: var(--accent); color: white; cursor: pointer; font-weight: bold; width: 100%;">Verify & Sign</button>
+                    <div style="font-size: 0.85rem; color: var(--accent); font-weight: bold;">
+                        ✉ Secure link sent to ${email}
+                    </div>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4;">
+                        Check your inbox. Clicking the link will instantly apply your signature.
+                    </div>
                 </div>
             `;
-        }
-
-        async function verifyOtp(card) {
-            const code = card.querySelector('#sig-code').value.trim();
-            if (!code) return;
-
-            const line = card.querySelector('.signature-line');
-            const name = line.dataset.name;
-            const email = line.dataset.email;
-
-            const btn = card.querySelector('button');
-            btn.innerText = 'Verifying...';
-            btn.disabled = true;
-
-            const { data: authData, error: authErr } = await supabaseClient.auth.verifyOtp({ email, token: code, type: 'email' });
-            
-            if (authErr) {
-                alert("Invalid code: " + authErr.message);
-                btn.innerText = 'Verify & Sign';
-                btn.disabled = false;
-                return;
-            }
-
-            btn.innerText = 'Securing...';
-            try {
-                const reportId = document.title.split(' | ')[0];
-                const hash = await generateDocumentHash();
-                const ip = await getIpAddress();
-                
-                const { data, error } = await supabaseClient
-                    .from('signatures')
-                    .insert([{
-                        report_id: reportId,
-                        client_name: name,
-                        role: window.currentlySigningRole || 'unknown',
-                        email: email,
-                        ip_address: ip,
-                        user_agent: navigator.userAgent,
-                        document_hash: hash
-                    }])
-                    .select();
-
-                if (error) throw error;
-                if (data && data.length > 0) lockSignatureCard(data[0]);
-            } catch (err) {
-                console.error("Signature failed:", err);
-                alert("Database error: " + err.message);
-                btn.innerText = 'Verify & Sign';
-                btn.disabled = false;
-            }
         }
 
         function attemptDecrypt() {
@@ -871,6 +873,15 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            const reportId = document.title.split(' | ')[0];
+            const tempKey = localStorage.getItem('temp_decrypt_key_' + reportId);
+            if (tempKey && document.getElementById('auth-key')) {
+                document.getElementById('auth-key').value = tempKey;
+                attemptDecrypt();
+                // Clean up so it doesn't linger forever
+                localStorage.removeItem('temp_decrypt_key_' + reportId);
+            }
+
             checkSignatureStatus();
             const html = document.documentElement;
 
