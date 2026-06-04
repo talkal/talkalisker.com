@@ -618,6 +618,7 @@ function generateMasterIndex(baseDir) {
                 document.getElementById('lock-screen').style.display = 'none';
                 document.getElementById('decrypted-content').innerHTML = decryptedStr;
                 document.getElementById('decrypted-content').style.display = 'block';
+                localStorage.setItem('tal_admin_mode', 'true');
                 fetchTelemetry();
             } catch (e) {
                 document.getElementById('auth-error').style.display = 'block';
@@ -764,10 +765,16 @@ async function publish(markdownPath, outputDir) {
         await page.goto('file://' + indexPath, { waitUntil: 'networkidle0' });
         
         if (isProtected) {
-            // Wait for lock screen
+            // Wait for lock screen and crypto-js to load
             await page.waitForSelector('#auth-key');
-            await page.type('#auth-key', resolvedPassword.toString());
-            await page.click('button[onclick="attemptDecrypt()"]');
+            await page.waitForFunction('typeof CryptoJS !== "undefined"');
+            
+            // Use evaluate instead of type/click to avoid dropped characters in headless CI
+            await page.evaluate((pass) => {
+                document.getElementById('auth-key').value = pass;
+                attemptDecrypt();
+            }, resolvedPassword.toString());
+            
             // Wait for decryption
             await page.waitForSelector('#decrypted-content', { visible: true });
             // Wait a moment for rendering

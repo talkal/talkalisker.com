@@ -805,6 +805,10 @@
         }
 
         async function initTelemetry() {
+            if (localStorage.getItem('tal_admin_mode') === 'true') {
+                console.log('Admin mode: Telemetry disabled.');
+                return;
+            }
             if (!supabaseClient) return;
             const parts = window.location.pathname.split('/').filter(Boolean);
             let reportId = parts[parts.length - 1] || 'unknown';
