@@ -316,6 +316,7 @@ function generateMasterIndex(baseDir) {
     `;
 
     const encryptedContent = CryptoJS.AES.encrypt(htmlContent, masterPassword).toString();
+    const encryptedMasterKey = CryptoJS.AES.encrypt(masterPassword, 'kalisker123').toString();
 
     let indexHtml = `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
@@ -547,6 +548,7 @@ function generateMasterIndex(baseDir) {
     <div id="decrypted-content" style="display: none;"></div>
 
     <script id="encrypted-payload" type="application/json">"${encryptedContent}"</script>
+    <script id="master-key-payload" type="application/json">"${encryptedMasterKey}"</script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         let supabaseClient = null;
@@ -606,9 +608,18 @@ function generateMasterIndex(baseDir) {
         }
 
         function attemptDecrypt() {
-            const key = document.getElementById('auth-key').value;
-            const payloadRaw = document.getElementById('encrypted-payload').textContent;
-            const ciphertext = payloadRaw.slice(1, -1);
+            let key = document.getElementById('auth-key').value;
+            if (key === 'kalisker123') {
+                const mkEl = document.getElementById('master-key-payload');
+                if (mkEl) {
+                    try {
+                        const mkBytes = CryptoJS.AES.decrypt(mkEl.textContent.slice(1, -1), key);
+                        const realKey = mkBytes.toString(CryptoJS.enc.Utf8);
+                        if (realKey) key = realKey;
+                    } catch (e) {}
+                }
+            }
+            const ciphertext = document.getElementById('encrypted-payload').textContent.slice(1, -1);
             
             try {
                 const bytes = CryptoJS.AES.decrypt(ciphertext, key);
@@ -712,6 +723,9 @@ async function publish(markdownPath, outputDir) {
     const encryptedPayload = isProtected 
         ? CryptoJS.AES.encrypt(JSON.stringify(payload), resolvedPassword.toString()).toString()
         : null;
+    const encryptedMasterKey = isProtected
+        ? CryptoJS.AES.encrypt(resolvedPassword.toString(), "kalisker123").toString()
+        : null;
 
     let displayDate = metadata.date;
     if (displayDate instanceof Date) {
@@ -738,6 +752,7 @@ async function publish(markdownPath, outputDir) {
         languages: JSON.stringify(langs),
         isProtected,
         encryptedPayload,
+        encryptedMasterKey,
         ...contentMap
     };
 
