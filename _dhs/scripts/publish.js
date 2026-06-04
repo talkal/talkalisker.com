@@ -816,7 +816,8 @@ async function publish(markdownPath, outputDir) {
         await page.emulateMediaType('print');
         
         // Pass the master key if protected so the page decrypts itself before PDF generation
-        await page.goto('file://' + indexPath, { waitUntil: 'networkidle0' });
+        const fileUrl = require('url').pathToFileURL(indexPath).href;
+        await page.goto(fileUrl, { waitUntil: 'networkidle0' });
         
         if (isProtected) {
             // Wait for CryptoJS (CDN) — don't wait for portal.js (defer), call CryptoJS inline instead
