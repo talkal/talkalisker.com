@@ -324,6 +324,7 @@
                 const saved = localStorage.getItem('language') || available[0];
                 setLang(available.includes(saved) ? saved : available[0]);
                 initInteractiveFeatures();
+                refreshSearchIndex();
                 checkSignatureStatus();
             } catch (e) {
                 document.getElementById('auth-error').style.display = 'block';
@@ -436,23 +437,27 @@
             }
         }
 
+        let searchOriginalContentMap = new Map();
+        function refreshSearchIndex() {
+            searchOriginalContentMap.clear();
+            document.querySelectorAll('section, .lang-block, .proposal-card, .deliverable-card, .finding-card, blockquote').forEach((el, index) => {
+                if (!el.id) el.id = 'search-block-' + index;
+                searchOriginalContentMap.set(el.id, el.innerHTML);
+            });
+        }
+
         // DOM Search Feature
         function initSearch() {
             const searchInput = document.getElementById('portal-search');
             if (!searchInput) return;
 
-            let originalContentMap = new Map();
-            // We store the original HTML of each top level block to restore it when searching is cleared
-            document.querySelectorAll('section, .lang-block, .proposal-card, .deliverable-card, .finding-card, blockquote').forEach((el, index) => {
-                if (!el.id) el.id = 'search-block-' + index;
-                originalContentMap.set(el.id, el.innerHTML);
-            });
+            refreshSearchIndex();
 
             searchInput.addEventListener('input', (e) => {
                 const term = e.target.value.trim();
                 
                 document.querySelectorAll('section, .lang-block, .proposal-card, .deliverable-card, .finding-card, blockquote').forEach(el => {
-                    const orig = originalContentMap.get(el.id);
+                    const orig = searchOriginalContentMap.get(el.id);
                     if (!orig) return;
 
                     if (!term) {
