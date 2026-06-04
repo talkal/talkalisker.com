@@ -576,7 +576,7 @@ function generateMasterIndex(baseDir) {
             });
             
             document.querySelectorAll('.card').forEach(card => {
-                const url = card.getAttribute('href').replace(/\/$/, '');
+                const url = card.getAttribute('href').replace(/\\/$/, '');
                 if (stats[url]) {
                     const s = stats[url];
                     const avgTime = Math.round(s.total_time / s.views);
