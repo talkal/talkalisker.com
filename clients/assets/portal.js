@@ -447,6 +447,45 @@
             return 'block_' + hashArray.map(b => b.toString(16).padStart(2, '0')).join('').substring(0, 10);
         }
 
+        function restoreHighlight(textToHighlight, hash) {
+            if (!textToHighlight || document.getElementById(hash + '_thread')) return null;
+            const walker = document.createTreeWalker(document.getElementById('decrypted-content'), NodeFilter.SHOW_TEXT, null, false);
+            let node;
+            while (node = walker.nextNode()) {
+                const idx = node.nodeValue.indexOf(textToHighlight);
+                if (idx >= 0) {
+                    const span = document.createElement('mark');
+                    span.className = 'client-highlight';
+                    span.dataset.id = hash;
+                    const textNode = node.splitText(idx);
+                    textNode.splitText(textToHighlight.length);
+                    span.appendChild(textNode.cloneNode(true));
+                    textNode.parentNode.replaceChild(span, textNode);
+                    
+                    // Build thread if it doesn't exist
+                    if (!document.getElementById(hash + '_thread')) {
+                        const thread = document.createElement('div');
+                        thread.id = hash + '_thread';
+                        thread.className = 'comment-thread-container';
+                        thread.innerHTML = `
+                            <div class="comment-form">
+                                <textarea placeholder="Type your comment for this text..."></textarea>
+                                <button onclick="submitComment('${hash}', this.previousElementSibling.value, this, \`${textToHighlight.replace(/`/g, '\\`')}\`)">Post Comment</button>
+                            </div>
+                        `;
+                        const parentCard = span.closest('.finding-card, .action-card, .proposal-card, .deliverable-card, .lang-block');
+                        if (parentCard) {
+                            if (getComputedStyle(parentCard).position === 'static') parentCard.style.position = 'relative';
+                            parentCard.appendChild(thread);
+                            thread.style.top = span.offsetTop + 'px';
+                        }
+                    }
+                    return span;
+                }
+            }
+            return null;
+        }
+
         async function fetchComments() {
             if (!supabaseClient) return;
             const reportId = document.title.split(' | ')[0];
@@ -458,8 +497,11 @@
             if (error) { console.error('Error fetching comments:', error); return; }
             
             data.forEach(comment => {
+                if (comment.highlight_text) restoreHighlight(comment.highlight_text, comment.block_id);
+                
                 const thread = document.getElementById(comment.block_id + '_thread');
                 if (thread) {
+                    thread.classList.add('open');
                     const date = new Date(comment.created_at).toLocaleString();
                     const item = document.createElement('div');
                     item.className = 'comment-item';
@@ -475,16 +517,19 @@
             });
         }
 
-        async function submitComment(blockId, text, btn) {
+        async function submitComment(blockId, text, btn, highlightText = null) {
             if (!supabaseClient || !text.trim()) return;
             btn.disabled = true;
             btn.textContent = 'Posting...';
             const reportId = document.title.split(' | ')[0];
             const name = localStorage.getItem('client_name') || 'Client';
             
+            const payload = { report_id: reportId, block_id: blockId, client_name: name, comment_text: text };
+            if (highlightText) payload.highlight_text = highlightText;
+
             const { data, error } = await supabaseClient
                 .from('comments')
-                .insert([{ report_id: reportId, block_id: blockId, client_name: name, comment_text: text }])
+                .insert([payload])
                 .select();
                 
             if (error) {
@@ -492,18 +537,20 @@
             } else if (data && data.length > 0) {
                 const comment = data[0];
                 const thread = document.getElementById(blockId + '_thread');
-                const date = new Date(comment.created_at).toLocaleString();
-                const item = document.createElement('div');
-                item.className = 'comment-item';
-                item.innerHTML = `
-                    <div class="comment-meta">
-                        <span class="comment-author">${comment.client_name}</span>
-                        <span>${date}</span>
-                    </div>
-                    <div class="comment-text">${comment.comment_text}</div>
-                `;
-                thread.insertBefore(item, thread.querySelector('.comment-form'));
-                thread.querySelector('textarea').value = '';
+                if (thread) {
+                    const date = new Date(comment.created_at).toLocaleString();
+                    const item = document.createElement('div');
+                    item.className = 'comment-item';
+                    item.innerHTML = `
+                        <div class="comment-meta">
+                            <span class="comment-author">${comment.client_name}</span>
+                            <span>${date}</span>
+                        </div>
+                        <div class="comment-text">${comment.comment_text}</div>
+                    `;
+                    thread.insertBefore(item, thread.querySelector('.comment-form'));
+                    thread.querySelector('textarea').value = '';
+                }
             }
             btn.disabled = false;
             btn.textContent = 'Post Comment';
@@ -540,6 +587,70 @@
                 el.appendChild(thread);
             }
             
+            // Highlight Selection Logic
+            document.addEventListener('mouseup', async (e) => {
+                const selection = window.getSelection();
+                const text = selection.toString().trim();
+                
+                const existingBtn = document.getElementById('floating-comment-btn');
+                if (existingBtn && !existingBtn.contains(e.target)) {
+                    existingBtn.remove();
+                }
+                
+                if (text.length > 0 && e.target.closest('#decrypted-content') && !e.target.closest('.comment-thread-container')) {
+                    const range = selection.getRangeAt(0);
+                    const rect = range.getBoundingClientRect();
+                    
+                    const btn = document.createElement('div');
+                    btn.id = 'floating-comment-btn';
+                    btn.className = 'floating-selection-btn';
+                    btn.innerHTML = '💬';
+                    btn.style.left = (rect.left + rect.width / 2 + window.scrollX) + 'px';
+                    btn.style.top = (rect.top + window.scrollY - 5) + 'px';
+                    
+                    btn.onmousedown = async (ev) => {
+                        ev.preventDefault();
+                        btn.remove();
+                        
+                        const msgBuffer = new TextEncoder().encode(text);
+                        const hashBuffer = await crypto.subtle.digest('SHA-1', msgBuffer);
+                        const hashArray = Array.from(new Uint8Array(hashBuffer));
+                        const hash = 'highlight_' + hashArray.map(b => b.toString(16).padStart(2, '0')).join('').substring(0, 10);
+                        
+                        const mark = document.createElement('mark');
+                        mark.className = 'client-highlight';
+                        mark.dataset.id = hash;
+                        range.surroundContents(mark);
+                        
+                        let thread = document.getElementById(hash + '_thread');
+                        if (!thread) {
+                            thread = document.createElement('div');
+                            thread.id = hash + '_thread';
+                            thread.className = 'comment-thread-container open';
+                            thread.innerHTML = `
+                                <div class="comment-form">
+                                    <textarea placeholder="Type your comment for this text..."></textarea>
+                                    <button onclick="submitComment('${hash}', this.previousElementSibling.value, this, \`${text.replace(/`/g, '\\`')}\`)">Post Comment</button>
+                                </div>
+                            `;
+                            const parentCard = mark.closest('.finding-card, .action-card, .proposal-card, .deliverable-card, .lang-block');
+                            if (parentCard) {
+                                if (getComputedStyle(parentCard).position === 'static') parentCard.style.position = 'relative';
+                                parentCard.appendChild(thread);
+                                thread.style.top = mark.offsetTop + 'px';
+                            }
+                        } else {
+                            thread.classList.add('open');
+                        }
+                        
+                        thread.querySelector('textarea').focus();
+                        selection.removeAllRanges();
+                    };
+                    
+                    document.body.appendChild(btn);
+                }
+            });
+
             fetchComments();
         }
 
