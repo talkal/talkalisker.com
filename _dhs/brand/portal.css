@@ -308,9 +308,10 @@
                 --text-secondary: #444444 !important;
                 --border-subtle: #cccccc !important;
             }
-            #progress-bar, #nav-toggle, #nav-overlay, .sidebar, .comment-thread-container, .comment-toggle-btn { display: none !important; }
+            #progress-bar, #nav-toggle, #nav-overlay, .sidebar, .comment-thread-container, .comment-toggle-btn, .search-container, #lightbox, #back-to-top, #floating-comment-btn { display: none !important; }
             .main { padding: 0 !important; max-width: 100% !important; margin: 0 !important; }
             body { background: white !important; color: black !important; display: block; }
+            img, svg { max-width: 100% !important; height: auto !important; }
             
             .print-header { display: block !important; border-bottom: 2px solid #000; padding-bottom: 1.25rem; margin-bottom: 2rem; }
             .print-header-logo { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; color: #000; }
