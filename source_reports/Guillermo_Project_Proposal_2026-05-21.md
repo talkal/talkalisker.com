@@ -271,6 +271,7 @@ The following steps will move this engagement from proposal to execution:
 
 - **Signature:** Guillermo | **Role:** Client (Voria Founders)
 - **Signature:** Tal | **Role:** Project Lead (TalKalisker)
+- **Signature:** Yaeli | **Role:** Head of Design (TalKalisker)
 :::
 
 :::es
@@ -294,6 +295,7 @@ Los siguientes pasos moverán este compromiso de la propuesta a la ejecución:
 
 - **Firma:** Guillermo | **Cargo:** Cliente (Fundadores de Voria)
 - **Firma:** Tal | **Cargo:** Líder del Proyecto (TalKalisker)
+- **Firma:** Yaeli | **Cargo:** Directora de Diseño (TalKalisker)
 :::
 
 
