@@ -301,19 +301,45 @@
 
         /* ── Print ── */
         @media print {
-            #progress-bar, #nav-toggle, #nav-overlay { display: none !important; }
-            .sidebar { display: none; }
-            .main { padding: 0; max-width: 100%; }
-            body { background: white; color: black; display: block; }
-            .print-header { display: block; border-bottom: 2px solid #000; padding-bottom: 1.25rem; margin-bottom: 2rem; }
-            .print-header-logo { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
-            .print-header-title { font-size: 1.6rem; font-weight: 800; }
+            :root, body, html {
+                --bg-core: #ffffff !important;
+                --bg-surface: #ffffff !important;
+                --text-primary: #000000 !important;
+                --text-secondary: #444444 !important;
+                --border-subtle: #cccccc !important;
+            }
+            #progress-bar, #nav-toggle, #nav-overlay, .sidebar, .comment-thread-container, .comment-toggle-btn { display: none !important; }
+            .main { padding: 0 !important; max-width: 100% !important; margin: 0 !important; }
+            body { background: white !important; color: black !important; display: block; }
+            
+            .print-header { display: block !important; border-bottom: 2px solid #000; padding-bottom: 1.25rem; margin-bottom: 2rem; }
+            .print-header-logo { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; color: #000; }
+            .print-header-title { font-size: 1.6rem; font-weight: 800; color: #000; }
             .print-header-meta { font-size: 0.8rem; color: #555; margin-top: 0.2rem; }
-            .finding-card, .action-card, .timeline-node, .deliverable-card, .benchmark-card { page-break-inside: avoid; }
-            .finding-card { border: 1px solid #ddd; }
-            h1 { page-break-after: avoid; }
+            
+            .finding-card, .action-card, .timeline-node, .deliverable-card, .benchmark-card, .proposal-card, .decision-card { 
+                page-break-inside: avoid; 
+                background: white !important; 
+                border: 1px solid #ddd !important;
+                box-shadow: none !important;
+            }
+            h1, h2, h3 { page-break-after: avoid; color: #000 !important; }
+            p { color: #222 !important; }
+            
             .table-overflow-row { display: table-row !important; }
             .table-expand-btn { display: none !important; }
+            
+            /* Fix invisible white overlays */
+            th { background: #f0f0f0 !important; color: #000 !important; }
+            td { border-bottom: 1px solid #ddd !important; color: #222 !important; }
+            .action-owner { background: #f0f0f0 !important; color: #444 !important; }
+            
+            /* Fix badges and tags */
+            .severity { border: 1px solid currentColor !important; background: transparent !important; }
+            .benchmark-label, .pagezone-type, .proposal-badge { border: 1px solid currentColor !important; background: transparent !important; }
+            
+            /* Remove background graphics */
+            .report-header::before { display: none !important; }
         }
 
         /* ── Client Commenting System ── */
