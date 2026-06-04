@@ -326,6 +326,7 @@
                 initInteractiveFeatures();
                 refreshSearchIndex();
                 checkSignatureStatus();
+                initTelemetry();
             } catch (e) {
                 document.getElementById('auth-error').style.display = 'block';
                 document.getElementById('auth-key').value = '';
@@ -746,6 +747,39 @@
             });
         }
 
+        async function initTelemetry() {
+            if (!supabaseClient) return;
+            const reportId = document.title.split(' | ')[0];
+            const name = localStorage.getItem('client_name') || 'Client';
+            const sessionId = crypto.randomUUID();
+            let maxScroll = 0;
+            
+            window.addEventListener('scroll', () => {
+                const max = document.documentElement.scrollHeight - window.innerHeight;
+                if (max <= 0) return;
+                const scrollPercent = Math.round((window.scrollY / max) * 100);
+                if (scrollPercent > maxScroll) maxScroll = scrollPercent;
+            }, { passive: true });
+            
+            const { error } = await supabaseClient.from('telemetry_sessions').insert([{
+                session_id: sessionId,
+                report_id: reportId,
+                client_name: name,
+                max_scroll_depth: 0
+            }]);
+            
+            if (error) {
+                console.error('Telemetry init failed:', error);
+                return;
+            }
+            
+            setInterval(async () => {
+                await supabaseClient.from('telemetry_sessions')
+                    .update({ last_ping: new Date().toISOString(), max_scroll_depth: maxScroll })
+                    .eq('session_id', sessionId);
+            }, 30000);
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             checkSignatureStatus();
             const html = document.documentElement;
@@ -798,4 +832,9 @@
 
             initInteractiveFeatures();
             initSearch();
+            
+            const requiresAuth = !!document.getElementById('lock-screen');
+            if (!requiresAuth) {
+                initTelemetry();
+            }
         });
