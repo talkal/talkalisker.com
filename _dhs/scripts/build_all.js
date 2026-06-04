@@ -47,4 +47,17 @@ files.forEach(file => {
     }
 });
 
+// Copy global portal assets to clients/assets/
+const brandDir = path.join(__dirname, '../brand');
+const globalAssetsDir = path.join(clientsDir, 'assets');
+if (!fs.existsSync(globalAssetsDir)) {
+    fs.mkdirSync(globalAssetsDir, { recursive: true });
+}
+if (fs.existsSync(path.join(brandDir, 'portal.css'))) {
+    fs.copyFileSync(path.join(brandDir, 'portal.css'), path.join(globalAssetsDir, 'portal.css'));
+}
+if (fs.existsSync(path.join(brandDir, 'portal.js'))) {
+    fs.copyFileSync(path.join(brandDir, 'portal.js'), path.join(globalAssetsDir, 'portal.js'));
+}
+
 console.log('Build complete.');
