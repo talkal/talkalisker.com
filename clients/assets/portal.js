@@ -280,7 +280,8 @@
                     const dateStr = new Date().toLocaleDateString();
                     localStorage.setItem(sigId, JSON.stringify({ name, date: dateStr }));
                     restoreSignatures();
-                    return;
+                }
+                return;
             }
 
             const roleEl = card.querySelector('.signature-role');
