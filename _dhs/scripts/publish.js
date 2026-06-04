@@ -809,7 +809,7 @@ async function publish(markdownPath, outputDir) {
     let browser = null;
     try {
         console.log(`Generating Cloud PDF for ${outputDir}...`);
-        browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+        browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox', '--allow-file-access-from-files', '--enable-local-file-accesses'] });
         const page = await browser.newPage();
         
         // Emulate print media type
