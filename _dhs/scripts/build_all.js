@@ -33,6 +33,19 @@ if (targetArg) {
     console.log(`Found ${files.length} reports to process.`);
 }
 
+// Copy global portal assets to clients/assets/ FIRST so Puppeteer can use them
+const brandDir = path.join(__dirname, '../brand');
+const globalAssetsDir = path.join(clientsDir, 'assets');
+if (!fs.existsSync(globalAssetsDir)) {
+    fs.mkdirSync(globalAssetsDir, { recursive: true });
+}
+if (fs.existsSync(path.join(brandDir, 'portal.css'))) {
+    fs.copyFileSync(path.join(brandDir, 'portal.css'), path.join(globalAssetsDir, 'portal.css'));
+}
+if (fs.existsSync(path.join(brandDir, 'portal.js'))) {
+    fs.copyFileSync(path.join(brandDir, 'portal.js'), path.join(globalAssetsDir, 'portal.js'));
+}
+
 files.forEach(file => {
     const inputPath = path.join(sourceDir, file);
     // Determine folder name: 'Hadassah_UX_Audit.md' -> 'hadassah-ux-audit'
@@ -46,18 +59,5 @@ files.forEach(file => {
         console.error(`Failed to build ${file}`);
     }
 });
-
-// Copy global portal assets to clients/assets/
-const brandDir = path.join(__dirname, '../brand');
-const globalAssetsDir = path.join(clientsDir, 'assets');
-if (!fs.existsSync(globalAssetsDir)) {
-    fs.mkdirSync(globalAssetsDir, { recursive: true });
-}
-if (fs.existsSync(path.join(brandDir, 'portal.css'))) {
-    fs.copyFileSync(path.join(brandDir, 'portal.css'), path.join(globalAssetsDir, 'portal.css'));
-}
-if (fs.existsSync(path.join(brandDir, 'portal.js'))) {
-    fs.copyFileSync(path.join(brandDir, 'portal.js'), path.join(globalAssetsDir, 'portal.js'));
-}
 
 console.log('Build complete.');
