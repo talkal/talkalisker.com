@@ -749,7 +749,9 @@
 
         async function initTelemetry() {
             if (!supabaseClient) return;
-            const reportId = document.title.split(' | ')[0];
+            const parts = window.location.pathname.split('/').filter(Boolean);
+            let reportId = parts[parts.length - 1] || 'unknown';
+            if (reportId === 'index.html' && parts.length > 1) reportId = parts[parts.length - 2];
             const name = localStorage.getItem('client_name') || 'Client';
             const sessionId = crypto.randomUUID();
             let maxScroll = 0;
