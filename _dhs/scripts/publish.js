@@ -751,9 +751,10 @@ async function publish(markdownPath, outputDir) {
     generateMasterIndex(path.join(outputDir, '../../'));
 
     // Generate PDF using Puppeteer
+    let browser = null;
     try {
         console.log(`Generating Cloud PDF for ${outputDir}...`);
-        const browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+        browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox'] });
         const page = await browser.newPage();
         
         // Emulate print media type
@@ -779,8 +780,6 @@ async function publish(markdownPath, outputDir) {
             margin: { top: '15mm', bottom: '15mm', left: '15mm', right: '15mm' }
         });
         
-        await browser.close();
-        
         if (isProtected) {
             const pdfBase64 = pdfBuffer.toString('base64');
             const encryptedPdf = CryptoJS.AES.encrypt(pdfBase64, resolvedPassword.toString()).toString();
@@ -792,6 +791,10 @@ async function publish(markdownPath, outputDir) {
         }
     } catch (e) {
         console.error("Failed to generate PDF:", e);
+    } finally {
+        if (browser) {
+            await browser.close().catch(console.error);
+        }
     }
 }
 
