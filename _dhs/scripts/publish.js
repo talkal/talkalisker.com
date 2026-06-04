@@ -540,7 +540,12 @@ function generateMasterIndex(baseDir) {
         <p class="lock-desc">Enter your master key to access the deliverables archive.</p>
         <input type="password" id="auth-key" class="lock-input" placeholder="Enter master key..." onkeydown="if(event.key==='Enter')attemptDecrypt()">
         <button onclick="attemptDecrypt()" class="lock-btn">Authenticate & Decrypt</button>
-        <div id="auth-error" class="lock-err    <script id="encrypted-payload" type="application/json">"${encryptedContent}"</script>
+        <div id="auth-error" class="lock-error">ERROR: Invalid key. Verification failed.</div>
+    </div>
+
+    <div id="decrypted-content" style="display: none;"></div>
+
+    <script id="encrypted-payload" type="application/json">"${encryptedContent}"</script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         let supabaseClient = null;
