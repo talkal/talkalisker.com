@@ -540,13 +540,65 @@ function generateMasterIndex(baseDir) {
         <p class="lock-desc">Enter your master key to access the deliverables archive.</p>
         <input type="password" id="auth-key" class="lock-input" placeholder="Enter master key..." onkeydown="if(event.key==='Enter')attemptDecrypt()">
         <button onclick="attemptDecrypt()" class="lock-btn">Authenticate & Decrypt</button>
-        <div id="auth-error" class="lock-error">ERROR: Invalid key. Verification failed.</div>
-    </div>
-
-    <div id="decrypted-content" style="display: none;"></div>
-
-    <script id="encrypted-payload" type="application/json">"${encryptedContent}"</script>
+        <div id="auth-error" class="lock-err    <script id="encrypted-payload" type="application/json">"${encryptedContent}"</script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
+        let supabaseClient = null;
+        try {
+            const SUPABASE_URL = 'https://xsivyrmpcgomyiyrsidg.supabase.co';
+            const SUPABASE_KEY = 'sb_publishable_c9qIfHryD8QI-adbltinYQ_DGNFblET';
+            supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        } catch (e) {
+            console.error('Failed to init supabaseClient:', e);
+        }
+
+        async function fetchTelemetry() {
+            if (!supabaseClient) return;
+            const { data, error } = await supabaseClient.from('telemetry_sessions').select('*');
+            if (error) return console.error('Telemetry fetch error:', error);
+            
+            const stats = {};
+            data.forEach(session => {
+                if (!stats[session.report_id]) stats[session.report_id] = { views: 0, total_time: 0, total_scroll: 0 };
+                stats[session.report_id].views++;
+                
+                const start = new Date(session.started_at);
+                const last = new Date(session.last_ping);
+                const seconds = Math.max(0, (last - start) / 1000);
+                stats[session.report_id].total_time += seconds;
+                stats[session.report_id].total_scroll += (session.max_scroll_depth || 0);
+            });
+            
+            document.querySelectorAll('.card').forEach(card => {
+                const url = card.getAttribute('href').replace(/\\/$/, '');
+                if (stats[url]) {
+                    const s = stats[url];
+                    const avgTime = Math.round(s.total_time / s.views);
+                    const avgScroll = Math.round(s.total_scroll / s.views);
+                    
+                    const mins = Math.floor(avgTime / 60);
+                    const secs = avgTime % 60;
+                    const timeStr = mins > 0 ? \`\${mins}m \${secs}s\` : \`\${secs}s\`;
+                    
+                    const el = document.createElement('div');
+                    el.style.marginTop = '1rem';
+                    el.style.paddingTop = '0.75rem';
+                    el.style.borderTop = '1px solid var(--border-subtle)';
+                    el.style.fontFamily = 'var(--font-mono)';
+                    el.style.fontSize = '0.75rem';
+                    el.style.color = 'var(--accent)';
+                    el.style.display = 'flex';
+                    el.style.justifyContent = 'space-between';
+                    el.innerHTML = \`
+                        <span title="Total Views"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right:2px;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg> \${s.views}</span>
+                        <span title="Avg Time">⏱ \${timeStr}</span>
+                        <span title="Avg Scroll Depth">📜 \${avgScroll}%</span>
+                    \`;
+                    card.appendChild(el);
+                }
+            });
+        }
+
         function attemptDecrypt() {
             const key = document.getElementById('auth-key').value;
             const payloadRaw = document.getElementById('encrypted-payload').textContent;
@@ -560,6 +612,7 @@ function generateMasterIndex(baseDir) {
                 document.getElementById('lock-screen').style.display = 'none';
                 document.getElementById('decrypted-content').innerHTML = decryptedStr;
                 document.getElementById('decrypted-content').style.display = 'block';
+                fetchTelemetry();
             } catch (e) {
                 document.getElementById('auth-error').style.display = 'block';
                 document.getElementById('auth-key').value = '';
