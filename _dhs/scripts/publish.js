@@ -280,12 +280,18 @@ function generateMasterIndex(baseDir) {
     // We can also use Handlebars for the index eventually, but string literal is fine here
     const masterPassword = clientRegistry._master || "kalisker123";
         let htmlContent = `
-        <div class="header">
-            <a href="https://talkalisker.com/developer-services" class="logo" style="text-decoration: none; color: inherit;">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="#B85A44"><path d="M12 2L2 22h20L12 2zm0 3.8l7.2 14.2H4.8L12 5.8z"/></svg>
-                <span>TalKalisker</span>
-            </a>
-            <div class="subtitle">Client Deliverables Portal</div>
+        <div class="header" style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+                <a href="https://talkalisker.com/developer-services" class="logo" style="text-decoration: none; color: inherit;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="#B85A44"><path d="M12 2L2 22h20L12 2zm0 3.8l7.2 14.2H4.8L12 5.8z"/></svg>
+                    <span>TalKalisker</span>
+                </a>
+                <div class="subtitle">Client Deliverables Portal</div>
+            </div>
+            <button onclick="toggleTheme()" aria-label="Toggle Theme" style="background: none; border: none; color: var(--text-secondary); cursor: pointer; padding: 0.5rem; display: flex; align-items: center; transition: color 0.2s;">
+                <svg id="sun-icon" style="display: none; fill: currentColor;" width="20" height="20" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41zM7.05 18.36c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41z"/></svg>
+                <svg id="moon-icon" style="fill: currentColor;" width="20" height="20" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+            </button>
         </div>
 
         ${Object.keys(groupedReports).sort().map(client => `
@@ -341,6 +347,15 @@ function generateMasterIndex(baseDir) {
             --border-subtle: rgba(255,255,255, 0.06);
             --font-body: 'Outfit', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
+        }
+        [data-theme="light"] {
+            --bg-core: #FAF8F5;
+            --bg-surface: #EFECE5;
+            --bg-elevated: #E5E0D8;
+            --accent-glow: rgba(184, 90, 68, 0.1);
+            --text-primary: #2C2A28;
+            --text-secondary: rgba(44, 42, 40, 0.55);
+            --border-subtle: rgba(44, 42, 40, 0.1);
         }
         body {
             background: var(--bg-core);
@@ -559,6 +574,30 @@ function generateMasterIndex(baseDir) {
         } catch (e) {
             console.error('Failed to init supabaseClient:', e);
         }
+
+        // Theme management
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateIcons(savedTheme);
+        }
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.getAttribute('data-theme') !== 'light';
+            const newTheme = isDark ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcons(newTheme);
+        }
+        function updateIcons(theme) {
+            const sun = document.getElementById('sun-icon');
+            const moon = document.getElementById('moon-icon');
+            if (sun && moon) {
+                sun.style.display = theme === 'light' ? 'block' : 'none';
+                moon.style.display = theme === 'light' ? 'none' : 'block';
+            }
+        }
+        initTheme();
 
         async function fetchTelemetry() {
             if (!supabaseClient) return;
