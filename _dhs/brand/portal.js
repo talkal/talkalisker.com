@@ -70,17 +70,38 @@
         // Uses innerText — only works on visible elements, so called after setLang reveals the block.
         function restoreSignatures() {
             const reportId = document.title.split(' | ')[0];
-            const cards = document.querySelectorAll('.signature-card');
-            cards.forEach(card => {
-                const roleEl = card.querySelector('.signature-role');
-                const role = roleEl ? roleEl.innerText.trim() : 'unknown';
-                const sigId = `sig_${reportId}_${role}`.replace(/\s+/g, '_');
-                const savedSig = localStorage.getItem(sigId);
-                if (savedSig) {
-                    try {
-                        const data = JSON.parse(savedSig);
-                        const line = card.querySelector('.signature-line');
-                        if (line && line.dataset.signed !== 'true') {
+            const allBlocks = document.querySelectorAll('.lang-block');
+            
+            // To prevent signatures from disappearing when switching languages or reloading,
+            // we must check all possible translations of the signature role for a given card index.
+            allBlocks.forEach(block => {
+                const cards = block.querySelectorAll('.signature-card');
+                cards.forEach((card, idx) => {
+                    const line = card.querySelector('.signature-line');
+                    if (!line || line.dataset.signed === 'true') return;
+
+                    // Collect all localized roles for this specific signature card index
+                    let possibleRoles = [];
+                    allBlocks.forEach(b => {
+                        const siblingCard = b.querySelectorAll('.signature-card')[idx];
+                        if (siblingCard) {
+                            const roleEl = siblingCard.querySelector('.signature-role');
+                            const r = roleEl ? (roleEl.offsetParent !== null ? roleEl.innerText : roleEl.textContent).trim() : 'unknown';
+                            possibleRoles.push(r);
+                        }
+                    });
+
+                    // Search localStorage using all possible localized roles to maintain backwards compatibility
+                    let savedSig = null;
+                    for (const r of possibleRoles) {
+                        const sigId = `sig_${reportId}_${r}`.replace(/\s+/g, '_');
+                        savedSig = localStorage.getItem(sigId);
+                        if (savedSig) break;
+                    }
+
+                    if (savedSig) {
+                        try {
+                            const data = JSON.parse(savedSig);
                             line.innerHTML = `<span style="font-family: 'Georgia', cursive; font-size: 1.5rem; color: var(--text-primary); line-height: 1;">${data.name}</span> <span style="font-size: 0.65rem; color: var(--text-secondary); margin-left: 10px; font-family: var(--font-mono);">(Digitally Signed ${data.date})</span>`;
                             line.style.borderBottom = 'none';
                             line.style.opacity = '1';
@@ -88,9 +109,9 @@
                             line.style.height = 'auto';
                             line.dataset.signed = 'true';
                             card.style.cursor = 'default';
-                        }
-                    } catch (e) {}
-                }
+                        } catch(e) {}
+                    }
+                });
             });
         }
 
@@ -258,16 +279,8 @@
                     const sigId = `sig_${reportId}_${role}`.replace(/\s+/g, '_');
                     const dateStr = new Date().toLocaleDateString();
                     localStorage.setItem(sigId, JSON.stringify({ name, date: dateStr }));
-
-                    line.innerHTML = `<span style="font-family: 'Georgia', cursive; font-size: 1.5rem; color: var(--text-primary); line-height: 1;">${name}</span> <span style="font-size: 0.65rem; color: var(--text-secondary); margin-left: 10px; font-family: var(--font-mono);">(Digitally Signed ${dateStr})</span>`;
-                    line.style.borderBottom = 'none';
-                    line.style.opacity = '1';
-                    line.style.background = 'none';
-                    line.style.height = 'auto';
-                    line.dataset.signed = 'true';
-                    card.style.cursor = 'default';
-                }
-                return;
+                    restoreSignatures();
+                    return;
             }
 
             const roleEl = card.querySelector('.signature-role');
