@@ -478,12 +478,50 @@
                             if (getComputedStyle(parentCard).position === 'static') parentCard.style.position = 'relative';
                             parentCard.appendChild(thread);
                             thread.style.top = span.offsetTop + 'px';
+                            thread.dataset.intendedTop = span.offsetTop;
                         }
                     }
                     return span;
                 }
             }
             return null;
+        }
+        function resolveCommentCollisions() {
+            if (window.innerWidth <= 1300) {
+                document.querySelectorAll('.comment-thread-container').forEach(t => {
+                    t.style.top = '';
+                    t.dataset.intendedTop = '';
+                });
+                return;
+            }
+
+            const threads = Array.from(document.querySelectorAll('.comment-thread-container.open'))
+                .sort((a, b) => {
+                    const aRect = a.parentElement.getBoundingClientRect();
+                    const bRect = b.parentElement.getBoundingClientRect();
+                    const aTop = aRect.top + (parseFloat(a.dataset.intendedTop) || 0);
+                    const bTop = bRect.top + (parseFloat(b.dataset.intendedTop) || 0);
+                    return aTop - bTop;
+                });
+
+            let lastBottom = 0;
+            threads.forEach(thread => {
+                if (thread.dataset.intendedTop === undefined || thread.dataset.intendedTop === '') {
+                    thread.dataset.intendedTop = thread.offsetTop;
+                }
+                
+                thread.style.top = thread.dataset.intendedTop + 'px';
+                const rect = thread.getBoundingClientRect();
+                const currentTopAbsolute = rect.top + window.scrollY;
+                
+                if (currentTopAbsolute < lastBottom + 16) {
+                    const shift = (lastBottom + 16) - currentTopAbsolute;
+                    thread.style.top = (parseFloat(thread.dataset.intendedTop) + shift) + 'px';
+                }
+                
+                const newRect = thread.getBoundingClientRect();
+                lastBottom = newRect.bottom + window.scrollY;
+            });
         }
 
         async function fetchComments() {
@@ -515,6 +553,7 @@
                     thread.insertBefore(item, thread.querySelector('.comment-form'));
                 }
             });
+            setTimeout(resolveCommentCollisions, 100);
         }
 
         async function submitComment(blockId, text, btn, highlightText = null) {
@@ -550,6 +589,7 @@
                     `;
                     thread.insertBefore(item, thread.querySelector('.comment-form'));
                     thread.querySelector('textarea').value = '';
+                    setTimeout(resolveCommentCollisions, 50);
                 }
             }
             btn.disabled = false;
@@ -581,6 +621,7 @@
                 btn.addEventListener('click', () => {
                     thread.classList.toggle('open');
                     if (thread.classList.contains('open')) thread.querySelector('textarea').focus();
+                    resolveCommentCollisions();
                 });
                 
                 el.appendChild(btn);
@@ -638,6 +679,7 @@
                                 if (getComputedStyle(parentCard).position === 'static') parentCard.style.position = 'relative';
                                 parentCard.appendChild(thread);
                                 thread.style.top = mark.offsetTop + 'px';
+                                thread.dataset.intendedTop = mark.offsetTop;
                             }
                         } else {
                             thread.classList.add('open');
@@ -645,12 +687,14 @@
                         
                         thread.querySelector('textarea').focus();
                         selection.removeAllRanges();
+                        resolveCommentCollisions();
                     };
                     
                     document.body.appendChild(btn);
                 }
             });
 
+            window.addEventListener('resize', resolveCommentCollisions);
             fetchComments();
         }
 

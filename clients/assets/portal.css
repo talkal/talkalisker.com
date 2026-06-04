@@ -336,6 +336,7 @@
             border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             padding: 1rem; display: none; animation: langFadeIn 0.2s ease-out; z-index: 50;
         }
+        [lang="he"] .comment-thread-container { right: auto; left: -320px; }
         .comment-thread-container.open { display: block; }
         
         .client-highlight { background-color: rgba(184, 90, 68, 0.4); color: inherit; border-radius: 2px; cursor: pointer; }
