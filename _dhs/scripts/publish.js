@@ -803,11 +803,12 @@ async function publish(markdownPath, outputDir) {
             await new Promise(r => setTimeout(r, 1000));
         }
 
-        const pdfBuffer = await page.pdf({
+        // page.pdf() returns Uint8Array in modern Puppeteer — normalize to Buffer for reliable base64 encoding
+        const pdfBuffer = Buffer.from(await page.pdf({
             format: 'A4',
             printBackground: true,
             margin: { top: '15mm', bottom: '15mm', left: '15mm', right: '15mm' }
-        });
+        }));
         
         if (isProtected) {
             const pdfBase64 = pdfBuffer.toString('base64');
