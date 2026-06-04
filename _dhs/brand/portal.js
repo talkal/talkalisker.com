@@ -183,28 +183,26 @@
             try {
                 const isProtected = !!document.getElementById('encrypted-payload');
                 if (isProtected) {
-                    const key = document.getElementById('auth-key').value;
+                    // Use the persisted key stored at auth time — the input may be hidden/cleared
+                    const key = window._portalDecryptKey || document.getElementById('auth-key').value;
                     if (!key) {
                         alert("Authentication required to download PDF.");
                         return;
                     }
-                    
+
                     const res = await fetch('report.pdf.enc');
                     if (!res.ok) throw new Error("PDF not found on server.");
-                    const encryptedBase64 = await res.text();
-                    
+                    // Trim to strip any trailing newlines the server might add
+                    const encryptedBase64 = (await res.text()).trim();
+
                     const bytes = CryptoJS.AES.decrypt(encryptedBase64, key);
                     const pdfBase64 = bytes.toString(CryptoJS.enc.Utf8);
-                    if (!pdfBase64) throw new Error("Decryption failed");
-                    
-                    const byteCharacters = atob(pdfBase64);
-                    const byteNumbers = new Array(byteCharacters.length);
-                    for (let i = 0; i < byteCharacters.length; i++) {
-                        byteNumbers[i] = byteCharacters.charCodeAt(i);
-                    }
-                    const byteArray = new Uint8Array(byteNumbers);
-                    const blob = new Blob([byteArray], {type: 'application/pdf'});
-                    
+                    if (!pdfBase64) throw new Error("Decryption failed — check your key");
+
+                    // Use Uint8Array.from for robust base64→binary conversion
+                    const byteArray = Uint8Array.from(atob(pdfBase64), c => c.charCodeAt(0));
+                    const blob = new Blob([byteArray], { type: 'application/pdf' });
+
                     const url = window.URL.createObjectURL(blob);
                     const a = document.createElement('a');
                     a.href = url;
@@ -384,6 +382,8 @@
                 refreshSearchIndex();
                 checkSignatureStatus();
                 initTelemetry();
+                // Persist key so downloadPdf() can use it after lock-screen is hidden
+                window._portalDecryptKey = key;
             } catch (e) {
                 document.getElementById('auth-error').style.display = 'block';
                 document.getElementById('auth-key').value = '';
