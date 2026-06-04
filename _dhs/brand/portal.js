@@ -173,6 +173,63 @@
         }
         function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
 
+        async function downloadPdf() {
+            const btn = document.querySelector('button[aria-label="Export to PDF"]');
+            if (!btn) return;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Preparing...';
+            btn.disabled = true;
+
+            try {
+                const isProtected = !!document.getElementById('encrypted-payload');
+                if (isProtected) {
+                    const key = document.getElementById('auth-key').value;
+                    if (!key) {
+                        alert("Authentication required to download PDF.");
+                        return;
+                    }
+                    
+                    const res = await fetch('report.pdf.enc');
+                    if (!res.ok) throw new Error("PDF not found on server.");
+                    const encryptedBase64 = await res.text();
+                    
+                    const bytes = CryptoJS.AES.decrypt(encryptedBase64, key);
+                    const pdfBase64 = bytes.toString(CryptoJS.enc.Utf8);
+                    if (!pdfBase64) throw new Error("Decryption failed");
+                    
+                    const byteCharacters = atob(pdfBase64);
+                    const byteNumbers = new Array(byteCharacters.length);
+                    for (let i = 0; i < byteCharacters.length; i++) {
+                        byteNumbers[i] = byteCharacters.charCodeAt(i);
+                    }
+                    const byteArray = new Uint8Array(byteNumbers);
+                    const blob = new Blob([byteArray], {type: 'application/pdf'});
+                    
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = document.title.split(' | ')[0] + '.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                } else {
+                    const a = document.createElement('a');
+                    a.href = 'report.pdf';
+                    a.download = document.title.split(' | ')[0] + '.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                }
+            } catch (e) {
+                console.error("PDF Download Error:", e);
+                alert("Failed to download PDF. " + e.message);
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+
         async function openSignaturePad(card) {
             const requiresSigMeta = document.querySelector('meta[name="requires_signature"]');
             if (!requiresSigMeta || requiresSigMeta.getAttribute('content') !== 'true') {

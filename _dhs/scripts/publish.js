@@ -4,6 +4,7 @@ const fm = require('front-matter');
 const MarkdownIt = require('markdown-it');
 const Handlebars = require('handlebars');
 const CryptoJS = require("crypto-js");
+const puppeteer = require('puppeteer');
 
 // Client password registry — single source of truth for all client passwords
 const registryPath = path.join(__dirname, '../clients.json');
@@ -631,7 +632,7 @@ function generateMasterIndex(baseDir) {
     console.log("Master Index rebuilt successfully (v3.0).");
 }
 
-function publish(markdownPath, outputDir) {
+async function publish(markdownPath, outputDir) {
     const fileContent = fs.readFileSync(markdownPath, 'utf8');
     
     // Use proper front-matter parser
@@ -713,7 +714,6 @@ function publish(markdownPath, outputDir) {
 
     let displayDate = metadata.date;
     if (displayDate instanceof Date) {
-        // Adjust for timezone offset so '2026-04-28' doesn't become '2026-04-27'
         const offset = displayDate.getTimezoneOffset() * 60000;
         displayDate = new Date(displayDate.getTime() - offset).toISOString().split('T')[0];
     } else if (!displayDate) {
@@ -743,15 +743,67 @@ function publish(markdownPath, outputDir) {
     const html = template(templateData);
 
     if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
-    fs.writeFileSync(path.join(outputDir, 'index.html'), html);
     
-    console.log(`Successfully published report to ${outputDir}`);
+    const indexPath = path.join(outputDir, 'index.html');
+    fs.writeFileSync(indexPath, html);
+    
+    console.log(`Successfully published HTML to ${outputDir}`);
     generateMasterIndex(path.join(outputDir, '../../'));
+
+    // Generate PDF using Puppeteer
+    try {
+        console.log(`Generating Cloud PDF for ${outputDir}...`);
+        const browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+        const page = await browser.newPage();
+        
+        // Emulate print media type
+        await page.emulateMediaType('print');
+        
+        // Pass the master key if protected so the page decrypts itself before PDF generation
+        await page.goto('file://' + indexPath, { waitUntil: 'networkidle0' });
+        
+        if (isProtected) {
+            // Wait for lock screen
+            await page.waitForSelector('#auth-key');
+            await page.type('#auth-key', resolvedPassword.toString());
+            await page.click('button[onclick="attemptDecrypt()"]');
+            // Wait for decryption
+            await page.waitForSelector('#decrypted-content', { visible: true });
+            // Wait a moment for rendering
+            await new Promise(r => setTimeout(r, 1000));
+        }
+
+        const pdfBuffer = await page.pdf({
+            format: 'A4',
+            printBackground: true,
+            margin: { top: '15mm', bottom: '15mm', left: '15mm', right: '15mm' }
+        });
+        
+        await browser.close();
+        
+        if (isProtected) {
+            const pdfBase64 = pdfBuffer.toString('base64');
+            const encryptedPdf = CryptoJS.AES.encrypt(pdfBase64, resolvedPassword.toString()).toString();
+            fs.writeFileSync(path.join(outputDir, 'report.pdf.enc'), encryptedPdf);
+            console.log(`Saved encrypted PDF to report.pdf.enc`);
+        } else {
+            fs.writeFileSync(path.join(outputDir, 'report.pdf'), pdfBuffer);
+            console.log(`Saved public PDF to report.pdf`);
+        }
+    } catch (e) {
+        console.error("Failed to generate PDF:", e);
+    }
 }
 
 // Export for reuse by delete_report.js
 module.exports = { generateMasterIndex };
 
 const args = process.argv.slice(2);
-if (args.length >= 2) publish(args[0], args[1]);
-else if (require.main === module) console.error("Usage: node publish.js [input_path] [output_dir]");
+if (args.length >= 2) {
+    publish(args[0], args[1]).catch(e => {
+        console.error(e);
+        process.exit(1);
+    });
+} else if (require.main === module) {
+    console.error("Usage: node publish.js [input_path] [output_dir]");
+}
