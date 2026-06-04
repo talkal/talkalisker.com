@@ -29,14 +29,14 @@
             }
         }
 
-        async function checkSignatureStatus() {
+        // Lightweight: restore only localStorage signatures (safe to call on every lang switch).
+        // Uses innerText — only works on visible elements, so called after setLang reveals the block.
+        function restoreSignatures() {
             const reportId = document.title.split(' | ')[0];
-            
-            // First load local storage signatures (fallback)
             const cards = document.querySelectorAll('.signature-card');
             cards.forEach(card => {
                 const roleEl = card.querySelector('.signature-role');
-                const role = roleEl ? roleEl.textContent.trim() : 'unknown';
+                const role = roleEl ? roleEl.innerText.trim() : 'unknown';
                 const sigId = `sig_${reportId}_${role}`.replace(/\s+/g, '_');
                 const savedSig = localStorage.getItem(sigId);
                 if (savedSig) {
@@ -55,6 +55,13 @@
                     } catch (e) {}
                 }
             });
+        }
+
+        async function checkSignatureStatus() {
+            const reportId = document.title.split(' | ')[0];
+
+            // Restore localStorage sigs (innerText works — elements are visible at this point)
+            restoreSignatures();
 
             if (!supabaseClient) return;
             const requiresSigMeta = document.querySelector('meta[name="requires_signature"]');
@@ -71,38 +78,56 @@
             }
         }
 
+
         function lockSignatureCard(sigData) {
-            const cards = document.querySelectorAll('.signature-card');
-            cards.forEach(card => {
-                const roleEl = card.querySelector('.signature-role');
-                const cardRole = roleEl ? roleEl.textContent.trim() : 'unknown';
-                
-                if (sigData.role === cardRole || sigData.role === 'unknown' || !sigData.role) {
-                    const line = card.querySelector('.signature-line');
-                    if (line && line.dataset.signed === 'true') return;
-                    
-                    const dateStr = new Date(sigData.created_at).toLocaleString();
-                    const emailStr = sigData.email && sigData.email !== 'unknown@client.com' ? `<br>Email: ${sigData.email}` : '';
-                    
-                    if (line) {
-                        line.innerHTML = `
-                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 5px;">
-                                <span style="font-family: 'Georgia', cursive; font-size: 1.8rem; color: var(--text-primary); line-height: 1;">${sigData.client_name}</span>
-                                <span style="font-size: 0.75rem; color: var(--text-secondary); font-family: var(--font-mono); line-height: 1.4;">
-                                    ✓ Cryptographically Verified${emailStr}<br>
-                                    Date: ${dateStr}<br>
-                                    Hash: ${sigData.document_hash.substring(0, 16)}...
-                                </span>
-                            </div>
-                        `;
-                        line.style.borderBottom = 'none';
-                        line.style.opacity = '1';
-                        line.style.background = 'none';
-                        line.style.height = 'auto';
-                        line.dataset.signed = 'true';
-                        card.style.cursor = 'default';
+            // Match by card index across all lang-blocks so Supabase sigs propagate to every language variant.
+            // Each lang-block has cards in the same order — find the role match in any visible block,
+            // then apply the same index to ALL blocks.
+            const allBlocks = document.querySelectorAll('.lang-block');
+            let matchIndex = -1;
+
+            // Find the index of the matching card (search all blocks, use innerText on visible ones)
+            allBlocks.forEach(block => {
+                const cards = block.querySelectorAll('.signature-card');
+                cards.forEach((card, idx) => {
+                    if (matchIndex !== -1) return;
+                    const roleEl = card.querySelector('.signature-role');
+                    const cardRole = roleEl ? (roleEl.offsetParent !== null ? roleEl.innerText : roleEl.textContent).trim() : 'unknown';
+                    if (sigData.role === cardRole || sigData.role === 'unknown' || !sigData.role) {
+                        matchIndex = idx;
                     }
-                }
+                });
+            });
+
+            if (matchIndex === -1) return;
+
+            // Apply the signature to the same-index card in EVERY lang-block
+            allBlocks.forEach(block => {
+                const cards = block.querySelectorAll('.signature-card');
+                const card = cards[matchIndex];
+                if (!card) return;
+                const line = card.querySelector('.signature-line');
+                if (!line || line.dataset.signed === 'true') return;
+
+                const dateStr = new Date(sigData.created_at).toLocaleString();
+                const emailStr = sigData.email && sigData.email !== 'unknown@client.com' ? `<br>Email: ${sigData.email}` : '';
+
+                line.innerHTML = `
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 5px;">
+                        <span style="font-family: 'Georgia', cursive; font-size: 1.8rem; color: var(--text-primary); line-height: 1;">${sigData.client_name}</span>
+                        <span style="font-size: 0.75rem; color: var(--text-secondary); font-family: var(--font-mono); line-height: 1.4;">
+                            ✓ Cryptographically Verified${emailStr}<br>
+                            Date: ${dateStr}<br>
+                            Hash: ${sigData.document_hash.substring(0, 16)}...
+                        </span>
+                    </div>
+                `;
+                line.style.borderBottom = 'none';
+                line.style.opacity = '1';
+                line.style.background = 'none';
+                line.style.height = 'auto';
+                line.dataset.signed = 'true';
+                card.style.cursor = 'default';
             });
         }
         function toggleTheme() {
@@ -146,6 +171,8 @@
             }
             const indicator = document.getElementById('lang-indicator');
             if (indicator) indicator.textContent = lang === 'he' ? 'עב' : lang.toUpperCase();
+            // Re-apply localStorage sigs to newly visible lang-block cards (innerText now works)
+            restoreSignatures();
         }
 
         function toggleDrawer() {
