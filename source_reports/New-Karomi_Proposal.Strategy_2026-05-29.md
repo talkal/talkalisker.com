@@ -5,6 +5,7 @@ project: "Website Rebrand"
 type: "Proposal.Strategy"
 date: "2026-05-29"
 confidential: true
+requires_signature: true
 languages: '["he"]'
 ---
 
