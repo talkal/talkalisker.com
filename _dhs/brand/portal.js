@@ -69,6 +69,11 @@
         // Lightweight: restore only localStorage signatures (safe to call on every lang switch).
         // Uses innerText — only works on visible elements, so called after setLang reveals the block.
         function restoreSignatures() {
+            // Skip localStorage-based signatures on documents that enforce Supabase cryptographic signing.
+            // Only Supabase-verified signatures should appear on enforced documents.
+            const requiresSigMeta = document.querySelector('meta[name="requires_signature"]');
+            if (requiresSigMeta && requiresSigMeta.getAttribute('content') === 'true') return;
+
             const reportId = document.title.split(' | ')[0];
             const allBlocks = document.querySelectorAll('.lang-block');
             
