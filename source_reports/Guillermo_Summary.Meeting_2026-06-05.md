@@ -69,6 +69,5 @@ Guillermo strongly favored Novera and Alapar (Flow), alongside Ordo and Structa 
 Carmen will collaborate with Tal on direct outreach to Rapinformes clients.
 
 # 08. /action_items
-- **Action:** Send complete design presentation via email | **Owner:** Yaeli | **Status:** Pending
-- **Action:** Send top naming options for trademark clearance | **Owner:** Guillermo | **Status:** Pending
-- **Action:** Schedule follow-up alignment meeting | **Owner:** Tal | **Status:** Pending
+- **Action:** Choose brand direction and name for design kickoff | **Owner:** Guillermo | **Status:** Pending
+
