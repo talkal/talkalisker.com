@@ -232,7 +232,7 @@ function parseMarkdownContent(markdownContent, outputDir) {
         });
 
     // Add CSS IDs to headings for navigation
-    processed = processed.replace(/^# (.*\/([^\s]+).*$)/gm, '<h1 id="$2">$1</h1>');
+    processed = processed.replace(/^# (.*\/([^\s]+).*$)/gm, '<h1 id="$2">$1</h1>\n');
     return md.render(processed, { outputDir });
 }
 
