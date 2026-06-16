@@ -347,7 +347,7 @@
         .finding-card, .action-card, .proposal-card, .deliverable-card { position: relative; }
         
         .comment-toggle-btn {
-            position: absolute; top: 1rem; right: 1rem;
+            position: absolute; bottom: -1.2rem; right: 1.5rem;
             background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle);
             color: var(--text-secondary); border-radius: 6px; padding: 0.4rem 0.6rem;
             font-family: var(--font-mono); font-size: 0.75rem; cursor: pointer;
