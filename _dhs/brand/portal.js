@@ -762,6 +762,18 @@
                 }
             });
 
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.comment-thread-container') && !e.target.closest('.comment-toggle-btn') && !e.target.closest('.client-highlight')) {
+                    document.querySelectorAll('.comment-thread-container.open').forEach(t => t.classList.remove('open'));
+                }
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.comment-thread-container.open').forEach(t => t.classList.remove('open'));
+                }
+            });
+
             window.addEventListener('resize', resolveCommentCollisions);
             fetchComments();
         }
