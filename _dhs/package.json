@@ -7,7 +7,7 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
-    "build": "node scripts/build_all.js",
+    "build": "npm run lint && node scripts/build_all.js",
     "delete": "node scripts/delete_report.js",
     "lint": "node scripts/validate.js",
     "watch": "node scripts/watch.js",

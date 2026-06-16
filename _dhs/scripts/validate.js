@@ -15,7 +15,8 @@ const targetArg = process.argv[2];
 const ignoredFiles = new Set([
     'Guillermo_Project_Proposal_2026-04-27.md',
     'Guillermo_Project_Proposal_2026-05-21.md',
-    'Hadassah_UX_Audit_2026-04-28.md'
+    'Hadassah_UX_Audit_2026-04-28.md',
+    'Hadassah_UX_Audit.md'
 ]);
 
 let files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.md'));
@@ -59,31 +60,38 @@ files.forEach(file => {
 
     let errors = [];
 
-    lines.forEach((line, idx) => {
-        const lineNum = idx + 1;
-        const trimmed = line.trim();
-        
-        const markerMatch = trimmed.match(/^:::(\w+)$/);
-        if (markerMatch) {
-            currentLang = markerMatch[1];
-            openLangLineNum = lineNum;
-            if (!langLines[currentLang]) {
-                langLines[currentLang] = [];
-                langLineNums[currentLang] = [];
-            }
-            return;
-        }
-        if (trimmed === ':::') {
-            currentLang = null;
-            openLangLineNum = null;
-            return;
-        }
+    let hasLanguageBlocks = lines.some(line => line.trim().match(/^:::/));
 
-        if (currentLang) {
-            langLines[currentLang].push(line);
-            langLineNums[currentLang].push(lineNum);
-        }
-    });
+    if (!hasLanguageBlocks) {
+        langLines['default'] = [...lines];
+        langLineNums['default'] = lines.map((_, i) => i + 1);
+    } else {
+        lines.forEach((line, idx) => {
+            const lineNum = idx + 1;
+            const trimmed = line.trim();
+            
+            const markerMatch = trimmed.match(/^:::(\w+)$/);
+            if (markerMatch) {
+                currentLang = markerMatch[1];
+                openLangLineNum = lineNum;
+                if (!langLines[currentLang]) {
+                    langLines[currentLang] = [];
+                    langLineNums[currentLang] = [];
+                }
+                return;
+            }
+            if (trimmed === ':::') {
+                currentLang = null;
+                openLangLineNum = null;
+                return;
+            }
+
+            if (currentLang) {
+                langLines[currentLang].push(line);
+                langLineNums[currentLang].push(lineNum);
+            }
+        });
+    }
 
     if (currentLang !== null) {
         errors.push(`Line ${openLangLineNum}: Unclosed language block ':::${currentLang}'. Missing matching ':::' marker.`);

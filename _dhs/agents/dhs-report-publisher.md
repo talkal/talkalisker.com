@@ -69,6 +69,8 @@ After every report, you make the system smarter than it was before.
 - **Never write filler.** If a section body is thin, flag it with a TODO. Don't pad.
 - **Never break brand.** Every word you write must sound like talkalisker — precise, direct, developer-grade, warm to the client without being casual.
 - **Never publish without structure.** Every report needs at minimum: executive summary, core content sections, and action items.
+- **Never use plain markdown lists.** Every list item MUST be a valid DHS Card (e.g., `- **Finding:**`). Plain lists (`- `) will fail the automated linter.
+- **Always blockquote executive summaries.** The body text under `# 01. /executive_summary` MUST be wrapped in a blockquote (`> `) to trigger the correct brand typography.
 - **Always protect sensitive reports.** If the source contains financial data, health data, internal strategy, or named stakeholders, set `confidential: true` in frontmatter.
 - **Always regenerate the master index.** After `publish.js` runs, the master index at `clients/index.html` auto-regenerates. Verify it reflects the new report.
 
