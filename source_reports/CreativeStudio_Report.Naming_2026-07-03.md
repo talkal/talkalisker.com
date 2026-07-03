@@ -22,11 +22,29 @@ Position as "The Modern Artisans." Utilize AI as a precision instrument to craft
 
 # 03. /ideal_client_profile
 
-- **Finding:** Target Demographic | **Severity:** Info
-These founders require a partner who understands product development, engineering constraints, and go-to-market speed. They view brand, copy, and web development as a single ecosystem rather than distinct silos. Focuses on Series A/B, Wellness, and B2B Tech.
+- **Finding:** The Scale-Up Visionary | **Severity:** Info
+They are the founder, CEO, or Head of Brand at a funded startup (Series A or B) or a premium, specialized business (high-end wellness tech, bespoke real estate, B2B SaaS). They have moved past the "hustle and scrappy" phase and are ready to establish a dominant, sophisticated market presence.
 
-- **Finding:** Buyer Psychology | **Severity:** High
-They despise paying for bloated overhead and the traditional agency bait-and-switch. They seek a trusted partner who practices deep listening, acts as a strategic sounding board, and operates with a calming, frictionless flow.
+- **Finding:** The Agency Treadmill (Pain Point) | **Severity:** High
+They’ve hired big agencies before and felt like a small fish in a big pond. They hated being sold by the senior partners but serviced by junior staff.
+
+- **Finding:** The "Frankenstein" Brand (Pain Point) | **Severity:** High
+Their current brand is fragmented. The design doesn't match the copy, and the website feels clunky because previous freelancers worked in silos.
+
+- **Finding:** Fear of Generic AI (Pain Point) | **Severity:** Medium
+They know AI is the future, but they are terrified of looking cheap, automated, or generic.
+
+- **Finding:** One-Table Collaboration (Value Hook) | **Severity:** Info
+They want direct access to the actual creators. They value the speed and lack of friction that comes from a tight-knit duo.
+
+- **Finding:** Bespoke Craft + Tech Velocity (Value Hook) | **Severity:** Info
+They want the artistry of a boutique studio but demand the technical performance and speed that an AI-assisted workflow provides.
+
+- **Finding:** Quiet Luxury (Value Hook) | **Severity:** Info
+They don't want a loud, chaotic brand; they want a digital presence that feels authoritative, breathable, and highly intentional.
+
+- **Finding:** Outreach & Conversion | **Severity:** Info
+Found on LinkedIn and specialized Slack groups. Outreach should audit a small piece of their digital experience to demonstrate the studio's dual-threat (design + dev/copy). The ultimate qualifier: "We need our digital presence to reflect the premium quality of our actual product."
 
 # 04. /naming_candidates
 
