@@ -63,3 +63,11 @@ Captures the human, communicative vibe. Offers a calming digital presence devoid
 
 - **Name:** Aletheia | **Slogan:** Revealing authentic brand truth | **Level:** Backup
 Meaning "unconcealedness." Using intuitive empathy to uncover the authentic core of a client's business, then crafting a precise, lasting digital ecosystem.
+
+# 04. /ideal_client_profile
+
+- **Finding:** Target Demographic | **Details:** Series A/B, Wellness, B2B Tech
+These founders require a partner who understands product development, engineering constraints, and go-to-market speed. They view brand, copy, and web development as a single ecosystem rather than distinct silos.
+
+- **Finding:** Buyer Psychology | **Need:** Predictable Execution
+They despise paying for bloated overhead and the traditional agency bait-and-switch. They seek a trusted partner who practices deep listening, acts as a strategic sounding board, and operates with a calming, frictionless flow.
