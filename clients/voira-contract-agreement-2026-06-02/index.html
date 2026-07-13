@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-languages="[&quot;en&quot;,&quot;es&quot;]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="client" content="Guillermo">
+    <meta name="project" content="Voria Digital Transformation">
+    <meta name="date" content="2026-06-02">
+    <meta name="type" content="Contract.Agreement">
+    <meta name="confidential" content="true">
+    <meta name="requires_signature" content="true">
+    <title>Voria (Placeholder) Digital Transformation — Contract Agreement | Talkalisker Client Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <link rel="stylesheet" href="../assets/portal.css">
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+    <div id="nav-overlay" onclick="closeDrawer()"></div>
+    <button id="nav-toggle" onclick="toggleDrawer()" aria-label="Open navigation">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+    </button>
+
+    <div class="print-header">
+        <div class="print-header-logo">TalKalisker</div>
+        <div class="print-header-title">Voria (Placeholder) Digital Transformation — Contract Agreement</div>
+        <div class="print-header-meta">// client: Guillermo &nbsp; // date: 2026-06-02 &nbsp; // type: Contract.Agreement &nbsp; CONFIDENTIAL</div>
+    </div>
+
+    <aside class="sidebar" id="sidebar">
+        <a href="https://talkalisker.com/developer-services" class="logo" style="text-decoration: none; color: inherit;">
+            <img src="../../assets/talkalisker_logo.png" alt="Logo">
+            TalKalisker
+        </a>
+        <nav id="sidebar-nav">
+                <div class="lang-nav" lang="en"><a href="#statement_of_work" class="nav-link">01. /statement_of_work</a>
+            <a href="#terms_of_engagement" class="nav-link">02. /terms_of_engagement</a>
+            <a href="#project_roadmap" class="nav-link">03. /project_roadmap</a>
+            <a href="#payment_schedule" class="nav-link">04. /payment_schedule</a>
+            <a href="#obligations" class="nav-link">05. /obligations</a>
+            <a href="#authorization" class="nav-link">06. /authorization</a></div>
+                <div class="lang-nav" lang="es" style="display: none;"><a href="#declaracion_de_trabajo" class="nav-link">01. /declaracion_de_trabajo</a>
+            <a href="#terminos_del_acuerdo" class="nav-link">02. /terminos_del_acuerdo</a>
+            <a href="#cronograma_del_proyecto" class="nav-link">03. /cronograma_del_proyecto</a>
+            <a href="#calendario_de_pagos" class="nav-link">04. /calendario_de_pagos</a>
+            <a href="#obligaciones" class="nav-link">05. /obligaciones</a>
+            <a href="#autorizacion" class="nav-link">06. /autorizacion</a></div>
+                <div class="lang-nav" lang="he" style="display: none;"></div>
+        </nav>
+        <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.75rem;">
+            <button onclick="toggleTheme()" aria-label="Toggle Theme" style="background: none; border: none; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s;">
+                <svg id="sun-icon" style="display: none; fill: currentColor;" width="18" height="18" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41zM7.05 18.36c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41z"/></svg>
+                <svg id="moon-icon" style="fill: currentColor;" width="18" height="18" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+            </button>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <button id="lang-toggle" aria-label="Switch Language" style="background: none; border: none; color: var(--text-secondary); cursor: pointer; display: none; align-items: center; gap: 0.5rem; transition: color 0.2s;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
+                </button>
+                <span id="lang-indicator" style="display: none;">EN</span>
+            </div>
+            <button onclick="downloadPdf()" aria-label="Export to PDF" style="margin-top: 1rem; background: none; border: 1px solid var(--border-subtle); padding: 0.6rem 1rem; border-radius: 6px; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.2s; font-family: var(--font-mono); font-size: 0.75rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+                Export PDF
+            </button>
+        </div>
+    </aside>
+
+    <main class="main">
+        
+        <header class="report-header">
+            <div class="report-label">// deliverable: Contract.Agreement</div>
+            <h1 class="report-title">
+                <span class="lang-title" lang="en">Voria (Placeholder) Digital Transformation — Contract Agreement</span>
+                
+                
+            </h1>
+            <div class="report-client">// client: Guillermo</div>
+            <div class="report-date">// 2026-06-02</div>
+            <div class="confidential-badge">// Confidential</div>
+        </header>
+
+        <div class="search-container">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="search" id="portal-search" placeholder="Search document..." aria-label="Search document">
+        </div>
+
+        <article id="content">
+                <div class="lang-block" lang="en"><h1 id="statement_of_work">01. /statement_of_work</h1>
+<p><strong>Guillermo</strong> (Client) engages <strong>TalKalisker</strong> (Provider) to execute the complete digital foundation for Voria, designed specifically for the Spanish SME market (5–50 employees). This contract formalizes the 5-week sprint that will deliver Voria's strategic naming, visual identity, and fully coded web presence, leveraging the Rapinformes S.L. partnership.</p>
+<p>By July 5th, Guillermo will take full ownership of a market-ready brand identity, a live high-performance website on a custom domain, a comprehensive brand kit, and the technical infrastructure to begin client acquisition.</p>
+<h1 id="terms_of_engagement">02. /terms_of_engagement</h1>
+<p>These binding terms govern our partnership to ensure execution matches intent.</p>
+<div class="decision-card" id="card-delivery-of-strategic-brand-differentiation">
+    <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">High Impact</span></div>
+    <div class="decision-title">Delivery of strategic brand differentiation</div>
+    <div class="decision-desc"><p><strong>Term:</strong> TalKalisker will deliver 2 distinct, fully reasoned brand and naming directions for Guillermo's selection. Execution will position the &quot;AI Readiness&quot; methodology as a market differentiator.</p>
+</div>
+</div>
+<div class="decision-card" id="card-engineering-of-a-technically-superior-web-presence">
+    <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">High Impact</span></div>
+    <div class="decision-title">Engineering of a technically superior web presence</div>
+    <div class="decision-desc"><p><strong>Term:</strong> The final website will be custom-built (HTML5/CSS3/JS) for sub-second load times and SEO optimization, deployed via GitHub Pages with zero recurring hosting costs.</p>
+</div>
+</div>
+<div class="decision-card" id="card-integrated-5-week-delivery-sprint">
+    <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">High Impact</span></div>
+    <div class="decision-title">Integrated 5-week delivery sprint</div>
+    <div class="decision-desc"><p><strong>Term:</strong> The project will run as a compressed 5-week sprint with weekly milestone reviews. Tal handles technical architecture and copywriting; Yaeli handles visual identity.</p>
+</div>
+</div>
+<h1 id="project_roadmap">03. /project_roadmap</h1>
+<p>This schedule dictates the delivery of project milestones.</p>
+<p><strong>Phase 1: Brand Foundation &amp; Strategic Naming (June 1–7)</strong><br>
+Delivery of naming candidates, target audience definition, and brand voice. Includes presentation of two distinct brand/naming directions for strategic choice.</p>
+<p><strong>Phase 2: Full Brand Kit &amp; Visual Identity (June 8–21)</strong><br>
+Delivery of the complete branding kit for the chosen direction, including logo suite, color palette, typography system, visual language, and comprehensive brand guidelines.</p>
+<p><strong>Phase 3: Web Development &amp; Brand Applications (June 22–28)</strong><br>
+Delivery of the functional coded website (HTML5/CSS3/JS), SEO report, complete UI/UX design system, and brand applications (business cards, LinkedIn banners, email signatures). Custom domain configured on GitHub Pages.</p>
+<p><strong>Phase 4: Final Tweaks &amp; Handover (June 29–July 5)</strong><br>
+Completion of feedback cycles. Final technical handover of all assets, source code, and GitHub repository access. Guillermo assumes 100% intellectual property ownership.</p>
+<h1 id="payment_schedule">04. /payment_schedule</h1>
+<p>This contract confirms the fixed investment and milestone payment triggers.</p>
+<div class="metric-card">
+    <div class="metric-title">Total Investment</div>
+    <div class="metric-value">€2,700</div>
+    <div class="metric-trend trend-neutral">Fixed</div>
+</div>
+<div class="metric-card">
+    <div class="metric-title">Payment 1 — Project Start & Discovery (33%)</div>
+    <div class="metric-value">€900</div>
+    <div class="metric-trend trend-neutral">Due upfront</div>
+</div>
+<div class="metric-card">
+    <div class="metric-title">Payment 2 — Major Deliverables & Web Dev (33%)</div>
+    <div class="metric-value">€900</div>
+    <div class="metric-trend trend-neutral">On Phase 3 delivery</div>
+</div>
+<div class="metric-card">
+    <div class="metric-title">Payment 3 — Final Approval & Handover (33%)</div>
+    <div class="metric-value">€900</div>
+    <div class="metric-trend trend-neutral">On Phase 4 completion</div>
+</div>
+<p><em>All payments are final upon delivery of the associated milestone. There are no recurring subscriptions or hosting fees.</em></p>
+<h1 id="obligations">05. /obligations</h1>
+<p>The following actions confirm agreement and initiate the project.</p>
+<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ></div>
+        <div class="action-title">Sign this contract agreement</div>
+        <div class="action-owner">Guillermo</div>
+    </div>
+    <div class="action-status status-pending">Pending</div>
+</div>
+<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ></div>
+        <div class="action-title">Transfer Payment 1 (€900) to secure project start</div>
+        <div class="action-owner">Guillermo</div>
+    </div>
+    <div class="action-status status-pending">Pending</div>
+</div>
+<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ></div>
+        <div class="action-title">Commence Phase 1 discovery and research</div>
+        <div class="action-owner">Tal & Yaeli</div>
+    </div>
+    <div class="action-status status-blocked">Blocked</div>
+</div>
+<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ></div>
+        <div class="action-title">Provide Rapinformes brand assets for reference</div>
+        <div class="action-owner">Guillermo</div>
+    </div>
+    <div class="action-status status-pending">Pending</div>
+</div>
+<p><br><br></p>
+<hr>
+<p><br><br></p>
+<h1 id="authorization">06. /authorization</h1>
+<div class="signature-card" onclick="openSignaturePad(this)" style="cursor: pointer;">
+    <div class="signature-line" style="display: flex; align-items: flex-end; justify-content: center; padding-bottom: 5px; color: var(--accent); font-family: var(--font-mono); font-size: 0.7rem;">[Click to Sign]</div>
+    <div class="signature-name">Guillermo</div>
+    <div class="signature-role">Client (Voria Founders)</div>
+</div>
+<div class="signature-card" onclick="openSignaturePad(this)" style="cursor: pointer;">
+    <div class="signature-line" style="display: flex; align-items: flex-end; justify-content: center; padding-bottom: 5px; color: var(--accent); font-family: var(--font-mono); font-size: 0.7rem;">[Click to Sign]</div>
+    <div class="signature-name">Tal</div>
+    <div class="signature-role">Project Lead (TalKalisker)</div>
+</div>
+</div>
+                <div class="lang-block" lang="es" style="display: none;"><h1 id="declaracion_de_trabajo">01. /declaracion_de_trabajo</h1>
+<p><strong>Guillermo</strong> (Cliente) contrata a <strong>TalKalisker</strong> (Proveedor) para ejecutar la base digital completa de Voria, diseñada específicamente para el mercado de las PYMES españolas (5–50 empleados). Este contrato formaliza el sprint de 5 semanas que entregará el naming estratégico, la identidad visual y la presencia web totalmente programada de Voria, aprovechando la asociación con Rapinformes S.L.</p>
+<p>Para el 5 de julio, Guillermo tomará plena propiedad de una identidad de marca lista para el mercado, un sitio web de alto rendimiento en vivo en un dominio personalizado, un kit de marca integral y la infraestructura técnica para comenzar la adquisición de clientes.</p>
+<h1 id="terminos_del_acuerdo">02. /terminos_del_acuerdo</h1>
+<p>Estos términos vinculantes rigen nuestra asociación para asegurar que la ejecución coincida con la intención.</p>
+<div class="decision-card" id="card-entrega-de-diferenciaci-n-estrat-gica-de-marca">
+    <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">Alto Impact</span></div>
+    <div class="decision-title">Entrega de diferenciación estratégica de marca</div>
+    <div class="decision-desc"><p><strong>Término:</strong> TalKalisker entregará 2 direcciones de marca y naming distintas y totalmente razonadas para la selección de Guillermo. La ejecución posicionará la metodología &quot;AI Readiness&quot; como un diferenciador de mercado.</p>
+</div>
+</div>
+<div class="decision-card" id="card-ingenier-a-de-una-presencia-web-t-cnicamente-superior">
+    <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">Alto Impact</span></div>
+    <div class="decision-title">Ingeniería de una presencia web técnicamente superior</div>
+    <div class="decision-desc"><p><strong>Término:</strong> El sitio web final será construido a medida (HTML5/CSS3/JS) para tiempos de carga inferiores al segundo y optimización SEO, desplegado a través de GitHub Pages sin costes de alojamiento recurrentes.</p>
+</div>
+</div>
+<div class="decision-card" id="card-sprint-de-entrega-integrado-de-5-semanas">
+    <div class="decision-meta"><span>Strategic Decision</span><span style="color:var(--accent);">Alto Impact</span></div>
+    <div class="decision-title">Sprint de entrega integrado de 5 semanas</div>
+    <div class="decision-desc"><p><strong>Término:</strong> El proyecto se ejecutará como un sprint comprimido de 5 semanas con revisiones de hitos semanales. Tal maneja la arquitectura técnica y el copywriting; Yaeli maneja la identidad visual.</p>
+</div>
+</div>
+<h1 id="cronograma_del_proyecto">03. /cronograma_del_proyecto</h1>
+<p>Este cronograma dicta la entrega de los hitos del proyecto.</p>
+<p><strong>Fase 1: Base de Marca y Naming Estratégico (1–7 de junio)</strong><br>
+Entrega de candidatos de nombres, definición del público objetivo y voz de marca. Incluye la presentación de dos direcciones de marca/naming distintas para la elección estratégica.</p>
+<p><strong>Fase 2: Kit de Marca Completo e Identidad Visual (8–21 de junio)</strong><br>
+Entrega del kit de marca completo para la dirección elegida, incluyendo suite de logotipos, paleta de colores, sistema tipográfico, lenguaje visual y directrices de marca.</p>
+<p><strong>Fase 3: Desarrollo Web y Aplicaciones de Marca (22–28 de junio)</strong><br>
+Entrega del sitio web funcional programado (HTML5/CSS3/JS), informe SEO, sistema de diseño UI/UX completo y aplicaciones de marca (tarjetas de visita, banners de LinkedIn, firmas de correo electrónico). Dominio personalizado configurado en GitHub Pages.</p>
+<p><strong>Fase 4: Ajustes Finales y Entrega (29 de junio–5 de julio)</strong><br>
+Finalización de los ciclos de retroalimentación. Entrega técnica final de todos los activos, código fuente y acceso al repositorio de GitHub. Guillermo asume el 100% de la propiedad intelectual.</p>
+<h1 id="calendario_de_pagos">04. /calendario_de_pagos</h1>
+<p>Este contrato confirma la inversión fija y los activadores de pago por hitos.</p>
+<div class="metric-card">
+    <div class="metric-title">Inversión Total</div>
+    <div class="metric-value">€2.700</div>
+    <div class="metric-trend trend-neutral">Fijo</div>
+</div>
+<div class="metric-card">
+    <div class="metric-title">Pago 1 — Inicio del Proyecto y Descubrimiento (33%)</div>
+    <div class="metric-value">€900</div>
+    <div class="metric-trend trend-neutral">Debido por adelantado</div>
+</div>
+<div class="metric-card">
+    <div class="metric-title">Pago 2 — Entregables Principales y Desarrollo Web (33%)</div>
+    <div class="metric-value">€900</div>
+    <div class="metric-trend trend-neutral">A la entrega de la Fase 3</div>
+</div>
+<div class="metric-card">
+    <div class="metric-title">Pago 3 — Aprobación Final y Entrega (33%)</div>
+    <div class="metric-value">€900</div>
+    <div class="metric-trend trend-neutral">Al finalizar la Fase 4</div>
+</div>
+<p><em>Todos los pagos son definitivos a la entrega del hito asociado. No hay suscripciones recurrentes ni tarifas de alojamiento.</em></p>
+<h1 id="obligaciones">05. /obligaciones</h1>
+<p>Las siguientes acciones confirman el acuerdo e inician el proyecto.</p>
+<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ></div>
+        <div class="action-title">Firmar este acuerdo de contrato</div>
+        <div class="action-owner">Guillermo</div>
+    </div>
+    <div class="action-status status-pendiente">Pendiente</div>
+</div>
+<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ></div>
+        <div class="action-title">Transferir el Pago 1 (€900) para asegurar el inicio del proyecto</div>
+        <div class="action-owner">Guillermo</div>
+    </div>
+    <div class="action-status status-pendiente">Pendiente</div>
+</div>
+<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ></div>
+        <div class="action-title">Comenzar la Fase 1 de descubrimiento e investigación</div>
+        <div class="action-owner">Tal y Yaeli</div>
+    </div>
+    <div class="action-status status-bloqueado">Bloqueado</div>
+</div>
+<div class="action-card">
+    <div class="action-info">
+        <div class="action-checkbox" ></div>
+        <div class="action-title">Proporcionar los activos de marca de Rapinformes como referencia</div>
+        <div class="action-owner">Guillermo</div>
+    </div>
+    <div class="action-status status-pendiente">Pendiente</div>
+</div>
+<p><br><br></p>
+<hr>
+<p><br><br></p>
+<h1 id="autorizacion">06. /autorizacion</h1>
+<div class="signature-card" onclick="openSignaturePad(this)" style="cursor: pointer;">
+    <div class="signature-line" style="display: flex; align-items: flex-end; justify-content: center; padding-bottom: 5px; color: var(--accent); font-family: var(--font-mono); font-size: 0.7rem;">[Click to Sign]</div>
+    <div class="signature-name">Guillermo</div>
+    <div class="signature-role">Cliente (Fundadores de Voria)</div>
+</div>
+<div class="signature-card" onclick="openSignaturePad(this)" style="cursor: pointer;">
+    <div class="signature-line" style="display: flex; align-items: flex-end; justify-content: center; padding-bottom: 5px; color: var(--accent); font-family: var(--font-mono); font-size: 0.7rem;">[Click to Sign]</div>
+    <div class="signature-name">Tal</div>
+    <div class="signature-role">Líder del Proyecto (TalKalisker)</div>
+</div>
+</div>
+                <div class="lang-block" lang="he" style="display: none;"></div>
+        </article>
+    </main>
+
+
+    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Zoomed Evidence">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="../assets/portal.js" defer></script>
+    <button id="back-to-top" aria-label="Scroll to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+</body>
+</html>
