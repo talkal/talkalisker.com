@@ -25,6 +25,8 @@ The visual identity utilizes the "Trusted Partner". The aesthetic is sophisticat
 
 # 03. /tone_of_voice
 
+## Brand Personality
+
 - **Finding:** Professional & Rigorous | **Severity:** Info
 Voira speaks with the institutional weight and exactness demanded by highly regulated sectors.
 
@@ -33,6 +35,8 @@ Voira acts as an approachable guide, proving to be "alongside you, not above you
 
 - **Finding:** Confident | **Severity:** Info
 We project operational confidence and control.
+
+## Copywriting Laws
 
 - **Finding:** Copywriting Laws | **Severity:** High
 Eliminate tech-heavy jargon that alienates conservative SMEs. Emphasize guided implementation—accompanying the team step-by-step to guarantee structural order. Technology must be framed as a tool, not the hero. Voira is the trusted architect guiding "Zero-Downtime Structural Upgrades."
