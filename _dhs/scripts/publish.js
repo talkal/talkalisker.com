@@ -648,7 +648,11 @@ function generateMasterIndex(baseDir) {
 
         function attemptDecrypt() {
             let key = document.getElementById('auth-key').value;
-            if (['kalisker123', 'yaeli123', 'davidovich1997'].includes(key)) {.AES.decrypt(, 'kalisker123');
+            if (['kalisker123', 'yaeli123', 'davidovich1997'].includes(key)) {
+                  const mkEl = document.getElementById('master-key-payload');
+                  if (mkEl) {
+                      try {
+                          const mkBytes = CryptoJS.AES.decrypt(mkEl.textContent.slice(1, -1), 'kalisker123');
                         const realKey = mkBytes.toString(CryptoJS.enc.Utf8);
                         if (realKey) key = realKey;
                     } catch (e) {}
@@ -891,3 +895,4 @@ if (args.length >= 2) {
 } else if (require.main === module) {
     console.error("Usage: node publish.js [input_path] [output_dir]");
 }
+
