@@ -1,7 +1,7 @@
 ---
-title: Voria (Placeholder) Digital Transformation — Contract Agreement
-client: Guillermo
-project: Voria Digital Transformation
+title: Voira Digital Transformation — Contract Agreement
+client: "Voira"
+project: Voira Digital Transformation
 type: Contract.Agreement
 date: 2026-06-02
 confidential: true
@@ -14,7 +14,7 @@ languages:
 :::en
 # 01. /statement_of_work
 
-**Guillermo** (Client) engages **TalKalisker** (Provider) to execute the complete digital foundation for Voria, designed specifically for the Spanish SME market (5–50 employees). This contract formalizes the 5-week sprint that will deliver Voria's strategic naming, visual identity, and fully coded web presence, leveraging the Rapinformes S.L. partnership. 
+**Guillermo** (Client) engages **TalKalisker** (Provider) to execute the complete digital foundation for Voira, designed specifically for the Spanish SME market (5–50 employees). This contract formalizes the 5-week sprint that will deliver Voira's strategic naming, visual identity, and fully coded web presence, leveraging the Rapinformes S.L. partnership. 
 
 By July 5th, Guillermo will take full ownership of a market-ready brand identity, a live high-performance website on a custom domain, a comprehensive brand kit, and the technical infrastructure to begin client acquisition.
 :::
@@ -22,7 +22,7 @@ By July 5th, Guillermo will take full ownership of a market-ready brand identity
 :::es
 # 01. /declaracion_de_trabajo
 
-**Guillermo** (Cliente) contrata a **TalKalisker** (Proveedor) para ejecutar la base digital completa de Voria, diseñada específicamente para el mercado de las PYMES españolas (5–50 empleados). Este contrato formaliza el sprint de 5 semanas que entregará el naming estratégico, la identidad visual y la presencia web totalmente programada de Voria, aprovechando la asociación con Rapinformes S.L.
+**Guillermo** (Cliente) contrata a **TalKalisker** (Proveedor) para ejecutar la base digital completa de Voira, diseñada específicamente para el mercado de las PYMES españolas (5–50 empleados). Este contrato formaliza el sprint de 5 semanas que entregará el naming estratégico, la identidad visual y la presencia web totalmente programada de Voira, aprovechando la asociación con Rapinformes S.L.
 
 Para el 5 de julio, Guillermo tomará plena propiedad de una identidad de marca lista para el mercado, un sitio web de alto rendimiento en vivo en un dominio personalizado, un kit de marca integral y la infraestructura técnica para comenzar la adquisición de clientes.
 :::
@@ -133,7 +133,7 @@ The following actions confirm agreement and initiate the project.
 
 # 06. /authorization
 
-- **Signature:** Guillermo | **Role:** Client (Voria Founders)
+- **Signature:** Guillermo | **Role:** Client (Voira Founders)
 - **Signature:** Tal | **Role:** Project Lead (TalKalisker)
 :::
 
@@ -155,6 +155,6 @@ Las siguientes acciones confirman el acuerdo e inician el proyecto.
 
 # 06. /autorizacion
 
-- **Firma:** Guillermo | **Cargo:** Cliente (Fundadores de Voria)
+- **Firma:** Guillermo | **Cargo:** Cliente (Fundadores de Voira)
 - **Firma:** Tal | **Cargo:** Líder del Proyecto (TalKalisker)
 :::

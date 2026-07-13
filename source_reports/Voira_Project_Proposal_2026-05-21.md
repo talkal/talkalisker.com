@@ -1,7 +1,7 @@
 ---
-title: Voria (Placeholder) Digital Transformation — Project Proposal
-client: Guillermo
-project: Voria Digital Transformation
+title: Voira Digital Transformation — Project Proposal
+client: "Voira"
+project: Voira Digital Transformation
 type: Proposal.Strategy
 date: 2026-05-21
 confidential: true
@@ -14,9 +14,9 @@ languages:
 :::en
 # 01. /executive_summary
 
-**Guillermo** is building a new kind of consultancy — one that doesn't leave transformation plans in a drawer. Voria is engineered specifically for the Spanish SME market (5–50 employees), targeting knowledge-intensive sectors like Law, Compliance, Accounting, and Healthcare-adjacent services. The strategic partnership with Rapinformes S.L. — a 35-year compliance firm with 7,000 clients — provides the institutional trust that conservative sectors demand before opening the door.
+**Guillermo** is building a new kind of consultancy — one that doesn't leave transformation plans in a drawer. Voira is engineered specifically for the Spanish SME market (5–50 employees), targeting knowledge-intensive sectors like Law, Compliance, Accounting, and Healthcare-adjacent services. The strategic partnership with Rapinformes S.L. — a 35-year compliance firm with 7,000 clients — provides the institutional trust that conservative sectors demand before opening the door.
 
-Left without a distinctive brand identity, custom web presence, and clear market positioning, Voria risks being swallowed by the 150+ generic digital consultancies already operating in this space. The window is narrow: the founding partnership with Rapinformes creates a credibility moat, but only if the market perceives Voria as a premium, differentiated player from day one.
+Left without a distinctive brand identity, custom web presence, and clear market positioning, Voira risks being swallowed by the 150+ generic digital consultancies already operating in this space. The window is narrow: the founding partnership with Rapinformes creates a credibility moat, but only if the market perceives Voira as a premium, differentiated player from day one.
 
 **Our approach** delivers the complete digital foundation — from strategic naming and visual identity to a fully coded, high-performance website — in a compressed 5-week sprint. Rather than handing over a PDF brand guide and walking away, we embed the brand into working code, live infrastructure, and professional collateral that Guillermo can deploy immediately.
 
@@ -26,9 +26,9 @@ Left without a distinctive brand identity, custom web presence, and clear market
 :::es
 # 01. /resumen_ejecutivo
 
-**Guillermo** está construyendo un nuevo tipo de consultoría, una que no deja los planes de transformación en un cajón. Voria está diseñada específicamente para el mercado de las PYMES españolas (5–50 empleados), centrándose en sectores intensivos en conocimiento como Derecho, Cumplimiento, Contabilidad y servicios adyacentes a la Salud. La alianza estratégica con Rapinformes S.L. — una firma de cumplimiento con 35 años y 7.000 clientes — proporciona la confianza institucional que los sectores conservadores exigen antes de abrir la puerta.
+**Guillermo** está construyendo un nuevo tipo de consultoría, una que no deja los planes de transformación en un cajón. Voira está diseñada específicamente para el mercado de las PYMES españolas (5–50 empleados), centrándose en sectores intensivos en conocimiento como Derecho, Cumplimiento, Contabilidad y servicios adyacentes a la Salud. La alianza estratégica con Rapinformes S.L. — una firma de cumplimiento con 35 años y 7.000 clientes — proporciona la confianza institucional que los sectores conservadores exigen antes de abrir la puerta.
 
-Sin una identidad de marca distintiva, presencia web personalizada y un posicionamiento de mercado claro, Voria corre el riesgo de ser absorbida por las más de 150 consultorías digitales genéricas que ya operan en este espacio. El tiempo es limitado: la asociación fundadora con Rapinformes crea un foso de credibilidad, pero solo si el mercado percibe a Voria como un jugador premium y diferenciado desde el primer día.
+Sin una identidad de marca distintiva, presencia web personalizada y un posicionamiento de mercado claro, Voira corre el riesgo de ser absorbida por las más de 150 consultorías digitales genéricas que ya operan en este espacio. El tiempo es limitado: la asociación fundadora con Rapinformes crea un foso de credibilidad, pero solo si el mercado percibe a Voira como un jugador premium y diferenciado desde el primer día.
 
 **Nuestro enfoque** ofrece la base digital completa —desde el naming estratégico y la identidad visual hasta un sitio web de alto rendimiento totalmente programado— en un sprint comprimido de 5 semanas. En lugar de entregar una guía de marca en PDF y marcharnos, integramos la marca en código funcional, infraestructura en vivo y materiales profesionales que Guillermo puede desplegar de inmediato.
 
@@ -42,10 +42,10 @@ Sin una identidad de marca distintiva, presencia web personalizada y un posicion
 These are the strategic pillars that run through every section of this proposal. Each theme connects a specific capability of ours to a specific need of Guillermo's.
 
 - **Decision:** Avoid the "generic consultant" trap through strategic brand differentiation | **Impact:** High
-**Buyer Need:** The Spanish market has 150+ competing digital transformation firms. Without sharp positioning, Voria will be perceived as another generic consultancy despite its unique AI Readiness methodology and Rapinformes partnership.
+**Buyer Need:** The Spanish market has 150+ competing digital transformation firms. Without sharp positioning, Voira will be perceived as another generic consultancy despite its unique AI Readiness methodology and Rapinformes partnership.
 **Our Differentiator:** We deliver strategic naming research and 2 distinct brand directions — not template logos — with copywriting that positions the "AI Readiness" angle as a market differentiator, not a buzzword.
 - **Decision:** Launch a technically superior web presence that converts referrals into clients | **Impact:** High
-**Buyer Need:** Voria needs more than a brochure site. The website must function as a "digital business card" that converts warm referrals from Rapinformes' 7,000-client network into consultancy engagements.
+**Buyer Need:** Voira needs more than a brochure site. The website must function as a "digital business card" that converts warm referrals from Rapinformes' 7,000-client network into consultancy engagements.
 **Our Differentiator:** We build lightweight, secure HTML5/CSS3/JS sites with zero recurring hosting costs (GitHub Pages), sub-second load times, and SEO-optimized architecture — not bloated WordPress installs that become security liabilities.
 
 - **Decision:** Deliver a complete brand system — not fragments — in 5 weeks | **Impact:** High
@@ -60,11 +60,11 @@ These are the strategic pillars that run through every section of this proposal.
 Estos son los pilares estratégicos que recorren cada sección de esta propuesta. Cada tema conecta una capacidad específica nuestra con una necesidad específica de Guillermo.
 
 - **Decisión:** Evitar la trampa del "consultor genérico" mediante una diferenciación de marca estratégica | **Impacto:** Alto
-**Necesidad del Comprador:** El mercado español cuenta con más de 150 firmas de transformación digital que compiten entre sí. Sin un posicionamiento nítido, Voria será percibida como una consultoría genérica más, a pesar de su metodología única de "AI Readiness" y su asociación con Rapinformes.
+**Necesidad del Comprador:** El mercado español cuenta con más de 150 firmas de transformación digital que compiten entre sí. Sin un posicionamiento nítido, Voira será percibida como una consultoría genérica más, a pesar de su metodología única de "AI Readiness" y su asociación con Rapinformes.
 **Nuestro Diferenciador:** Entregamos investigación estratégica de naming y 2 direcciones de marca distintas —no logotipos de plantilla— con un copywriting que posiciona el ángulo de "AI Readiness" como un diferenciador de mercado, no como una palabra de moda.
 
 - **Decisión:** Lanzar una presencia web técnicamente superior que convierta las referencias en clientes | **Impacto:** Alto
-**Necesidad del Comprador:** Voria necesita más que un sitio web tipo folleto. El sitio web debe funcionar como una "tarjeta de visita digital" que convierta las referencias directas de la red de 7.000 clientes de Rapinformes en contratos de consultoría.
+**Necesidad del Comprador:** Voira necesita más que un sitio web tipo folleto. El sitio web debe funcionar como una "tarjeta de visita digital" que convierta las referencias directas de la red de 7.000 clientes de Rapinformes en contratos de consultoría.
 **Nuestro Diferenciador:** Construimos sitios HTML5/CSS3/JS ligeros y seguros sin costes de alojamiento recurrentes (GitHub Pages), tiempos de carga inferiores al segundo y una arquitectura optimizada para SEO, en lugar de instalaciones pesadas de WordPress que se convierten en vulnerabilidades de seguridad.
 
 - **Decisión:** Entregar un sistema de marca completo —no fragmentos— en 5 semanas | **Impacto:** Alto
@@ -81,14 +81,14 @@ Estos son los pilares estratégicos que recorren cada sección de esta propuesta
 Before proposing a solution, we need to demonstrate that we have done the work to understand Guillermo's situation — not from a textbook, but from listening.
 
 **Your Current State:**
-Guillermo is building Voria as a boutique consultancy that targets a very specific gap in the Spanish market: SMEs with 5-50 employees who need genuine digital transformation; not slide decks, but embedded technical implementation that makes their operations AI-compatible. The founding insight is sharp: most consultancies sell "digitalization" as a concept, but Voria's methodology audits the entire digital operation, fixes infrastructure gaps, and only then integrates AI agents. This is a real differentiator; if the market can see it.
+Guillermo is building Voira as a boutique consultancy that targets a very specific gap in the Spanish market: SMEs with 5-50 employees who need genuine digital transformation; not slide decks, but embedded technical implementation that makes their operations AI-compatible. The founding insight is sharp: most consultancies sell "digitalization" as a concept, but Voira's methodology audits the entire digital operation, fixes infrastructure gaps, and only then integrates AI agents. This is a real differentiator; if the market can see it.
 
-The strategic foundation is strong. Rapinformes S.L. — 35 years in the compliance industry, 7,000 active clients — has come in as a 10% equity partner and Voria's first client. This is rare institutional backing for a new venture. It means Voria doesn't need to cold-sell trust from zero; the trust is inherited. But inherited trust has a shelf life. It needs to be converted into visible, tangible brand authority before the market window closes.
+The strategic foundation is strong. Rapinformes S.L. — 35 years in the compliance industry, 7,000 active clients — has come in as a 10% equity partner and Voira's first client. This is rare institutional backing for a new venture. It means Voira doesn't need to cold-sell trust from zero; the trust is inherited. But inherited trust has a shelf life. It needs to be converted into visible, tangible brand authority before the market window closes.
 
 The "High Creative Latitude" operating model tells us something important about how Guillermo works: he sets strategic direction and expects professional-grade execution with minimal back-and-forth. This means our deliverables need to arrive as finished, defensible directions — not rough drafts that require three more rounds of alignment.
 
 **The Central Tension:**
-Without a differentiated brand, Voria is invisible. There are 150+ digital transformation consultancies in Spain. Most of them say the same things. Most of them look the same. If Voria launches with a generic logo, a template website, and commodity positioning, the Rapinformes partnership becomes a wasted asset — warm referrals land on a site that looks like every other consultancy, and the conversion dies. The cost of a mediocre launch is not just lost revenue — it's lost credibility with a partner who staked their reputation on the recommendation.
+Without a differentiated brand, Voira is invisible. There are 150+ digital transformation consultancies in Spain. Most of them say the same things. Most of them look the same. If Voira launches with a generic logo, a template website, and commodity positioning, the Rapinformes partnership becomes a wasted asset — warm referrals land on a site that looks like every other consultancy, and the conversion dies. The cost of a mediocre launch is not just lost revenue — it's lost credibility with a partner who staked their reputation on the recommendation.
 :::
 
 :::es
@@ -99,14 +99,14 @@ Without a differentiated brand, Voria is invisible. There are 150+ digital trans
 Antes de proponer una solución, debemos demostrar que hemos trabajado para entender la situación de Guillermo, no a través de un libro de texto, sino escuchando.
 
 **Tu Estado Actual:**
-Guillermo está construyendo Voria como una consultoría boutique que se dirige a un hueco muy específico en el mercado español: PYMES de 5 a 50 empleados que necesitan una transformación digital real; no presentaciones de diapositivas, sino una implementación técnica integrada que haga que sus operaciones sean compatibles con la IA. La idea fundacional es nítida: la mayoría de las consultorías venden la "digitalización" como un concepto, pero la metodología de Voria audita toda la operación digital, soluciona las brechas de infraestructura y solo entonces integra agentes de IA. Este es un diferenciador real; si el mercado puede verlo.
+Guillermo está construyendo Voira como una consultoría boutique que se dirige a un hueco muy específico en el mercado español: PYMES de 5 a 50 empleados que necesitan una transformación digital real; no presentaciones de diapositivas, sino una implementación técnica integrada que haga que sus operaciones sean compatibles con la IA. La idea fundacional es nítida: la mayoría de las consultorías venden la "digitalización" como un concepto, pero la metodología de Voira audita toda la operación digital, soluciona las brechas de infraestructura y solo entonces integra agentes de IA. Este es un diferenciador real; si el mercado puede verlo.
 
-La base estratégica es sólida. Rapinformes S.L. —35 años en la industria del cumplimiento, 7.000 clientes activos— ha entrado como socio con un 10% del capital y es el primer cliente de Voria. Se trata de un respaldo institucional poco común para un nuevo proyecto. Significa que Voria no necesita vender confianza desde cero; la confianza es heredada. Pero la confianza heredada tiene fecha de caducidad. Debe convertirse en una autoridad de marca visible y tangible antes de que se cierre la ventana del mercado.
+La base estratégica es sólida. Rapinformes S.L. —35 años en la industria del cumplimiento, 7.000 clientes activos— ha entrado como socio con un 10% del capital y es el primer cliente de Voira. Se trata de un respaldo institucional poco común para un nuevo proyecto. Significa que Voira no necesita vender confianza desde cero; la confianza es heredada. Pero la confianza heredada tiene fecha de caducidad. Debe convertirse en una autoridad de marca visible y tangible antes de que se cierre la ventana del mercado.
 
 El modelo operativo de "Alta Latitud Creativa" nos dice algo importante sobre cómo trabaja Guillermo: establece la dirección estratégica y espera una ejecución de nivel profesional con el mínimo intercambio de información. Esto significa que nuestros entregables deben llegar como direcciones terminadas y defendibles, no como borradores que requieran tres rondas más de alineación.
 
 **La Tensión Central:**
-Sin una marca diferenciada, Voria es invisible. Hay más de 150 consultorías de transformación digital en España. La mayoría dicen lo mismo. La mayoría se ven iguales. Si Voria se lanza con un logotipo genérico, un sitio web de plantilla y un posicionamiento de producto básico, la asociación con Rapinformes se convierte en un activo desperdiciado: las referencias directas aterrizan en un sitio que se parece al de cualquier otra consultoría y la conversión muere. El coste de un lanzamiento mediocre no es solo la pérdida de ingresos, es la pérdida de credibilidad ante un socio que apostó su reputación por la recomendación.
+Sin una marca diferenciada, Voira es invisible. Hay más de 150 consultorías de transformación digital en España. La mayoría dicen lo mismo. La mayoría se ven iguales. Si Voira se lanza con un logotipo genérico, un sitio web de plantilla y un posicionamiento de producto básico, la asociación con Rapinformes se convierte en un activo desperdiciado: las referencias directas aterrizan en un sitio que se parece al de cualquier otra consultoría y la conversión muere. El coste de un lanzamiento mediocre no es solo la pérdida de ingresos, es la pérdida de credibilidad ante un socio que apostó su reputación por la recomendación.
 :::
 
 
@@ -118,7 +118,7 @@ Sin una marca diferenciada, Voria es invisible. Hay más de 150 consultorías de
 This is not a feature list. This is a guided walkthrough of the decisions we will make together, in sequence, to move from current state to a market-ready digital presence.
 
 **Phase 1: "Brand Foundation & Strategic Naming" — Week 1 (June 1–7)**
-We begin with the work that most agencies skip: strategic research. We explore naming candidates, define the target audience with precision, and establish a brand voice that separates Voria from the generic "digital transformation" noise. At the end of Week 1, we present two distinct brand/naming directions — each fully reasoned, each defensible — for Guillermo's strategic choice. This is where Win Theme 1 does its work: differentiation is designed, not decorated.
+We begin with the work that most agencies skip: strategic research. We explore naming candidates, define the target audience with precision, and establish a brand voice that separates Voira from the generic "digital transformation" noise. At the end of Week 1, we present two distinct brand/naming directions — each fully reasoned, each defensible — for Guillermo's strategic choice. This is where Win Theme 1 does its work: differentiation is designed, not decorated.
 
 **Phase 2: "Full Brand Kit & Visual Identity" — Weeks 2–3 (June 8–21)**
 With the strategic direction locked, we develop 2 complete branding options: logo suite (primary, secondary, variations), color palette, typography system, visual language, and the comprehensive brand guidelines document. In parallel, Yaeli develops the visual identity while Tal develops the copywriting assets — tone of voice, brand personality, philosophy & values, and target audience definition. Week 3 closes with the second client meeting: presentation of both options and handover of the full branding kit.
@@ -138,7 +138,7 @@ Dedicated "ping-pong" feedback cycles for precision adjustments. All final files
 Esta no es una lista de funciones. Es un recorrido guiado por las decisiones que tomaremos juntos, en secuencia, para pasar del estado actual a una presencia digital lista para el mercado.
 
 **Fase 1: "Base de Marca y Naming Estratégico" — Semana 1 (1–7 de junio)**
-Comenzamos con el trabajo que la mayoría de las agencias omiten: la investigación estratégica. Exploramos candidatos de nombres, definimos el público objetivo con precisión y establecemos una voz de marca que separe a Voria del ruido genérico de la "transformación digital". Al final de la semana 1, presentamos dos direcciones distintas de marca/naming —cada una totalmente razonada y defendible— para la elección estratégica de Guillermo. Aquí es donde el Tema Clave 1 hace su trabajo: la diferenciación se diseña, no se decora.
+Comenzamos con el trabajo que la mayoría de las agencias omiten: la investigación estratégica. Exploramos candidatos de nombres, definimos el público objetivo con precisión y establecemos una voz de marca que separe a Voira del ruido genérico de la "transformación digital". Al final de la semana 1, presentamos dos direcciones distintas de marca/naming —cada una totalmente razonada y defendible— para la elección estratégica de Guillermo. Aquí es donde el Tema Clave 1 hace su trabajo: la diferenciación se diseña, no se decora.
 
 **Fase 2: "Kit de Marca Completo e Identidad Visual" — Semanas 2–3 (8–21 de junio)**
 Con la dirección estratégica bloqueada, desarrollamos 2 opciones de marca completas: suite de logotipos (principal, secundario, variaciones), paleta de colores, sistema tipográfico, lenguaje visual y el documento integral de directrices de marca. Paralelamente, Yaeli desarrolla la identidad visual mientras Tal desarrolla los activos de copywriting: tono de voz, personalidad de marca, filosofía y valores, y definición del público objetivo. La semana 3 se cierra con la segunda reunión con el cliente: presentación de ambas opciones y entrega del kit de marca completo.
@@ -269,7 +269,7 @@ The following steps will move this engagement from proposal to execution:
 
 # 07. /authorization
 
-- **Signature:** Guillermo | **Role:** Client (Voria Founders)
+- **Signature:** Guillermo | **Role:** Client (Voira Founders)
 - **Signature:** Tal | **Role:** Project Lead (TalKalisker)
 - **Signature:** Yaeli | **Role:** Head of Design (TalKalisker)
 :::
@@ -293,7 +293,7 @@ Los siguientes pasos moverán este compromiso de la propuesta a la ejecución:
 
 # 07. /autorización
 
-- **Firma:** Guillermo | **Cargo:** Cliente (Fundadores de Voria)
+- **Firma:** Guillermo | **Cargo:** Cliente (Fundadores de Voira)
 - **Firma:** Tal | **Cargo:** Líder del Proyecto (TalKalisker)
 - **Firma:** Yaeli | **Cargo:** Directora de Diseño (TalKalisker)
 :::
