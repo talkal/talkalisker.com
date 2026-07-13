@@ -12,12 +12,13 @@ const sourceDir = path.join(__dirname, '../../source_reports');
 const targetArg = process.argv[2];
 
 // Legacy files to exclude from full suite validation (still validated if explicitly targeted)
-const ignoredFiles = new Set([
-    'Guillermo_Project_Proposal_2026-04-27.md',
-    'Guillermo_Project_Proposal_2026-05-21.md',
-    'Hadassah_UX_Audit_2026-04-28.md',
-    'Hadassah_UX_Audit.md'
-]);
+const LEGACY_IGNORES = [
+    "Voira_Project_Proposal_2026-04-27.md",
+    "Voira_Project_Proposal_2026-05-21.md",
+    "Hadassah_UX_Audit.md",
+    "Hadassah_UX_Audit_2026-04-28.md"
+];
+const ignoredFiles = new Set(LEGACY_IGNORES);
 
 let files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.md'));
 
