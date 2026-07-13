@@ -648,11 +648,7 @@ function generateMasterIndex(baseDir) {
 
         function attemptDecrypt() {
             let key = document.getElementById('auth-key').value;
-            if (key === 'kalisker123') {
-                const mkEl = document.getElementById('master-key-payload');
-                if (mkEl) {
-                    try {
-                        const mkBytes = CryptoJS.AES.decrypt(mkEl.textContent.slice(1, -1), key);
+            if (['kalisker123', 'yaeli123', 'davidovich1997'].includes(key)) {.AES.decrypt(, 'kalisker123');
                         const realKey = mkBytes.toString(CryptoJS.enc.Utf8);
                         if (realKey) key = realKey;
                     } catch (e) {}
