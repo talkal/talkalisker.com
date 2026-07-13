@@ -31,6 +31,9 @@ Voira speaks with the institutional weight and exactness demanded by highly regu
 - **Finding:** Human & Accessible | **Severity:** Info
 Voira acts as an approachable guide, proving to be "alongside you, not above you," and providing psychological safety.
 
+- **Finding:** Confident | **Severity:** Info
+We project operational confidence and control.
+
 - **Finding:** Copywriting Laws | **Severity:** High
 Eliminate tech-heavy jargon that alienates conservative SMEs. Emphasize guided implementation—accompanying the team step-by-step to guarantee structural order. Technology must be framed as a tool, not the hero. Voira is the trusted architect guiding "Zero-Downtime Structural Upgrades."
 
