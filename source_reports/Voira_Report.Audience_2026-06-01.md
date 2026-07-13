@@ -1,6 +1,6 @@
 ---
 title: "Voria Target Audience Profile"
-client: "Guillermo"
+client: "Voira"
 project: "Voria Digital Transformation"
 type: "Report.Audience"
 date: "2026-06-01"

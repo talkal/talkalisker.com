@@ -1,5 +1,5 @@
 ---
-client: "Guillermo"
+client: "Voira"
 project: "Brand Identity"
 date: 2026-04-20
 languages: '["en"]'

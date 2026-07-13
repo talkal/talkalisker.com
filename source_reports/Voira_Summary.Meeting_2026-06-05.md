@@ -1,6 +1,6 @@
 ---
 title: "Brand Strategy & Positioning Review"
-client: "Guillermo"
+client: "Voira"
 project: "Voria Launch"
 type: "Summary.Meeting"
 date: "2026-06-05"

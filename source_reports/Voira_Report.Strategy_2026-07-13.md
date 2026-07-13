@@ -36,17 +36,17 @@ Eliminate tech-heavy jargon that alienates conservative SMEs. Emphasize guided i
 
 # 04. /brand_taglines
 
-- **Name:** The Direct Hybrid | **Slogan:** Transformación digital con vocación humana. | **Level:** Recommended
-**EN:** Digital transformation with human dedication.
+- **Name:** Transformación digital con vocación humana. | **Slogan:** Digital transformation with human dedication. | **Level:** Recommended
+**Direction:** The Direct Hybrid
 
-- **Name:** The Definitive Relief | **Slogan:** Transformación estructural guiada por el compromiso humano. | **Level:** Recommended
-**EN:** Structural transformation guided by human commitment.
+- **Name:** Transformación estructural guiada por el compromiso humano. | **Slogan:** Structural transformation guided by human commitment. | **Level:** Recommended
+**Direction:** The Definitive Relief
 
-- **Name:** The Side-by-Side Angle | **Slogan:** Precisión técnica. Compromiso cercano. | **Level:** Recommended
-**EN:** Technical precision. Personal commitment.
+- **Name:** Precisión técnica. Compromiso cercano. | **Slogan:** Technical precision. Personal commitment. | **Level:** Recommended
+**Direction:** The Side-by-Side Angle
 
-- **Name:** The Warmth + Rigor Angle | **Slogan:** Transformación estructural, paso a paso contigo. | **Level:** Recommended
-**EN:** Structural transformation, step by step with you.
+- **Name:** Transformación estructural, paso a paso contigo. | **Slogan:** Structural transformation, step by step with you. | **Level:** Recommended
+**Direction:** The Warmth + Rigor Angle
 
-- **Name:** The Synchronized Partner | **Slogan:** Diseñamos tus sistemas. Acompañamos a tu equipo. | **Level:** Recommended
-**EN:** We design your systems. We accompany your team.
+- **Name:** Diseñamos tus sistemas. Acompañamos a tu equipo. | **Slogan:** We design your systems. We accompany your team. | **Level:** Recommended
+**Direction:** The Synchronized Partner
