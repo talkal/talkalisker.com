@@ -132,7 +132,7 @@
                 const { data, error } = await supabaseClient
                     .from('signatures')
                     .select('*')
-                    .eq('report_id', reportId)
+                    .in('report_id', [reportId, reportId.replace('Voira', 'Voria (Placeholder)')])
                     .order('created_at', { ascending: false });
 
                 if (data && data.length > 0) {
@@ -598,7 +598,7 @@
             const { data, error } = await supabaseClient
                 .from('comments')
                 .select('*')
-                .eq('report_id', reportId)
+                .in('report_id', [reportId, reportId.replace('Voira', 'Voria (Placeholder)')])
                 .order('created_at', { ascending: true });
             if (error) { console.error('Error fetching comments:', error); return; }
             
@@ -932,4 +932,5 @@
                 initTelemetry();
             }
         });
+
 
