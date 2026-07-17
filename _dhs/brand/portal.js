@@ -156,7 +156,11 @@
                     if (matchIndex !== -1) return;
                     const roleEl = card.querySelector('.signature-role');
                     const cardRole = roleEl ? (roleEl.offsetParent !== null ? roleEl.innerText : roleEl.textContent).trim() : 'unknown';
-                    if (sigData.role === cardRole || sigData.role === 'unknown' || !sigData.role) {
+                    
+                    const normSig = sigData.role ? sigData.role.toUpperCase().replace('VORIA', 'VOIRA') : 'UNKNOWN';
+                    const normCard = cardRole.toUpperCase().replace('VORIA', 'VOIRA');
+                    
+                    if (normSig === normCard || normSig === 'UNKNOWN') {
                         matchIndex = idx;
                     }
                 });
