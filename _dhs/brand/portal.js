@@ -67,7 +67,7 @@
         }
 
         // Lightweight: restore only localStorage signatures (safe to call on every lang switch).
-        // Uses innerText — only works on visible elements, so called after setLang reveals the block.
+        // Uses innerText â€” only works on visible elements, so called after setLang reveals the block.
         function restoreSignatures() {
             // Skip localStorage-based signatures on documents that enforce Supabase cryptographic signing.
             // Only Supabase-verified signatures should appear on enforced documents.
@@ -123,7 +123,7 @@
         async function checkSignatureStatus() {
             const reportId = document.title.split(' | ')[0];
 
-            // Restore localStorage sigs (innerText works — elements are visible at this point)
+            // Restore localStorage sigs (innerText works â€” elements are visible at this point)
             restoreSignatures();
 
             if (!supabaseClient) return;
@@ -144,7 +144,7 @@
 
         function lockSignatureCard(sigData) {
             // Match by card index across all lang-blocks so Supabase sigs propagate to every language variant.
-            // Each lang-block has cards in the same order — find the role match in any visible block,
+            // Each lang-block has cards in the same order â€” find the role match in any visible block,
             // then apply the same index to ALL blocks.
             const allBlocks = document.querySelectorAll('.lang-block');
             let matchIndex = -1;
@@ -179,7 +179,7 @@
                     <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 5px;">
                         <span style="font-family: 'Georgia', cursive; font-size: 1.8rem; color: var(--text-primary); line-height: 1;">${sigData.client_name}</span>
                         <span style="font-size: 0.75rem; color: var(--text-secondary); font-family: var(--font-mono); line-height: 1.4;">
-                            ✓ Cryptographically Verified${emailStr}<br>
+                            âœ“ Cryptographically Verified${emailStr}<br>
                             Date: ${dateStr}<br>
                             Hash: ${sigData.document_hash.substring(0, 16)}...
                         </span>
@@ -233,7 +233,7 @@
                 document.title = activeTitleEl.textContent + ' | Talkalisker Client Portal';
             }
             const indicator = document.getElementById('lang-indicator');
-            if (indicator) indicator.textContent = lang === 'he' ? 'עב' : lang.toUpperCase();
+            if (indicator) indicator.textContent = lang === 'he' ? '×¢×‘' : lang.toUpperCase();
             // Re-apply localStorage sigs to newly visible lang-block cards (innerText now works)
             restoreSignatures();
         }
@@ -345,7 +345,7 @@
             line.innerHTML = `
                 <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; text-align: left; padding: 10px 0;">
                     <div style="font-size: 0.85rem; color: var(--accent); font-weight: bold;">
-                        ✉ Secure link sent to ${email}
+                        âœ‰ Secure link sent to ${email}
                     </div>
                     <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4;">
                         Check your inbox. Clicking the link will instantly apply your signature.
@@ -388,14 +388,18 @@
                 const available = JSON.parse(html.getAttribute('data-languages') || '["en"]');
                 const saved = localStorage.getItem('language') || available[0];
                 setLang(available.includes(saved) ? saved : available[0]);
-                initInteractiveFeatures();
-                refreshSearchIndex();
-                checkSignatureStatus();
-                initTelemetry();
+                try { initInteractiveFeatures(); } catch(err) { console.error('initInteractiveFeatures error:', err); }
+                try { refreshSearchIndex(); } catch(err) { console.error('refreshSearchIndex error:', err); }
+                try { checkSignatureStatus(); } catch(err) { console.error('checkSignatureStatus error:', err); }
+                try { initTelemetry(); } catch(err) { console.error('initTelemetry error:', err); }
                 // Persist key so downloadPdf() can use it after lock-screen is hidden
                 window._portalDecryptKey = key;
             } catch (e) {
-                document.getElementById('auth-error').style.display = 'block';
+                console.error('Decryption/DOM Error:', e);
+                document.getElementById('lock-screen').style.display = 'block';
+                const errorEl = document.getElementById('auth-error');
+                errorEl.style.display = 'block';
+                errorEl.textContent = 'ERROR: ' + e.message;
                 document.getElementById('auth-key').value = '';
             }
         }
@@ -480,11 +484,11 @@
                 const btn = document.createElement('button');
                 btn.className = 'table-expand-btn';
                 let expanded = false;
-                btn.textContent = `Show all ${rows.length} rows ↓`;
+                btn.textContent = `Show all ${rows.length} rows â†“`;
                 btn.addEventListener('click', () => {
                     expanded = !expanded;
                     rows.slice(5).forEach(r => r.classList.toggle('visible', expanded));
-                    btn.textContent = expanded ? 'Collapse ↑' : `Show all ${rows.length} rows ↓`;
+                    btn.textContent = expanded ? 'Collapse â†‘' : `Show all ${rows.length} rows â†“`;
                 });
                 table.insertAdjacentElement('afterend', btn);
             });
@@ -713,7 +717,7 @@
                     const btn = document.createElement('div');
                     btn.id = 'floating-comment-btn';
                     btn.className = 'floating-selection-btn';
-                    btn.innerHTML = '💬';
+                    btn.innerHTML = 'ðŸ’¬';
                     btn.style.left = (rect.left + rect.width / 2 + window.scrollX) + 'px';
                     btn.style.top = (rect.top + window.scrollY - 5) + 'px';
                     
@@ -932,5 +936,6 @@
                 initTelemetry();
             }
         });
+
 
 
