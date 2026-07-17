@@ -14,7 +14,7 @@ status: "final"
 
 # 02. /attendees
 - **Decision:** Meeting Attendees Confirmed | **Impact:** Medium
-Guillermo (Client), Yaeli (Designer), Tal (Project lead / Copywriter), and Carmen (Marketing / Data Analytics Collaborator) established the core project alignment.
+Voira (Client), Yaeli (Designer), Tal (Project lead / Copywriter), and Carmen (Marketing / Data Analytics Collaborator) established the core project alignment.
 
 # 03. /market_landscape
 The Spanish AI market is highly aware but executing poorly. Voira's opportunity lies in structural implementation, not basic tool training.
@@ -63,11 +63,11 @@ Aligns Voira as an approachable guide. Structure direction is reserved for futur
 Phonetic flow is clunky in Spanish. Name saved for future hosting tools.
 
 - **Decision:** Select Top Naming Candidates | **Impact:** High
-Guillermo strongly favored Novera and Alapar (Flow), alongside Ordo and Structa (Structure) for legal review.
+Voira strongly favored Novera and Alapar (Flow), alongside Ordo and Structa (Structure) for legal review.
 
 - **Decision:** Integrate Carmen into Sales | **Impact:** Medium
 Carmen will collaborate with Tal on direct outreach to Rapinformes clients.
 
 # 08. /action_items
-- **Action:** Choose brand direction and name for design kickoff | **Owner:** Guillermo | **Status:** Pending
+- **Action:** Choose brand direction and name for design kickoff | **Owner:** Voira | **Status:** Pending
 

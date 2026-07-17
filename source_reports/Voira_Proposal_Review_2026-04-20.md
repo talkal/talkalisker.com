@@ -10,7 +10,7 @@ title: "Branding & Web Design Proposal Review"
 
 :::en
 # 01. /overview
-Guillermo met with Tal and Yaeli to review the branding and web design proposal for his new AI digital transformation consulting firm in Madrid. While the creative direction was well-received, the initial pricing (€4,500) was identified as a significant friction point compared to Spanish market benchmarks (~€1,500).
+Voira met with Tal and Yaeli to review the branding and web design proposal for his new AI digital transformation consulting firm in Madrid. While the creative direction was well-received, the initial pricing (€4,500) was identified as a significant friction point compared to Spanish market benchmarks (~€1,500).
 
 The meeting focused on bridging this gap through transparency, rescoping, and demonstrating value without the benefit of a pre-existing project portfolio.
 
@@ -28,6 +28,6 @@ Tal and Yaeli will adopt a structured format clearly distinguishing fundamental 
 
 # 03. /action_items
 - **Action:** Deliver revised, itemized proposal | **Owner:** Tal & Yaeli | **Status:** Pending
-- **Action:** Review new proposal & finalize vendor choice | **Owner:** Guillermo | **Status:** Pending
+- **Action:** Review new proposal & finalize vendor choice | **Owner:** Voira | **Status:** Pending
 - **Action:** Discuss rebranding of existing US site | **Owner:** Tal | **Status:** Blocked
 :::
