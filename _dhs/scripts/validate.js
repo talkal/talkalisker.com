@@ -13,8 +13,7 @@ const targetArg = process.argv[2];
 
 // Legacy files to exclude from full suite validation (still validated if explicitly targeted)
 const LEGACY_IGNORES = [
-    "Voira_Project_Proposal_2026-04-27.md",
-    "Voira_Project_Proposal_2026-05-21.md",
+        
     "Hadassah_UX_Audit.md",
     "Hadassah_UX_Audit_2026-04-28.md"
 ];
@@ -169,3 +168,4 @@ if (totalErrors > 0) {
     console.log(`\nValidation complete: All reports clean.`);
     process.exit(0);
 }
+

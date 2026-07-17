@@ -6,8 +6,8 @@ type: Proposal.Strategy
 date: 2026-04-27
 confidential: true
 languages:
-  - en
-  - es
+  • en
+  • es
 ---
 
 :::en
@@ -161,35 +161,35 @@ Ciclos dedicados de "ping-pong" para ajustes de precisión. Todos los archivos f
 
 **What is included:**
 * **Deliverable:** Brand Strategy & Naming | **Details:** Research and creative direction (Phase 1):
-- Strategic naming research
-- Brand identity & voice development
-- 2 distinct brand directions for your strategic choice
+• Strategic naming research
+• Brand identity & voice development
+• 2 distinct brand directions for your strategic choice
 
 * **Deliverable:** Full Brand Identity Kit | **Details:** Visual system and guidelines (Phase 2):
-- Professional logo suite (primary, secondary, variations)
-- Premium color palette & typography system
-- Comprehensive brand guidelines document
+• Professional logo suite (primary, secondary, variations)
+• Premium color palette & typography system
+• Comprehensive brand guidelines document
 
 * **Deliverable:** High-Performance Website | **Details:** Custom engineering and deployment (Phase 3):
-- Fully coded HTML5/CSS3/JS high-performance site
-- SEO-optimized architecture and content strategy
-- Responsive UI/UX design system
+• Fully coded HTML5/CSS3/JS high-performance site
+• SEO-optimized architecture and content strategy
+• Responsive UI/UX design system
 
 * **Deliverable:** Zero-Cost Cloud Hosting | **Details:** Technical infrastructure (Phase 3):
-- Secure GitHub Pages hosting setup
-- Custom domain integration
-- 0€ recurring monthly maintenance fees
+• Secure GitHub Pages hosting setup
+• Custom domain integration
+• 0€ recurring monthly maintenance fees
 
 * **Deliverable:** Digital Brand Assets | **Details:** Professional touchpoints (Phase 3):
-- Business card designs for the founding team
-- Custom LinkedIn brand banners
-- Professional email signatures
-- **Special offer:** Included in the price
+• Business card designs for the founding team
+• Custom LinkedIn brand banners
+• Professional email signatures
+• **Special offer:** Included in the price
 
 * **Deliverable:** Technical Handover | **Details:** Final delivery and ownership (Phase 4):
-- Full source code delivery & GitHub repository access
-- Print and digital file packages for all assets
-- 100% intellectual property ownership
+• Full source code delivery & GitHub repository access
+• Print and digital file packages for all assets
+• 100% intellectual property ownership
 
 
 
@@ -209,35 +209,35 @@ Milestone-based, split equally across three triggers: project start, core delive
 
 **Qué está incluido:**
 * **Entregable:** Estrategia de Marca y Naming | **Detalles:** Investigación y dirección creativa (Fase 1):
-- Investigación estratégica de nombres
-- Desarrollo de identidad y voz de marca
-- 2 direcciones de marca distintas para tu elección estratégica
+• Investigación estratégica de nombres
+• Desarrollo de identidad y voz de marca
+• 2 direcciones de marca distintas para tu elección estratégica
 
 * **Entregable:** Kit de Identidad de Marca Completo | **Detalles:** Sistema visual y directrices (Fase 2):
-- Suite de logotipos profesionales (principal, secundario, variaciones)
-- Paleta de colores premium y sistema tipográfico
-- Documento integral de directrices de marca
+• Suite de logotipos profesionales (principal, secundario, variaciones)
+• Paleta de colores premium y sistema tipográfico
+• Documento integral de directrices de marca
 
 * **Entregable:** Sitio Web de Alto Rendimiento | **Detalles:** Ingeniería y despliegue personalizados (Fase 3):
-- Sitio de alto rendimiento totalmente programado en HTML5/CSS3/JS
-- Arquitectura optimizada para SEO y estrategia de contenido
-- Sistema de diseño UI/UX responsivo
+• Sitio de alto rendimiento totalmente programado en HTML5/CSS3/JS
+• Arquitectura optimizada para SEO y estrategia de contenido
+• Sistema de diseño UI/UX responsivo
 
 * **Entregable:** Alojamiento en la Nube sin Coste | **Detalles:** Infraestructura técnica (Fase 3):
-- Configuración de alojamiento seguro en GitHub Pages
-- Integración de dominio personalizado
-- 0€ en cuotas mensuales de mantenimiento recurrentes
+• Configuración de alojamiento seguro en GitHub Pages
+• Integración de dominio personalizado
+• 0€ en cuotas mensuales de mantenimiento recurrentes
 
 * **Entregable:** Activos Digitales de Marca | **Detalles:** Puntos de contacto profesionales (Fase 3):
-- Diseños de tarjetas de visita para el equipo fundador
-- Banners de marca personalizados para LinkedIn
-- Firmas de correo electrónico profesionales
-- **Oferta especial:** Incluido en el precio
+• Diseños de tarjetas de visita para el equipo fundador
+• Banners de marca personalizados para LinkedIn
+• Firmas de correo electrónico profesionales
+• **Oferta especial:** Incluido en el precio
 
 * **Entregable:** Entrega Técnica | **Detalles:** Entrega final y propiedad (Fase 4):
-- Entrega total del código fuente y acceso al repositorio de GitHub
-- Paquetes de archivos impresos y digitales para todos los activos
-- 100% de propiedad de la propiedad intelectual
+• Entrega total del código fuente y acceso al repositorio de GitHub
+• Paquetes de archivos impresos y digitales para todos los activos
+• 100% de propiedad de la propiedad intelectual
 
 
 
