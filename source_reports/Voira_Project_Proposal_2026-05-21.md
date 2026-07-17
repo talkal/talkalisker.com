@@ -7,8 +7,8 @@ date: 2026-05-21
 confidential: true
 requires_signature: true
 languages:
-  • en
-  • es
+  - en
+  - es
 ---
 
 :::en

@@ -1,7 +1,7 @@
 ---
-title: Voira Digital Transformation — Contract Agreement
-client: Voira
-project: Voira Digital Transformation
+title: Voria (Placeholder) Digital Transformation — Contract Agreement
+client: Guillermo
+project: Voria Digital Transformation
 type: Contract.Agreement
 date: 2026-06-02
 confidential: true
@@ -14,17 +14,17 @@ languages:
 :::en
 # 01. /statement_of_work
 
-**Voira** (Client) engages **TalKalisker** (Provider) to execute the complete digital foundation for Voira, designed specifically for the Spanish SME market (5–50 employees). This contract formalizes the 5-week sprint that will deliver Voira's strategic naming, visual identity, and fully coded web presence, leveraging the Rapinformes S.L. partnership. 
+**Guillermo** (Client) engages **TalKalisker** (Provider) to execute the complete digital foundation for Voria, designed specifically for the Spanish SME market (5–50 employees). This contract formalizes the 5-week sprint that will deliver Voria's strategic naming, visual identity, and fully coded web presence, leveraging the Rapinformes S.L. partnership. 
 
-By July 5th, Voira will take full ownership of a market-ready brand identity, a live high-performance website on a custom domain, a comprehensive brand kit, and the technical infrastructure to begin client acquisition.
+By July 5th, Guillermo will take full ownership of a market-ready brand identity, a live high-performance website on a custom domain, a comprehensive brand kit, and the technical infrastructure to begin client acquisition.
 :::
 
 :::es
 # 01. /declaracion_de_trabajo
 
-**Voira** (Cliente) contrata a **TalKalisker** (Proveedor) para ejecutar la base digital completa de Voira, diseñada específicamente para el mercado de las PYMES españolas (5–50 empleados). Este contrato formaliza el sprint de 5 semanas que entregará el naming estratégico, la identidad visual y la presencia web totalmente programada de Voira, aprovechando la asociación con Rapinformes S.L.
+**Guillermo** (Cliente) contrata a **TalKalisker** (Proveedor) para ejecutar la base digital completa de Voria, diseñada específicamente para el mercado de las PYMES españolas (5–50 empleados). Este contrato formaliza el sprint de 5 semanas que entregará el naming estratégico, la identidad visual y la presencia web totalmente programada de Voria, aprovechando la asociación con Rapinformes S.L.
 
-Para el 5 de julio, Voira tomará plena propiedad de una identidad de marca lista para el mercado, un sitio web de alto rendimiento en vivo en un dominio personalizado, un kit de marca integral y la infraestructura técnica para comenzar la adquisición de clientes.
+Para el 5 de julio, Guillermo tomará plena propiedad de una identidad de marca lista para el mercado, un sitio web de alto rendimiento en vivo en un dominio personalizado, un kit de marca integral y la infraestructura técnica para comenzar la adquisición de clientes.
 :::
 
 :::en
@@ -33,7 +33,7 @@ Para el 5 de julio, Voira tomará plena propiedad de una identidad de marca list
 These binding terms govern our partnership to ensure execution matches intent.
 
 - **Decision:** Delivery of strategic brand differentiation | **Impact:** High
-**Term:** TalKalisker will deliver 2 distinct, fully reasoned brand and naming directions for Voira's selection. Execution will position the "AI Readiness" methodology as a market differentiator.
+**Term:** TalKalisker will deliver 2 distinct, fully reasoned brand and naming directions for Guillermo's selection. Execution will position the "AI Readiness" methodology as a market differentiator.
 - **Decision:** Engineering of a technically superior web presence | **Impact:** High
 **Term:** The final website will be custom-built (HTML5/CSS3/JS) for sub-second load times and SEO optimization, deployed via GitHub Pages with zero recurring hosting costs.
 - **Decision:** Integrated 5-week delivery sprint | **Impact:** High
@@ -46,7 +46,7 @@ These binding terms govern our partnership to ensure execution matches intent.
 Estos términos vinculantes rigen nuestra asociación para asegurar que la ejecución coincida con la intención.
 
 - **Decisión:** Entrega de diferenciación estratégica de marca | **Impacto:** Alto
-**Término:** TalKalisker entregará 2 direcciones de marca y naming distintas y totalmente razonadas para la selección de Voira. La ejecución posicionará la metodología "AI Readiness" como un diferenciador de mercado.
+**Término:** TalKalisker entregará 2 direcciones de marca y naming distintas y totalmente razonadas para la selección de Guillermo. La ejecución posicionará la metodología "AI Readiness" como un diferenciador de mercado.
 - **Decisión:** Ingeniería de una presencia web técnicamente superior | **Impacto:** Alto
 **Término:** El sitio web final será construido a medida (HTML5/CSS3/JS) para tiempos de carga inferiores al segundo y optimización SEO, desplegado a través de GitHub Pages sin costes de alojamiento recurrentes.
 - **Decisión:** Sprint de entrega integrado de 5 semanas | **Impacto:** Alto
@@ -68,7 +68,7 @@ Delivery of the complete branding kit for the chosen direction, including logo s
 Delivery of the functional coded website (HTML5/CSS3/JS), SEO report, complete UI/UX design system, and brand applications (business cards, LinkedIn banners, email signatures). Custom domain configured on GitHub Pages.
 
 **Phase 4: Final Tweaks & Handover (June 29–July 5)**
-Completion of feedback cycles. Final technical handover of all assets, source code, and GitHub repository access. Voira assumes 100% intellectual property ownership.
+Completion of feedback cycles. Final technical handover of all assets, source code, and GitHub repository access. Guillermo assumes 100% intellectual property ownership.
 :::
 
 :::es
@@ -86,7 +86,7 @@ Entrega del kit de marca completo para la dirección elegida, incluyendo suite d
 Entrega del sitio web funcional programado (HTML5/CSS3/JS), informe SEO, sistema de diseño UI/UX completo y aplicaciones de marca (tarjetas de visita, banners de LinkedIn, firmas de correo electrónico). Dominio personalizado configurado en GitHub Pages.
 
 **Fase 4: Ajustes Finales y Entrega (29 de junio–5 de julio)**
-Finalización de los ciclos de retroalimentación. Entrega técnica final de todos los activos, código fuente y acceso al repositorio de GitHub. Voira asume el 100% de la propiedad intelectual.
+Finalización de los ciclos de retroalimentación. Entrega técnica final de todos los activos, código fuente y acceso al repositorio de GitHub. Guillermo asume el 100% de la propiedad intelectual.
 :::
 
 :::en
@@ -120,10 +120,10 @@ Este contrato confirma la inversión fija y los activadores de pago por hitos.
 
 The following actions confirm agreement and initiate the project.
 
-- **Action:** Sign this contract agreement | **Owner:** Voira | **Status:** Pending
-- **Action:** Transfer Payment 1 (€900) to secure project start | **Owner:** Voira | **Status:** Pending
+- **Action:** Sign this contract agreement | **Owner:** Guillermo | **Status:** Pending
+- **Action:** Transfer Payment 1 (€900) to secure project start | **Owner:** Guillermo | **Status:** Pending
 - **Action:** Commence Phase 1 discovery and research | **Owner:** Tal & Yaeli | **Status:** Blocked
-- **Action:** Provide Rapinformes brand assets for reference | **Owner:** Voira | **Status:** Pending
+- **Action:** Provide Rapinformes brand assets for reference | **Owner:** Guillermo | **Status:** Pending
 
 <br><br>
 
@@ -133,7 +133,7 @@ The following actions confirm agreement and initiate the project.
 
 # 06. /authorization
 
-- **Signature:** Voira | **Role:** Client (Voira Founders)
+- **Signature:** Guillermo | **Role:** Client (Voria Founders)
 - **Signature:** Tal | **Role:** Project Lead (TalKalisker)
 :::
 
@@ -142,10 +142,10 @@ The following actions confirm agreement and initiate the project.
 
 Las siguientes acciones confirman el acuerdo e inician el proyecto.
 
-- **Acción:** Firmar este acuerdo de contrato | **Responsable:** Voira | **Estado:** Pendiente
-- **Acción:** Transferir el Pago 1 (€900) para asegurar el inicio del proyecto | **Responsable:** Voira | **Estado:** Pendiente
+- **Acción:** Firmar este acuerdo de contrato | **Responsable:** Guillermo | **Estado:** Pendiente
+- **Acción:** Transferir el Pago 1 (€900) para asegurar el inicio del proyecto | **Responsable:** Guillermo | **Estado:** Pendiente
 - **Acción:** Comenzar la Fase 1 de descubrimiento e investigación | **Responsable:** Tal y Yaeli | **Estado:** Bloqueado
-- **Acción:** Proporcionar los activos de marca de Rapinformes como referencia | **Responsable:** Voira | **Estado:** Pendiente
+- **Acción:** Proporcionar los activos de marca de Rapinformes como referencia | **Responsable:** Guillermo | **Estado:** Pendiente
 
 <br><br>
 
@@ -155,6 +155,6 @@ Las siguientes acciones confirman el acuerdo e inician el proyecto.
 
 # 06. /autorizacion
 
-- **Firma:** Voira | **Cargo:** Cliente (Fundadores de Voira)
+- **Firma:** Guillermo | **Cargo:** Cliente (Fundadores de Voria)
 - **Firma:** Tal | **Cargo:** Líder del Proyecto (TalKalisker)
 :::
