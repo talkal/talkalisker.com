@@ -140,7 +140,7 @@
             position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         .proposal-card::before { content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 4px; background: var(--accent); }
-        .proposal-name { font-size: 3.2rem; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: -1px; margin-bottom: 0.5rem; line-height: 1; }
+        .proposal-name { font-size: 2.2rem; font-weight: 800; color: var(--accent); letter-spacing: -1px; margin-bottom: 0.5rem; line-height: 1.1; }
         .proposal-slogan { font-family: var(--font-mono); font-style: italic; font-size: 1.1rem; color: var(--text-primary); margin-bottom: 1.5rem; opacity: 0.8; }
         .proposal-desc { font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary); }
         .proposal-badge { position: absolute; top: 3rem; right: 3rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; background: rgba(184, 90, 68, 0.1); color: var(--accent); padding: 0.3rem 0.8rem; border-radius: 4px; }
