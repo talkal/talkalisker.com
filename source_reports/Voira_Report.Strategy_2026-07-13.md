@@ -43,17 +43,14 @@ Eliminate tech-heavy jargon that alienates conservative SMEs. Emphasize guided i
 
 # 04. /brand_taglines
 
-- **Name:** Transformación digital con vocación humana. | **Slogan:** Digital transformation with human dedication. | **Level:** Recommended
-**Direction:** The Direct Hybrid
+- **Name:** Todo encaja por fin. | **Slogan:** Everything clicks into place. | **Level:** Recommended
+**Direction:** Approachable tech
 
-- **Name:** Transformación estructural guiada por el compromiso humano. | **Slogan:** Structural transformation guided by human commitment. | **Level:** Recommended
-**Direction:** The Definitive Relief
+- **Name:** Tecnología en acción. | **Slogan:** Technology into action. | **Level:** Recommended
+**Direction:** Approachable tech
 
-- **Name:** Precisión técnica. Compromiso cercano. | **Slogan:** Technical precision. Personal commitment. | **Level:** Recommended
-**Direction:** The Side-by-Side Angle
+- **Name:** Transformación a tu lado. | **Slogan:** Transformation by your side. | **Level:** Recommended
+**Direction:** Step by step
 
-- **Name:** Transformación estructural, paso a paso contigo. | **Slogan:** Structural transformation, step by step with you. | **Level:** Recommended
-**Direction:** The Warmth + Rigor Angle
-
-- **Name:** Diseñamos tus sistemas. Acompañamos a tu equipo. | **Slogan:** We design your systems. We accompany your team. | **Level:** Recommended
-**Direction:** The Synchronized Partner
+- **Name:** Guiamos tu cambio digital. | **Slogan:** Guided into digital change. | **Level:** Recommended
+**Direction:** Step by step
